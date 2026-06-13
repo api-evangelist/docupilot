@@ -1,0 +1,86 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "BulkGen",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "readOnly": true
+    },
+    "errors": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/BulkGenTask"
+      },
+      "readOnly": true
+    },
+    "file_name": {
+      "type": "string",
+      "readOnly": true
+    },
+    "status": {
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 32767
+    },
+    "start_time": {
+      "type": "string",
+      "format": "date-time",
+      "nullable": true
+    },
+    "end_time": {
+      "type": "string",
+      "format": "date-time",
+      "nullable": true
+    },
+    "total": {
+      "type": "integer",
+      "maximum": 2147483647,
+      "minimum": -2147483648,
+      "nullable": true
+    },
+    "success": {
+      "type": "integer",
+      "maximum": 2147483647,
+      "minimum": -2147483648,
+      "nullable": true
+    },
+    "updated_time": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true,
+      "nullable": true
+    },
+    "delimiter": {
+      "type": "string",
+      "nullable": true,
+      "maxLength": 1
+    },
+    "created_by": {
+      "type": "integer",
+      "readOnly": true
+    },
+    "updated_by": {
+      "type": "integer",
+      "readOnly": true,
+      "nullable": true
+    }
+  },
+  "required": [
+    "created_by",
+    "errors",
+    "file_name",
+    "id",
+    "updated_by",
+    "updated_time"
+  ]
+}

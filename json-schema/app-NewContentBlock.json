@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "NewContentBlock",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "key": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "file": {
+      "type": "string",
+      "format": "binary"
+    },
+    "description": {
+      "type": "string",
+      "nullable": true,
+      "maxLength": 255
+    }
+  },
+  "required": [
+    "file",
+    "key",
+    "name"
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "PatchedOrganization",
+  "description": "PatchedOrganization schema from Docupilot accounts API",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "maxLength": 50
+    },
+    "subdomain": {
+      "type": "string",
+      "readOnly": true
+    },
+    "created_time": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true
+    },
+    "updated_time": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true
+    },
+    "enforce_mfa": {
+      "type": "boolean",
+      "readOnly": true
+    },
+    "logo": {
+      "type": "string",
+      "format": "binary",
+      "nullable": true
+    },
+    "password_based_login": {
+      "type": "boolean",
+      "readOnly": true,
+      "description": "Whether password-based login is allowed for this organization"
+    },
+    "region": {
+      "enum": [
+        "us1"
+      ],
+      "type": "string",
+      "readOnly": true
+    },
+    "provisioning_mode": {
+      "enum": [
+        "manual",
+        "scim"
+      ],
+      "type": "string",
+      "readOnly": true
+    }
+  }
+}

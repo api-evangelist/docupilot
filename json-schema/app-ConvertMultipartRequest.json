@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ConvertMultipartRequest",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "output_file_name": {
+      "type": "string"
+    },
+    "output_type": {
+      "enum": [
+        "pdf",
+        "png",
+        "png.zip"
+      ],
+      "type": "string"
+    },
+    "file": {
+      "type": "string",
+      "format": "binary"
+    }
+  },
+  "required": [
+    "file",
+    "output_file_name",
+    "output_type"
+  ]
+}

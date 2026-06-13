@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "PromptSuggestions",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "template_title": {
+      "type": "string",
+      "writeOnly": true
+    },
+    "template_description": {
+      "type": "string",
+      "writeOnly": true,
+      "nullable": true
+    },
+    "prompts": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "readOnly": true
+    }
+  },
+  "required": [
+    "prompts",
+    "template_title"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ChangeRole",
+  "description": "ChangeRole schema from Docupilot accounts API",
+  "type": "object",
+  "properties": {
+    "role": {
+      "enum": [
+        "admin",
+        "member"
+      ],
+      "type": "string"
+    }
+  },
+  "required": [
+    "role"
+  ]
+}

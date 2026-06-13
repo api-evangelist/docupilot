@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "UserMeta",
+  "description": "UserMeta schema from Docupilot accounts API",
+  "type": "object",
+  "properties": {
+    "timezone": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/TimeZone"
+      }
+    },
+    "locale": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Locale"
+      }
+    }
+  },
+  "required": [
+    "locale",
+    "timezone"
+  ]
+}

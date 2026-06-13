@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "EnvelopeBulkMove",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "envelope_ids": {
+      "type": "array",
+      "items": {
+        "type": "integer"
+      },
+      "writeOnly": true
+    },
+    "is_move_all": {
+      "type": "boolean",
+      "writeOnly": true
+    },
+    "new_folder_id": {
+      "type": "integer",
+      "writeOnly": true,
+      "nullable": true
+    }
+  },
+  "required": [
+    "new_folder_id"
+  ]
+}

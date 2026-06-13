@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "TemplateSchemaDetail",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "content": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/TemplateSchema"
+      }
+    },
+    "content_blocks_schema": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/TemplateSchema"
+        }
+      },
+      "description": "A mapping of content block keys to their respective schema."
+    },
+    "other": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/TemplateSchema"
+      }
+    }
+  },
+  "required": [
+    "content",
+    "content_blocks_schema",
+    "other"
+  ]
+}

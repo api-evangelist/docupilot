@@ -1,0 +1,37 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "File",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "readOnly": true
+    },
+    "path": {
+      "type": "string",
+      "writeOnly": true,
+      "maxLength": 255
+    },
+    "name": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "tag": {
+      "type": "string",
+      "writeOnly": true,
+      "maxLength": 255
+    },
+    "size": {
+      "type": "integer",
+      "readOnly": true
+    }
+  },
+  "required": [
+    "id",
+    "name",
+    "path",
+    "size",
+    "tag"
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "SAMLProviderList",
+  "description": "SAMLProviderList schema from Docupilot accounts API",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "readOnly": true
+    },
+    "name": {
+      "type": "string",
+      "maxLength": 40
+    },
+    "type": {
+      "type": "string",
+      "readOnly": true
+    },
+    "is_setup_complete": {
+      "type": "boolean",
+      "readOnly": true
+    },
+    "active": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "active",
+    "id",
+    "is_setup_complete",
+    "name",
+    "type"
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ExtensionRunResponse",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "results": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ExtensionRunResult"
+      }
+    },
+    "errors": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ExtensionRunError"
+      }
+    }
+  },
+  "required": [
+    "errors",
+    "results"
+  ]
+}

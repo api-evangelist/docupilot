@@ -1,0 +1,71 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ESignWebhook",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "readOnly": true
+    },
+    "name": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "maxLength": 255
+    },
+    "active": {
+      "type": "boolean"
+    },
+    "event_subscriptions": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "recipient_viewed",
+          "recipient_signed",
+          "recipient_declined",
+          "envelope_completed",
+          "envelope_expired",
+          "envelope_voided"
+        ],
+        "type": "string"
+      }
+    },
+    "hmac_secret": {
+      "type": "string",
+      "nullable": true,
+      "maxLength": 255
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true
+    },
+    "created_by": {
+      "type": "integer",
+      "readOnly": true
+    },
+    "updated_by": {
+      "type": "integer",
+      "readOnly": true,
+      "nullable": true
+    }
+  },
+  "required": [
+    "created_at",
+    "created_by",
+    "id",
+    "name",
+    "updated_at",
+    "updated_by",
+    "url"
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Domain",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "readOnly": true
+    },
+    "domain_name": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "txt_record": {
+      "type": "string",
+      "maxLength": 60
+    },
+    "is_txt_verified": {
+      "type": "boolean"
+    },
+    "is_spf_verified": {
+      "type": "boolean"
+    },
+    "spf_record": {
+      "type": "string",
+      "readOnly": true
+    }
+  },
+  "required": [
+    "domain_name",
+    "id",
+    "spf_record",
+    "txt_record"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "VerifiedEmailDNSAccounts",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "accounts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/DeliveryEmailAccount"
+      },
+      "description": "List of verified email DNS accounts"
+    }
+  },
+  "required": [
+    "accounts"
+  ]
+}

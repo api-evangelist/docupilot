@@ -1,0 +1,4487 @@
+{
+  "title": "Docupilot API Vocabulary",
+  "description": "Terms, schemas, and operations defined by the Docupilot API",
+  "source": "https://github.com/docupilot/js-sdk",
+  "terms": {
+    "AcceptInvite": {
+      "type": "schema",
+      "spec": "accounts",
+      "description": "",
+      "schemaType": "object"
+    },
+    "Application": {
+      "type": "schema",
+      "spec": "accounts",
+      "description": "",
+      "schemaType": "object"
+    },
+    "CSMDetails": {
+      "type": "schema",
+      "spec": "accounts",
+      "description": "",
+      "schemaType": "object"
+    },
+    "ChangeEmail": {
+      "type": "schema",
+      "spec": "accounts",
+      "description": "",
+      "schemaType": "object"
+    },
+    "ChangePassword": {
+      "type": "schema",
+      "spec": "accounts",
+      "description": "",
+      "schemaType": "object"
+    },
+    "ChangeRole": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "CreateInvitation": {
+      "type": "schema",
+      "spec": "accounts",
+      "description": "",
+      "schemaType": "object"
+    },
+    "DemoGraphic": {
+      "type": "schema",
+      "spec": "accounts",
+      "description": "",
+      "schemaType": "object"
+    },
+    "Domain": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "ForbiddenError": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "Invitation": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "Locale": {
+      "type": "schema",
+      "spec": "accounts",
+      "description": "",
+      "schemaType": "object"
+    },
+    "MFADisable": {
+      "type": "schema",
+      "spec": "accounts",
+      "description": "",
+      "schemaType": "object"
+    },
+    "MarkDevicePrimary": {
+      "type": "schema",
+      "spec": "accounts",
+      "description": "",
+      "schemaType": "object"
+    },
+    "NotFoundError": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "OnboardingStatus": {
+      "type": "schema",
+      "spec": "accounts",
+      "description": "",
+      "schemaType": "object"
+    },
+    "Organization": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "OrganizationDelete": {
+      "type": "schema",
+      "spec": "accounts",
+      "description": "",
+      "schemaType": "object"
+    },
+    "OrganizationDemographic": {
+      "type": "schema",
+      "spec": "accounts",
+      "description": "",
+      "schemaType": "object"
+    },
+    "OrganizationMetaResponse": {
+      "type": "schema",
+      "spec": "accounts",
+      "description": "",
+      "schemaType": "object"
+    },
+    "OrganizationSubdomainChangeResponse": {
+      "type": "schema",
+      "spec": "accounts",
+      "description": "",
+      "schemaType": "object"
+    },
+    "PatchedOnboardingStatus": {
+      "type": "schema",
+      "spec": "accounts",
+      "description": "",
+      "schemaType": "object"
+    },
+    "PatchedOrganization": {
+      "type": "schema",
+      "spec": "accounts",
+      "description": "",
+      "schemaType": "object"
+    },
+    "PatchedOrganizationSubdomainChange": {
+      "type": "schema",
+      "spec": "accounts",
+      "description": "",
+      "schemaType": "object"
+    },
+    "PatchedSAMLProviderUpdate": {
+      "type": "schema",
+      "spec": "accounts",
+      "description": "",
+      "schemaType": "object"
+    },
+    "PatchedUser": {
+      "type": "schema",
+      "spec": "accounts",
+      "description": "",
+      "schemaType": "object"
+    },
+    "SAMLProviderCreate": {
+      "type": "schema",
+      "spec": "accounts",
+      "description": "",
+      "schemaType": "object"
+    },
+    "SAMLProviderList": {
+      "type": "schema",
+      "spec": "accounts",
+      "description": "",
+      "schemaType": "object"
+    },
+    "SAMLProviderRetrieve": {
+      "type": "schema",
+      "spec": "accounts",
+      "description": "",
+      "schemaType": "object"
+    },
+    "SAMLProviderUpdate": {
+      "type": "schema",
+      "spec": "accounts",
+      "description": "",
+      "schemaType": "object"
+    },
+    "ScimApiKey": {
+      "type": "schema",
+      "spec": "accounts",
+      "description": "",
+      "schemaType": "object"
+    },
+    "ScimApiKeyCreateResponse": {
+      "type": "schema",
+      "spec": "accounts",
+      "description": "",
+      "schemaType": "object"
+    },
+    "ScimConfig": {
+      "type": "schema",
+      "spec": "accounts",
+      "description": "",
+      "schemaType": "object"
+    },
+    "ScimToggleResponse": {
+      "type": "schema",
+      "spec": "accounts",
+      "description": "",
+      "schemaType": "object"
+    },
+    "SendAuthorizationOTP": {
+      "type": "schema",
+      "spec": "accounts",
+      "description": "",
+      "schemaType": "object"
+    },
+    "ShowDemographicPrompt": {
+      "type": "schema",
+      "spec": "accounts",
+      "description": "",
+      "schemaType": "object"
+    },
+    "TOTPDevice": {
+      "type": "schema",
+      "spec": "accounts",
+      "description": "",
+      "schemaType": "object"
+    },
+    "TeamMember": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "TimeZone": {
+      "type": "schema",
+      "spec": "accounts",
+      "description": "",
+      "schemaType": "object"
+    },
+    "TotpDeviceVerify": {
+      "type": "schema",
+      "spec": "accounts",
+      "description": "",
+      "schemaType": "object"
+    },
+    "TransferOwnership": {
+      "type": "schema",
+      "spec": "accounts",
+      "description": "",
+      "schemaType": "object"
+    },
+    "UnauthenticatedError": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "User": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "UserDemographic": {
+      "type": "schema",
+      "spec": "accounts",
+      "description": "",
+      "schemaType": "object"
+    },
+    "UserMeta": {
+      "type": "schema",
+      "spec": "accounts",
+      "description": "",
+      "schemaType": "object"
+    },
+    "UserOrganization": {
+      "type": "schema",
+      "spec": "accounts",
+      "description": "",
+      "schemaType": "object"
+    },
+    "ValidationError": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "VerifyAuthorizationOTP": {
+      "type": "schema",
+      "spec": "accounts",
+      "description": "",
+      "schemaType": "object"
+    },
+    "VerifyDomain": {
+      "type": "schema",
+      "spec": "accounts",
+      "description": "",
+      "schemaType": "object"
+    },
+    "Workspace": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "list_all_applications": {
+      "type": "operation",
+      "spec": "accounts",
+      "method": "GET",
+      "path": "/accounts/application/",
+      "summary": "List all applications",
+      "tags": [
+        "application"
+      ]
+    },
+    "create_demographic": {
+      "type": "operation",
+      "spec": "accounts",
+      "method": "POST",
+      "path": "/accounts/demographic/",
+      "summary": "Create Demographic",
+      "tags": [
+        "demographic"
+      ]
+    },
+    "show_demographic_prompt_for_organization_users": {
+      "type": "operation",
+      "spec": "accounts",
+      "method": "GET",
+      "path": "/accounts/demographic/show_prompt/",
+      "summary": "Show demographic prompt for organization users",
+      "tags": [
+        "demographic"
+      ]
+    },
+    "validate_domain": {
+      "type": "operation",
+      "spec": "accounts",
+      "method": "POST",
+      "path": "/accounts/demographic/validate_domain/",
+      "summary": "Verify domain",
+      "tags": [
+        "demographic"
+      ]
+    },
+    "list_domains": {
+      "type": "operation",
+      "spec": "accounts",
+      "method": "GET",
+      "path": "/accounts/domain/",
+      "summary": "List domains",
+      "tags": [
+        "domain"
+      ]
+    },
+    "create_domain": {
+      "type": "operation",
+      "spec": "accounts",
+      "method": "POST",
+      "path": "/accounts/domain/",
+      "summary": "Create domain",
+      "tags": [
+        "domain"
+      ]
+    },
+    "destroy_domain": {
+      "type": "operation",
+      "spec": "accounts",
+      "method": "DELETE",
+      "path": "/accounts/domain/{id}/",
+      "summary": "Destroy domain",
+      "tags": [
+        "domain"
+      ]
+    },
+    "toggle_domain_lock": {
+      "type": "operation",
+      "spec": "accounts",
+      "method": "PATCH",
+      "path": "/accounts/domain/{id}/toggle_lock/",
+      "summary": "Toggle domain lock",
+      "tags": [
+        "domain"
+      ]
+    },
+    "verify_domain": {
+      "type": "operation",
+      "spec": "app",
+      "method": "PATCH",
+      "path": "/dashboard/api/v2/domain/{id}/verify/",
+      "summary": "verify domain",
+      "tags": [
+        "domain"
+      ]
+    },
+    "list_invitation": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/accounts/v2/invitations/",
+      "summary": "Get list of Invitation",
+      "tags": [
+        "invitations"
+      ]
+    },
+    "create_invitation": {
+      "type": "operation",
+      "spec": "app",
+      "method": "POST",
+      "path": "/dashboard/accounts/v2/invitations/",
+      "summary": "Create Invitation",
+      "tags": [
+        "invitations"
+      ]
+    },
+    "delete_invitation": {
+      "type": "operation",
+      "spec": "app",
+      "method": "DELETE",
+      "path": "/dashboard/accounts/v2/invitations/{id}/",
+      "summary": "Delete Invitation",
+      "tags": [
+        "invitations"
+      ]
+    },
+    "accept_invitation": {
+      "type": "operation",
+      "spec": "accounts",
+      "method": "POST",
+      "path": "/accounts/invitation/{id}/accept_workspace_invitation/",
+      "summary": "Accept workspace invitation",
+      "tags": [
+        "invitation"
+      ]
+    },
+    "decline_workspace_invitation": {
+      "type": "operation",
+      "spec": "accounts",
+      "method": "DELETE",
+      "path": "/accounts/invitation/{id}/decline_workspace_invitation/",
+      "summary": "Decline workspace invitation",
+      "tags": [
+        "invitation"
+      ]
+    },
+    "resend_invitation": {
+      "type": "operation",
+      "spec": "app",
+      "method": "POST",
+      "path": "/dashboard/accounts/v2/invitations/{id}/resend_invitation/",
+      "summary": "Resend invitation",
+      "tags": [
+        "invitations"
+      ]
+    },
+    "list_workspace_invitations": {
+      "type": "operation",
+      "spec": "accounts",
+      "method": "GET",
+      "path": "/accounts/invitation/list_workspace_invitations/",
+      "summary": "List pending workspace invitations for the current user",
+      "tags": [
+        "invitation"
+      ]
+    },
+    "mfa_list": {
+      "type": "operation",
+      "spec": "accounts",
+      "method": "GET",
+      "path": "/accounts/mfa/",
+      "summary": "",
+      "tags": [
+        "mfa"
+      ]
+    },
+    "mfa_delete_totp_device_destroy": {
+      "type": "operation",
+      "spec": "accounts",
+      "method": "DELETE",
+      "path": "/accounts/mfa/delete-totp-device/",
+      "summary": "",
+      "tags": [
+        "mfa"
+      ]
+    },
+    "mfa_disable": {
+      "type": "operation",
+      "spec": "accounts",
+      "method": "POST",
+      "path": "/accounts/mfa/disable-mfa/",
+      "summary": "",
+      "tags": [
+        "mfa"
+      ]
+    },
+    "mfa_enable": {
+      "type": "operation",
+      "spec": "accounts",
+      "method": "POST",
+      "path": "/accounts/mfa/enable-mfa/",
+      "summary": "",
+      "tags": [
+        "mfa"
+      ]
+    },
+    "mfa_generate_backup_tokens_create": {
+      "type": "operation",
+      "spec": "accounts",
+      "method": "POST",
+      "path": "/accounts/mfa/generate-backup-tokens/",
+      "summary": "",
+      "tags": [
+        "mfa"
+      ]
+    },
+    "mfa_mark_device_primary_update": {
+      "type": "operation",
+      "spec": "accounts",
+      "method": "PUT",
+      "path": "/accounts/mfa/mark-device-primary/",
+      "summary": "",
+      "tags": [
+        "mfa"
+      ]
+    },
+    "mfa_setup_totp_device_retrieve": {
+      "type": "operation",
+      "spec": "accounts",
+      "method": "GET",
+      "path": "/accounts/mfa/setup-totp-device/",
+      "summary": "",
+      "tags": [
+        "mfa"
+      ]
+    },
+    "mfa_verify_totp_device_create": {
+      "type": "operation",
+      "spec": "accounts",
+      "method": "POST",
+      "path": "/accounts/mfa/verify-totp-device/",
+      "summary": "Verify Totp device",
+      "tags": [
+        "mfa"
+      ]
+    },
+    "get_csm_details": {
+      "type": "operation",
+      "spec": "accounts",
+      "method": "GET",
+      "path": "/accounts/organization/csm_details/",
+      "summary": "",
+      "tags": [
+        "organization"
+      ]
+    },
+    "delete_organization": {
+      "type": "operation",
+      "spec": "accounts",
+      "method": "POST",
+      "path": "/accounts/organization/delete_organization/",
+      "summary": "Delete a Organization and other related data permanently ",
+      "tags": [
+        "organization"
+      ]
+    },
+    "get_organization": {
+      "type": "operation",
+      "spec": "accounts",
+      "method": "GET",
+      "path": "/accounts/organization/details/",
+      "summary": "",
+      "tags": [
+        "organization"
+      ]
+    },
+    "get_organization_meta": {
+      "type": "operation",
+      "spec": "accounts",
+      "method": "GET",
+      "path": "/accounts/organization/meta/",
+      "summary": "Get organization meta information",
+      "tags": [
+        "organization"
+      ]
+    },
+    "toggle_organization_mfa_status": {
+      "type": "operation",
+      "spec": "accounts",
+      "method": "PATCH",
+      "path": "/accounts/organization/toggle_mfa_status/",
+      "summary": "Activate or Deactivate Organization MFA",
+      "tags": [
+        "organization"
+      ]
+    },
+    "toggle_password_based_login": {
+      "type": "operation",
+      "spec": "accounts",
+      "method": "PATCH",
+      "path": "/accounts/organization/toggle_password_based_login/",
+      "summary": "Toggle password-based login",
+      "tags": [
+        "organization"
+      ]
+    },
+    "update_organization": {
+      "type": "operation",
+      "spec": "accounts",
+      "method": "PATCH",
+      "path": "/accounts/organization/update_org/",
+      "summary": "",
+      "tags": [
+        "organization"
+      ]
+    },
+    "update_organization_subdomain": {
+      "type": "operation",
+      "spec": "accounts",
+      "method": "PATCH",
+      "path": "/accounts/organization/update_subdomain/",
+      "summary": "Update organization subdomain",
+      "tags": [
+        "organization"
+      ]
+    },
+    "organization_onboarding_retrieve": {
+      "type": "operation",
+      "spec": "accounts",
+      "method": "GET",
+      "path": "/accounts/organization_onboarding/",
+      "summary": "",
+      "tags": [
+        "organization_onboarding"
+      ]
+    },
+    "organization_onboarding_partial_update": {
+      "type": "operation",
+      "spec": "accounts",
+      "method": "PATCH",
+      "path": "/accounts/organization_onboarding/",
+      "summary": "",
+      "tags": [
+        "organization_onboarding"
+      ]
+    },
+    "list_saml_providers": {
+      "type": "operation",
+      "spec": "accounts",
+      "method": "GET",
+      "path": "/accounts/saml/",
+      "summary": "Get list of SAML providers",
+      "tags": [
+        "saml"
+      ]
+    },
+    "create_saml_provider": {
+      "type": "operation",
+      "spec": "accounts",
+      "method": "POST",
+      "path": "/accounts/saml/",
+      "summary": "Create SAML provider",
+      "tags": [
+        "saml"
+      ]
+    },
+    "retrieve_saml_provider": {
+      "type": "operation",
+      "spec": "accounts",
+      "method": "GET",
+      "path": "/accounts/saml/{id}/",
+      "summary": "Retrieve SAML provider",
+      "tags": [
+        "saml"
+      ]
+    },
+    "update_saml_provider": {
+      "type": "operation",
+      "spec": "accounts",
+      "method": "PUT",
+      "path": "/accounts/saml/{id}/",
+      "summary": "Update SAML provider",
+      "tags": [
+        "saml"
+      ]
+    },
+    "saml_partial_update": {
+      "type": "operation",
+      "spec": "accounts",
+      "method": "PATCH",
+      "path": "/accounts/saml/{id}/",
+      "summary": "",
+      "tags": [
+        "saml"
+      ]
+    },
+    "delete_saml_provider": {
+      "type": "operation",
+      "spec": "accounts",
+      "method": "DELETE",
+      "path": "/accounts/saml/{id}/",
+      "summary": "Delete SAML provider",
+      "tags": [
+        "saml"
+      ]
+    },
+    "toggle_saml_provider": {
+      "type": "operation",
+      "spec": "accounts",
+      "method": "POST",
+      "path": "/accounts/saml/{id}/toggle_active/",
+      "summary": "Toggle SAML provider active status",
+      "tags": [
+        "saml"
+      ]
+    },
+    "get_scim_config": {
+      "type": "operation",
+      "spec": "accounts",
+      "method": "GET",
+      "path": "/accounts/scim/config/",
+      "summary": "",
+      "tags": [
+        "scim"
+      ]
+    },
+    "create_scim_key": {
+      "type": "operation",
+      "spec": "accounts",
+      "method": "POST",
+      "path": "/accounts/scim/keys/",
+      "summary": "",
+      "tags": [
+        "scim"
+      ]
+    },
+    "delete_scim_key": {
+      "type": "operation",
+      "spec": "accounts",
+      "method": "DELETE",
+      "path": "/accounts/scim/keys/{key_id}/",
+      "summary": "",
+      "tags": [
+        "scim"
+      ]
+    },
+    "toggle_scim_provisioning": {
+      "type": "operation",
+      "spec": "accounts",
+      "method": "POST",
+      "path": "/accounts/scim/toggle_provisioning/",
+      "summary": "",
+      "tags": [
+        "scim"
+      ]
+    },
+    "list_all_team_members": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/accounts/v2/team/",
+      "summary": "List all team members",
+      "tags": [
+        "team"
+      ]
+    },
+    "change_role_of_team_member": {
+      "type": "operation",
+      "spec": "app",
+      "method": "PUT",
+      "path": "/dashboard/accounts/v2/team/{id}/change_role/",
+      "summary": "Change role of team member.",
+      "tags": [
+        "team"
+      ]
+    },
+    "toggle_user_status": {
+      "type": "operation",
+      "spec": "app",
+      "method": "PATCH",
+      "path": "/dashboard/accounts/v2/team/{id}/toggle_user_status/",
+      "summary": "Activate or Deactivate a User",
+      "tags": [
+        "team"
+      ]
+    },
+    "transfer_ownership_to_admin_user": {
+      "type": "operation",
+      "spec": "accounts",
+      "method": "PUT",
+      "path": "/accounts/team/transfer_ownership/",
+      "summary": "Transfer Ownership To Admin User",
+      "tags": [
+        "team"
+      ]
+    },
+    "change_email": {
+      "type": "operation",
+      "spec": "accounts",
+      "method": "PUT",
+      "path": "/accounts/user/change_email/",
+      "summary": "",
+      "tags": [
+        "user"
+      ]
+    },
+    "change_password": {
+      "type": "operation",
+      "spec": "accounts",
+      "method": "PUT",
+      "path": "/accounts/user/change_password/",
+      "summary": "",
+      "tags": [
+        "user"
+      ]
+    },
+    "user_config_meta": {
+      "type": "operation",
+      "spec": "accounts",
+      "method": "GET",
+      "path": "/accounts/user/config_meta/",
+      "summary": "User config meta",
+      "tags": [
+        "user"
+      ]
+    },
+    "get_use_by_guid": {
+      "type": "operation",
+      "spec": "accounts",
+      "method": "GET",
+      "path": "/accounts/user/detail/{guid}/",
+      "summary": "get logged in user details",
+      "tags": [
+        "user"
+      ]
+    },
+    "initiate_authorization_sequence": {
+      "type": "operation",
+      "spec": "app",
+      "method": "POST",
+      "path": "/dashboard/accounts/v2/users/initiate_authorization_sequence/",
+      "summary": "Initiate a re-authorization sequence that would verify authenticity of logged-in userin order to allow performing high security operations like delete workspace",
+      "tags": [
+        "users"
+      ]
+    },
+    "get_me": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/accounts/v2/users/me/",
+      "summary": "get logged in user details",
+      "tags": [
+        "users"
+      ]
+    },
+    "update_me": {
+      "type": "operation",
+      "spec": "accounts",
+      "method": "PUT",
+      "path": "/accounts/user/me/",
+      "summary": "update logged in user details",
+      "tags": [
+        "user"
+      ]
+    },
+    "partial_update_user_details": {
+      "type": "operation",
+      "spec": "accounts",
+      "method": "PATCH",
+      "path": "/accounts/user/me/",
+      "summary": "partial update user details",
+      "tags": [
+        "user"
+      ]
+    },
+    "get_user_organizations": {
+      "type": "operation",
+      "spec": "accounts",
+      "method": "GET",
+      "path": "/accounts/user/organizations/",
+      "summary": "Get all organizations for the current user",
+      "tags": [
+        "user"
+      ]
+    },
+    "verify_authorization": {
+      "type": "operation",
+      "spec": "accounts",
+      "method": "POST",
+      "path": "/accounts/user/verify_authorization/",
+      "summary": "",
+      "tags": [
+        "user"
+      ]
+    },
+    "community_docupilot_topics_retrieve": {
+      "type": "operation",
+      "spec": "accounts",
+      "method": "GET",
+      "path": "/community/docupilot/topics/",
+      "summary": "",
+      "tags": [
+        "community"
+      ]
+    },
+    "AITemplateCreate": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "AITemplateEdit": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "AccountDelivery": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "AddonPricingInfo": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "AddonPurchase": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "AddonTier": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "AppendFiles": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "AttachmentsConfig": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "AuthToken": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "AzureBlobStorageDelivery": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "BannerNotification": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "BannerNotificationAction": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "BoxDriveDelivery": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "BoxDrivePickerPayload": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "BulkGen": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "BulkGenData": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "BulkGenEdit": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "BulkGenTask": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "BulkGenUpload": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "BulkGenerateMeta": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "BulkMoveEnvelopesResponse": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "ChargebeeSubscription": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "ChildDocumentMergeHistory": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "ChildTemplate": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "CloneExtension": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "ContentBlock": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "ContentBlockDetailByKeyResponse": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "ContentBlockEditorVersion": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "ContentBlockSharing": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "ConvertFileUrl": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "ConvertJsonRequest": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "ConvertMultipartRequest": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "CopyContentBlock": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "CopyTemplate": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "CopyTemplateFromVersion": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "CreateEnvelope": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "CreateEnvelopeRecipient": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "DeleteCurrentWorkspace": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "DeliveryAccount": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "DeliveryCount": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "DeliveryEmailAccount": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "DocuSignDelivery": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "DocuSignFolder": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "DocuSignFolderOwner": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "DocumentMergeHistory": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "DocumentMergeLink": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "DomainFailure": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "DomainVerify": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "DropboxDelivery": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "DynamicImage": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "ESignReminderConfig": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "ESignSettings": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "ESignWebhook": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "ESignWebhookEventLog": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "EditorVersion": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "EmailDelivery": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "EmailDeliveryAttachment": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "Envelope": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "EnvelopeBulkDownload": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "EnvelopeBulkMove": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "EnvelopeDetails": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "EnvelopeDocumentDownloadResponse": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "EnvelopeDocuments": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "EnvelopeExportDownloadResponse": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "EnvelopeFieldResponse": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "EnvelopeFolder": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "EnvelopeFolderSharing": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "EnvelopeHistory": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "EnvelopeMoveFailureDetail": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "EnvelopeRecipient": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "EnvelopeResponses": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "EnvelopeStatusCountResponse": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "EnvelopeUpdate": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "EnvelopeVoid": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "EversignDelivery": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "ExchangeSessionResponse": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "ExportMergeHistory": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "Extension": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "ExtensionConfig": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "ExtensionRun": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "ExtensionRunError": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "ExtensionRunResponse": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "ExtensionRunResult": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "FeatureFlags": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "File": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "FileUploadMeta": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "FillablePdfSettings": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "Folder": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "FolderCount": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "FolderSharing": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "FromEmailAccount": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "GalleryCategory": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "GenerateHMACSecretResponse": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "GlobalPermission": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "GoogleDriveDelivery": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "GoogleDrivePickerPayload": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "HelloSignDelivery": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "HistoryRecord": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "HostedPage": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "InitiateAuthorizationSequence": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "MergeHistory": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "Meta": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "MigrateSessionResponse": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "MigrateToNativeSyntaxError": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "MigrateToNativeSyntaxRequest": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "MoveTemplate": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "MoveTemplateResponse": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "NewAuthTokenResponse": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "NewContentBlock": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "NewTemplate": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "NpsNextReminder": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "NpsRating": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "OneDriveDelivery": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "PDFTransformInput": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "PDFTransformJsonRequest": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "PDFTransformMultipartRequest": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "PaginatedAccountDeliveryList": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "PaginatedBulkGenList": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "PaginatedContentBlockList": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "PaginatedDocumentMergeHistoryList": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "PaginatedESignWebhookEventLogList": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "PaginatedESignWebhookList": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "PaginatedEnvelopeBulkDownloadList": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "PaginatedEnvelopeList": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "PaginatedEnvelopeRecipientList": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "PaginatedExtensionList": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "PaginatedExtensionRunList": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "PaginatedMergeHistoryList": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "PaginatedTemplateInfoList": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "PaginatedTemplateList": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "PaginatedTemplateVersionList": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "PatchedContentBlockEditorVersion": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "PatchedDomain": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "PatchedESignEmailAccount": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "PatchedESignSettings": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "PatchedESignWebhook": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "PatchedEditorVersion": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "PatchedEnvelopeDocumentsUpdate": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "PatchedEnvelopeFolder": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "PatchedEnvelopeUpdate": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "PatchedExtension": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "PatchedRenameTemplateVersion": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "PatchedUpdateContentBlockSharing": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "PatchedUpdateEnvelopeFolderSharing": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "PatchedUpdateEnvelopeRecipient": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "PatchedUpdateFolderSharing": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "PatchedUpdateNewContentBlock": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "PatchedUpdateNewTemplate": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "PatchedUpdateTemplateSharing": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "PatchedUpdateUser": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "PatchedWorkspace": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "Plan": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "PolymorphicDelivery": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "PromptSuggestions": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "RenewSubscription": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "RestoreTemplateResponse": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "RetentionPreference": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "S3Delivery": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "SaveCustomerFeedback": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "SendEmailAccountAuthorizationOTP": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "SendEnvelopeViaEmail": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "SendTestSmtpMail": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "SftpDelivery": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "SharepointDelivery": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "SharepointPickerPayload": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "SharingInfoFolder": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "SharingInfoTemplate": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "SignNowDelivery": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "SignableDelivery": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "SignatureDelivery": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "SigningLinkResponse": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "SurveyPrompt": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "Template": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "TemplateCount": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "TemplateDelivery": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "TemplateGallery": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "TemplateGenerateResponse": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "TemplateInfo": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "TemplateMoveFailureDetail": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "TemplateSchema": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "TemplateSchemaDetail": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "TemplateSettings": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "TemplateSharing": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "TemplateTestResponse": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "TemplateVersion": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "TestContentBlock": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "TestWebhookEventResponse": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "TestWebhookPayload": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "Timezone": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "UpdateDeliveryAccount": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "UploadContentBlockImage": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "UploadTemplateImage": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "UserPersonalization": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "UserPersonalizationListViewTemplate": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "VerifiedEmailDNSAccounts": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "VerifyEmailAccountOTP": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "WebhookDelivery": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "WordAddInPromptSuggestions": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "WordAddInTemplateEdit": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "YouSignDelivery": {
+      "type": "schema",
+      "spec": "app",
+      "description": "",
+      "schemaType": "object"
+    },
+    "list_auth_tokens": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/accounts/v2/auth_tokens/",
+      "summary": "",
+      "tags": [
+        "auth_tokens"
+      ]
+    },
+    "create_auth_token": {
+      "type": "operation",
+      "spec": "app",
+      "method": "POST",
+      "path": "/dashboard/accounts/v2/auth_tokens/",
+      "summary": "",
+      "tags": [
+        "auth_tokens"
+      ]
+    },
+    "update_auth_token": {
+      "type": "operation",
+      "spec": "app",
+      "method": "PUT",
+      "path": "/dashboard/accounts/v2/auth_tokens/{id}/",
+      "summary": "",
+      "tags": [
+        "auth_tokens"
+      ]
+    },
+    "delete_auth_token": {
+      "type": "operation",
+      "spec": "app",
+      "method": "DELETE",
+      "path": "/dashboard/accounts/v2/auth_tokens/{id}/",
+      "summary": "",
+      "tags": [
+        "auth_tokens"
+      ]
+    },
+    "get_current_organization": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/accounts/v2/organization/current/",
+      "summary": "get current organization details",
+      "tags": [
+        "organization"
+      ]
+    },
+    "addon_pricing_info": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/accounts/v2/subscription/addon_pricing_info/",
+      "summary": "",
+      "tags": [
+        "subscription"
+      ]
+    },
+    "purchase_addon": {
+      "type": "operation",
+      "spec": "app",
+      "method": "POST",
+      "path": "/dashboard/accounts/v2/subscription/buy_addon/",
+      "summary": "",
+      "tags": [
+        "subscription"
+      ]
+    },
+    "get_subscription_details": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/accounts/v2/subscription/details/",
+      "summary": "",
+      "tags": [
+        "subscription"
+      ]
+    },
+    "extend_trial": {
+      "type": "operation",
+      "spec": "app",
+      "method": "POST",
+      "path": "/dashboard/accounts/v2/subscription/extend_trial/",
+      "summary": "Extend trial",
+      "tags": [
+        "subscription"
+      ]
+    },
+    "get_chargebee_hosted_page": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/accounts/v2/subscription/hosted_page/",
+      "summary": "",
+      "tags": [
+        "subscription"
+      ]
+    },
+    "get_chargebee_portal_session": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/accounts/v2/subscription/portal_session/",
+      "summary": "",
+      "tags": [
+        "subscription"
+      ]
+    },
+    "get_subscription_remaining_months": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/accounts/v2/subscription/remaining_months/",
+      "summary": "",
+      "tags": [
+        "subscription"
+      ]
+    },
+    "subscription_renew_request_create": {
+      "type": "operation",
+      "spec": "app",
+      "method": "POST",
+      "path": "/dashboard/accounts/v2/subscription/renew_request/",
+      "summary": "",
+      "tags": [
+        "subscription"
+      ]
+    },
+    "resume_subscription": {
+      "type": "operation",
+      "spec": "app",
+      "method": "POST",
+      "path": "/dashboard/accounts/v2/subscription/resume/",
+      "summary": "",
+      "tags": [
+        "subscription"
+      ]
+    },
+    "get_chargebee_unpaid_invoices": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/accounts/v2/subscription/unpaid_invoices/",
+      "summary": "",
+      "tags": [
+        "subscription"
+      ]
+    },
+    "list_gallery_templates": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/accounts/v2/template_gallery/",
+      "summary": "Get list of galery templates",
+      "tags": [
+        "Gallery templates"
+      ]
+    },
+    "get_gallery_template": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/accounts/v2/template_gallery/{id}/",
+      "summary": "Get one template",
+      "tags": [
+        "Gallery templates"
+      ]
+    },
+    "g2_review": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/accounts/v2/user_satisfaction_survey/g2_review/",
+      "summary": "Redirect to G2 Review Page",
+      "tags": [
+        "user_satisfaction_survey"
+      ]
+    },
+    "nps_next_reminder": {
+      "type": "operation",
+      "spec": "app",
+      "method": "POST",
+      "path": "/dashboard/accounts/v2/user_satisfaction_survey/nps_next_reminder/",
+      "summary": "Update the next NPS reminder time",
+      "tags": [
+        "user_satisfaction_survey"
+      ]
+    },
+    "nps_rating": {
+      "type": "operation",
+      "spec": "app",
+      "method": "POST",
+      "path": "/dashboard/accounts/v2/user_satisfaction_survey/nps_rating/",
+      "summary": "Update NPS rating",
+      "tags": [
+        "user_satisfaction_survey"
+      ]
+    },
+    "save_customer_feedback": {
+      "type": "operation",
+      "spec": "app",
+      "method": "POST",
+      "path": "/dashboard/accounts/v2/user_satisfaction_survey/save_user_feedback/",
+      "summary": "Save customer feedback",
+      "tags": [
+        "user_satisfaction_survey"
+      ]
+    },
+    "show_survey_prompt": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/accounts/v2/user_satisfaction_survey/show_survey_prompt/",
+      "summary": "Show survey prompt",
+      "tags": [
+        "user_satisfaction_survey"
+      ]
+    },
+    "update_g2_review_updated_on": {
+      "type": "operation",
+      "spec": "app",
+      "method": "POST",
+      "path": "/dashboard/accounts/v2/user_satisfaction_survey/update_g2_review_updated_on/",
+      "summary": "Update g2_review_updated_on",
+      "tags": [
+        "user_satisfaction_survey"
+      ]
+    },
+    "get_exchange_session_code": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/accounts/v2/users/exchange_session/",
+      "summary": "Exchange session for a migration code",
+      "tags": [
+        "users"
+      ]
+    },
+    "attach_session_from_exchange_code": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/accounts/v2/users/migrate_session/",
+      "summary": "Migrate session to API domain",
+      "tags": [
+        "users"
+      ]
+    },
+    "update_user_profile": {
+      "type": "operation",
+      "spec": "app",
+      "method": "PATCH",
+      "path": "/dashboard/accounts/v2/users/update_user_profile/",
+      "summary": "Update User Profile",
+      "tags": [
+        "users"
+      ]
+    },
+    "list_workspaces": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/accounts/v2/workspaces/",
+      "summary": "Get list of Workspaces",
+      "tags": [
+        "workspaces"
+      ]
+    },
+    "create_workspace": {
+      "type": "operation",
+      "spec": "app",
+      "method": "POST",
+      "path": "/dashboard/accounts/v2/workspaces/",
+      "summary": "Create Workspace",
+      "tags": [
+        "workspaces"
+      ]
+    },
+    "get_current_workspace": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/accounts/v2/workspaces/current/",
+      "summary": "get current workspace details",
+      "tags": [
+        "workspaces"
+      ]
+    },
+    "update_current_workspace": {
+      "type": "operation",
+      "spec": "app",
+      "method": "PATCH",
+      "path": "/dashboard/accounts/v2/workspaces/current/",
+      "summary": "update current workspace details",
+      "tags": [
+        "workspaces"
+      ]
+    },
+    "delete_current_workspace": {
+      "type": "operation",
+      "spec": "app",
+      "method": "POST",
+      "path": "/dashboard/accounts/v2/workspaces/current/delete/",
+      "summary": "Delete a workspace and other related data permanently",
+      "tags": [
+        "workspaces"
+      ]
+    },
+    "get_workspace_data_retention_preference": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/accounts/v2/workspaces/retention_preference/",
+      "summary": "get workspace data retention preference",
+      "tags": [
+        "workspaces"
+      ]
+    },
+    "update_workspace_data_retention_preference": {
+      "type": "operation",
+      "spec": "app",
+      "method": "PUT",
+      "path": "/dashboard/accounts/v2/workspaces/retention_preference/",
+      "summary": "update workspace data retention preference",
+      "tags": [
+        "workspaces"
+      ]
+    },
+    "create_template_online_builder_ai": {
+      "type": "operation",
+      "spec": "app",
+      "method": "POST",
+      "path": "/dashboard/ai/online-builder/create_template/",
+      "summary": "create template using ai",
+      "tags": [
+        "ai"
+      ]
+    },
+    "edit_template_online_builder_ai": {
+      "type": "operation",
+      "spec": "app",
+      "method": "POST",
+      "path": "/dashboard/ai/online-builder/edit_template/",
+      "summary": "edit template using chat completion",
+      "tags": [
+        "ai"
+      ]
+    },
+    "prompt_suggestions_online_builder_ai": {
+      "type": "operation",
+      "spec": "app",
+      "method": "POST",
+      "path": "/dashboard/ai/online-builder/list_prompt_suggestions/",
+      "summary": "list prompt suggestions based on template name and description",
+      "tags": [
+        "ai"
+      ]
+    },
+    "edit_word_template_using_ai": {
+      "type": "operation",
+      "spec": "app",
+      "method": "POST",
+      "path": "/dashboard/ai/word-add-in/edit_template/",
+      "summary": "Edit word template using ai",
+      "tags": [
+        "ai"
+      ]
+    },
+    "prompt_suggestions_word_add_in_ai": {
+      "type": "operation",
+      "spec": "app",
+      "method": "POST",
+      "path": "/dashboard/ai/word-add-in/list_prompt_suggestions/",
+      "summary": "list prompt suggestions based on File Name and Content",
+      "tags": [
+        "ai"
+      ]
+    },
+    "append_files": {
+      "type": "operation",
+      "spec": "app",
+      "method": "POST",
+      "path": "/dashboard/api/v2/append/",
+      "summary": "",
+      "tags": [
+        "append"
+      ]
+    },
+    "list_content_blocks": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/api/v2/content_blocks/",
+      "summary": "Get list of content blocks",
+      "tags": [
+        "content_blocks"
+      ]
+    },
+    "create_content_block": {
+      "type": "operation",
+      "spec": "app",
+      "method": "POST",
+      "path": "/dashboard/api/v2/content_blocks/",
+      "summary": "Create content_block",
+      "tags": [
+        "content_blocks"
+      ]
+    },
+    "list_content_block_sharing": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/api/v2/content_blocks/{content_block_id}/permissions/",
+      "summary": "Get all shared permissions for specific content block",
+      "tags": [
+        "content_blocks"
+      ]
+    },
+    "create_content_block_sharing_permission": {
+      "type": "operation",
+      "spec": "app",
+      "method": "POST",
+      "path": "/dashboard/api/v2/content_blocks/{content_block_id}/permissions/",
+      "summary": "Create content block sharing permission",
+      "tags": [
+        "content_blocks"
+      ]
+    },
+    "get_content_block_sharing": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/api/v2/content_blocks/{content_block_id}/permissions/{id}/",
+      "summary": "Get specific permission details for given content block",
+      "tags": [
+        "content_blocks"
+      ]
+    },
+    "update_content_block_sharing_permission": {
+      "type": "operation",
+      "spec": "app",
+      "method": "PATCH",
+      "path": "/dashboard/api/v2/content_blocks/{content_block_id}/permissions/{id}/",
+      "summary": "Update content block content partially",
+      "tags": [
+        "content_blocks"
+      ]
+    },
+    "revoke_content_block_sharing_permission": {
+      "type": "operation",
+      "spec": "app",
+      "method": "DELETE",
+      "path": "/dashboard/api/v2/content_blocks/{content_block_id}/permissions/{id}/",
+      "summary": "Revoke content block sharing permission",
+      "tags": [
+        "content_blocks"
+      ]
+    },
+    "get_content_block": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/api/v2/content_blocks/{id}/",
+      "summary": "Get one content_block",
+      "tags": [
+        "content_blocks"
+      ]
+    },
+    "update_content_block": {
+      "type": "operation",
+      "spec": "app",
+      "method": "PUT",
+      "path": "/dashboard/api/v2/content_blocks/{id}/",
+      "summary": "Update content_block",
+      "tags": [
+        "content_blocks"
+      ]
+    },
+    "update_content_block_data": {
+      "type": "operation",
+      "spec": "app",
+      "method": "PATCH",
+      "path": "/dashboard/api/v2/content_blocks/{id}/",
+      "summary": "Update content block data",
+      "tags": [
+        "content_blocks"
+      ]
+    },
+    "delete_content_block": {
+      "type": "operation",
+      "spec": "app",
+      "method": "DELETE",
+      "path": "/dashboard/api/v2/content_blocks/{id}/",
+      "summary": "Delete a content block",
+      "tags": [
+        "content_blocks"
+      ]
+    },
+    "copy_content_block": {
+      "type": "operation",
+      "spec": "app",
+      "method": "POST",
+      "path": "/dashboard/api/v2/content_blocks/{id}/copy/",
+      "summary": "Copy content block",
+      "tags": [
+        "content_blocks"
+      ]
+    },
+    "download_content_block_file": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/api/v2/content_blocks/{id}/download/",
+      "summary": "Download content block file",
+      "tags": [
+        "content_blocks"
+      ]
+    },
+    "update_content_block_editor_version": {
+      "type": "operation",
+      "spec": "app",
+      "method": "PATCH",
+      "path": "/dashboard/api/v2/content_blocks/{id}/editor_version/",
+      "summary": "Update the content block editor version between v1 and v2",
+      "tags": [
+        "content_blocks"
+      ]
+    },
+    "upload_inline_image_of_content_block": {
+      "type": "operation",
+      "spec": "app",
+      "method": "POST",
+      "path": "/dashboard/api/v2/content_blocks/{id}/inline_image/",
+      "summary": "Upload inline image of content block",
+      "tags": [
+        "content_blocks"
+      ]
+    },
+    "preview_content_block_file": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/api/v2/content_blocks/{id}/preview/",
+      "summary": "Preview content block file",
+      "tags": [
+        "content_blocks"
+      ]
+    },
+    "get_content_block_schema": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/api/v2/content_blocks/{id}/schema/",
+      "summary": "Get content block schema",
+      "tags": [
+        "content_blocks"
+      ]
+    },
+    "list_content_block_templates": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/api/v2/content_blocks/{id}/templates/",
+      "summary": "List content block templates",
+      "tags": [
+        "content_blocks"
+      ]
+    },
+    "test_content_block": {
+      "type": "operation",
+      "spec": "app",
+      "method": "POST",
+      "path": "/dashboard/api/v2/content_blocks/{id}/test/",
+      "summary": "Test a content block",
+      "tags": [
+        "content_blocks"
+      ]
+    },
+    "get_test_data_for_content_block": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/api/v2/content_blocks/{id}/test_data/",
+      "summary": "Get test data used for testing content block",
+      "tags": [
+        "content_blocks"
+      ]
+    },
+    "fetch_content_block_detail_by_key": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/api/v2/content_blocks/detail/by-key/",
+      "summary": "Get content block detail by API name (key)",
+      "tags": [
+        "content_blocks"
+      ]
+    },
+    "convert-files": {
+      "type": "operation",
+      "spec": "app",
+      "method": "POST",
+      "path": "/dashboard/api/v2/convert/",
+      "summary": "",
+      "tags": [
+        "convert"
+      ]
+    },
+    "get_domain": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/api/v2/domain/{id}/",
+      "summary": "Get one domain",
+      "tags": [
+        "domain"
+      ]
+    },
+    "list_folders": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/api/v2/folders/",
+      "summary": "Get list of folders",
+      "tags": [
+        "folders"
+      ]
+    },
+    "create_folder": {
+      "type": "operation",
+      "spec": "app",
+      "method": "POST",
+      "path": "/dashboard/api/v2/folders/",
+      "summary": "Create a folder",
+      "tags": [
+        "folders"
+      ]
+    },
+    "list_folder_sharing": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/api/v2/folders/{folder_id}/permissions/",
+      "summary": "Get all shared permissions for specific folder",
+      "tags": [
+        "folders"
+      ]
+    },
+    "create_folder_sharing_permission": {
+      "type": "operation",
+      "spec": "app",
+      "method": "POST",
+      "path": "/dashboard/api/v2/folders/{folder_id}/permissions/",
+      "summary": "Create folder sharing permission",
+      "tags": [
+        "folders"
+      ]
+    },
+    "get_folder_sharing": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/api/v2/folders/{folder_id}/permissions/{id}/",
+      "summary": "Get specific permission details for given folder",
+      "tags": [
+        "folders"
+      ]
+    },
+    "update_folder_sharing_permission_content": {
+      "type": "operation",
+      "spec": "app",
+      "method": "PATCH",
+      "path": "/dashboard/api/v2/folders/{folder_id}/permissions/{id}/",
+      "summary": "Update folder content partially",
+      "tags": [
+        "folders"
+      ]
+    },
+    "revoke_folder_sharing_permission": {
+      "type": "operation",
+      "spec": "app",
+      "method": "DELETE",
+      "path": "/dashboard/api/v2/folders/{folder_id}/permissions/{id}/",
+      "summary": "Revoke folder sharing permission",
+      "tags": [
+        "folders"
+      ]
+    },
+    "update_folder": {
+      "type": "operation",
+      "spec": "app",
+      "method": "PUT",
+      "path": "/dashboard/api/v2/folders/{id}/",
+      "summary": "Updates a folder",
+      "tags": [
+        "folders"
+      ]
+    },
+    "delete_folder": {
+      "type": "operation",
+      "spec": "app",
+      "method": "DELETE",
+      "path": "/dashboard/api/v2/folders/{id}/",
+      "summary": "Delete a folder.",
+      "tags": [
+        "folders"
+      ]
+    },
+    "get_user_created_folder_count": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/api/v2/folders/count/",
+      "summary": "Get the count of folders created by the user.",
+      "tags": [
+        "folders"
+      ]
+    },
+    "folders_sharing_status_retrieve": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/api/v2/folders/sharing_status/",
+      "summary": "",
+      "tags": [
+        "folders"
+      ]
+    },
+    "get_created_documents_history": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/api/v2/history/",
+      "summary": "Get created documents history",
+      "tags": [
+        "history"
+      ]
+    },
+    "download_created_document": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/api/v2/history/{id}/download/",
+      "summary": "download generated document if available",
+      "tags": [
+        "history"
+      ]
+    },
+    "retry_delivery": {
+      "type": "operation",
+      "spec": "app",
+      "method": "POST",
+      "path": "/dashboard/api/v2/history/{id}/retry_delivery/",
+      "summary": "retry failed documents delivery",
+      "tags": [
+        "history"
+      ]
+    },
+    "get_created_export_merge_history": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/api/v2/history/export/",
+      "summary": "Get created export history",
+      "tags": [
+        "history"
+      ]
+    },
+    "create_export_history_task": {
+      "type": "operation",
+      "spec": "app",
+      "method": "POST",
+      "path": "/dashboard/api/v2/history/export/",
+      "summary": "Create export history task",
+      "tags": [
+        "history"
+      ]
+    },
+    "download_created_export_document": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/api/v2/history/export/{id}/download/",
+      "summary": "download generated export document if available",
+      "tags": [
+        "history"
+      ]
+    },
+    "list_delivery_accounts": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/api/v2/linked_accounts/",
+      "summary": "Get list of linked accounts",
+      "tags": [
+        "linked_accounts"
+      ]
+    },
+    "add_delivery_account": {
+      "type": "operation",
+      "spec": "app",
+      "method": "POST",
+      "path": "/dashboard/api/v2/linked_accounts/",
+      "summary": "Create linked account",
+      "tags": [
+        "linked_accounts"
+      ]
+    },
+    "invoke_integrator": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/api/v2/linked_accounts/{integrator_type}/invoke/",
+      "summary": "",
+      "tags": [
+        "linked_accounts"
+      ]
+    },
+    "update_delivery_account": {
+      "type": "operation",
+      "spec": "app",
+      "method": "PUT",
+      "path": "/dashboard/api/v2/linked_accounts/{id}/",
+      "summary": "Refresh linked account",
+      "tags": [
+        "linked_accounts"
+      ]
+    },
+    "revoke_delivery_account": {
+      "type": "operation",
+      "spec": "app",
+      "method": "DELETE",
+      "path": "/dashboard/api/v2/linked_accounts/{id}/",
+      "summary": "Revoke linked account",
+      "tags": [
+        "linked_accounts"
+      ]
+    },
+    "get_box_drive_picker_payload": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/api/v2/linked_accounts/{id}/box_drive_picker_payload/",
+      "summary": "",
+      "tags": [
+        "linked_accounts"
+      ]
+    },
+    "list_account_deliveries": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/api/v2/linked_accounts/{id}/deliveries/",
+      "summary": "",
+      "tags": [
+        "linked_accounts"
+      ]
+    },
+    "list_delivery_emails_for_email_account": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/api/v2/linked_accounts/{id}/delivery_emails/",
+      "summary": "",
+      "tags": [
+        "linked_accounts"
+      ]
+    },
+    "get_docusign_folders": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/api/v2/linked_accounts/{id}/docusign_folders/",
+      "summary": "",
+      "tags": [
+        "linked_accounts"
+      ]
+    },
+    "get_google_picker_payload": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/api/v2/linked_accounts/{id}/google_picker_payload/",
+      "summary": "",
+      "tags": [
+        "linked_accounts"
+      ]
+    },
+    "initiate_email_authorization": {
+      "type": "operation",
+      "spec": "app",
+      "method": "POST",
+      "path": "/dashboard/api/v2/linked_accounts/{id}/initiate_authorization/",
+      "summary": "",
+      "tags": [
+        "linked_accounts"
+      ]
+    },
+    "reconnect_account": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/api/v2/linked_accounts/{id}/reconnect/",
+      "summary": "",
+      "tags": [
+        "linked_accounts"
+      ]
+    },
+    "get_sharepoint_picker_payload": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/api/v2/linked_accounts/{id}/sharepoint_picker_payload/",
+      "summary": "",
+      "tags": [
+        "linked_accounts"
+      ]
+    },
+    "update_delivery_accounts_use_for_images_flag": {
+      "type": "operation",
+      "spec": "app",
+      "method": "POST",
+      "path": "/dashboard/api/v2/linked_accounts/{id}/toggle_use_for_images/",
+      "summary": "",
+      "tags": [
+        "linked_accounts"
+      ]
+    },
+    "verify_email_otp": {
+      "type": "operation",
+      "spec": "app",
+      "method": "PUT",
+      "path": "/dashboard/api/v2/linked_accounts/{id}/verify_otp/",
+      "summary": "",
+      "tags": [
+        "linked_accounts"
+      ]
+    },
+    "Send test mail": {
+      "type": "operation",
+      "spec": "app",
+      "method": "POST",
+      "path": "/dashboard/api/v2/linked_accounts/send_test_mail/",
+      "summary": "",
+      "tags": [
+        "linked_accounts"
+      ]
+    },
+    "get_created_documents_merge_history": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/api/v2/merge_history/",
+      "summary": "Get created documents merge history",
+      "tags": [
+        "merge_history"
+      ]
+    },
+    "download_created_document_using_document_merge_history": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/api/v2/merge_history/{id}/download/",
+      "summary": "download generated document if available",
+      "tags": [
+        "merge_history"
+      ]
+    },
+    "pdf_transform": {
+      "type": "operation",
+      "spec": "app",
+      "method": "POST",
+      "path": "/dashboard/api/v2/pdf/transform/",
+      "summary": "",
+      "tags": [
+        "pdf"
+      ]
+    },
+    "get_content_block_permissions": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/api/v2/permissions/content_block/",
+      "summary": "",
+      "tags": [
+        "permissions"
+      ]
+    },
+    "get_folder_permissions": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/api/v2/permissions/folder/",
+      "summary": "",
+      "tags": [
+        "permissions"
+      ]
+    },
+    "get_global_permissions": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/api/v2/permissions/global/",
+      "summary": "",
+      "tags": [
+        "permissions"
+      ]
+    },
+    "get_template_permissions": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/api/v2/permissions/template/",
+      "summary": "",
+      "tags": [
+        "permissions"
+      ]
+    },
+    "get_user_personalization": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/api/v2/personalization/",
+      "summary": "",
+      "tags": [
+        "personalization"
+      ]
+    },
+    "update_user_personalization": {
+      "type": "operation",
+      "spec": "app",
+      "method": "POST",
+      "path": "/dashboard/api/v2/personalization/",
+      "summary": "",
+      "tags": [
+        "personalization"
+      ]
+    },
+    "list_templates": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/api/v2/templates/",
+      "summary": "Get list of templates",
+      "tags": [
+        "templates"
+      ]
+    },
+    "create_template": {
+      "type": "operation",
+      "spec": "app",
+      "method": "POST",
+      "path": "/dashboard/api/v2/templates/",
+      "summary": "Create template",
+      "tags": [
+        "templates"
+      ]
+    },
+    "get_template": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/api/v2/templates/{id}/",
+      "summary": "Get one template",
+      "tags": [
+        "templates"
+      ]
+    },
+    "update_template": {
+      "type": "operation",
+      "spec": "app",
+      "method": "PUT",
+      "path": "/dashboard/api/v2/templates/{id}/",
+      "summary": "Update template",
+      "tags": [
+        "templates"
+      ]
+    },
+    "update_template_content": {
+      "type": "operation",
+      "spec": "app",
+      "method": "PATCH",
+      "path": "/dashboard/api/v2/templates/{id}/",
+      "summary": "Update template content",
+      "tags": [
+        "templates"
+      ]
+    },
+    "trash_template": {
+      "type": "operation",
+      "spec": "app",
+      "method": "DELETE",
+      "path": "/dashboard/api/v2/templates/{id}/",
+      "summary": "Move template to trash",
+      "tags": [
+        "templates"
+      ]
+    },
+    "copy_template": {
+      "type": "operation",
+      "spec": "app",
+      "method": "POST",
+      "path": "/dashboard/api/v2/templates/{id}/copy/",
+      "summary": "Copy template including preferences, deliveries",
+      "tags": [
+        "templates"
+      ]
+    },
+    "get_template_delivery_count": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/api/v2/templates/{id}/delivery_count/",
+      "summary": "Get the count of deliveries linked to a template",
+      "tags": [
+        "templates"
+      ]
+    },
+    "download_template_file": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/api/v2/templates/{id}/download/",
+      "summary": "Download template file",
+      "tags": [
+        "templates"
+      ]
+    },
+    "update_template_editor_version": {
+      "type": "operation",
+      "spec": "app",
+      "method": "PATCH",
+      "path": "/dashboard/api/v2/templates/{id}/editor_version/",
+      "summary": "Update the template editor version between v1 and v2",
+      "tags": [
+        "templates"
+      ]
+    },
+    "generate_document": {
+      "type": "operation",
+      "spec": "app",
+      "method": "POST",
+      "path": "/dashboard/api/v2/templates/{id}/generate/",
+      "summary": "Generate document from template",
+      "tags": [
+        "generate"
+      ]
+    },
+    "generate_test_data": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/api/v2/templates/{id}/generate_test_data/",
+      "summary": "Generates a test data used for testing template",
+      "tags": [
+        "generate"
+      ]
+    },
+    "upload_inline_image_of_template": {
+      "type": "operation",
+      "spec": "app",
+      "method": "POST",
+      "path": "/dashboard/api/v2/templates/{id}/inline_image/",
+      "summary": "Upload inline image of template",
+      "tags": [
+        "templates"
+      ]
+    },
+    "migrate_to_native_syntax": {
+      "type": "operation",
+      "spec": "app",
+      "method": "POST",
+      "path": "/dashboard/api/v2/templates/{id}/migrate_to_native_syntax/",
+      "summary": "Migrate DocuSign template to native signature delivery",
+      "tags": [
+        "templates"
+      ]
+    },
+    "delete_template_permanently": {
+      "type": "operation",
+      "spec": "app",
+      "method": "DELETE",
+      "path": "/dashboard/api/v2/templates/{id}/permanent_delete/",
+      "summary": "Delete a template permanently from trash",
+      "tags": [
+        "templates"
+      ]
+    },
+    "preview_template": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/api/v2/templates/{id}/preview/",
+      "summary": "Preview template",
+      "tags": [
+        "templates"
+      ]
+    },
+    "publish_latest_template_version": {
+      "type": "operation",
+      "spec": "app",
+      "method": "POST",
+      "path": "/dashboard/api/v2/templates/{id}/publish/",
+      "summary": "Publish latest template version",
+      "tags": [
+        "templates"
+      ]
+    },
+    "restore_template_from_trash": {
+      "type": "operation",
+      "spec": "app",
+      "method": "PUT",
+      "path": "/dashboard/api/v2/templates/{id}/restore/",
+      "summary": "Restore a template from trash",
+      "tags": [
+        "templates"
+      ]
+    },
+    "get_template_schema": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/api/v2/templates/{id}/schema/",
+      "summary": "Get template schema",
+      "tags": [
+        "templates"
+      ]
+    },
+    "get_detailed_template_schema": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/api/v2/templates/{id}/schema/detail/",
+      "summary": "Get template split schema",
+      "tags": [
+        "templates"
+      ]
+    },
+    "test_document_generation": {
+      "type": "operation",
+      "spec": "app",
+      "method": "POST",
+      "path": "/dashboard/api/v2/templates/{id}/test/",
+      "summary": "Test document generation",
+      "tags": [
+        "generate"
+      ]
+    },
+    "get_test_data": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/api/v2/templates/{id}/test_data/",
+      "summary": "Get test data used for testing template",
+      "tags": [
+        "generate"
+      ]
+    },
+    "list_template_deliveries": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/api/v2/templates/{template_id}/deliveries/",
+      "summary": "Get deliveries configured under this template",
+      "tags": [
+        "template_delivery"
+      ]
+    },
+    "create_template_delivery": {
+      "type": "operation",
+      "spec": "app",
+      "method": "POST",
+      "path": "/dashboard/api/v2/templates/{template_id}/deliveries/",
+      "summary": "Create delivery",
+      "tags": [
+        "template_delivery"
+      ]
+    },
+    "retrieve_template_delivery": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/api/v2/templates/{template_id}/deliveries/{id}/",
+      "summary": "Get delivery",
+      "tags": [
+        "template_delivery"
+      ]
+    },
+    "update_template_delivery": {
+      "type": "operation",
+      "spec": "app",
+      "method": "PUT",
+      "path": "/dashboard/api/v2/templates/{template_id}/deliveries/{id}/",
+      "summary": "Update delivery",
+      "tags": [
+        "template_delivery"
+      ]
+    },
+    "delete_template_delivery": {
+      "type": "operation",
+      "spec": "app",
+      "method": "DELETE",
+      "path": "/dashboard/api/v2/templates/{template_id}/deliveries/{id}/",
+      "summary": "Delete delivery",
+      "tags": [
+        "template_delivery"
+      ]
+    },
+    "upload_delivery_attachments": {
+      "type": "operation",
+      "spec": "app",
+      "method": "POST",
+      "path": "/dashboard/api/v2/templates/{template_id}/deliveries/{id}/attachments/",
+      "summary": "upload email delivery attachments",
+      "tags": [
+        "template_delivery"
+      ]
+    },
+    "download_delivery_attachment": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/api/v2/templates/{template_id}/deliveries/{id}/attachments/{attachment_id}/",
+      "summary": "download delivery attachment",
+      "tags": [
+        "template_delivery"
+      ]
+    },
+    "delete_delivery_attachment": {
+      "type": "operation",
+      "spec": "app",
+      "method": "DELETE",
+      "path": "/dashboard/api/v2/templates/{template_id}/deliveries/{id}/attachments/{attachment_id}/",
+      "summary": "delete email delivery attachment",
+      "tags": [
+        "template_delivery"
+      ]
+    },
+    "upgrade_docusign_delivery": {
+      "type": "operation",
+      "spec": "app",
+      "method": "POST",
+      "path": "/dashboard/api/v2/templates/{template_id}/deliveries/{id}/upgrade_docusign/",
+      "summary": "Upgrade docusign delivery api version",
+      "tags": [
+        "template_delivery"
+      ]
+    },
+    "list_bulk_generation_tasks": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/api/v2/templates/{template_id}/generate/bulk/",
+      "summary": "List bulk generation tasks",
+      "tags": [
+        "generate_bulk"
+      ]
+    },
+    "get_bulk_generation_task": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/api/v2/templates/{template_id}/generate/bulk/{id}/",
+      "summary": "Get bulk generation task",
+      "tags": [
+        "generate_bulk"
+      ]
+    },
+    "cancel_bulk_generation_task": {
+      "type": "operation",
+      "spec": "app",
+      "method": "PUT",
+      "path": "/dashboard/api/v2/templates/{template_id}/generate/bulk/{id}/cancel/",
+      "summary": "Cancel a bulk generation task",
+      "tags": [
+        "generate_bulk"
+      ]
+    },
+    "get_bulk_generation_draft": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/api/v2/templates/{template_id}/generate/bulk/{id}/draft/",
+      "summary": "Get a task saved as draft",
+      "tags": [
+        "generate_bulk"
+      ]
+    },
+    "update_bulk_generation_draft": {
+      "type": "operation",
+      "spec": "app",
+      "method": "PUT",
+      "path": "/dashboard/api/v2/templates/{template_id}/generate/bulk/{id}/draft/",
+      "summary": "update a template mapping",
+      "tags": [
+        "generate_bulk"
+      ]
+    },
+    "get_mapping_data_based_on_delimiter": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/api/v2/templates/{template_id}/generate/bulk/{id}/get_mapping/",
+      "summary": "Get Mapping Data based on Delimiter",
+      "tags": [
+        "generate_bulk"
+      ]
+    },
+    "trigger_bulk_generation_draft": {
+      "type": "operation",
+      "spec": "app",
+      "method": "PUT",
+      "path": "/dashboard/api/v2/templates/{template_id}/generate/bulk/{id}/trigger/",
+      "summary": "Trigger a bulk generation task",
+      "tags": [
+        "generate_bulk"
+      ]
+    },
+    "sample_csv": {
+      "type": "operation",
+      "spec": "app",
+      "method": "POST",
+      "path": "/dashboard/api/v2/templates/{template_id}/generate/bulk/sample_csv/",
+      "summary": "Generates a sample csv for the template using ai.",
+      "tags": [
+        "generate"
+      ]
+    },
+    "upload_for_bulk_generation": {
+      "type": "operation",
+      "spec": "app",
+      "method": "POST",
+      "path": "/dashboard/api/v2/templates/{template_id}/generate/bulk/upload/",
+      "summary": "Upload a new csv for bulk generate.",
+      "tags": [
+        "generate_bulk"
+      ]
+    },
+    "list_generation_links": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/api/v2/templates/{template_id}/merge_links/",
+      "summary": "Get document create link path",
+      "tags": [
+        "generate"
+      ]
+    },
+    "create_template_merge_link": {
+      "type": "operation",
+      "spec": "app",
+      "method": "POST",
+      "path": "/dashboard/api/v2/templates/{template_id}/merge_links/",
+      "summary": "Create template merge link.",
+      "tags": [
+        "generate"
+      ]
+    },
+    "delete_template_merge_link": {
+      "type": "operation",
+      "spec": "app",
+      "method": "DELETE",
+      "path": "/dashboard/api/v2/templates/{template_id}/merge_links/{id}/",
+      "summary": "",
+      "tags": [
+        "generate"
+      ]
+    },
+    "list_template_sharing": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/api/v2/templates/{template_id}/permissions/",
+      "summary": "Get all shared permissions for specific template",
+      "tags": [
+        "templates"
+      ]
+    },
+    "create_template_sharing_permission": {
+      "type": "operation",
+      "spec": "app",
+      "method": "POST",
+      "path": "/dashboard/api/v2/templates/{template_id}/permissions/",
+      "summary": "Create template sharing permission",
+      "tags": [
+        "templates"
+      ]
+    },
+    "get_template_sharing": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/api/v2/templates/{template_id}/permissions/{id}/",
+      "summary": "Get specific permission details for given template",
+      "tags": [
+        "templates"
+      ]
+    },
+    "update_template_sharing_permission_content": {
+      "type": "operation",
+      "spec": "app",
+      "method": "PATCH",
+      "path": "/dashboard/api/v2/templates/{template_id}/permissions/{id}/",
+      "summary": "Update template content partially",
+      "tags": [
+        "templates"
+      ]
+    },
+    "revoke_template_sharing_permission": {
+      "type": "operation",
+      "spec": "app",
+      "method": "DELETE",
+      "path": "/dashboard/api/v2/templates/{template_id}/permissions/{id}/",
+      "summary": "Revoke template sharing permission",
+      "tags": [
+        "templates"
+      ]
+    },
+    "list_template_versions": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/api/v2/templates/{template_id}/versions/",
+      "summary": "Get list of template versions",
+      "tags": [
+        "Template versioning"
+      ]
+    },
+    "get_template_version": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/api/v2/templates/{template_id}/versions/{id}/",
+      "summary": "Get one template version",
+      "tags": [
+        "Template versioning"
+      ]
+    },
+    "copy_template_from_version": {
+      "type": "operation",
+      "spec": "app",
+      "method": "POST",
+      "path": "/dashboard/api/v2/templates/{template_id}/versions/{id}/copy/",
+      "summary": "Copy template from version including preferences, deliveries",
+      "tags": [
+        "Template versioning"
+      ]
+    },
+    "download_template_version_file": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/api/v2/templates/{template_id}/versions/{id}/download/",
+      "summary": "Download template version file",
+      "tags": [
+        "Template versioning"
+      ]
+    },
+    "get_template_minor_versions": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/api/v2/templates/{template_id}/versions/{id}/minor_versions/",
+      "summary": "Get template minor versions",
+      "tags": [
+        "Template versioning"
+      ]
+    },
+    "update_template_version_name": {
+      "type": "operation",
+      "spec": "app",
+      "method": "PATCH",
+      "path": "/dashboard/api/v2/templates/{template_id}/versions/{id}/rename/",
+      "summary": "Update template version name",
+      "tags": [
+        "Template versioning"
+      ]
+    },
+    "restore_template_version": {
+      "type": "operation",
+      "spec": "app",
+      "method": "POST",
+      "path": "/dashboard/api/v2/templates/{template_id}/versions/{id}/restore/",
+      "summary": "Restore template version",
+      "tags": [
+        "Template versioning"
+      ]
+    },
+    "set_template_version_live": {
+      "type": "operation",
+      "spec": "app",
+      "method": "POST",
+      "path": "/dashboard/api/v2/templates/{template_id}/versions/{id}/set_as_live_version/",
+      "summary": "Set a template version to live version",
+      "tags": [
+        "Template versioning"
+      ]
+    },
+    "toggle_template_version_starred": {
+      "type": "operation",
+      "spec": "app",
+      "method": "POST",
+      "path": "/dashboard/api/v2/templates/{template_id}/versions/{id}/toggle_starred/",
+      "summary": "Toggle template version starred",
+      "tags": [
+        "Template versioning"
+      ]
+    },
+    "list_all_templates": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/api/v2/templates/all/",
+      "summary": "List all templates",
+      "tags": [
+        "templates"
+      ]
+    },
+    "get_user_created_templates_count": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/api/v2/templates/count/",
+      "summary": "Get the count of templates created by the user.",
+      "tags": [
+        "templates"
+      ]
+    },
+    "move_templates_to_another_folder": {
+      "type": "operation",
+      "spec": "app",
+      "method": "POST",
+      "path": "/dashboard/api/v2/templates/move/",
+      "summary": "",
+      "tags": [
+        "templates"
+      ]
+    },
+    "templates_sharing_status_retrieve": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/api/v2/templates/sharing_status/",
+      "summary": "",
+      "tags": [
+        "templates"
+      ]
+    },
+    "list_trashed_templates": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/api/v2/templates/trash/",
+      "summary": "List all templates in trash.",
+      "tags": [
+        "templates"
+      ]
+    },
+    "list_banner_notifications": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/banner_notifications/",
+      "summary": "",
+      "tags": [
+        "general"
+      ]
+    },
+    "get_created_envelope_export": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/esign/envelope-exports/",
+      "summary": "Get created envelope export",
+      "tags": [
+        "esign"
+      ]
+    },
+    "create_envelope_export_task": {
+      "type": "operation",
+      "spec": "app",
+      "method": "POST",
+      "path": "/dashboard/esign/envelope-exports/",
+      "summary": "Create envelope export task",
+      "tags": [
+        "esign"
+      ]
+    },
+    "download_exported_envelopes": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/esign/envelope-exports/{id}/download/",
+      "summary": "Download generated export envelopes if available",
+      "tags": [
+        "esign"
+      ]
+    },
+    "list_envelopes": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/esign/envelopes/",
+      "summary": "Get list of envelopes",
+      "tags": [
+        "esign"
+      ]
+    },
+    "create_envelope": {
+      "type": "operation",
+      "spec": "app",
+      "method": "POST",
+      "path": "/dashboard/esign/envelopes/",
+      "summary": "Create a new envelope",
+      "tags": [
+        "esign"
+      ]
+    },
+    "update_envelope_document": {
+      "type": "operation",
+      "spec": "app",
+      "method": "PATCH",
+      "path": "/dashboard/esign/envelopes/{envelope_id}/documents/{id}/",
+      "summary": "Update envelope document",
+      "tags": [
+        "esign"
+      ]
+    },
+    "list_envelope_recipients": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/esign/envelopes/{envelope_id}/recipients/",
+      "summary": "Get list of envelope recipients",
+      "tags": [
+        "esign"
+      ]
+    },
+    "create_envelope_recipient": {
+      "type": "operation",
+      "spec": "app",
+      "method": "POST",
+      "path": "/dashboard/esign/envelopes/{envelope_id}/recipients/",
+      "summary": "Create a new envelope recipient",
+      "tags": [
+        "esign"
+      ]
+    },
+    "update_envelope_recipient": {
+      "type": "operation",
+      "spec": "app",
+      "method": "PATCH",
+      "path": "/dashboard/esign/envelopes/{envelope_id}/recipients/{id}/",
+      "summary": "Partial update of envelope recipient",
+      "tags": [
+        "esign"
+      ]
+    },
+    "delete_envelope_recipient": {
+      "type": "operation",
+      "spec": "app",
+      "method": "DELETE",
+      "path": "/dashboard/esign/envelopes/{envelope_id}/recipients/{id}/",
+      "summary": "Delete an envelope recipient",
+      "tags": [
+        "esign"
+      ]
+    },
+    "update_envelope_config": {
+      "type": "operation",
+      "spec": "app",
+      "method": "PATCH",
+      "path": "/dashboard/esign/envelopes/{id}/",
+      "summary": "Update envelope config",
+      "tags": [
+        "esign"
+      ]
+    },
+    "trash_envelope": {
+      "type": "operation",
+      "spec": "app",
+      "method": "DELETE",
+      "path": "/dashboard/esign/envelopes/{id}/",
+      "summary": "Move envelope to trash",
+      "tags": [
+        "esign"
+      ]
+    },
+    "download_attachment": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/esign/envelopes/{id}/attachment/{attachment_id}/download/",
+      "summary": "Download an individual attachment",
+      "tags": [
+        "esign"
+      ]
+    },
+    "cancel_envelope": {
+      "type": "operation",
+      "spec": "app",
+      "method": "POST",
+      "path": "/dashboard/esign/envelopes/{id}/cancel/",
+      "summary": "Cancel an Envelope",
+      "tags": [
+        "esign"
+      ]
+    },
+    "copy_envelope": {
+      "type": "operation",
+      "spec": "app",
+      "method": "POST",
+      "path": "/dashboard/esign/envelopes/{id}/copy/",
+      "summary": "Copy an envelope",
+      "tags": [
+        "esign"
+      ]
+    },
+    "envelope_details": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/esign/envelopes/{id}/details/",
+      "summary": "details of an envelope",
+      "tags": [
+        "esign"
+      ]
+    },
+    "download_envelope_file": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/esign/envelopes/{id}/documents/{document_id}/download/",
+      "summary": "Download envelope file",
+      "tags": [
+        "esign"
+      ]
+    },
+    "preview_envelope": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/esign/envelopes/{id}/documents/{document_id}/preview/",
+      "summary": "Preview Envelope",
+      "tags": [
+        "esign"
+      ]
+    },
+    "download_envelope": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/esign/envelopes/{id}/download/",
+      "summary": "Download all envelope documents",
+      "tags": [
+        "esign"
+      ]
+    },
+    "send_copy_via_email": {
+      "type": "operation",
+      "spec": "app",
+      "method": "POST",
+      "path": "/dashboard/esign/envelopes/{id}/email_copy/",
+      "summary": "send copy via email",
+      "tags": [
+        "esign"
+      ]
+    },
+    "envelope_history": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/esign/envelopes/{id}/history/",
+      "summary": "envelope history",
+      "tags": [
+        "esign"
+      ]
+    },
+    "delete_envelope_permanently": {
+      "type": "operation",
+      "spec": "app",
+      "method": "DELETE",
+      "path": "/dashboard/esign/envelopes/{id}/permanent_delete/",
+      "summary": "Delete a envelope permanently from trash",
+      "tags": [
+        "esign"
+      ]
+    },
+    "download_recipient_attachments": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/esign/envelopes/{id}/recipient/{recipient_id}/attachments/download/",
+      "summary": "Download all attachments of an envelope recipient as a zip file",
+      "tags": [
+        "esign"
+      ]
+    },
+    "get_envelope_responses": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/esign/envelopes/{id}/responses/",
+      "summary": "Get consolidated field responses for an envelope",
+      "tags": [
+        "esign"
+      ]
+    },
+    "restore_envelope_from_trash": {
+      "type": "operation",
+      "spec": "app",
+      "method": "POST",
+      "path": "/dashboard/esign/envelopes/{id}/restore/",
+      "summary": "Restore a envelope from trash",
+      "tags": [
+        "esign"
+      ]
+    },
+    "send_envelope": {
+      "type": "operation",
+      "spec": "app",
+      "method": "POST",
+      "path": "/dashboard/esign/envelopes/{id}/send/",
+      "summary": "Send an Envelope",
+      "tags": [
+        "esign"
+      ]
+    },
+    "send_reminder": {
+      "type": "operation",
+      "spec": "app",
+      "method": "POST",
+      "path": "/dashboard/esign/envelopes/{id}/send_reminder/",
+      "summary": "Send a reminder for Envelope Signers",
+      "tags": [
+        "esign"
+      ]
+    },
+    "get_signing_link": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/esign/envelopes/{id}/signing-link/",
+      "summary": "Get signing link for the envelope (sender self-sign)",
+      "tags": [
+        "esign"
+      ]
+    },
+    "bulk_move_envelopes": {
+      "type": "operation",
+      "spec": "app",
+      "method": "POST",
+      "path": "/dashboard/esign/envelopes/bulk-move/",
+      "summary": "Bulk move envelopes across folders",
+      "tags": [
+        "esign"
+      ]
+    },
+    "envelope_count_by_status": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/esign/envelopes/count/",
+      "summary": "Get envelope count grouped by status",
+      "tags": [
+        "esign"
+      ]
+    },
+    "list_trashed_envelopes": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/esign/envelopes/trash/",
+      "summary": "List all envelopes in trash",
+      "tags": [
+        "esign"
+      ]
+    },
+    "list_esign_folders": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/esign/folders/",
+      "summary": "Get list of signature folders",
+      "tags": [
+        "esign-folders"
+      ]
+    },
+    "create_esign_folder": {
+      "type": "operation",
+      "spec": "app",
+      "method": "POST",
+      "path": "/dashboard/esign/folders/",
+      "summary": "Create signature folder",
+      "tags": [
+        "esign-folders"
+      ]
+    },
+    "list_esign_folder_sharing": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/esign/folders/{folder_id}/permissions/",
+      "summary": "Get all shared permissions for specific signature folder",
+      "tags": [
+        "esign"
+      ]
+    },
+    "create_esign_folder_sharing_permission": {
+      "type": "operation",
+      "spec": "app",
+      "method": "POST",
+      "path": "/dashboard/esign/folders/{folder_id}/permissions/",
+      "summary": "Create signature folder sharing permission",
+      "tags": [
+        "esign"
+      ]
+    },
+    "get_esign_folder_sharing": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/esign/folders/{folder_id}/permissions/{id}/",
+      "summary": "Get specific permission details for given signature folder",
+      "tags": [
+        "esign"
+      ]
+    },
+    "update_esign_folder_sharing_permission": {
+      "type": "operation",
+      "spec": "app",
+      "method": "PATCH",
+      "path": "/dashboard/esign/folders/{folder_id}/permissions/{id}/",
+      "summary": "Update signature folder sharing permission partially",
+      "tags": [
+        "esign"
+      ]
+    },
+    "revoke_esign_folder_sharing_permission": {
+      "type": "operation",
+      "spec": "app",
+      "method": "DELETE",
+      "path": "/dashboard/esign/folders/{folder_id}/permissions/{id}/",
+      "summary": "Revoke signature folder sharing permission",
+      "tags": [
+        "esign"
+      ]
+    },
+    "esign_folders_partial_update": {
+      "type": "operation",
+      "spec": "app",
+      "method": "PATCH",
+      "path": "/dashboard/esign/folders/{id}/",
+      "summary": "",
+      "tags": [
+        "esign-folders"
+      ]
+    },
+    "delete_esign_folder": {
+      "type": "operation",
+      "spec": "app",
+      "method": "DELETE",
+      "path": "/dashboard/esign/folders/{id}/",
+      "summary": "Delete signature folder",
+      "tags": [
+        "esign-folders"
+      ]
+    },
+    "get_email_accounts": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/esign/global-settings/general/email-accounts/",
+      "summary": "Get verified email DNS accounts for eSign notifications",
+      "tags": [
+        "esign-settings"
+      ]
+    },
+    "get_signature_general_settings": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/esign/global-settings/general/get/",
+      "summary": "Get signature general settings",
+      "tags": [
+        "esign-settings"
+      ]
+    },
+    "update_signature_general_settings": {
+      "type": "operation",
+      "spec": "app",
+      "method": "PATCH",
+      "path": "/dashboard/esign/global-settings/general/update/",
+      "summary": "Update signature general settings",
+      "tags": [
+        "esign-settings"
+      ]
+    },
+    "update_esign_email_account": {
+      "type": "operation",
+      "spec": "app",
+      "method": "PATCH",
+      "path": "/dashboard/esign/global-settings/general/update-email-account/",
+      "summary": "Update email account for eSign notifications",
+      "tags": [
+        "esign-settings"
+      ]
+    },
+    "list_esign_webhooks": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/esign/global-settings/webhooks/",
+      "summary": "Get list of webhooks",
+      "tags": [
+        "esign-settings"
+      ]
+    },
+    "create_esign_webhook": {
+      "type": "operation",
+      "spec": "app",
+      "method": "POST",
+      "path": "/dashboard/esign/global-settings/webhooks/",
+      "summary": "Create a new webhook",
+      "tags": [
+        "esign-settings"
+      ]
+    },
+    "update_esign_webhook": {
+      "type": "operation",
+      "spec": "app",
+      "method": "PATCH",
+      "path": "/dashboard/esign/global-settings/webhooks/{id}/",
+      "summary": "Partial update of an webhook",
+      "tags": [
+        "esign-settings"
+      ]
+    },
+    "delete_esign_webhook": {
+      "type": "operation",
+      "spec": "app",
+      "method": "DELETE",
+      "path": "/dashboard/esign/global-settings/webhooks/{id}/",
+      "summary": "Delete an webhook",
+      "tags": [
+        "esign-settings"
+      ]
+    },
+    "list_esign_webhook_events": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/esign/global-settings/webhooks/{webhook_id}/events/",
+      "summary": "Get list of webhook events",
+      "tags": [
+        "esign-settings"
+      ]
+    },
+    "retry_webhook_event": {
+      "type": "operation",
+      "spec": "app",
+      "method": "POST",
+      "path": "/dashboard/esign/global-settings/webhooks/{webhook_id}/events/{id}/retry/",
+      "summary": "Retry webhook event",
+      "tags": [
+        "esign-settings"
+      ]
+    },
+    "generate_hmac_secret": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/esign/global-settings/webhooks/generate-hmac-secret/",
+      "summary": "Generate HMAC secret",
+      "tags": [
+        "esign-settings"
+      ]
+    },
+    "send_test_event": {
+      "type": "operation",
+      "spec": "app",
+      "method": "POST",
+      "path": "/dashboard/esign/global-settings/webhooks/send-test-event/",
+      "summary": "Send test event to webhook",
+      "tags": [
+        "esign-settings"
+      ]
+    },
+    "get_esign_folder_permissions": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/esign/permissions/folder/",
+      "summary": "Get e-sign folder permissions",
+      "tags": [
+        "esign"
+      ]
+    },
+    "list_extensions": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/extensions/",
+      "summary": "Get extensions",
+      "tags": [
+        "extensions"
+      ]
+    },
+    "create_extension": {
+      "type": "operation",
+      "spec": "app",
+      "method": "POST",
+      "path": "/dashboard/extensions/",
+      "summary": "Create extension",
+      "tags": [
+        "extensions"
+      ]
+    },
+    "get_extension_run_responses": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/extensions/{extension_id}/responses/",
+      "summary": "Get extension run responses",
+      "tags": [
+        "extensions"
+      ]
+    },
+    "export_extension_run_responses": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/extensions/{extension_id}/responses/export/",
+      "summary": "Export extension run metadata and responses as Excel",
+      "tags": [
+        "extensions"
+      ]
+    },
+    "get_extension": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/extensions/{id}/",
+      "summary": "Get extension",
+      "tags": [
+        "extensions"
+      ]
+    },
+    "update_extension": {
+      "type": "operation",
+      "spec": "app",
+      "method": "PUT",
+      "path": "/dashboard/extensions/{id}/",
+      "summary": "Edit extension",
+      "tags": [
+        "extensions"
+      ]
+    },
+    "extensions_partial_update": {
+      "type": "operation",
+      "spec": "app",
+      "method": "PATCH",
+      "path": "/dashboard/extensions/{id}/",
+      "summary": "",
+      "tags": [
+        "extensions"
+      ]
+    },
+    "delete_extension": {
+      "type": "operation",
+      "spec": "app",
+      "method": "DELETE",
+      "path": "/dashboard/extensions/{id}/",
+      "summary": "Delete extension",
+      "tags": [
+        "extensions"
+      ]
+    },
+    "archive_extension": {
+      "type": "operation",
+      "spec": "app",
+      "method": "PUT",
+      "path": "/dashboard/extensions/{id}/archive/",
+      "summary": "Archive extension",
+      "tags": [
+        "extensions"
+      ]
+    },
+    "clone_extension": {
+      "type": "operation",
+      "spec": "app",
+      "method": "POST",
+      "path": "/dashboard/extensions/{id}/clone/",
+      "summary": "Clone extension",
+      "tags": [
+        "extensions"
+      ]
+    },
+    "permanent_delete_extension": {
+      "type": "operation",
+      "spec": "app",
+      "method": "DELETE",
+      "path": "/dashboard/extensions/{id}/permanent_delete/",
+      "summary": "Permanently delete archived extension",
+      "tags": [
+        "extensions"
+      ]
+    },
+    "unarchive_extension": {
+      "type": "operation",
+      "spec": "app",
+      "method": "PUT",
+      "path": "/dashboard/extensions/{id}/unarchive/",
+      "summary": "Unarchive extension",
+      "tags": [
+        "extensions"
+      ]
+    },
+    "get_extension_config_by_unique_id": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/extensions/{workspace_unique}/{extension_unique}/config/",
+      "summary": "Get extension config by unique id",
+      "tags": [
+        "extensions"
+      ]
+    },
+    "run_extension_by_unique_id": {
+      "type": "operation",
+      "spec": "app",
+      "method": "POST",
+      "path": "/dashboard/extensions/{workspace_unique}/{extension_unique}/execute/",
+      "summary": "Execute extension by unique id",
+      "tags": [
+        "extensions"
+      ]
+    },
+    "get_feature_flags": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/feature_flags/",
+      "summary": "",
+      "tags": [
+        "general"
+      ]
+    },
+    "get_app_meta": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/meta/",
+      "summary": "",
+      "tags": [
+        "general"
+      ]
+    },
+    "list_subscription_plans": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/plans/",
+      "summary": "",
+      "tags": [
+        "general"
+      ]
+    },
+    "list_timezones": {
+      "type": "operation",
+      "spec": "app",
+      "method": "GET",
+      "path": "/dashboard/tz/",
+      "summary": "",
+      "tags": [
+        "general"
+      ]
+    }
+  }
+}

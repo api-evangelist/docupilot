@@ -1,0 +1,53 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "SAMLProviderRetrieve",
+  "description": "SAMLProviderRetrieve schema from Docupilot accounts API",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "readOnly": true
+    },
+    "name": {
+      "type": "string",
+      "maxLength": 40
+    },
+    "client_id": {
+      "type": "string",
+      "description": "App ID, or consumer key",
+      "maxLength": 191
+    },
+    "entity_url": {
+      "type": "string",
+      "format": "uri",
+      "readOnly": true
+    },
+    "acs_url": {
+      "type": "string",
+      "format": "uri",
+      "readOnly": true
+    },
+    "metadata_url": {
+      "type": "string",
+      "format": "uri",
+      "readOnly": true
+    },
+    "type": {
+      "type": "string",
+      "readOnly": true
+    },
+    "active": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "acs_url",
+    "active",
+    "client_id",
+    "entity_url",
+    "id",
+    "metadata_url",
+    "name",
+    "type"
+  ]
+}

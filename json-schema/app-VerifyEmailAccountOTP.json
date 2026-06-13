@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "VerifyEmailAccountOTP",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "action_name": {
+      "enum": [
+        "verify",
+        "update"
+      ],
+      "type": "string"
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "nullable": true
+    },
+    "otp": {
+      "type": "string",
+      "maxLength": 6
+    },
+    "display_name": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "action_name",
+    "otp"
+  ]
+}

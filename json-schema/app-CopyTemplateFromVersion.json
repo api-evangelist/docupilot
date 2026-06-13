@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "CopyTemplateFromVersion",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "folder": {
+      "type": "integer",
+      "nullable": true
+    },
+    "title": {
+      "type": "string",
+      "maxLength": 255
+    }
+  },
+  "required": [
+    "title"
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Invitation",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "readOnly": true
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "maxLength": 254
+    },
+    "role": {
+      "enum": [
+        "admin",
+        "manager",
+        "member",
+        "billing_manager"
+      ],
+      "type": "string"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true
+    },
+    "expires_at": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true
+    },
+    "workspace": {
+      "type": "string",
+      "readOnly": true
+    },
+    "is_accepted": {
+      "type": "boolean",
+      "readOnly": true,
+      "nullable": true
+    },
+    "invite_key": {
+      "type": "string",
+      "readOnly": true
+    },
+    "sender": {
+      "type": "string",
+      "readOnly": true
+    },
+    "expired": {
+      "type": "string",
+      "readOnly": true
+    }
+  },
+  "required": [
+    "created_at",
+    "email",
+    "expired",
+    "expires_at",
+    "id",
+    "invite_key",
+    "is_accepted",
+    "role",
+    "sender",
+    "workspace"
+  ]
+}

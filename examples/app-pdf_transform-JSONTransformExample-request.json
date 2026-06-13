@@ -1,0 +1,44 @@
+{
+  "inputs": [
+    {
+      "id": "pdf1",
+      "file_url": "https://example.com/input-1.pdf"
+    },
+    {
+      "id": "pdf2",
+      "file_url": "https://example.com/input-2.pdf"
+    }
+  ],
+  "operations": [
+    {
+      "id": "build-base",
+      "type": "compose",
+      "sources": [
+        {
+          "input": "pdf1",
+          "pages": "1-3"
+        },
+        {
+          "input": "pdf2",
+          "pages": "all"
+        }
+      ]
+    },
+    {
+      "id": "rotate-pages",
+      "type": "rotate",
+      "target": "current",
+      "pages": "1-2",
+      "angle": 90
+    },
+    {
+      "id": "add-page-numbers",
+      "type": "page_number",
+      "target": "current",
+      "pages": "all",
+      "format": "Page {n} of {total}",
+      "position": "bottom-center"
+    }
+  ],
+  "output_file_name": "processed.pdf"
+}

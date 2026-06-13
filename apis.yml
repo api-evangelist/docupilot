@@ -34,6 +34,18 @@ apis:
         url: https://{subdomain}.docupilot.app/~/dashboard/api-docs/swagger-ui/
       - type: Webhooks
         url: https://help.docupilot.app/create-document/api-and-webhook-integration
+      - type: OpenAPI
+        url: openapi/openapi-accounts.yaml
+      - type: OpenAPI
+        url: openapi/openapi-app.yaml
+      - type: JSONSchema
+        url: json-schema/
+      - type: JSONExamples
+        url: examples/
+      - type: Vocabulary
+        url: vocabulary/docupilot-vocabulary.json
+      - type: JSONLD
+        url: json-ld/docupilot.jsonld
     contact:
       - FN: Docupilot Support
         url: https://help.docupilot.app/

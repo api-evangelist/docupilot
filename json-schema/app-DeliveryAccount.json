@@ -1,0 +1,76 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "DeliveryAccount",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "readOnly": true
+    },
+    "sub_type": {
+      "type": "string",
+      "readOnly": true
+    },
+    "used_by": {
+      "type": "integer",
+      "readOnly": true
+    },
+    "name": {
+      "type": "string",
+      "readOnly": true,
+      "nullable": true
+    },
+    "type": {
+      "enum": [
+        "docu_sign",
+        "sign_now",
+        "zoho_crm",
+        "dropbox",
+        "google_drive",
+        "podio",
+        "one_drive",
+        "sharepoint",
+        "eversign",
+        "box",
+        "zoho",
+        "hellosign",
+        "aws_s3",
+        "signable",
+        "yousign",
+        "email",
+        "sftp",
+        "azure_storage"
+      ],
+      "type": "string"
+    },
+    "credentials": {
+      "type": "object",
+      "additionalProperties": {},
+      "writeOnly": true
+    },
+    "is_expired": {
+      "type": "boolean",
+      "readOnly": true
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true,
+      "nullable": true
+    },
+    "use_for_images": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "credentials",
+    "id",
+    "is_expired",
+    "name",
+    "sub_type",
+    "type",
+    "updated_at",
+    "used_by"
+  ]
+}

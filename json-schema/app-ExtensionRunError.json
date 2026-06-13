@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ExtensionRunError",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "template_id": {
+      "type": "integer",
+      "nullable": true
+    },
+    "error": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "error",
+    "template_id"
+  ]
+}

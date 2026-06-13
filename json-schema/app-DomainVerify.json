@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "DomainVerify",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "success": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "txt_record",
+          "spf_record"
+        ],
+        "type": "string"
+      }
+    },
+    "failures": {
+      "$ref": "#/components/schemas/DomainFailure"
+    }
+  },
+  "required": [
+    "failures",
+    "success"
+  ]
+}

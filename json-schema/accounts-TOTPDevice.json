@@ -1,0 +1,37 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "TOTPDevice",
+  "description": "TOTPDevice schema from Docupilot accounts API",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "readOnly": true
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true,
+      "nullable": true,
+      "description": "The date and time when this device was initially created in the system."
+    },
+    "last_used_at": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true,
+      "nullable": true,
+      "description": "The most recent date and time this device was used."
+    },
+    "name": {
+      "type": "string",
+      "readOnly": true,
+      "description": "The human-readable name of this device."
+    }
+  },
+  "required": [
+    "created_at",
+    "id",
+    "last_used_at",
+    "name"
+  ]
+}

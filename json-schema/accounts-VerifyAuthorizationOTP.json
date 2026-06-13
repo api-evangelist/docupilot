@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "VerifyAuthorizationOTP",
+  "description": "VerifyAuthorizationOTP schema from Docupilot accounts API",
+  "type": "object",
+  "properties": {
+    "otp": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "otp"
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ContentBlock",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "readOnly": true
+    },
+    "name": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "description": {
+      "type": "string",
+      "nullable": true,
+      "maxLength": 255
+    },
+    "key": {
+      "type": "string",
+      "readOnly": true
+    },
+    "type": {
+      "enum": [
+        "docx",
+        "html"
+      ],
+      "type": "string",
+      "readOnly": true
+    },
+    "created_by": {
+      "type": "integer",
+      "readOnly": true
+    },
+    "updated_by": {
+      "type": "integer",
+      "readOnly": true,
+      "nullable": true
+    },
+    "created_time": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true
+    },
+    "updated_time": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true,
+      "nullable": true
+    },
+    "use_v2_editor": {
+      "type": "boolean",
+      "readOnly": true
+    }
+  },
+  "required": [
+    "created_by",
+    "created_time",
+    "id",
+    "key",
+    "name",
+    "type",
+    "updated_by",
+    "updated_time",
+    "use_v2_editor"
+  ]
+}

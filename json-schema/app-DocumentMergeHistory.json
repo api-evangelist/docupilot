@@ -1,0 +1,69 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "DocumentMergeHistory",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "readOnly": true
+    },
+    "data": {
+      "type": "object",
+      "additionalProperties": {},
+      "nullable": true
+    },
+    "template": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ChildTemplate"
+        }
+      ],
+      "readOnly": true,
+      "nullable": true
+    },
+    "executed_deliveries": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ChildDocumentMergeHistory"
+      }
+    },
+    "is_data_expired": {
+      "type": "boolean",
+      "readOnly": true
+    },
+    "action": {
+      "enum": [
+        "Merge",
+        "Append",
+        "Convert",
+        "Transform"
+      ],
+      "type": "string",
+      "readOnly": true
+    },
+    "is_document_expired": {
+      "type": "boolean",
+      "readOnly": true
+    },
+    "created_file_name": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "created_time": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true
+    }
+  },
+  "required": [
+    "action",
+    "created_file_name",
+    "created_time",
+    "executed_deliveries",
+    "id",
+    "is_data_expired",
+    "is_document_expired",
+    "template"
+  ]
+}

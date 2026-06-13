@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "WordAddInPromptSuggestions",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "writeOnly": true
+    },
+    "first_page_content": {
+      "type": "string",
+      "writeOnly": true,
+      "nullable": true
+    },
+    "main_headings": {
+      "type": "string",
+      "writeOnly": true,
+      "nullable": true
+    },
+    "prompts": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "readOnly": true
+    }
+  },
+  "required": [
+    "prompts",
+    "title"
+  ]
+}

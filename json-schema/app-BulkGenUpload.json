@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "BulkGenUpload",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "file": {
+      "type": "string",
+      "format": "binary"
+    },
+    "delimiter": {
+      "type": "string",
+      "maxLength": 1
+    }
+  },
+  "required": [
+    "file"
+  ]
+}

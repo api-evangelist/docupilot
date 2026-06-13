@@ -1,0 +1,68 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Extension",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "readOnly": true
+    },
+    "name": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "type": {
+      "enum": [
+        "form_v1"
+      ],
+      "type": "string"
+    },
+    "unique_id": {
+      "type": "string",
+      "readOnly": true
+    },
+    "is_public": {
+      "type": "boolean"
+    },
+    "config": {
+      "type": "object",
+      "additionalProperties": {}
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true
+    },
+    "archived_at": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true,
+      "nullable": true
+    },
+    "created_by": {
+      "type": "integer",
+      "readOnly": true
+    },
+    "updated_by": {
+      "type": "integer",
+      "readOnly": true
+    }
+  },
+  "required": [
+    "archived_at",
+    "created_at",
+    "created_by",
+    "id",
+    "name",
+    "type",
+    "unique_id",
+    "updated_at",
+    "updated_by"
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "PolymorphicDelivery",
+  "description": "PolymorphicDelivery schema from Docupilot app API",
+  "oneOf": [
+    {
+      "$ref": "#/components/schemas/EmailDelivery"
+    },
+    {
+      "$ref": "#/components/schemas/WebhookDelivery"
+    },
+    {
+      "$ref": "#/components/schemas/SignatureDelivery"
+    },
+    {
+      "$ref": "#/components/schemas/DropboxDelivery"
+    },
+    {
+      "$ref": "#/components/schemas/OneDriveDelivery"
+    },
+    {
+      "$ref": "#/components/schemas/SharepointDelivery"
+    },
+    {
+      "$ref": "#/components/schemas/SignNowDelivery"
+    },
+    {
+      "$ref": "#/components/schemas/GoogleDriveDelivery"
+    },
+    {
+      "$ref": "#/components/schemas/S3Delivery"
+    },
+    {
+      "$ref": "#/components/schemas/HelloSignDelivery"
+    },
+    {
+      "$ref": "#/components/schemas/DocuSignDelivery"
+    },
+    {
+      "$ref": "#/components/schemas/EversignDelivery"
+    },
+    {
+      "$ref": "#/components/schemas/SignableDelivery"
+    },
+    {
+      "$ref": "#/components/schemas/YouSignDelivery"
+    },
+    {
+      "$ref": "#/components/schemas/SftpDelivery"
+    },
+    {
+      "$ref": "#/components/schemas/AzureBlobStorageDelivery"
+    },
+    {
+      "$ref": "#/components/schemas/BoxDriveDelivery"
+    }
+  ],
+  "discriminator": {
+    "propertyName": "type",
+    "mapping": {
+      "email": "#/components/schemas/EmailDelivery",
+      "webhook": "#/components/schemas/WebhookDelivery",
+      "signature": "#/components/schemas/SignatureDelivery",
+      "dropbox": "#/components/schemas/DropboxDelivery",
+      "one_drive": "#/components/schemas/OneDriveDelivery",
+      "sharepoint": "#/components/schemas/SharepointDelivery",
+      "sign_now": "#/components/schemas/SignNowDelivery",
+      "google_drive": "#/components/schemas/GoogleDriveDelivery",
+      "aws_s3": "#/components/schemas/S3Delivery",
+      "hellosign": "#/components/schemas/HelloSignDelivery",
+      "docu_sign": "#/components/schemas/DocuSignDelivery",
+      "eversign": "#/components/schemas/EversignDelivery",
+      "signable": "#/components/schemas/SignableDelivery",
+      "yousign": "#/components/schemas/YouSignDelivery",
+      "sftp": "#/components/schemas/SftpDelivery",
+      "azure_blob_storage": "#/components/schemas/AzureBlobStorageDelivery",
+      "box_drive": "#/components/schemas/BoxDriveDelivery"
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "FolderSharing",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "readOnly": true
+    },
+    "permission": {
+      "enum": [
+        "read",
+        "write",
+        "manage"
+      ],
+      "type": "string"
+    },
+    "user": {
+      "type": "integer"
+    }
+  },
+  "required": [
+    "id",
+    "user"
+  ]
+}

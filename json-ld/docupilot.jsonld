@@ -1,0 +1,173 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "docupilot": "https://docupilot.app/schema/",
+    "openapi": "https://www.openapis.org/"
+  },
+  "@type": "WebAPI",
+  "@id": "https://api-us1.docupilot.app",
+  "name": "Docupilot API",
+  "description": "REST API for generating PDF, Word, PowerPoint, and Excel documents from templates with dynamic data merge.",
+  "url": "https://help.docupilot.app/developers/api-overview",
+  "provider": {
+    "@type": "Organization",
+    "name": "Docupilot",
+    "url": "https://www.docupilot.com/",
+    "email": "support@docupilot.app"
+  },
+  "documentation": "https://help.docupilot.app/developers/api-overview",
+  "termsOfService": "https://docupilot.app/terms-and-conditions/",
+  "category": [],
+  "availableChannel": [
+    {
+      "@type": "ServiceChannel",
+      "name": "List All Applications",
+      "description": "List all applications"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "Create Demographic",
+      "description": "Create Demographic"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "Show Demographic Prompt For Organization Users",
+      "description": "Show demographic prompt for organization users"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "Validate Domain",
+      "description": "Verify domain"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "List Domains",
+      "description": "List domains"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "Create Domain",
+      "description": "Create domain"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "Destroy Domain",
+      "description": "Destroy domain"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "Toggle Domain Lock",
+      "description": "Toggle domain lock"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "Verify Domain",
+      "description": "verify domain"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "List Invitation",
+      "description": "Get list of Invitation"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "Create Invitation",
+      "description": "Create Invitation"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "Delete Invitation",
+      "description": "Delete Invitation"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "Accept Invitation",
+      "description": "Accept workspace invitation"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "Decline Workspace Invitation",
+      "description": "Decline workspace invitation"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "Resend Invitation",
+      "description": "Resend invitation"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "List Workspace Invitations",
+      "description": "List pending workspace invitations for the current user"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "Mfa List",
+      "description": ""
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "Mfa Delete Totp Device Destroy",
+      "description": ""
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "Mfa Disable",
+      "description": ""
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "Mfa Enable",
+      "description": ""
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "Mfa Generate Backup Tokens Create",
+      "description": ""
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "Mfa Mark Device Primary Update",
+      "description": ""
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "Mfa Setup Totp Device Retrieve",
+      "description": ""
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "Mfa Verify Totp Device Create",
+      "description": "Verify Totp device"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "Get Csm Details",
+      "description": ""
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "Delete Organization",
+      "description": "Delete a Organization and other related data permanently "
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "Get Organization",
+      "description": ""
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "Get Organization Meta",
+      "description": "Get organization meta information"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "Toggle Organization Mfa Status",
+      "description": "Activate or Deactivate Organization MFA"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "Toggle Password Based Login",
+      "description": "Toggle password-based login"
+    }
+  ]
+}

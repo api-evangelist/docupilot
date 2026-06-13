@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "FolderCount",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "folders_count": {
+      "type": "integer"
+    }
+  },
+  "required": [
+    "folders_count"
+  ]
+}

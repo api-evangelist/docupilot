@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ShowDemographicPrompt",
+  "description": "ShowDemographicPrompt schema from Docupilot accounts API",
+  "type": "object",
+  "properties": {
+    "user_demographic": {
+      "type": "boolean"
+    },
+    "organization_demographic": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "organization_demographic",
+    "user_demographic"
+  ]
+}

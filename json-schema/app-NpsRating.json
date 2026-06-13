@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "NpsRating",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "nps_rating": {
+      "type": "integer",
+      "maximum": 10,
+      "minimum": 0,
+      "nullable": true
+    }
+  }
+}

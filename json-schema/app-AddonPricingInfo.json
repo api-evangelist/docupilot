@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "AddonPricingInfo",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "addon_id": {
+      "type": "string"
+    },
+    "type": {
+      "enum": [
+        "recurring",
+        "one_time"
+      ],
+      "type": "string"
+    },
+    "allowed_quantities": {
+      "type": "array",
+      "items": {
+        "type": "integer"
+      }
+    },
+    "tiers": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/AddonTier"
+      }
+    }
+  },
+  "required": [
+    "addon_id",
+    "allowed_quantities",
+    "tiers",
+    "type"
+  ]
+}

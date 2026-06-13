@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "BannerNotification",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "action": {
+      "$ref": "#/components/schemas/BannerNotificationAction"
+    }
+  },
+  "required": [
+    "action",
+    "description",
+    "id",
+    "name"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "DeliveryCount",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "delivery_count": {
+      "type": "integer",
+      "description": "Number of deliveries linked to the template"
+    }
+  },
+  "required": [
+    "delivery_count"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "AppendFiles",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "files": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "binary"
+      }
+    },
+    "output_file_name": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "files"
+  ]
+}

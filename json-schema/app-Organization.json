@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Organization",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "readOnly": true
+    },
+    "subdomain": {
+      "type": "string",
+      "readOnly": true
+    },
+    "logo": {
+      "type": "string",
+      "format": "uri",
+      "readOnly": true,
+      "nullable": true
+    }
+  },
+  "required": [
+    "logo",
+    "name",
+    "subdomain"
+  ]
+}

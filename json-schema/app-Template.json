@@ -1,0 +1,105 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Template",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "readOnly": true
+    },
+    "preferences": {
+      "$ref": "#/components/schemas/TemplateSettings"
+    },
+    "folder": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Folder"
+        }
+      ],
+      "nullable": true
+    },
+    "has_docusign_delivery": {
+      "type": "boolean",
+      "readOnly": true
+    },
+    "published": {
+      "type": "boolean",
+      "readOnly": true
+    },
+    "title": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "description": {
+      "type": "string",
+      "nullable": true,
+      "maxLength": 255
+    },
+    "type": {
+      "enum": [
+        "docx",
+        "html",
+        "dpt_pdf",
+        "fillable_pdf",
+        "pptx",
+        "xlsx",
+        "g_document",
+        "g_presentation",
+        "g_spreadsheet"
+      ],
+      "type": "string",
+      "readOnly": true
+    },
+    "created_time": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true
+    },
+    "updated_time": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true,
+      "nullable": true
+    },
+    "document_status": {
+      "enum": [
+        "active",
+        "test"
+      ],
+      "type": "string"
+    },
+    "deleted_time": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true,
+      "nullable": true
+    },
+    "use_v2_editor": {
+      "type": "boolean",
+      "readOnly": true
+    },
+    "created_by": {
+      "type": "integer",
+      "readOnly": true
+    },
+    "updated_by": {
+      "type": "integer",
+      "readOnly": true,
+      "nullable": true
+    }
+  },
+  "required": [
+    "created_by",
+    "created_time",
+    "deleted_time",
+    "has_docusign_delivery",
+    "id",
+    "published",
+    "title",
+    "type",
+    "updated_by",
+    "updated_time",
+    "use_v2_editor"
+  ]
+}

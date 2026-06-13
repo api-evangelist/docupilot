@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "BulkMoveEnvelopesResponse",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "total_count": {
+      "type": "integer",
+      "description": "Number of envelopes requested for the bulk move"
+    },
+    "moved_count": {
+      "type": "integer",
+      "description": "Number of envelopes moved successfully"
+    },
+    "failure_count": {
+      "type": "integer",
+      "description": "Number of envelopes that were not moved"
+    },
+    "failures": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/EnvelopeMoveFailureDetail"
+      },
+      "description": "Failures grouped by reason"
+    }
+  },
+  "required": [
+    "failure_count",
+    "failures",
+    "moved_count",
+    "total_count"
+  ]
+}

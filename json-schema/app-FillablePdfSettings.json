@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "FillablePdfSettings",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "width": {
+      "type": "number",
+      "format": "double"
+    },
+    "height": {
+      "type": "number",
+      "format": "double"
+    },
+    "no_of_pages": {
+      "type": "integer",
+      "maximum": 2147483647,
+      "minimum": 0
+    },
+    "dynamic_images": {
+      "type": "object",
+      "additionalProperties": {},
+      "writeOnly": true,
+      "nullable": true
+    }
+  },
+  "required": [
+    "height",
+    "no_of_pages",
+    "width"
+  ]
+}

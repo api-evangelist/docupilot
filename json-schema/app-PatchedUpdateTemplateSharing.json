@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "PatchedUpdateTemplateSharing",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "readOnly": true
+    },
+    "permission": {
+      "enum": [
+        "read",
+        "write",
+        "manage"
+      ],
+      "type": "string"
+    },
+    "user": {
+      "type": "integer",
+      "readOnly": true
+    }
+  }
+}

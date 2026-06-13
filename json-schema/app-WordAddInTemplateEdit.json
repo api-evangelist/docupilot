@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "WordAddInTemplateEdit",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "user_input": {
+      "type": "string",
+      "writeOnly": true
+    },
+    "content_type": {
+      "enum": [
+        "text",
+        "group",
+        "table"
+      ],
+      "type": "string",
+      "writeOnly": true
+    },
+    "selected_content": {
+      "type": "string",
+      "writeOnly": true
+    },
+    "ai_response": {
+      "type": "string",
+      "readOnly": true
+    }
+  },
+  "required": [
+    "ai_response",
+    "content_type",
+    "selected_content",
+    "user_input"
+  ]
+}

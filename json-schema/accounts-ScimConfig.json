@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ScimConfig",
+  "description": "ScimConfig schema from Docupilot accounts API",
+  "type": "object",
+  "properties": {
+    "provisioning_mode": {
+      "type": "string",
+      "readOnly": true
+    },
+    "keys": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ScimApiKey"
+      },
+      "readOnly": true
+    },
+    "scim_base_url": {
+      "type": "string",
+      "readOnly": true
+    }
+  },
+  "required": [
+    "keys",
+    "provisioning_mode",
+    "scim_base_url"
+  ]
+}

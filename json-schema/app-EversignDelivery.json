@@ -1,0 +1,149 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "EversignDelivery",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "readOnly": true
+    },
+    "failure_email_recipients": {
+      "type": "string",
+      "nullable": true,
+      "maxLength": 255
+    },
+    "account": {
+      "type": "integer"
+    },
+    "signers": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "pin": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "email": {
+            "type": "string",
+            "format": "email"
+          },
+          "order": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "email"
+        ]
+      }
+    },
+    "recipients": {
+      "type": "array",
+      "minItems": 0,
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "email": {
+            "type": "string",
+            "format": "email"
+          }
+        },
+        "required": [
+          "name",
+          "email"
+        ]
+      },
+      "nullable": true
+    },
+    "name": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "type": {
+      "enum": [
+        "webhook",
+        "azure_blob_storage",
+        "box_drive",
+        "signature",
+        "docu_sign",
+        "sign_now",
+        "zoho_crm",
+        "dropbox",
+        "google_drive",
+        "podio",
+        "one_drive",
+        "sharepoint",
+        "eversign",
+        "hellosign",
+        "aws_s3",
+        "signable",
+        "yousign",
+        "email",
+        "sftp"
+      ],
+      "type": "string"
+    },
+    "success_callback_url": {
+      "type": "string",
+      "nullable": true,
+      "maxLength": 255
+    },
+    "success_callback_payload": {
+      "type": "object",
+      "additionalProperties": {},
+      "nullable": true
+    },
+    "success_callback_headers": {
+      "type": "object",
+      "additionalProperties": {},
+      "nullable": true
+    },
+    "last_used_on": {
+      "type": "string",
+      "format": "date-time",
+      "nullable": true
+    },
+    "title": {
+      "type": "string",
+      "nullable": true
+    },
+    "message": {
+      "type": "string",
+      "nullable": true
+    },
+    "use_signer_order": {
+      "type": "boolean"
+    },
+    "reminders": {
+      "type": "boolean"
+    },
+    "require_all_signers": {
+      "type": "boolean"
+    },
+    "expires_in": {
+      "type": "integer",
+      "maximum": 2147483647,
+      "minimum": -2147483648,
+      "nullable": true
+    },
+    "enable_optional_signers": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "account",
+    "id",
+    "name",
+    "signers"
+  ]
+}

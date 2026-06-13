@@ -1,0 +1,42 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "SendTestSmtpMail",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "smtp_server_address": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "smtp_server_username": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "smtp_server_password": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "smtp_port": {
+      "type": "integer"
+    },
+    "smtp_encryption_type": {
+      "enum": [
+        "TLS",
+        "SSL"
+      ],
+      "type": "string"
+    },
+    "email": {
+      "type": "string",
+      "format": "email"
+    }
+  },
+  "required": [
+    "email",
+    "smtp_encryption_type",
+    "smtp_port",
+    "smtp_server_address",
+    "smtp_server_password",
+    "smtp_server_username"
+  ]
+}

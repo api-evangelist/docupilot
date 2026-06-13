@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "FileUploadMeta",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "email_attachments": {
+      "$ref": "#/components/schemas/AttachmentsConfig"
+    }
+  },
+  "required": [
+    "email_attachments"
+  ]
+}

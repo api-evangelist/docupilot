@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "UserPersonalizationListViewTemplate",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "type": {
+      "enum": [
+        "card",
+        "template"
+      ],
+      "type": "string"
+    }
+  },
+  "required": [
+    "type"
+  ]
+}

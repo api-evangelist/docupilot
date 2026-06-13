@@ -1,0 +1,114 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ChargebeeSubscription",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "plan_id": {
+      "type": "string",
+      "readOnly": true,
+      "nullable": true
+    },
+    "status": {
+      "enum": [
+        "a",
+        "t",
+        "e",
+        "c",
+        "p"
+      ],
+      "type": "string",
+      "readOnly": true
+    },
+    "trial_end": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true
+    },
+    "billing_period_unit": {
+      "type": "string",
+      "readOnly": true,
+      "nullable": true
+    },
+    "current_term_start": {
+      "type": "string",
+      "readOnly": true
+    },
+    "current_term_end": {
+      "type": "string",
+      "readOnly": true
+    },
+    "unpaid_invoices": {
+      "type": "integer",
+      "readOnly": true
+    },
+    "max_allowed_unpaid_invoices": {
+      "type": "integer",
+      "readOnly": true
+    },
+    "overage_enabled": {
+      "type": "boolean"
+    },
+    "documents_allowed": {
+      "type": "integer",
+      "readOnly": true
+    },
+    "documents_created": {
+      "type": "integer",
+      "readOnly": true
+    },
+    "can_extend_trial": {
+      "type": "boolean",
+      "readOnly": true
+    },
+    "subscribed_on": {
+      "type": "string",
+      "readOnly": true
+    },
+    "signnow_credits_allowed": {
+      "type": "integer",
+      "readOnly": true
+    },
+    "signnow_credits_used": {
+      "type": "integer",
+      "readOnly": true
+    },
+    "trial_signatures_allowed": {
+      "type": "integer",
+      "readOnly": true
+    },
+    "trial_signatures_used": {
+      "type": "integer",
+      "readOnly": true
+    },
+    "signatures_allowed": {
+      "type": "integer",
+      "readOnly": true
+    },
+    "signatures_used": {
+      "type": "integer",
+      "readOnly": true
+    }
+  },
+  "required": [
+    "billing_period_unit",
+    "can_extend_trial",
+    "current_term_end",
+    "current_term_start",
+    "documents_allowed",
+    "documents_created",
+    "max_allowed_unpaid_invoices",
+    "overage_enabled",
+    "plan_id",
+    "signatures_allowed",
+    "signatures_used",
+    "signnow_credits_allowed",
+    "signnow_credits_used",
+    "status",
+    "subscribed_on",
+    "trial_end",
+    "trial_signatures_allowed",
+    "trial_signatures_used",
+    "unpaid_invoices"
+  ]
+}

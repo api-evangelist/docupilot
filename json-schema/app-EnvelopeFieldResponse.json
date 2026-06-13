@@ -1,0 +1,34 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "EnvelopeFieldResponse",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "signer_id": {
+      "type": "string"
+    },
+    "document_id": {
+      "type": "string",
+      "nullable": true
+    },
+    "name": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
+    },
+    "value": {
+      "type": "string",
+      "nullable": true
+    },
+    "file_name": {
+      "type": "string",
+      "nullable": true
+    }
+  },
+  "required": [
+    "name",
+    "signer_id",
+    "type"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "OrganizationSubdomainChangeResponse",
+  "description": "OrganizationSubdomainChangeResponse schema from Docupilot accounts API",
+  "type": "object",
+  "properties": {
+    "new_url": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "new_url"
+  ]
+}

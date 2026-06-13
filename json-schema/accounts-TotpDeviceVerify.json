@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "TotpDeviceVerify",
+  "description": "TotpDeviceVerify schema from Docupilot accounts API",
+  "type": "object",
+  "properties": {
+    "t_otp": {
+      "type": "integer"
+    }
+  },
+  "required": [
+    "t_otp"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "SAMLProviderCreate",
+  "description": "SAMLProviderCreate schema from Docupilot accounts API",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "maxLength": 40
+    },
+    "type": {
+      "enum": [
+        "microsoft",
+        "okta"
+      ],
+      "type": "string"
+    }
+  },
+  "required": [
+    "name",
+    "type"
+  ]
+}

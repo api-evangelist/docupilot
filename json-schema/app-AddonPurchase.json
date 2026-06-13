@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "AddonPurchase",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "addon_id": {
+      "enum": [
+        "esignature",
+        "signnow"
+      ],
+      "type": "string"
+    },
+    "quantity": {
+      "type": "integer"
+    }
+  },
+  "required": [
+    "addon_id",
+    "quantity"
+  ]
+}

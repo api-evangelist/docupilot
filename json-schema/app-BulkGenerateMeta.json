@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "BulkGenerateMeta",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "max_test_rows": {
+      "type": "integer"
+    }
+  },
+  "required": [
+    "max_test_rows"
+  ]
+}

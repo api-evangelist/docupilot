@@ -1,0 +1,141 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "TemplateSettings",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "margin": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "top": {
+          "type": "number",
+          "format": "float",
+          "minimum": 0,
+          "maximum": 11
+        },
+        "left": {
+          "type": "number",
+          "format": "float",
+          "minimum": 0,
+          "maximum": 8
+        },
+        "right": {
+          "type": "number",
+          "format": "float",
+          "minimum": 0,
+          "maximum": 8
+        },
+        "bottom": {
+          "type": "number",
+          "format": "float",
+          "minimum": 0,
+          "maximum": 11
+        }
+      },
+      "nullable": true
+    },
+    "timezone": {
+      "type": "string"
+    },
+    "info": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/FillablePdfSettings"
+        }
+      ],
+      "readOnly": true
+    },
+    "dynamic_images": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/DynamicImage"
+      },
+      "nullable": true
+    },
+    "output_file_name": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "output_type": {
+      "enum": [
+        "html",
+        "pdf",
+        "jpeg",
+        "png",
+        "docx",
+        "pptx",
+        "xlsx"
+      ],
+      "type": "string"
+    },
+    "password": {
+      "type": "string",
+      "nullable": true,
+      "maxLength": 255
+    },
+    "format": {
+      "enum": [
+        "A3",
+        "A4",
+        "A5",
+        "Legal",
+        "Letter",
+        "Tabloid",
+        "Custom"
+      ],
+      "type": "string"
+    },
+    "orientation": {
+      "enum": [
+        "portrait",
+        "landscape"
+      ],
+      "type": "string"
+    },
+    "header": {
+      "type": "string",
+      "nullable": true
+    },
+    "footer": {
+      "type": "string",
+      "nullable": true
+    },
+    "width": {
+      "type": "number",
+      "format": "double",
+      "maximum": 180,
+      "minimum": 0.4,
+      "nullable": true
+    },
+    "height": {
+      "type": "number",
+      "format": "double",
+      "maximum": 250,
+      "minimum": 0.5,
+      "nullable": true
+    },
+    "auto_number": {
+      "type": "integer",
+      "maximum": 9223372036854775807,
+      "minimum": 1,
+      "format": "int64",
+      "nullable": true
+    },
+    "flatten_pdf": {
+      "type": "boolean"
+    },
+    "emulate_mode": {
+      "enum": [
+        "print",
+        "screen",
+        null
+      ],
+      "type": "string",
+      "nullable": true
+    }
+  },
+  "required": [
+    "info"
+  ]
+}

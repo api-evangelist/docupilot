@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ValidationError",
+  "description": "ValidationError schema from Docupilot accounts API",
+  "type": "object",
+  "properties": {
+    "errors": {
+      "type": "object",
+      "additionalProperties": {}
+    },
+    "non_field_errors": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "errors",
+    "non_field_errors"
+  ]
+}

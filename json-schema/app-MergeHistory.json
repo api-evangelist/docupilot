@@ -1,0 +1,88 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "MergeHistory",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "readOnly": true
+    },
+    "template": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ChildTemplate"
+        }
+      ],
+      "readOnly": true,
+      "nullable": true
+    },
+    "data": {
+      "type": "object",
+      "additionalProperties": {}
+    },
+    "data_expired": {
+      "type": "boolean"
+    },
+    "document_expired": {
+      "type": "boolean"
+    },
+    "mode": {
+      "type": "string"
+    },
+    "created_file_name": {
+      "type": "string"
+    },
+    "delivery_type": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "status": {
+      "enum": [
+        "pending",
+        "success",
+        "error"
+      ],
+      "type": "string"
+    },
+    "created_time": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true
+    },
+    "message": {
+      "type": "object",
+      "additionalProperties": {},
+      "nullable": true
+    },
+    "callback_status": {
+      "enum": [
+        "success",
+        "fail",
+        null
+      ],
+      "type": "string",
+      "nullable": true
+    },
+    "callback_failure_message": {
+      "type": "string",
+      "nullable": true
+    },
+    "delivery": {
+      "type": "integer",
+      "nullable": true
+    }
+  },
+  "required": [
+    "created_file_name",
+    "created_time",
+    "data",
+    "data_expired",
+    "delivery_type",
+    "document_expired",
+    "id",
+    "mode",
+    "status",
+    "template"
+  ]
+}

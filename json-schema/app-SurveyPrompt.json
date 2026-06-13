@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "SurveyPrompt",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "show_survey_prompt": {
+      "type": "boolean",
+      "readOnly": true
+    }
+  },
+  "required": [
+    "show_survey_prompt"
+  ]
+}

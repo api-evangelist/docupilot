@@ -1,0 +1,45 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ESignSettings",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "email_account": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/FromEmailAccount"
+        }
+      ],
+      "readOnly": true
+    },
+    "expiry": {
+      "type": "integer",
+      "maximum": 32767,
+      "minimum": 0,
+      "description": "Number of days until envelope expires"
+    },
+    "first_reminder": {
+      "type": "integer",
+      "maximum": 32767,
+      "minimum": 0,
+      "nullable": true,
+      "description": "Number of days before first reminder is sent"
+    },
+    "reminder_frequency": {
+      "type": "integer",
+      "maximum": 32767,
+      "minimum": 0,
+      "nullable": true,
+      "description": "Number of days between reminders"
+    },
+    "warn_before": {
+      "type": "integer",
+      "maximum": 32767,
+      "minimum": 0,
+      "description": "Number of days before expiry to send warning"
+    }
+  },
+  "required": [
+    "email_account"
+  ]
+}

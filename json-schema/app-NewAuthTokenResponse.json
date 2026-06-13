@@ -1,0 +1,46 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "NewAuthTokenResponse",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "readOnly": true
+    },
+    "token": {
+      "type": "string",
+      "readOnly": true
+    },
+    "name": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "created_time": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true,
+      "nullable": true
+    },
+    "last_used_time": {
+      "type": "string",
+      "format": "date-time",
+      "nullable": true
+    },
+    "active": {
+      "type": "boolean"
+    },
+    "secret": {
+      "type": "string",
+      "readOnly": true,
+      "nullable": true
+    }
+  },
+  "required": [
+    "created_time",
+    "id",
+    "name",
+    "secret",
+    "token"
+  ]
+}

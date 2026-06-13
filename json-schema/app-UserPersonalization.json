@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "UserPersonalization",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "ui_version": {
+      "enum": [
+        1,
+        2
+      ],
+      "type": "integer"
+    },
+    "list_view:templates": {
+      "$ref": "#/components/schemas/UserPersonalizationListViewTemplate"
+    },
+    "tp:freshchat:restoreId": {
+      "type": "string",
+      "format": "uuid"
+    }
+  }
+}

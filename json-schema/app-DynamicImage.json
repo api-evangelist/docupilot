@@ -1,0 +1,39 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "DynamicImage",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "token": {
+      "type": "string",
+      "minLength": 1
+    },
+    "page": {
+      "type": "integer",
+      "default": 1
+    },
+    "left": {
+      "type": "number",
+      "format": "double"
+    },
+    "top": {
+      "type": "number",
+      "format": "double"
+    },
+    "width": {
+      "type": "number",
+      "format": "double"
+    },
+    "height": {
+      "type": "number",
+      "format": "double"
+    }
+  },
+  "required": [
+    "height",
+    "left",
+    "token",
+    "top",
+    "width"
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Plan",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "plan_id": {
+      "type": "string",
+      "readOnly": true
+    },
+    "documents_allowed": {
+      "type": "integer",
+      "readOnly": true
+    },
+    "price": {
+      "type": "integer",
+      "readOnly": true
+    },
+    "billing_period_unit": {
+      "enum": [
+        "year",
+        "month"
+      ],
+      "type": "string",
+      "readOnly": true
+    }
+  },
+  "required": [
+    "billing_period_unit",
+    "documents_allowed",
+    "plan_id",
+    "price"
+  ]
+}

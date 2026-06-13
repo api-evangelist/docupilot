@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "RetentionPreference",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "merge_data": {
+      "type": "string"
+    },
+    "generated_document": {
+      "type": "string"
+    }
+  }
+}

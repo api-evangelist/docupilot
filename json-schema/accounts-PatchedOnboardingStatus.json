@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "PatchedOnboardingStatus",
+  "description": "PatchedOnboardingStatus schema from Docupilot accounts API",
+  "type": "object",
+  "properties": {
+    "personalize_experience": {
+      "type": "boolean"
+    },
+    "secure_account": {
+      "type": "boolean"
+    }
+  }
+}

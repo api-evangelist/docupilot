@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ESignReminderConfig",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "expiry": {
+      "type": "integer"
+    },
+    "first_reminder": {
+      "type": "integer"
+    },
+    "reminder_frequency": {
+      "type": "integer"
+    },
+    "warn_before": {
+      "type": "integer"
+    }
+  },
+  "required": [
+    "expiry",
+    "first_reminder",
+    "reminder_frequency",
+    "warn_before"
+  ]
+}

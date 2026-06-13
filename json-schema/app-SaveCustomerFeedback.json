@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "SaveCustomerFeedback",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "feedback": {
+      "type": "object",
+      "nullable": false,
+      "properties": {
+        "challenges_faced": {
+          "type": "array"
+        },
+        "feature_improvement": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "challenges_faced"
+      ]
+    }
+  },
+  "required": [
+    "feedback"
+  ]
+}

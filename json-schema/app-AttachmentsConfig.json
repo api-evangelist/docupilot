@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "AttachmentsConfig",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "allowed_types": {
+      "type": "string"
+    },
+    "max_files": {
+      "type": "integer"
+    },
+    "max_total_size": {
+      "type": "integer"
+    }
+  },
+  "required": [
+    "allowed_types",
+    "max_files",
+    "max_total_size"
+  ]
+}

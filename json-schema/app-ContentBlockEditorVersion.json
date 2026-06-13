@@ -1,0 +1,11 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ContentBlockEditorVersion",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "use_v2_editor": {
+      "type": "boolean"
+    }
+  }
+}

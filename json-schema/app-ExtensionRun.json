@@ -1,0 +1,53 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ExtensionRun",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "user_id": {
+      "type": "integer",
+      "nullable": true,
+      "readOnly": true
+    },
+    "data": {
+      "type": "object",
+      "additionalProperties": {}
+    },
+    "started_on": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true
+    },
+    "ended_on": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true,
+      "nullable": true
+    },
+    "status": {
+      "enum": [
+        "queued",
+        "in_progress",
+        "success",
+        "partial_success",
+        "failed"
+      ],
+      "type": "string"
+    },
+    "request_id": {
+      "type": "string",
+      "nullable": true,
+      "maxLength": 255
+    },
+    "origin": {
+      "type": "string",
+      "nullable": true,
+      "maxLength": 255
+    }
+  },
+  "required": [
+    "ended_on",
+    "started_on",
+    "user_id"
+  ]
+}

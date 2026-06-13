@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "EnvelopeVoid",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "reason": {
+      "type": "string",
+      "maxLength": 255
+    }
+  },
+  "required": [
+    "reason"
+  ]
+}

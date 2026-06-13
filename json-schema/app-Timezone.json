@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Timezone",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "readOnly": true
+    },
+    "tz": {
+      "type": "string",
+      "readOnly": true
+    }
+  },
+  "required": [
+    "name",
+    "tz"
+  ]
+}

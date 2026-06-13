@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "AITemplateEdit",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "ai_prompt": {
+      "type": "string",
+      "writeOnly": true
+    },
+    "selected_content": {
+      "type": "string",
+      "writeOnly": true
+    },
+    "ai_response": {
+      "type": "string",
+      "readOnly": true
+    }
+  },
+  "required": [
+    "ai_prompt",
+    "ai_response",
+    "selected_content"
+  ]
+}

@@ -1,0 +1,150 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Envelope",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "readOnly": true
+    },
+    "pending_signers_count": {
+      "type": "integer",
+      "readOnly": true
+    },
+    "is_waiting_for_me": {
+      "type": "boolean",
+      "readOnly": true
+    },
+    "source": {
+      "type": "string",
+      "enum": [
+        "DOC_GEN",
+        "MANUAL_SEND"
+      ],
+      "readOnly": true
+    },
+    "envelope_id": {
+      "type": "string",
+      "readOnly": true
+    },
+    "name": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "status": {
+      "enum": [
+        "created",
+        "pending",
+        "voided",
+        "declined",
+        "completed"
+      ],
+      "type": "string"
+    },
+    "cc": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "maxLength": 1000
+      }
+    },
+    "sequenced_signing": {
+      "type": "boolean"
+    },
+    "expiry": {
+      "type": "string",
+      "format": "date-time",
+      "nullable": true
+    },
+    "first_reminder": {
+      "type": "string",
+      "nullable": true,
+      "description": "ex: P3D to send first reminders after 3 days of sending invite"
+    },
+    "reminder_frequency": {
+      "type": "string",
+      "nullable": true,
+      "description": "ex: P3D to send follow up reminders every 3 days"
+    },
+    "warn_before": {
+      "type": "string",
+      "format": "date-time",
+      "nullable": true
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true
+    },
+    "completed_at": {
+      "type": "string",
+      "format": "date-time",
+      "nullable": true
+    },
+    "deleted_at": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true,
+      "nullable": true
+    },
+    "archived_at": {
+      "type": "string",
+      "format": "date-time",
+      "nullable": true
+    },
+    "declined_at": {
+      "type": "string",
+      "format": "date-time",
+      "nullable": true
+    },
+    "voided_at": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true,
+      "nullable": true
+    },
+    "reason": {
+      "type": "string",
+      "nullable": true,
+      "description": "ex: Reason for Declining or Voiding provided by signer or sender respectively",
+      "minLength": 4,
+      "maxLength": 500
+    },
+    "sender": {
+      "type": "integer"
+    },
+    "voided_by": {
+      "type": "integer",
+      "nullable": true
+    },
+    "updated_by": {
+      "type": "integer",
+      "readOnly": true,
+      "nullable": true
+    },
+    "folder": {
+      "type": "integer",
+      "nullable": true
+    }
+  },
+  "required": [
+    "created_at",
+    "deleted_at",
+    "envelope_id",
+    "id",
+    "is_waiting_for_me",
+    "name",
+    "pending_signers_count",
+    "sender",
+    "source",
+    "updated_at",
+    "updated_by",
+    "voided_at"
+  ]
+}

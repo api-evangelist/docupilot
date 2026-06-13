@@ -1,0 +1,92 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "EnvelopeRecipient",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "readOnly": true
+    },
+    "recipient_id": {
+      "type": "string",
+      "readOnly": true
+    },
+    "email_address": {
+      "type": "string",
+      "format": "email",
+      "maxLength": 254
+    },
+    "subject": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "email_body": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "order": {
+      "type": "integer",
+      "maximum": 2147483647,
+      "minimum": 0
+    },
+    "status": {
+      "enum": [
+        "created",
+        "failed",
+        "sent",
+        "viewed",
+        "completed",
+        "declined"
+      ],
+      "type": "string"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true
+    },
+    "invited_at": {
+      "type": "string",
+      "format": "date-time",
+      "nullable": true
+    },
+    "last_reminded_at": {
+      "type": "string",
+      "format": "date-time",
+      "nullable": true
+    },
+    "completed_at": {
+      "type": "string",
+      "format": "date-time",
+      "nullable": true
+    },
+    "workspace": {
+      "type": "integer"
+    },
+    "envelope": {
+      "type": "integer"
+    }
+  },
+  "required": [
+    "created_at",
+    "email_address",
+    "email_body",
+    "envelope",
+    "id",
+    "name",
+    "order",
+    "recipient_id",
+    "subject",
+    "updated_at",
+    "workspace"
+  ]
+}

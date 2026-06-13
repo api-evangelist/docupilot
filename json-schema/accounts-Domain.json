@@ -1,0 +1,42 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Domain",
+  "description": "Domain schema from Docupilot accounts API",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "readOnly": true
+    },
+    "domain_name": {
+      "type": "string",
+      "maxLength": 70
+    },
+    "txt_record": {
+      "type": "string",
+      "readOnly": true
+    },
+    "is_txt_verified": {
+      "type": "boolean",
+      "readOnly": true
+    },
+    "is_locked": {
+      "type": "boolean",
+      "readOnly": true
+    },
+    "verification_expired_at": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true,
+      "nullable": true
+    }
+  },
+  "required": [
+    "domain_name",
+    "id",
+    "is_locked",
+    "is_txt_verified",
+    "txt_record",
+    "verification_expired_at"
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "GlobalPermission",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "templates": {
+      "type": "boolean"
+    },
+    "folders": {
+      "type": "boolean"
+    },
+    "workspace": {
+      "type": "boolean"
+    },
+    "workspace:update": {
+      "type": "boolean"
+    },
+    "workspace:delete": {
+      "type": "boolean"
+    },
+    "billing": {
+      "type": "boolean"
+    },
+    "team:manage": {
+      "type": "boolean"
+    },
+    "integrations": {
+      "type": "boolean"
+    },
+    "reports": {
+      "type": "boolean"
+    },
+    "api_settings": {
+      "type": "boolean"
+    },
+    "eSignatures": {
+      "type": "boolean"
+    },
+    "extensions": {
+      "type": "boolean"
+    },
+    "delivery:create": {
+      "type": "boolean"
+    },
+    "settings:esign:general": {
+      "type": "boolean"
+    },
+    "settings:esign:webhook": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "api_settings",
+    "billing",
+    "delivery:create",
+    "eSignatures",
+    "extensions",
+    "folders",
+    "integrations",
+    "reports",
+    "settings:esign:general",
+    "settings:esign:webhook",
+    "team:manage",
+    "templates",
+    "workspace",
+    "workspace:delete",
+    "workspace:update"
+  ]
+}

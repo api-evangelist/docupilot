@@ -1,0 +1,50 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "TeamMember",
+  "description": "TeamMember schema from Docupilot accounts API",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "readOnly": true
+    },
+    "first_name": {
+      "type": "string",
+      "maxLength": 50
+    },
+    "last_name": {
+      "type": "string",
+      "maxLength": 50
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "maxLength": 255
+    },
+    "role": {
+      "enum": [
+        "owner",
+        "admin",
+        "member"
+      ],
+      "type": "string"
+    },
+    "is_active": {
+      "type": "boolean",
+      "title": "Active",
+      "description": "Designates whether this user should be treated as active. Unselect this instead of deleting accounts."
+    },
+    "workspaces": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Workspace"
+      },
+      "readOnly": true
+    }
+  },
+  "required": [
+    "email",
+    "id",
+    "workspaces"
+  ]
+}

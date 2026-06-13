@@ -1,0 +1,12 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "PatchedESignEmailAccount",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "email_account": {
+      "type": "integer",
+      "nullable": true
+    }
+  }
+}

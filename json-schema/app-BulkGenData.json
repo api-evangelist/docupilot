@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "BulkGenData",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer"
+    },
+    "created_by": {
+      "type": "integer"
+    },
+    "updated_by": {
+      "type": "integer"
+    },
+    "data": {
+      "type": "object",
+      "additionalProperties": {}
+    },
+    "row_count": {
+      "type": "integer"
+    },
+    "suggested_mapping": {
+      "type": "object",
+      "additionalProperties": {}
+    },
+    "delimiter": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "created_by",
+    "data",
+    "delimiter",
+    "id",
+    "row_count",
+    "suggested_mapping",
+    "updated_by"
+  ]
+}

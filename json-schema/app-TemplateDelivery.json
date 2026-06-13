@@ -1,0 +1,46 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "TemplateDelivery",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "readOnly": true
+    },
+    "name": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "type": {
+      "enum": [
+        "webhook",
+        "azure_blob_storage",
+        "box_drive",
+        "signature",
+        "docu_sign",
+        "sign_now",
+        "zoho_crm",
+        "dropbox",
+        "google_drive",
+        "podio",
+        "one_drive",
+        "sharepoint",
+        "eversign",
+        "hellosign",
+        "aws_s3",
+        "signable",
+        "yousign",
+        "email",
+        "sftp"
+      ],
+      "type": "string",
+      "readOnly": true
+    }
+  },
+  "required": [
+    "id",
+    "name",
+    "type"
+  ]
+}

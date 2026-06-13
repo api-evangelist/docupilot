@@ -1,0 +1,53 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "EnvelopeBulkDownload",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "readOnly": true
+    },
+    "name": {
+      "type": "string",
+      "readOnly": true
+    },
+    "status": {
+      "enum": [
+        "pending",
+        "success",
+        "error"
+      ],
+      "type": "string",
+      "readOnly": true
+    },
+    "envelope_ids": {
+      "type": "array",
+      "items": {
+        "type": "integer"
+      },
+      "writeOnly": true
+    },
+    "created_time": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true
+    },
+    "filters": {
+      "type": "object",
+      "additionalProperties": {},
+      "readOnly": true
+    },
+    "is_export_all": {
+      "type": "boolean",
+      "writeOnly": true
+    }
+  },
+  "required": [
+    "created_time",
+    "filters",
+    "id",
+    "name",
+    "status"
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "PatchedEnvelopeUpdate",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "expiry": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Expiry date and time for the envelope"
+    },
+    "first_reminder": {
+      "type": "integer",
+      "nullable": true,
+      "description": "Days after sending invite to send first reminder"
+    },
+    "reminder_frequency": {
+      "type": "integer",
+      "nullable": true,
+      "description": "Frequency in days for follow-up reminders"
+    },
+    "warn_before": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Days before expiry to send warning"
+    },
+    "sequenced_signing": {
+      "type": "boolean"
+    },
+    "use_default_reminders": {
+      "type": "boolean",
+      "writeOnly": true,
+      "default": false
+    },
+    "cc": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "email"
+      },
+      "nullable": true
+    }
+  }
+}

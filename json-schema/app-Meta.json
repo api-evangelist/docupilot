@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Meta",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "file_uploads": {
+      "$ref": "#/components/schemas/FileUploadMeta"
+    },
+    "batch_process_max_allowed_test_rows": {
+      "$ref": "#/components/schemas/BulkGenerateMeta"
+    },
+    "iam": {
+      "type": "string"
+    },
+    "esign_reminder_defaults": {
+      "$ref": "#/components/schemas/ESignReminderConfig"
+    }
+  },
+  "required": [
+    "batch_process_max_allowed_test_rows",
+    "esign_reminder_defaults",
+    "file_uploads",
+    "iam"
+  ]
+}

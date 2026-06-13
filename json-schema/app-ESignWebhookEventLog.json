@@ -1,0 +1,58 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ESignWebhookEventLog",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "readOnly": true
+    },
+    "is_retryable": {
+      "type": "boolean",
+      "readOnly": true
+    },
+    "event": {
+      "enum": [
+        "recipient_viewed",
+        "recipient_signed",
+        "recipient_declined",
+        "envelope_completed",
+        "envelope_expired",
+        "envelope_voided"
+      ],
+      "type": "string"
+    },
+    "status_code": {
+      "type": "integer",
+      "maximum": 32767,
+      "minimum": 0,
+      "nullable": true,
+      "description": "HTTP status code returned by the webhook"
+    },
+    "last_triggered_at": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true
+    },
+    "attempts": {
+      "type": "integer",
+      "maximum": 32767,
+      "minimum": 0
+    },
+    "webhook": {
+      "type": "integer"
+    },
+    "envelope": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "envelope",
+    "event",
+    "id",
+    "is_retryable",
+    "last_triggered_at",
+    "webhook"
+  ]
+}
