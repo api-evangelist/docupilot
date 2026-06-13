@@ -1,0 +1,35 @@
+name: Docupilot FinOps
+description: Financial operations guidance for managing Docupilot API usage costs. Docupilot charges primarily based on document generation volume per month. Key cost drivers are monthly document count, eSignature envelopes, and additional user seats. Monitoring consumption notifications at 80% and 90% thresholds helps avoid surprise overages and service interruptions.
+url: https://www.docupilot.com/pricing
+cost_model:
+  primary_driver: documents generated per month
+  secondary_drivers:
+    - esignature envelopes consumed
+    - additional user seats
+  billing_cycles:
+    - monthly
+    - annual (required for Business and Enterprise plans)
+optimization:
+  - name: Monitor Document Quota
+    description: Track consumption via in-app notifications at 80% and 90% thresholds to plan upgrades proactively and avoid generation halts.
+  - name: Batch Document Generation
+    description: Combine data payloads where possible to maximize value per document credit rather than generating redundant documents.
+  - name: Annual Billing Discount
+    description: Business and Enterprise plans require annual billing commitments, which typically provides savings versus hypothetical monthly billing at those tiers.
+  - name: Right-size Plan
+    description: Docupilot pricing is primarily document-volume-based. Match your plan to actual monthly document output; upgrading or downgrading is straightforward.
+  - name: Control User Seats
+    description: Additional seats cost $4/seat/month. Audit active users regularly and remove inactive seats to reduce costs.
+  - name: eSignature Volume Discounts
+    description: eSignature envelopes range from $1.50 to $0.75 each with volume discounts. Consolidate signature requests where possible.
+  - name: Set Data Retention Preferences
+    description: Default file URL TTL is 24 hours. Adjust retention settings to avoid storing large volumes of generated files unnecessarily, which may affect storage costs in connected services.
+  - name: Use Test Mode
+    description: Docupilot supports unlimited testing on all plans. Use the test/preview mode during development to avoid consuming production document credits.
+cost_alerts:
+  - threshold: 80
+    action: Review upcoming document needs and plan for potential upgrade before generation halts.
+  - threshold: 90
+    action: Prepare upgrade or reduce non-essential document generation to stay within the current month's quota.
+  - threshold: 100
+    action: Document generation is halted. Upgrade plan immediately to resume API operations.

@@ -1,0 +1,66 @@
+aid: docupilot
+name: Docupilot
+description: Docupilot is a document generation and automation platform with a REST API for creating PDFs, Word documents, PowerPoint presentations, and Excel files from templates using dynamic data merge and workflow automation. The API follows the OpenAPI Specification and supports integration with CRMs, HR systems, form tools, and third-party services via Zapier, Make, and native webhooks.
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: https://raw.githubusercontent.com/api-evangelist/docupilot/refs/heads/main/apis.yml
+created: '2026-06-13'
+modified: '2026-06-13'
+specificationVersion: '0.19'
+type: Index
+tags:
+  - Document Generation
+  - PDF Generation
+  - Document Automation
+  - Template Engine
+  - eSignature
+  - Workflow Automation
+apis:
+  - aid: docupilot:docupilot-api
+    name: Docupilot API
+    description: REST API for generating PDF, Word, PowerPoint, and Excel documents from templates with dynamic data merge. Supports authenticated requests for workspace management and unauthenticated endpoints for template-based document creation via unique template URLs.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://help.docupilot.app/developers/api-overview
+    baseURL: https://api-us1.docupilot.app
+    tags:
+      - Document Generation
+      - PDF
+      - Word
+      - Templates
+      - REST API
+    properties:
+      - type: Documentation
+        url: https://help.docupilot.app/developers/api-overview
+      - type: SwaggerUI
+        url: https://{subdomain}.docupilot.app/~/dashboard/api-docs/swagger-ui/
+      - type: Webhooks
+        url: https://help.docupilot.app/create-document/api-and-webhook-integration
+    contact:
+      - FN: Docupilot Support
+        url: https://help.docupilot.app/
+        email: support@docupilot.com
+common:
+  - type: Website
+    url: https://www.docupilot.com/
+  - type: Documentation
+    url: https://help.docupilot.app/
+  - type: GitHubOrg
+    url: https://github.com/docupilot
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/docupilot-inc
+  - type: Blog
+    url: https://www.docupilot.com/blog
+  - type: Pricing
+    url: https://www.docupilot.com/pricing
+  - type: StatusPage
+    url: https://status.docupilot.com/
+  - type: X
+    url: https://x.com/docupilot
+  - type: Plans
+    url: plans/docupilot-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/docupilot-rate-limits.yml
+  - type: FinOps
+    url: finops/docupilot-finops.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

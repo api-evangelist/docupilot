@@ -1,0 +1,97 @@
+name: Docupilot Plans and Pricing
+description: Pricing plans for Docupilot document generation and automation platform. Plans are based on monthly document generation volume and user seats. All plans include unlimited templates, API access, and integrations. Annual billing is required for Business and Enterprise tiers.
+url: https://www.docupilot.com/pricing
+plans:
+  - name: Starter
+    description: Entry-level plan for individuals and small teams getting started with document automation.
+    price: 29.00
+    unit: month
+    currency: USD
+    documents: 100
+    seats: 1
+    features:
+      - Unlimited templates
+      - PDF and Word document generation
+      - API access
+      - Zapier integration
+      - Make integration
+      - Email delivery
+      - 30-day free trial
+  - name: Plus
+    description: Recommended plan for small teams needing higher document volume and collaboration.
+    price: 99.00
+    unit: month
+    currency: USD
+    documents: 500
+    seats: 3
+    features:
+      - All Starter features
+      - PDF, Word, PowerPoint, and Excel generation
+      - eSignature add-on available
+      - Priority support
+  - name: Pro
+    description: Mid-tier plan for growing teams with higher automation needs.
+    price: 149.00
+    unit: month
+    currency: USD
+    documents: 1000
+    seats: 5
+    features:
+      - All Plus features
+      - Advanced conditional logic
+      - Data retention preferences
+  - name: Premium
+    description: Higher volume plan for teams with significant document output requirements.
+    price: 199.00
+    unit: month
+    currency: USD
+    documents: 2000
+    seats: 7
+    features:
+      - All Pro features
+      - Extended integrations
+  - name: Business
+    description: High-volume plan for larger teams. Requires annual commitment.
+    price: 399.00
+    unit: month
+    currency: USD
+    documents: 5000
+    seats: 15
+    billing: annual
+    features:
+      - All Premium features
+      - Dedicated account support
+  - name: Enterprise
+    description: Enterprise-scale plan for large organizations with compliance and volume requirements. Requires annual commitment.
+    price: 699.00
+    unit: month
+    currency: USD
+    documents: 10000
+    seats: 25
+    billing: annual
+    features:
+      - All Business features
+      - HIPAA compliance
+      - GDPR compliance
+      - ISO 27001 compliance
+      - Custom enterprise SLA
+      - Custom onboarding
+addons:
+  - name: eSignature
+    description: Per-envelope eSignature pricing with volume discounts.
+    price_min: 0.75
+    price_max: 1.50
+    unit: envelope
+    currency: USD
+  - name: Additional User Seats
+    description: Additional user seats beyond plan allocation.
+    price: 4.00
+    unit: seat/month
+    currency: USD
+notifications:
+  - threshold: 80
+    type: credit consumption warning
+  - threshold: 90
+    type: credit consumption warning
+  - threshold: 100
+    type: document generation halted

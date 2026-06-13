@@ -1,0 +1,45 @@
+name: Docupilot Rate Limits
+description: Rate limit policies for the Docupilot REST API. Document generation limits are enforced at the account level based on the active subscription plan. Per-request rate limits are not publicly documented. Document generation halts when the monthly plan credit limit is reached, requiring an account upgrade to resume.
+url: https://help.docupilot.app/developers/api-overview
+limits:
+  - name: Monthly Document Quota
+    description: Total documents that can be generated per calendar month. Applies across all API calls and web-based generation. Generation halts at 100% consumption.
+    type: quota
+    scope: account
+    enforcement: hard
+    tiers:
+      - plan: Starter
+        limit: 100
+        unit: documents/month
+      - plan: Plus
+        limit: 500
+        unit: documents/month
+      - plan: Pro
+        limit: 1000
+        unit: documents/month
+      - plan: Premium
+        limit: 2000
+        unit: documents/month
+      - plan: Business
+        limit: 5000
+        unit: documents/month
+      - plan: Enterprise
+        limit: 10000
+        unit: documents/month
+  - name: File URL Expiry
+    description: Generated document file URLs are valid for 24 hours by default. Retention period can be customized in Data Retention Preferences.
+    type: ttl
+    scope: per-document
+    default_ttl: 24
+    unit: hours
+    configurable: true
+notifications:
+  - threshold: 80
+    description: Warning notification sent at 80% of monthly document quota consumed.
+  - threshold: 90
+    description: Warning notification sent at 90% of monthly document quota consumed.
+  - threshold: 100
+    description: Document generation halted at 100% of monthly quota. Upgrade required to continue.
+notes:
+  - Per-request API rate limits (requests per second/minute) are not publicly documented by Docupilot.
+  - Contact Docupilot support for details on request-level throttling policies.
