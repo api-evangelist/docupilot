@@ -1,7 +1,7 @@
 aid: docupilot
 name: Docupilot
 description: Docupilot is a document generation and automation platform with a REST API for creating PDFs, Word documents, PowerPoint presentations, and Excel files from templates using dynamic data merge and workflow automation. The API follows the OpenAPI Specification and supports integration with CRMs, HR systems, form tools, and third-party services via Zapier, Make, and native webhooks.
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/docupilot/refs/heads/main/apis.yml
 created: '2026-06-13'
 modified: '2026-06-13'
@@ -18,7 +18,7 @@ apis:
   - aid: docupilot:docupilot-api
     name: Docupilot API
     description: REST API for generating PDF, Word, PowerPoint, and Excel documents from templates with dynamic data merge. Supports authenticated requests for workspace management and unauthenticated endpoints for template-based document creation via unique template URLs.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://help.docupilot.app/developers/api-overview
     baseURL: https://api-us1.docupilot.app
     tags:
