@@ -51,6 +51,14 @@ apis:
         url: https://help.docupilot.app/
         email: support@docupilot.com
 common:
+  - type: TrustCenter
+    url: security/docupilot-trust-center.yml
+  - type: VulnerabilityDisclosure
+    url: security/docupilot-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/docupilot-domain-security.yml
+  - type: Authentication
+    url: authentication/docupilot-authentication.yml
   - type: Website
     url: https://www.docupilot.com/
   - type: Documentation
