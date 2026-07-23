@@ -1,0 +1,244 @@
+openapi: 3.0.3
+info:
+  title: Docupilot accounts APIs ai demographic API
+  version: '1.0'
+  description: Docupilot accounts APIs
+  termsOfService: https://docupilot.app/terms-and-conditions/
+  contact:
+    name: Team Docupilot
+    email: support@docupilot.app
+tags:
+- name: demographic
+paths:
+  /accounts/demographic/:
+    post:
+      operationId: create_demographic
+      summary: Create Demographic
+      tags:
+      - demographic
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DemoGraphic'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DemoGraphic'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/DemoGraphic'
+      security:
+      - SessionAuthentication: []
+      responses:
+        '204':
+          description: No response body
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
+          description: ''
+  /accounts/demographic/show_prompt/:
+    get:
+      operationId: show_demographic_prompt_for_organization_users
+      summary: Show demographic prompt for organization users
+      tags:
+      - demographic
+      security:
+      - SessionAuthentication: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ShowDemographicPrompt'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
+          description: ''
+  /accounts/demographic/validate_domain/:
+    post:
+      operationId: validate_domain
+      summary: Verify domain
+      tags:
+      - demographic
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VerifyDomain'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/VerifyDomain'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/VerifyDomain'
+        required: true
+      security:
+      - SessionAuthentication: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VerifyDomain'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
+          description: ''
+components:
+  schemas:
+    UnauthenticatedError:
+      type: object
+      properties:
+        detail:
+          type: string
+      required:
+      - detail
+    VerifyDomain:
+      type: object
+      properties:
+        domain_name:
+          type: string
+          maxLength: 255
+      required:
+      - domain_name
+    ValidationError:
+      type: object
+      properties:
+        errors:
+          type: object
+          additionalProperties: {}
+        non_field_errors:
+          type: array
+          items:
+            type: string
+      required:
+      - errors
+      - non_field_errors
+    UserDemographic:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        product_referral_source:
+          type: string
+          nullable: true
+          maxLength: 52
+        role:
+          type: string
+          maxLength: 52
+      required:
+      - id
+      - role
+    ForbiddenError:
+      type: object
+      properties:
+        detail:
+          type: string
+      required:
+      - detail
+    OrganizationDemographic:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        domain_name:
+          type: string
+          nullable: true
+          maxLength: 255
+        employee_count:
+          enum:
+          - JUST ME
+          - 2 to 5
+          - 6 to 10
+          - 11 to 25
+          - 26 to 50
+          - 51 to 200
+          - 201 to 1,000
+          - 1,001 to 10,000
+          - 10,001 or more
+          type: string
+        industry:
+          type: string
+          maxLength: 100
+        primary_region:
+          type: string
+          maxLength: 100
+      required:
+      - employee_count
+      - id
+      - industry
+      - primary_region
+    ShowDemographicPrompt:
+      type: object
+      properties:
+        user_demographic:
+          type: boolean
+        organization_demographic:
+          type: boolean
+      required:
+      - organization_demographic
+      - user_demographic
+    DemoGraphic:
+      type: object
+      properties:
+        user_demographic:
+          allOf:
+          - $ref: '#/components/schemas/UserDemographic'
+          nullable: true
+        organization_demographic:
+          allOf:
+          - $ref: '#/components/schemas/OrganizationDemographic'
+          nullable: true
+  securitySchemes:
+    OAuthAuthentication:
+      type: http
+      scheme: bearer
+      description: OAuth2 Bearer Token Authentication
+    SessionAuthentication:
+      type: apiKey
+      in: cookie
+      name: sessionid
+      description: browser based login takes care of this
+externalDocs:
+  description: Help docs on how to use API
+  url: https://help.docupilot.app/developers/api-overview

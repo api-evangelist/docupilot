@@ -1,0 +1,747 @@
+openapi: 3.0.3
+info:
+  title: Docupilot accounts APIs ai generate_bulk API
+  version: '1.0'
+  description: Docupilot accounts APIs
+  termsOfService: https://docupilot.app/terms-and-conditions/
+  contact:
+    name: Team Docupilot
+    email: support@docupilot.app
+tags:
+- name: generate_bulk
+paths:
+  /dashboard/api/v2/templates/{template_id}/generate/bulk/:
+    get:
+      operationId: list_bulk_generation_tasks
+      summary: List bulk generation tasks
+      parameters:
+      - in: header
+        name: X-Workspace
+        schema:
+          type: string
+        description: Workspace unique_key
+        required: true
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      - in: query
+        name: status
+        schema:
+          type: integer
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+      - in: path
+        name: template_id
+        schema:
+          type: integer
+          format: int32
+        required: true
+      tags:
+      - generate_bulk
+      security:
+      - OAuthAuthentication: []
+      - SessionAuthentication: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedBulkGenList'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
+          description: ''
+  /dashboard/api/v2/templates/{template_id}/generate/bulk/{id}/:
+    get:
+      operationId: get_bulk_generation_task
+      summary: Get bulk generation task
+      parameters:
+      - in: header
+        name: X-Workspace
+        schema:
+          type: string
+        description: Workspace unique_key
+        required: true
+      - in: path
+        name: id
+        schema:
+          type: integer
+          format: int32
+        description: Task id
+        required: true
+      - in: path
+        name: template_id
+        schema:
+          type: integer
+          format: int32
+        description: Template id
+        required: true
+      tags:
+      - generate_bulk
+      security:
+      - OAuthAuthentication: []
+      - SessionAuthentication: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BulkGen'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
+          description: ''
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: ''
+  /dashboard/api/v2/templates/{template_id}/generate/bulk/{id}/cancel/:
+    put:
+      operationId: cancel_bulk_generation_task
+      summary: Cancel a bulk generation task
+      parameters:
+      - in: header
+        name: X-Workspace
+        schema:
+          type: string
+        description: Workspace unique_key
+        required: true
+      - in: path
+        name: id
+        schema:
+          type: integer
+          format: int32
+        description: Task id
+        required: true
+      - in: path
+        name: template_id
+        schema:
+          type: integer
+          format: int32
+        description: Template id
+        required: true
+      tags:
+      - generate_bulk
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BulkGen'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/BulkGen'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/BulkGen'
+      security:
+      - OAuthAuthentication: []
+      - SessionAuthentication: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BulkGen'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
+          description: ''
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: ''
+  /dashboard/api/v2/templates/{template_id}/generate/bulk/{id}/draft/:
+    get:
+      operationId: get_bulk_generation_draft
+      summary: Get a task saved as draft
+      parameters:
+      - in: header
+        name: X-Workspace
+        schema:
+          type: string
+        description: Workspace unique_key
+        required: true
+      - in: path
+        name: id
+        schema:
+          type: integer
+          format: int32
+        description: Task id
+        required: true
+      - in: path
+        name: template_id
+        schema:
+          type: integer
+          format: int32
+        description: Template id
+        required: true
+      tags:
+      - generate_bulk
+      security:
+      - OAuthAuthentication: []
+      - SessionAuthentication: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BulkGenData'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
+          description: ''
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: ''
+    put:
+      operationId: update_bulk_generation_draft
+      summary: update a template mapping
+      parameters:
+      - in: header
+        name: X-Workspace
+        schema:
+          type: string
+        description: Workspace unique_key
+        required: true
+      - in: path
+        name: id
+        schema:
+          type: integer
+          format: int32
+        description: Task id
+        required: true
+      - in: path
+        name: template_id
+        schema:
+          type: integer
+          format: int32
+        description: Template id
+        required: true
+      tags:
+      - generate_bulk
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BulkGenEdit'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/BulkGenEdit'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/BulkGenEdit'
+        required: true
+      security:
+      - OAuthAuthentication: []
+      - SessionAuthentication: []
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
+          description: ''
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: ''
+  /dashboard/api/v2/templates/{template_id}/generate/bulk/{id}/get_mapping/:
+    get:
+      operationId: get_mapping_data_based_on_delimiter
+      summary: Get Mapping Data based on Delimiter
+      parameters:
+      - in: header
+        name: X-Workspace
+        schema:
+          type: string
+        description: Workspace unique_key
+        required: true
+      - in: query
+        name: delimiter
+        schema:
+          type: string
+        description: A single character used to delimit columns in the batch process file.
+      - in: path
+        name: id
+        schema:
+          type: integer
+          format: int32
+        description: Task id
+        required: true
+      - in: path
+        name: template_id
+        schema:
+          type: integer
+          format: int32
+        description: Template id
+        required: true
+      tags:
+      - generate_bulk
+      security:
+      - OAuthAuthentication: []
+      - SessionAuthentication: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BulkGenData'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
+          description: ''
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: ''
+  /dashboard/api/v2/templates/{template_id}/generate/bulk/{id}/trigger/:
+    put:
+      operationId: trigger_bulk_generation_draft
+      summary: Trigger a bulk generation task
+      parameters:
+      - in: header
+        name: X-Workspace
+        schema:
+          type: string
+        description: Workspace unique_key
+        required: true
+      - in: path
+        name: id
+        schema:
+          type: integer
+          format: int32
+        description: Task id
+        required: true
+      - in: path
+        name: template_id
+        schema:
+          type: integer
+          format: int32
+        description: Template id
+        required: true
+      tags:
+      - generate_bulk
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BulkGenEdit'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/BulkGenEdit'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/BulkGenEdit'
+        required: true
+      security:
+      - OAuthAuthentication: []
+      - SessionAuthentication: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BulkGen'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
+          description: ''
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: ''
+  /dashboard/api/v2/templates/{template_id}/generate/bulk/upload/:
+    post:
+      operationId: upload_for_bulk_generation
+      description: This will create a task in DRAFT mode.
+      summary: Upload a new csv for bulk generate.
+      parameters:
+      - in: header
+        name: X-Workspace
+        schema:
+          type: string
+        description: Workspace unique_key
+        required: true
+      - in: path
+        name: template_id
+        schema:
+          type: integer
+          format: int32
+        description: Template id
+        required: true
+      tags:
+      - generate_bulk
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/BulkGenUpload'
+        required: true
+      security:
+      - OAuthAuthentication: []
+      - SessionAuthentication: []
+      - tokenAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BulkGenData'
+          description: ''
+        '413':
+          content:
+            text/html:
+              schema:
+                description: Uploaded File Is Too Large.
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
+          description: ''
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: ''
+components:
+  schemas:
+    BulkGenTask:
+      type: object
+      properties:
+        status_message:
+          type: string
+          nullable: true
+          maxLength: 255
+      description: ''
+    UnauthenticatedError:
+      type: object
+      properties:
+        detail:
+          type: string
+      required:
+      - detail
+      description: ''
+    ValidationError:
+      type: object
+      properties:
+        errors:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+        non_field_errors:
+          type: array
+          items:
+            type: string
+      required:
+      - errors
+      - non_field_errors
+      description: ''
+    BulkGen:
+      type: object
+      description: ''
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/BulkGenTask'
+          readOnly: true
+        file_name:
+          type: string
+          readOnly: true
+        status:
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          type: integer
+          minimum: 0
+          maximum: 32767
+        start_time:
+          type: string
+          format: date-time
+          nullable: true
+        end_time:
+          type: string
+          format: date-time
+          nullable: true
+        total:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        success:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        updated_time:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+        delimiter:
+          type: string
+          nullable: true
+          maxLength: 1
+        created_by:
+          type: integer
+          readOnly: true
+        updated_by:
+          type: integer
+          readOnly: true
+          nullable: true
+      required:
+      - created_by
+      - errors
+      - file_name
+      - id
+      - updated_by
+      - updated_time
+    BulkGenUpload:
+      type: object
+      properties:
+        file:
+          type: string
+          format: binary
+        delimiter:
+          type: string
+          maxLength: 1
+      required:
+      - file
+      description: ''
+    ForbiddenError:
+      type: object
+      properties:
+        detail:
+          type: string
+      required:
+      - detail
+      description: ''
+    PaginatedBulkGenList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/BulkGen'
+    BulkGenEdit:
+      type: object
+      properties:
+        mapping:
+          type: object
+          additionalProperties: {}
+        delimiter:
+          type: string
+          maxLength: 1
+      required:
+      - delimiter
+      - mapping
+      description: ''
+    NotFoundError:
+      type: object
+      properties:
+        detail:
+          type: string
+      required:
+      - detail
+      description: ''
+    BulkGenData:
+      type: object
+      properties:
+        id:
+          type: integer
+        created_by:
+          type: integer
+        updated_by:
+          type: integer
+        data:
+          type: object
+          additionalProperties: {}
+        row_count:
+          type: integer
+        suggested_mapping:
+          type: object
+          additionalProperties: {}
+        delimiter:
+          type: string
+      required:
+      - created_by
+      - data
+      - delimiter
+      - id
+      - row_count
+      - suggested_mapping
+      - updated_by
+      description: ''
+  securitySchemes:
+    OAuthAuthentication:
+      type: http
+      scheme: bearer
+      description: OAuth2 Bearer Token Authentication
+    SessionAuthentication:
+      type: apiKey
+      in: cookie
+      name: sessionid
+      description: browser based login takes care of this
+externalDocs:
+  description: Help docs on how to use API
+  url: https://help.docupilot.app/developers/api-overview

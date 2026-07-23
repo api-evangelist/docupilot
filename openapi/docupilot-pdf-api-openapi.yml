@@ -1,0 +1,222 @@
+openapi: 3.0.3
+info:
+  title: Docupilot accounts APIs ai pdf API
+  version: '1.0'
+  description: Docupilot accounts APIs
+  termsOfService: https://docupilot.app/terms-and-conditions/
+  contact:
+    name: Team Docupilot
+    email: support@docupilot.app
+tags:
+- name: pdf
+paths:
+  /dashboard/api/v2/pdf/transform/:
+    post:
+      operationId: pdf_transform
+      parameters:
+      - in: header
+        name: X-Client
+        schema:
+          type: string
+        description: Client Origin
+      - in: header
+        name: X-Workspace
+        schema:
+          type: string
+        description: Workspace unique_key
+        required: true
+      - in: query
+        name: response_type
+        schema:
+          type: string
+          enum:
+          - stream
+          - url
+        description: If stream, returns the transformed file as a downloadable PDF. If url, returns JSON with file_url and file_name.
+      - in: query
+        name: test
+        schema:
+          type: boolean
+        description: If true, the document will be generated in test mode (with watermark and without deducting merge credits).
+      tags:
+      - pdf
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PDFTransformJsonRequest'
+            examples:
+              JSONTransformExample:
+                value:
+                  inputs:
+                  - id: pdf1
+                    file_url: https://example.com/input-1.pdf
+                  - id: pdf2
+                    file_url: https://example.com/input-2.pdf
+                  operations:
+                  - id: build-base
+                    type: compose
+                    sources:
+                    - input: pdf1
+                      pages: 1-3
+                    - input: pdf2
+                      pages: all
+                  - id: rotate-pages
+                    type: rotate
+                    target: current
+                    pages: 1-2
+                    angle: 90
+                  - id: add-page-numbers
+                    type: page_number
+                    target: current
+                    pages: all
+                    format: Page {n} of {total}
+                    position: bottom-center
+                  output_file_name: processed.pdf
+                summary: Compose + rotate + page numbers
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PDFTransformMultipartRequest'
+        required: true
+      security:
+      - OAuthAuthentication: []
+      - SessionAuthentication: []
+      - tokenAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  file_url:
+                    type: string
+                  file_name:
+                    type: string
+            application/pdf:
+              schema:
+                type: string
+                format: binary
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
+          description: ''
+components:
+  schemas:
+    UnauthenticatedError:
+      type: object
+      properties:
+        detail:
+          type: string
+      required:
+      - detail
+      description: ''
+    PDFTransformInput:
+      type: object
+      properties:
+        id:
+          type: string
+        file_url:
+          type: string
+          format: uri
+      required:
+      - file_url
+      - id
+      description: ''
+    ValidationError:
+      type: object
+      properties:
+        errors:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+        non_field_errors:
+          type: array
+          items:
+            type: string
+      required:
+      - errors
+      - non_field_errors
+      description: ''
+    PDFTransformJsonRequest:
+      type: object
+      properties:
+        inputs:
+          type: array
+          items:
+            $ref: '#/components/schemas/PDFTransformInput'
+        operations:
+          type: array
+          items:
+            type: object
+            additionalProperties: {}
+        output_file_name:
+          type: string
+      required:
+      - inputs
+      - operations
+      - output_file_name
+      description: ''
+    ForbiddenError:
+      type: object
+      properties:
+        detail:
+          type: string
+      required:
+      - detail
+      description: ''
+    PDFTransformMultipartRequest:
+      type: object
+      properties:
+        inputs:
+          type: array
+          items:
+            type: string
+            format: binary
+        input_ids:
+          type: array
+          items:
+            type: string
+        operations:
+          type: array
+          items:
+            type: object
+            additionalProperties: {}
+        output_file_name:
+          type: string
+      required:
+      - input_ids
+      - inputs
+      - operations
+      - output_file_name
+      description: ''
+  securitySchemes:
+    OAuthAuthentication:
+      type: http
+      scheme: bearer
+      description: OAuth2 Bearer Token Authentication
+    SessionAuthentication:
+      type: apiKey
+      in: cookie
+      name: sessionid
+      description: browser based login takes care of this
+externalDocs:
+  description: Help docs on how to use API
+  url: https://help.docupilot.app/developers/api-overview

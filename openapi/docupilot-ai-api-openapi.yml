@@ -1,0 +1,431 @@
+openapi: 3.0.3
+info:
+  title: Docupilot accounts APIs ai API
+  version: '1.0'
+  description: Docupilot accounts APIs
+  termsOfService: https://docupilot.app/terms-and-conditions/
+  contact:
+    name: Team Docupilot
+    email: support@docupilot.app
+tags:
+- name: ai
+paths:
+  /dashboard/ai/online-builder/create_template/:
+    post:
+      operationId: create_template_online_builder_ai
+      summary: create template using ai
+      parameters:
+      - in: header
+        name: X-Workspace
+        schema:
+          type: string
+        description: Workspace unique_key
+        required: true
+      tags:
+      - ai
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AITemplateCreate'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/AITemplateCreate'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/AITemplateCreate'
+        required: true
+      security:
+      - SessionAuthentication: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AITemplateCreate'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
+          description: ''
+  /dashboard/ai/online-builder/edit_template/:
+    post:
+      operationId: edit_template_online_builder_ai
+      summary: edit template using chat completion
+      parameters:
+      - in: header
+        name: X-Workspace
+        schema:
+          type: string
+        description: Workspace unique_key
+        required: true
+      tags:
+      - ai
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AITemplateEdit'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/AITemplateEdit'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/AITemplateEdit'
+        required: true
+      security:
+      - SessionAuthentication: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AITemplateEdit'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
+          description: ''
+  /dashboard/ai/online-builder/list_prompt_suggestions/:
+    post:
+      operationId: prompt_suggestions_online_builder_ai
+      summary: list prompt suggestions based on template name and description
+      parameters:
+      - in: header
+        name: X-Workspace
+        schema:
+          type: string
+        description: Workspace unique_key
+        required: true
+      tags:
+      - ai
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PromptSuggestions'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PromptSuggestions'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PromptSuggestions'
+        required: true
+      security:
+      - SessionAuthentication: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PromptSuggestions'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
+          description: ''
+  /dashboard/ai/word-add-in/edit_template/:
+    post:
+      operationId: edit_word_template_using_ai
+      summary: Edit word template using ai
+      parameters:
+      - in: header
+        name: X-Workspace
+        schema:
+          type: string
+        description: Workspace unique_key
+        required: true
+      tags:
+      - ai
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WordAddInTemplateEdit'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/WordAddInTemplateEdit'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/WordAddInTemplateEdit'
+        required: true
+      security:
+      - OAuthAuthentication: []
+      - SessionAuthentication: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WordAddInTemplateEdit'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
+          description: ''
+  /dashboard/ai/word-add-in/list_prompt_suggestions/:
+    post:
+      operationId: prompt_suggestions_word_add_in_ai
+      summary: list prompt suggestions based on File Name and Content
+      parameters:
+      - in: header
+        name: X-Workspace
+        schema:
+          type: string
+        description: Workspace unique_key
+        required: true
+      tags:
+      - ai
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WordAddInPromptSuggestions'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/WordAddInPromptSuggestions'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/WordAddInPromptSuggestions'
+        required: true
+      security:
+      - OAuthAuthentication: []
+      - SessionAuthentication: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WordAddInPromptSuggestions'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
+          description: ''
+components:
+  schemas:
+    PromptSuggestions:
+      type: object
+      properties:
+        template_title:
+          type: string
+          writeOnly: true
+        template_description:
+          type: string
+          writeOnly: true
+          nullable: true
+        prompts:
+          type: array
+          items:
+            type: string
+          readOnly: true
+      required:
+      - prompts
+      - template_title
+      description: ''
+    UnauthenticatedError:
+      type: object
+      properties:
+        detail:
+          type: string
+      required:
+      - detail
+      description: ''
+    WordAddInTemplateEdit:
+      type: object
+      properties:
+        user_input:
+          type: string
+          writeOnly: true
+        content_type:
+          enum:
+          - text
+          - group
+          - table
+          type: string
+          writeOnly: true
+        selected_content:
+          type: string
+          writeOnly: true
+        ai_response:
+          type: string
+          readOnly: true
+      required:
+      - ai_response
+      - content_type
+      - selected_content
+      - user_input
+      description: ''
+    ValidationError:
+      type: object
+      properties:
+        errors:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+        non_field_errors:
+          type: array
+          items:
+            type: string
+      required:
+      - errors
+      - non_field_errors
+      description: ''
+    AITemplateEdit:
+      type: object
+      properties:
+        ai_prompt:
+          type: string
+          writeOnly: true
+        selected_content:
+          type: string
+          writeOnly: true
+        ai_response:
+          type: string
+          readOnly: true
+      required:
+      - ai_prompt
+      - ai_response
+      - selected_content
+      description: ''
+    ForbiddenError:
+      type: object
+      properties:
+        detail:
+          type: string
+      required:
+      - detail
+      description: ''
+    WordAddInPromptSuggestions:
+      type: object
+      properties:
+        title:
+          type: string
+          writeOnly: true
+        first_page_content:
+          type: string
+          writeOnly: true
+          nullable: true
+        main_headings:
+          type: string
+          writeOnly: true
+          nullable: true
+        prompts:
+          type: array
+          items:
+            type: string
+          readOnly: true
+      required:
+      - prompts
+      - title
+      description: ''
+    AITemplateCreate:
+      type: object
+      properties:
+        ai_prompt:
+          type: string
+          writeOnly: true
+        template_title:
+          type: string
+          writeOnly: true
+          maxLength: 120
+        template_description:
+          type: string
+          writeOnly: true
+          nullable: true
+          maxLength: 255
+        ai_response:
+          type: string
+          readOnly: true
+      required:
+      - ai_prompt
+      - ai_response
+      - template_title
+      description: ''
+  securitySchemes:
+    OAuthAuthentication:
+      type: http
+      scheme: bearer
+      description: OAuth2 Bearer Token Authentication
+    SessionAuthentication:
+      type: apiKey
+      in: cookie
+      name: sessionid
+      description: browser based login takes care of this
+externalDocs:
+  description: Help docs on how to use API
+  url: https://help.docupilot.app/developers/api-overview

@@ -1,0 +1,375 @@
+openapi: 3.0.3
+info:
+  title: Docupilot accounts APIs ai merge_history API
+  version: '1.0'
+  description: Docupilot accounts APIs
+  termsOfService: https://docupilot.app/terms-and-conditions/
+  contact:
+    name: Team Docupilot
+    email: support@docupilot.app
+tags:
+- name: merge_history
+paths:
+  /dashboard/api/v2/merge_history/:
+    get:
+      operationId: get_created_documents_merge_history
+      summary: Get created documents merge history
+      parameters:
+      - in: header
+        name: X-Workspace
+        schema:
+          type: string
+        description: Workspace unique_key
+        required: true
+      - in: query
+        name: end_date
+        schema:
+          type: string
+          format: date-time
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      - in: query
+        name: search
+        schema:
+          type: string
+        description: Search across created_file_name field
+      - in: query
+        name: start_date
+        schema:
+          type: string
+          format: date-time
+      - in: query
+        name: status
+        schema:
+          type: string
+          enum:
+          - error
+          - pending
+          - success
+      - in: query
+        name: template
+        schema:
+          type: integer
+      tags:
+      - merge_history
+      security:
+      - OAuthAuthentication: []
+      - SessionAuthentication: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedDocumentMergeHistoryList'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
+          description: ''
+  /dashboard/api/v2/merge_history/{id}/download/:
+    get:
+      operationId: download_created_document_using_document_merge_history
+      summary: download generated document if available
+      parameters:
+      - in: header
+        name: X-Workspace
+        schema:
+          type: string
+        description: Workspace unique_key
+        required: true
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this document merge history.
+        required: true
+      tags:
+      - merge_history
+      security:
+      - SessionAuthentication: []
+      responses:
+        '200':
+          content:
+            text/html:
+              schema:
+                type: string
+                format: binary
+            application/pdf:
+              schema:
+                type: string
+                format: binary
+            image/png:
+              schema:
+                type: string
+                format: binary
+            application/vnd.openxmlformats-officedocument.wordprocessingml.document:
+              schema:
+                type: string
+                format: binary
+            application/vnd.openxmlformats-officedocument.presentationml.presentation:
+              schema:
+                type: string
+                format: binary
+            application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
+              schema:
+                type: string
+                format: binary
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
+          description: ''
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: ''
+components:
+  schemas:
+    UnauthenticatedError:
+      type: object
+      properties:
+        detail:
+          type: string
+      required:
+      - detail
+      description: ''
+    ChildTemplate:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        title:
+          type: string
+          readOnly: true
+        description:
+          type: string
+          nullable: true
+          maxLength: 255
+        type:
+          enum:
+          - docx
+          - html
+          - dpt_pdf
+          - fillable_pdf
+          - pptx
+          - xlsx
+          - g_document
+          - g_presentation
+          - g_spreadsheet
+          type: string
+        created_time:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_time:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+        document_status:
+          enum:
+          - active
+          - test
+          type: string
+        deleted_time:
+          type: string
+          format: date-time
+          nullable: true
+        use_v2_editor:
+          type: boolean
+        created_by:
+          type: integer
+          readOnly: true
+        updated_by:
+          type: integer
+          readOnly: true
+          nullable: true
+        folder:
+          type: integer
+          nullable: true
+      required:
+      - created_by
+      - created_time
+      - id
+      - title
+      - updated_by
+      - updated_time
+      description: ''
+    ForbiddenError:
+      type: object
+      properties:
+        detail:
+          type: string
+      required:
+      - detail
+      description: ''
+    DocumentMergeHistory:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        data:
+          type: object
+          additionalProperties: {}
+          nullable: true
+        template:
+          allOf:
+          - $ref: '#/components/schemas/ChildTemplate'
+          readOnly: true
+          nullable: true
+        executed_deliveries:
+          type: array
+          items:
+            $ref: '#/components/schemas/ChildDocumentMergeHistory'
+        is_data_expired:
+          type: boolean
+          readOnly: true
+        action:
+          enum:
+          - Merge
+          - Append
+          - Convert
+          - Transform
+          type: string
+          readOnly: true
+        is_document_expired:
+          type: boolean
+          readOnly: true
+        created_file_name:
+          type: string
+          maxLength: 255
+        created_time:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - action
+      - created_file_name
+      - created_time
+      - executed_deliveries
+      - id
+      - is_data_expired
+      - is_document_expired
+      - template
+      description: ''
+    PaginatedDocumentMergeHistoryList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/DocumentMergeHistory'
+    NotFoundError:
+      type: object
+      properties:
+        detail:
+          type: string
+      required:
+      - detail
+      description: ''
+    ChildDocumentMergeHistory:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        delivery_type:
+          enum:
+          - webhook
+          - azure_blob_storage
+          - box_drive
+          - signature
+          - docu_sign
+          - sign_now
+          - zoho_crm
+          - dropbox
+          - google_drive
+          - podio
+          - one_drive
+          - sharepoint
+          - eversign
+          - hellosign
+          - aws_s3
+          - signable
+          - yousign
+          - email
+          - sftp
+          type: string
+        status:
+          enum:
+          - pending
+          - success
+          - error
+          type: string
+        message:
+          type: object
+          additionalProperties: {}
+          nullable: true
+        delivery:
+          type: integer
+          nullable: true
+      required:
+      - delivery_type
+      - id
+      - status
+      description: ''
+  securitySchemes:
+    OAuthAuthentication:
+      type: http
+      scheme: bearer
+      description: OAuth2 Bearer Token Authentication
+    SessionAuthentication:
+      type: apiKey
+      in: cookie
+      name: sessionid
+      description: browser based login takes care of this
+externalDocs:
+  description: Help docs on how to use API
+  url: https://help.docupilot.app/developers/api-overview

@@ -1,0 +1,324 @@
+openapi: 3.0.3
+info:
+  title: Docupilot accounts APIs ai general API
+  version: '1.0'
+  description: Docupilot accounts APIs
+  termsOfService: https://docupilot.app/terms-and-conditions/
+  contact:
+    name: Team Docupilot
+    email: support@docupilot.app
+tags:
+- name: general
+paths:
+  /dashboard/banner_notifications/:
+    get:
+      operationId: list_banner_notifications
+      tags:
+      - general
+      security:
+      - SessionAuthentication: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BannerNotification'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
+          description: ''
+  /dashboard/feature_flags/:
+    get:
+      operationId: get_feature_flags
+      parameters:
+      - in: header
+        name: X-Workspace
+        schema:
+          type: string
+        description: Workspace unique_key
+        required: true
+      tags:
+      - general
+      security:
+      - SessionAuthentication: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FeatureFlags'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
+          description: ''
+  /dashboard/meta/:
+    get:
+      operationId: get_app_meta
+      tags:
+      - general
+      security:
+      - SessionAuthentication: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Meta'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
+          description: ''
+  /dashboard/plans/:
+    get:
+      operationId: list_subscription_plans
+      tags:
+      - general
+      security:
+      - SessionAuthentication: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Plan'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
+          description: ''
+  /dashboard/tz/:
+    get:
+      operationId: list_timezones
+      tags:
+      - general
+      security:
+      - SessionAuthentication: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Timezone'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
+          description: ''
+components:
+  schemas:
+    UnauthenticatedError:
+      type: object
+      properties:
+        detail:
+          type: string
+      required:
+      - detail
+      description: ''
+    FeatureFlags:
+      type: object
+      properties:
+        template_versioning_enabled:
+          type: boolean
+      required:
+      - template_versioning_enabled
+      description: ''
+    BannerNotificationAction:
+      type: object
+      properties:
+        text:
+          type: string
+        attributes:
+          type: object
+          additionalProperties: {}
+      required:
+      - attributes
+      - text
+      description: ''
+    Meta:
+      type: object
+      properties:
+        file_uploads:
+          $ref: '#/components/schemas/FileUploadMeta'
+        batch_process_max_allowed_test_rows:
+          $ref: '#/components/schemas/BulkGenerateMeta'
+        iam:
+          type: string
+        esign_reminder_defaults:
+          $ref: '#/components/schemas/ESignReminderConfig'
+      required:
+      - batch_process_max_allowed_test_rows
+      - esign_reminder_defaults
+      - file_uploads
+      - iam
+      description: ''
+    ForbiddenError:
+      type: object
+      properties:
+        detail:
+          type: string
+      required:
+      - detail
+      description: ''
+    Plan:
+      type: object
+      properties:
+        plan_id:
+          type: string
+          readOnly: true
+        documents_allowed:
+          type: integer
+          readOnly: true
+        price:
+          type: integer
+          readOnly: true
+        billing_period_unit:
+          enum:
+          - year
+          - month
+          type: string
+          readOnly: true
+      required:
+      - billing_period_unit
+      - documents_allowed
+      - plan_id
+      - price
+      description: ''
+    Timezone:
+      type: object
+      properties:
+        name:
+          type: string
+          readOnly: true
+        tz:
+          type: string
+          readOnly: true
+      required:
+      - name
+      - tz
+      description: ''
+    FileUploadMeta:
+      type: object
+      properties:
+        email_attachments:
+          $ref: '#/components/schemas/AttachmentsConfig'
+      required:
+      - email_attachments
+      description: ''
+    BulkGenerateMeta:
+      type: object
+      properties:
+        max_test_rows:
+          type: integer
+      required:
+      - max_test_rows
+      description: ''
+    AttachmentsConfig:
+      type: object
+      properties:
+        allowed_types:
+          type: string
+        max_files:
+          type: integer
+        max_total_size:
+          type: integer
+      required:
+      - allowed_types
+      - max_files
+      - max_total_size
+      description: ''
+    BannerNotification:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        action:
+          $ref: '#/components/schemas/BannerNotificationAction'
+      required:
+      - action
+      - description
+      - id
+      - name
+      description: ''
+    ESignReminderConfig:
+      type: object
+      properties:
+        expiry:
+          type: integer
+        first_reminder:
+          type: integer
+        reminder_frequency:
+          type: integer
+        warn_before:
+          type: integer
+      required:
+      - expiry
+      - first_reminder
+      - reminder_frequency
+      - warn_before
+      description: ''
+  securitySchemes:
+    OAuthAuthentication:
+      type: http
+      scheme: bearer
+      description: OAuth2 Bearer Token Authentication
+    SessionAuthentication:
+      type: apiKey
+      in: cookie
+      name: sessionid
+      description: browser based login takes care of this
+externalDocs:
+  description: Help docs on how to use API
+  url: https://help.docupilot.app/developers/api-overview

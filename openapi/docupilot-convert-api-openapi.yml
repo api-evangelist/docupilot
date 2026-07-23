@@ -1,0 +1,181 @@
+openapi: 3.0.3
+info:
+  title: Docupilot accounts APIs ai convert API
+  version: '1.0'
+  description: Docupilot accounts APIs
+  termsOfService: https://docupilot.app/terms-and-conditions/
+  contact:
+    name: Team Docupilot
+    email: support@docupilot.app
+tags:
+- name: convert
+paths:
+  /dashboard/api/v2/convert/:
+    post:
+      operationId: convert-files
+      parameters:
+      - in: header
+        name: X-Workspace
+        schema:
+          type: string
+        description: Workspace unique_key
+        required: true
+      - in: query
+        name: response_type
+        schema:
+          type: string
+          enum:
+          - stream
+          - url
+        description: If stream, returns the converted file as a downloadable binary (PDF / PNG / ZIP). If url, returns JSON with file_url and file_name.
+      - in: query
+        name: test
+        schema:
+          type: boolean
+        description: If true, the document will be generated in test mode (with watermark and without deducting merge credits).
+      tags:
+      - convert
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConvertJsonRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ConvertMultipartRequest'
+        required: true
+      security:
+      - OAuthAuthentication: []
+      - SessionAuthentication: []
+      - tokenAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  file_url:
+                    type: string
+                  file_name:
+                    type: string
+                description: Returned when download=false
+            application/pdf:
+              schema:
+                type: string
+                format: binary
+            image/png:
+              schema:
+                type: string
+                format: binary
+            application/zip:
+              schema:
+                type: string
+                format: binary
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
+          description: ''
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: ''
+components:
+  schemas:
+    UnauthenticatedError:
+      type: object
+      properties:
+        detail:
+          type: string
+      required:
+      - detail
+      description: ''
+    ForbiddenError:
+      type: object
+      properties:
+        detail:
+          type: string
+      required:
+      - detail
+      description: ''
+    ConvertJsonRequest:
+      type: object
+      properties:
+        output_file_name:
+          type: string
+        output_type:
+          enum:
+          - pdf
+          - png
+          - png.zip
+          type: string
+        file:
+          $ref: '#/components/schemas/ConvertFileUrl'
+      required:
+      - file
+      - output_file_name
+      - output_type
+      description: ''
+    ConvertFileUrl:
+      type: object
+      properties:
+        url:
+          type: string
+          format: uri
+        type:
+          type: string
+      required:
+      - type
+      - url
+      description: ''
+    NotFoundError:
+      type: object
+      properties:
+        detail:
+          type: string
+      required:
+      - detail
+      description: ''
+    ConvertMultipartRequest:
+      type: object
+      properties:
+        output_file_name:
+          type: string
+        output_type:
+          enum:
+          - pdf
+          - png
+          - png.zip
+          type: string
+        file:
+          type: string
+          format: binary
+      required:
+      - file
+      - output_file_name
+      - output_type
+      description: ''
+  securitySchemes:
+    OAuthAuthentication:
+      type: http
+      scheme: bearer
+      description: OAuth2 Bearer Token Authentication
+    SessionAuthentication:
+      type: apiKey
+      in: cookie
+      name: sessionid
+      description: browser based login takes care of this
+externalDocs:
+  description: Help docs on how to use API
+  url: https://help.docupilot.app/developers/api-overview

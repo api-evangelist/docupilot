@@ -1,0 +1,2337 @@
+openapi: 3.0.3
+info:
+  title: Docupilot accounts APIs ai template_delivery API
+  version: '1.0'
+  description: Docupilot accounts APIs
+  termsOfService: https://docupilot.app/terms-and-conditions/
+  contact:
+    name: Team Docupilot
+    email: support@docupilot.app
+tags:
+- name: template_delivery
+paths:
+  /dashboard/api/v2/templates/{template_id}/deliveries/:
+    get:
+      operationId: list_template_deliveries
+      summary: Get deliveries configured under this template
+      parameters:
+      - in: header
+        name: X-Workspace
+        schema:
+          type: string
+        description: Workspace unique_key
+        required: true
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      - in: path
+        name: template_id
+        schema:
+          type: integer
+          format: int32
+        required: true
+      - in: query
+        name: type
+        schema:
+          type: string
+          enum:
+          - aws_s3
+          - azure_blob_storage
+          - box_drive
+          - docu_sign
+          - dropbox
+          - email
+          - eversign
+          - google_drive
+          - hellosign
+          - one_drive
+          - podio
+          - sftp
+          - sharepoint
+          - sign_now
+          - signable
+          - signature
+          - webhook
+          - yousign
+          - zoho_crm
+      tags:
+      - template_delivery
+      security:
+      - OAuthAuthentication: []
+      - SessionAuthentication: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TemplateDelivery'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
+          description: ''
+    post:
+      operationId: create_template_delivery
+      summary: Create delivery
+      parameters:
+      - in: header
+        name: X-Workspace
+        schema:
+          type: string
+        description: Workspace unique_key
+        required: true
+      - in: path
+        name: template_id
+        schema:
+          type: integer
+          format: int32
+        required: true
+      tags:
+      - template_delivery
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PolymorphicDelivery'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PolymorphicDelivery'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PolymorphicDelivery'
+      security:
+      - OAuthAuthentication: []
+      - SessionAuthentication: []
+      - tokenAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PolymorphicDelivery'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
+          description: ''
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: ''
+  /dashboard/api/v2/templates/{template_id}/deliveries/{id}/:
+    get:
+      operationId: retrieve_template_delivery
+      summary: Get delivery
+      parameters:
+      - in: header
+        name: X-Workspace
+        schema:
+          type: string
+        description: Workspace unique_key
+        required: true
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this delivery.
+        required: true
+      - in: path
+        name: template_id
+        schema:
+          type: integer
+          format: int32
+        required: true
+      tags:
+      - template_delivery
+      security:
+      - OAuthAuthentication: []
+      - SessionAuthentication: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PolymorphicDelivery'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
+          description: ''
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: ''
+    put:
+      operationId: update_template_delivery
+      summary: Update delivery
+      parameters:
+      - in: header
+        name: X-Workspace
+        schema:
+          type: string
+        description: Workspace unique_key
+        required: true
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this delivery.
+        required: true
+      - in: path
+        name: template_id
+        schema:
+          type: integer
+          format: int32
+        required: true
+      tags:
+      - template_delivery
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PolymorphicDelivery'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PolymorphicDelivery'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PolymorphicDelivery'
+      security:
+      - OAuthAuthentication: []
+      - SessionAuthentication: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PolymorphicDelivery'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
+          description: ''
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: ''
+    delete:
+      operationId: delete_template_delivery
+      summary: Delete delivery
+      parameters:
+      - in: header
+        name: X-Workspace
+        schema:
+          type: string
+        description: Workspace unique_key
+        required: true
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this delivery.
+        required: true
+      - in: path
+        name: template_id
+        schema:
+          type: integer
+          format: int32
+        required: true
+      tags:
+      - template_delivery
+      security:
+      - OAuthAuthentication: []
+      - SessionAuthentication: []
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
+          description: ''
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: ''
+  /dashboard/api/v2/templates/{template_id}/deliveries/{id}/attachments/:
+    post:
+      operationId: upload_delivery_attachments
+      summary: upload email delivery attachments
+      parameters:
+      - in: header
+        name: X-Workspace
+        schema:
+          type: string
+        description: Workspace unique_key
+        required: true
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this delivery.
+        required: true
+      - in: path
+        name: template_id
+        schema:
+          type: integer
+          format: int32
+        required: true
+      tags:
+      - template_delivery
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/EmailDeliveryAttachment'
+        required: true
+      security:
+      - OAuthAuthentication: []
+      - SessionAuthentication: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PolymorphicDelivery'
+          description: ''
+        '413':
+          content:
+            text/html:
+              schema:
+                description: Uploaded File Is Too Large.
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
+          description: ''
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: ''
+  /dashboard/api/v2/templates/{template_id}/deliveries/{id}/attachments/{attachment_id}/:
+    get:
+      operationId: download_delivery_attachment
+      summary: download delivery attachment
+      parameters:
+      - in: header
+        name: X-Workspace
+        schema:
+          type: string
+        description: Workspace unique_key
+        required: true
+      - in: path
+        name: attachment_id
+        schema:
+          type: string
+          pattern: ^\d+$
+        required: true
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this delivery.
+        required: true
+      - in: path
+        name: template_id
+        schema:
+          type: integer
+          format: int32
+        required: true
+      tags:
+      - template_delivery
+      security:
+      - OAuthAuthentication: []
+      - SessionAuthentication: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
+          description: ''
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: ''
+    delete:
+      operationId: delete_delivery_attachment
+      summary: delete email delivery attachment
+      parameters:
+      - in: header
+        name: X-Workspace
+        schema:
+          type: string
+        description: Workspace unique_key
+        required: true
+      - in: path
+        name: attachment_id
+        schema:
+          type: string
+          pattern: ^\d+$
+        required: true
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this delivery.
+        required: true
+      - in: path
+        name: template_id
+        schema:
+          type: integer
+          format: int32
+        required: true
+      tags:
+      - template_delivery
+      security:
+      - OAuthAuthentication: []
+      - SessionAuthentication: []
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
+          description: ''
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: ''
+  /dashboard/api/v2/templates/{template_id}/deliveries/{id}/upgrade_docusign/:
+    post:
+      operationId: upgrade_docusign_delivery
+      summary: Upgrade docusign delivery api version
+      parameters:
+      - in: header
+        name: X-Workspace
+        schema:
+          type: string
+        description: Workspace unique_key
+        required: true
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this delivery.
+        required: true
+      - in: path
+        name: template_id
+        schema:
+          type: integer
+          format: int32
+        required: true
+      tags:
+      - template_delivery
+      security:
+      - OAuthAuthentication: []
+      - SessionAuthentication: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PolymorphicDelivery'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
+          description: ''
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: ''
+components:
+  schemas:
+    EmailDeliveryAttachment:
+      type: object
+      properties:
+        attachments:
+          type: array
+          items:
+            type: string
+            format: binary
+      required:
+      - attachments
+      description: ''
+    BoxDriveDelivery:
+      type: object
+      description: ''
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        failure_email_recipients:
+          type: string
+          nullable: true
+          maxLength: 255
+        account:
+          type: integer
+        name:
+          type: string
+          maxLength: 255
+        type:
+          enum:
+          - webhook
+          - azure_blob_storage
+          - box_drive
+          - signature
+          - docu_sign
+          - sign_now
+          - zoho_crm
+          - dropbox
+          - google_drive
+          - podio
+          - one_drive
+          - sharepoint
+          - eversign
+          - hellosign
+          - aws_s3
+          - signable
+          - yousign
+          - email
+          - sftp
+          type: string
+        success_callback_url:
+          type: string
+          nullable: true
+          maxLength: 255
+        success_callback_payload:
+          type: object
+          additionalProperties: {}
+          nullable: true
+        success_callback_headers:
+          type: object
+          additionalProperties: {}
+          nullable: true
+        last_used_on:
+          type: string
+          format: date-time
+          nullable: true
+        folder:
+          type: string
+        folder_id:
+          type: string
+          nullable: true
+          maxLength: 100
+      required:
+      - account
+      - id
+      - name
+    WebhookDelivery:
+      type: object
+      description: ''
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        failure_email_recipients:
+          type: string
+          nullable: true
+          maxLength: 255
+        name:
+          type: string
+          maxLength: 255
+        type:
+          enum:
+          - webhook
+          - azure_blob_storage
+          - box_drive
+          - signature
+          - docu_sign
+          - sign_now
+          - zoho_crm
+          - dropbox
+          - google_drive
+          - podio
+          - one_drive
+          - sharepoint
+          - eversign
+          - hellosign
+          - aws_s3
+          - signable
+          - yousign
+          - email
+          - sftp
+          type: string
+        success_callback_url:
+          type: string
+          nullable: true
+          maxLength: 255
+        success_callback_payload:
+          type: object
+          additionalProperties: {}
+          nullable: true
+        success_callback_headers:
+          type: object
+          additionalProperties: {}
+          nullable: true
+        last_used_on:
+          type: string
+          format: date-time
+          nullable: true
+        url:
+          type: string
+          maxLength: 255
+        headers:
+          type: object
+          additionalProperties: {}
+          nullable: true
+        payload:
+          type: object
+          additionalProperties: {}
+          nullable: true
+      required:
+      - id
+      - name
+      - url
+    SignatureDelivery:
+      type: object
+      description: ''
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        failure_email_recipients:
+          type: string
+          nullable: true
+          maxLength: 255
+        signers:
+          type: array
+          minItems: 1
+          items:
+            type: object
+            properties:
+              id:
+                type: number
+              order:
+                type: number
+              name:
+                type: string
+                minLength: 3
+              email:
+                type: string
+                format: email
+            required:
+            - id
+            - name
+            - email
+        use_default_reminders:
+          type: boolean
+          default: false
+        expiry:
+          type: integer
+          nullable: true
+        first_reminder:
+          type: integer
+          nullable: true
+        reminder_frequency:
+          type: integer
+          nullable: true
+        warn_before:
+          type: integer
+          nullable: true
+        sender:
+          type: integer
+          nullable: true
+        sender_mode:
+          enum:
+          - fixed
+          - smart
+          type: string
+        folder_name:
+          type: string
+          nullable: true
+          readOnly: true
+        name:
+          type: string
+          maxLength: 255
+        type:
+          enum:
+          - webhook
+          - azure_blob_storage
+          - box_drive
+          - signature
+          - docu_sign
+          - sign_now
+          - zoho_crm
+          - dropbox
+          - google_drive
+          - podio
+          - one_drive
+          - sharepoint
+          - eversign
+          - hellosign
+          - aws_s3
+          - signable
+          - yousign
+          - email
+          - sftp
+          type: string
+        success_callback_url:
+          type: string
+          nullable: true
+          maxLength: 255
+        success_callback_payload:
+          type: object
+          additionalProperties: {}
+          nullable: true
+        success_callback_headers:
+          type: object
+          additionalProperties: {}
+          nullable: true
+        last_used_on:
+          type: string
+          format: date-time
+          nullable: true
+        subject:
+          type: string
+          nullable: true
+        message:
+          type: string
+          nullable: true
+        cc:
+          type: array
+          items:
+            type: string
+            maxLength: 1000
+        sequenced_signing:
+          type: boolean
+        enable_optional_signers:
+          type: boolean
+        folder:
+          type: integer
+          nullable: true
+      required:
+      - folder_name
+      - id
+      - name
+      - signers
+    DocuSignDelivery:
+      type: object
+      description: ''
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        failure_email_recipients:
+          type: string
+          nullable: true
+          maxLength: 255
+        account:
+          type: integer
+        custom_tags:
+          type: object
+          additionalProperties:
+            type: object
+            additionalProperties:
+              type: array
+              items:
+                type: object
+          nullable: true
+        signers:
+          type: array
+          minItems: 1
+          items:
+            type: object
+            properties:
+              order:
+                type: string
+              recipient_type:
+                type: string
+                enum:
+                - signer
+                - agent
+                - cc
+                - editor
+              name:
+                type: string
+                minLength: 1
+              is_email_delivery:
+                type: boolean
+              is_sms_delivery:
+                type: boolean
+              email_address:
+                type: string
+                format: email
+                minLength: 5
+              country_code:
+                type: string
+              phone_number:
+                type: string
+            required:
+            - recipient_type
+            - name
+            - is_email_delivery
+            - is_sms_delivery
+        reminder_settings:
+          type: object
+          nullable: true
+          properties:
+            reminder_delay:
+              type: number
+            reminder_frequency:
+              type: number
+          required:
+          - reminder_delay
+          - reminder_frequency
+        overwrite_account_defaults:
+          type: boolean
+          default: false
+        name:
+          type: string
+          maxLength: 255
+        type:
+          enum:
+          - webhook
+          - azure_blob_storage
+          - box_drive
+          - signature
+          - docu_sign
+          - sign_now
+          - zoho_crm
+          - dropbox
+          - google_drive
+          - podio
+          - one_drive
+          - sharepoint
+          - eversign
+          - hellosign
+          - aws_s3
+          - signable
+          - yousign
+          - email
+          - sftp
+          type: string
+        success_callback_url:
+          type: string
+          nullable: true
+          maxLength: 255
+        success_callback_payload:
+          type: object
+          additionalProperties: {}
+          nullable: true
+        success_callback_headers:
+          type: object
+          additionalProperties: {}
+          nullable: true
+        last_used_on:
+          type: string
+          format: date-time
+          nullable: true
+        subject:
+          type: string
+          nullable: true
+        message:
+          type: string
+          nullable: true
+        fullname_anchor_tags:
+          type: boolean
+        sequenced_signing:
+          type: boolean
+        expire_after:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        enable_optional_signers:
+          type: boolean
+        api_version:
+          enum:
+          - '2.0'
+          - '2.1'
+          type: string
+          readOnly: true
+        folder_id:
+          type: string
+          nullable: true
+          maxLength: 52
+        folder_name:
+          type: string
+          nullable: true
+        allow_reassign:
+          type: boolean
+      required:
+      - account
+      - api_version
+      - id
+      - name
+      - signers
+    UnauthenticatedError:
+      type: object
+      properties:
+        detail:
+          type: string
+      required:
+      - detail
+      description: ''
+    S3Delivery:
+      type: object
+      description: ''
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        failure_email_recipients:
+          type: string
+          nullable: true
+          maxLength: 255
+        account:
+          type: integer
+        name:
+          type: string
+          maxLength: 255
+        type:
+          enum:
+          - webhook
+          - azure_blob_storage
+          - box_drive
+          - signature
+          - docu_sign
+          - sign_now
+          - zoho_crm
+          - dropbox
+          - google_drive
+          - podio
+          - one_drive
+          - sharepoint
+          - eversign
+          - hellosign
+          - aws_s3
+          - signable
+          - yousign
+          - email
+          - sftp
+          type: string
+        success_callback_url:
+          type: string
+          nullable: true
+          maxLength: 255
+        success_callback_payload:
+          type: object
+          additionalProperties: {}
+          nullable: true
+        success_callback_headers:
+          type: object
+          additionalProperties: {}
+          nullable: true
+        last_used_on:
+          type: string
+          format: date-time
+          nullable: true
+        bucket:
+          type: string
+          maxLength: 2000
+        key_prefix:
+          type: string
+          nullable: true
+          maxLength: 2000
+        region:
+          type: string
+          nullable: true
+          maxLength: 50
+        object_metadata:
+          type: object
+          additionalProperties: {}
+          nullable: true
+      required:
+      - account
+      - bucket
+      - id
+      - name
+    ForbiddenError:
+      type: object
+      properties:
+        detail:
+          type: string
+      required:
+      - detail
+      description: ''
+    DropboxDelivery:
+      type: object
+      description: ''
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        failure_email_recipients:
+          type: string
+          nullable: true
+          maxLength: 255
+        account:
+          type: integer
+        name:
+          type: string
+          maxLength: 255
+        type:
+          enum:
+          - webhook
+          - azure_blob_storage
+          - box_drive
+          - signature
+          - docu_sign
+          - sign_now
+          - zoho_crm
+          - dropbox
+          - google_drive
+          - podio
+          - one_drive
+          - sharepoint
+          - eversign
+          - hellosign
+          - aws_s3
+          - signable
+          - yousign
+          - email
+          - sftp
+          type: string
+        success_callback_url:
+          type: string
+          nullable: true
+          maxLength: 255
+        success_callback_payload:
+          type: object
+          additionalProperties: {}
+          nullable: true
+        success_callback_headers:
+          type: object
+          additionalProperties: {}
+          nullable: true
+        last_used_on:
+          type: string
+          format: date-time
+          nullable: true
+        folder:
+          type: string
+        mode:
+          enum:
+          - add_as_new
+          - conflict
+          - overwrite
+          type: string
+      required:
+      - account
+      - id
+      - name
+    HelloSignDelivery:
+      type: object
+      description: ''
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        failure_email_recipients:
+          type: string
+          nullable: true
+          maxLength: 255
+        account:
+          type: integer
+        signers:
+          type: array
+          minItems: 1
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                minLength: 1
+              email_address:
+                type: string
+                format: email
+            required:
+            - name
+            - email_address
+        name:
+          type: string
+          maxLength: 255
+        type:
+          enum:
+          - webhook
+          - azure_blob_storage
+          - box_drive
+          - signature
+          - docu_sign
+          - sign_now
+          - zoho_crm
+          - dropbox
+          - google_drive
+          - podio
+          - one_drive
+          - sharepoint
+          - eversign
+          - hellosign
+          - aws_s3
+          - signable
+          - yousign
+          - email
+          - sftp
+          type: string
+        success_callback_url:
+          type: string
+          nullable: true
+          maxLength: 255
+        success_callback_payload:
+          type: object
+          additionalProperties: {}
+          nullable: true
+        success_callback_headers:
+          type: object
+          additionalProperties: {}
+          nullable: true
+        last_used_on:
+          type: string
+          format: date-time
+          nullable: true
+        title:
+          type: string
+          nullable: true
+        subject:
+          type: string
+          nullable: true
+        message:
+          type: string
+          nullable: true
+        cc:
+          type: array
+          items:
+            type: string
+            maxLength: 1000
+        use_text_tags:
+          type: boolean
+        hide_text_tags:
+          type: boolean
+        sequenced_signing:
+          type: boolean
+        enable_optional_signers:
+          type: boolean
+      required:
+      - account
+      - id
+      - name
+      - signers
+    GoogleDriveDelivery:
+      type: object
+      description: ''
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        failure_email_recipients:
+          type: string
+          nullable: true
+          maxLength: 255
+        account:
+          type: integer
+        name:
+          type: string
+          maxLength: 255
+        type:
+          enum:
+          - webhook
+          - azure_blob_storage
+          - box_drive
+          - signature
+          - docu_sign
+          - sign_now
+          - zoho_crm
+          - dropbox
+          - google_drive
+          - podio
+          - one_drive
+          - sharepoint
+          - eversign
+          - hellosign
+          - aws_s3
+          - signable
+          - yousign
+          - email
+          - sftp
+          type: string
+        success_callback_url:
+          type: string
+          nullable: true
+          maxLength: 255
+        success_callback_payload:
+          type: object
+          additionalProperties: {}
+          nullable: true
+        success_callback_headers:
+          type: object
+          additionalProperties: {}
+          nullable: true
+        last_used_on:
+          type: string
+          format: date-time
+          nullable: true
+        folder:
+          type: string
+          description: Base folder name
+        folder_id:
+          type: string
+          nullable: true
+          description: Base folder id
+          maxLength: 100
+        path:
+          type: string
+          nullable: true
+          description: Dynamic folder path
+          maxLength: 255
+      required:
+      - account
+      - id
+      - name
+    YouSignDelivery:
+      type: object
+      description: ''
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        failure_email_recipients:
+          type: string
+          nullable: true
+          maxLength: 255
+        account:
+          type: integer
+        signers:
+          type: array
+          minItems: 1
+          items:
+            type: object
+            properties:
+              first_name:
+                type: string
+                minLength: 2
+              last_name:
+                type: string
+                minLength: 2
+              email:
+                type: string
+                format: email
+              phone_number:
+                type: string
+              locale:
+                type: string
+                minLength: 2
+                enum:
+                - en
+                - fr
+                - de
+                - it
+                - nl
+                - es
+                - pl
+              success_url:
+                type: string
+                format: uri
+              error_url:
+                type: string
+                format: uri
+              signature_authentication_mode:
+                type: string
+                enum:
+                - otp_email
+                - otp_sms
+                - no_otp
+              signature_level:
+                type: string
+                enum:
+                - electronic_signature
+                - advanced_electronic_signature
+                - electronic_signature_with_qualified_certificate
+                - qualified_electronic_signature_mode_1
+              order:
+                type: number
+            required:
+            - first_name
+            - last_name
+            - email
+            - locale
+            - signature_level
+            - signature_authentication_mode
+        approvers:
+          type: array
+          items:
+            type: object
+            properties:
+              locale:
+                type: string
+                minLength: 2
+                enum:
+                - en
+                - fr
+                - de
+                - it
+                - nl
+                - es
+                - pl
+              first_name:
+                type: string
+                minLength: 2
+              last_name:
+                type: string
+                minLength: 2
+              email:
+                type: string
+                format: email
+              phone_number:
+                type: string
+            required:
+            - locale
+            - first_name
+            - last_name
+            - email
+          nullable: true
+        followers:
+          type: array
+          items:
+            type: object
+            properties:
+              locale:
+                type: string
+                minLength: 2
+                enum:
+                - en
+                - fr
+                - de
+                - it
+                - nl
+                - es
+                - pl
+              email:
+                type: string
+                format: email
+            required:
+            - locale
+            - email
+          nullable: true
+        reminder_settings:
+          type: object
+          properties:
+            interval_in_days:
+              type: number
+              enum:
+              - 1
+              - 2
+              - 7
+              - 14
+            max_occurrences:
+              type: number
+              minimum: 1
+              maximum: 10
+          required:
+          - interval_in_days
+          - max_occurrences
+          nullable: true
+        name:
+          type: string
+          maxLength: 255
+        type:
+          enum:
+          - webhook
+          - azure_blob_storage
+          - box_drive
+          - signature
+          - docu_sign
+          - sign_now
+          - zoho_crm
+          - dropbox
+          - google_drive
+          - podio
+          - one_drive
+          - sharepoint
+          - eversign
+          - hellosign
+          - aws_s3
+          - signable
+          - yousign
+          - email
+          - sftp
+          type: string
+        success_callback_url:
+          type: string
+          nullable: true
+          maxLength: 255
+        success_callback_payload:
+          type: object
+          additionalProperties: {}
+          nullable: true
+        success_callback_headers:
+          type: object
+          additionalProperties: {}
+          nullable: true
+        last_used_on:
+          type: string
+          format: date-time
+          nullable: true
+        title:
+          type: string
+          maxLength: 256
+        email_custom_note:
+          type: string
+          nullable: true
+        delivery_mode:
+          enum:
+          - email
+          type: string
+        ordered_signers:
+          type: boolean
+        timezone:
+          type: string
+          nullable: true
+          maxLength: 100
+        expiration_date:
+          type: string
+          format: date
+          nullable: true
+        custom_experience_id:
+          type: string
+          nullable: true
+          maxLength: 256
+        yousign_workspace_id:
+          type: string
+          nullable: true
+          maxLength: 256
+        audit_trail_locale:
+          type: string
+          nullable: true
+          maxLength: 256
+        enable_optional_signers:
+          type: boolean
+      required:
+      - account
+      - id
+      - name
+      - signers
+      - title
+    File:
+      type: object
+      description: ''
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        path:
+          type: string
+          writeOnly: true
+          maxLength: 255
+        name:
+          type: string
+          maxLength: 255
+        tag:
+          type: string
+          writeOnly: true
+          maxLength: 255
+        size:
+          type: integer
+          readOnly: true
+      required:
+      - id
+      - name
+      - path
+      - size
+      - tag
+    SharepointDelivery:
+      type: object
+      description: ''
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        failure_email_recipients:
+          type: string
+          nullable: true
+          maxLength: 255
+        account:
+          type: integer
+        name:
+          type: string
+          maxLength: 255
+        type:
+          enum:
+          - webhook
+          - azure_blob_storage
+          - box_drive
+          - signature
+          - docu_sign
+          - sign_now
+          - zoho_crm
+          - dropbox
+          - google_drive
+          - podio
+          - one_drive
+          - sharepoint
+          - eversign
+          - hellosign
+          - aws_s3
+          - signable
+          - yousign
+          - email
+          - sftp
+          type: string
+        success_callback_url:
+          type: string
+          nullable: true
+          maxLength: 255
+        success_callback_payload:
+          type: object
+          additionalProperties: {}
+          nullable: true
+        success_callback_headers:
+          type: object
+          additionalProperties: {}
+          nullable: true
+        last_used_on:
+          type: string
+          format: date-time
+          nullable: true
+        folder_id:
+          type: string
+          maxLength: 100
+        drive_id:
+          type: string
+          maxLength: 100
+        path:
+          type: string
+      required:
+      - account
+      - drive_id
+      - folder_id
+      - id
+      - name
+      - path
+    AzureBlobStorageDelivery:
+      type: object
+      description: ''
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        failure_email_recipients:
+          type: string
+          nullable: true
+          maxLength: 255
+        account:
+          type: integer
+        name:
+          type: string
+          maxLength: 255
+        type:
+          enum:
+          - webhook
+          - azure_blob_storage
+          - box_drive
+          - signature
+          - docu_sign
+          - sign_now
+          - zoho_crm
+          - dropbox
+          - google_drive
+          - podio
+          - one_drive
+          - sharepoint
+          - eversign
+          - hellosign
+          - aws_s3
+          - signable
+          - yousign
+          - email
+          - sftp
+          type: string
+        success_callback_url:
+          type: string
+          nullable: true
+          maxLength: 255
+        success_callback_payload:
+          type: object
+          additionalProperties: {}
+          nullable: true
+        success_callback_headers:
+          type: object
+          additionalProperties: {}
+          nullable: true
+        last_used_on:
+          type: string
+          format: date-time
+          nullable: true
+        path:
+          type: string
+          nullable: true
+        container_name:
+          type: string
+          description: Azure blob container name.
+          maxLength: 64
+      required:
+      - account
+      - container_name
+      - id
+      - name
+    PolymorphicDelivery:
+      oneOf:
+      - $ref: '#/components/schemas/EmailDelivery'
+      - $ref: '#/components/schemas/WebhookDelivery'
+      - $ref: '#/components/schemas/SignatureDelivery'
+      - $ref: '#/components/schemas/DropboxDelivery'
+      - $ref: '#/components/schemas/OneDriveDelivery'
+      - $ref: '#/components/schemas/SharepointDelivery'
+      - $ref: '#/components/schemas/SignNowDelivery'
+      - $ref: '#/components/schemas/GoogleDriveDelivery'
+      - $ref: '#/components/schemas/S3Delivery'
+      - $ref: '#/components/schemas/HelloSignDelivery'
+      - $ref: '#/components/schemas/DocuSignDelivery'
+      - $ref: '#/components/schemas/EversignDelivery'
+      - $ref: '#/components/schemas/SignableDelivery'
+      - $ref: '#/components/schemas/YouSignDelivery'
+      - $ref: '#/components/schemas/SftpDelivery'
+      - $ref: '#/components/schemas/AzureBlobStorageDelivery'
+      - $ref: '#/components/schemas/BoxDriveDelivery'
+      discriminator:
+        propertyName: type
+        mapping:
+          email: '#/components/schemas/EmailDelivery'
+          webhook: '#/components/schemas/WebhookDelivery'
+          signature: '#/components/schemas/SignatureDelivery'
+          dropbox: '#/components/schemas/DropboxDelivery'
+          one_drive: '#/components/schemas/OneDriveDelivery'
+          sharepoint: '#/components/schemas/SharepointDelivery'
+          sign_now: '#/components/schemas/SignNowDelivery'
+          google_drive: '#/components/schemas/GoogleDriveDelivery'
+          aws_s3: '#/components/schemas/S3Delivery'
+          hellosign: '#/components/schemas/HelloSignDelivery'
+          docu_sign: '#/components/schemas/DocuSignDelivery'
+          eversign: '#/components/schemas/EversignDelivery'
+          signable: '#/components/schemas/SignableDelivery'
+          yousign: '#/components/schemas/YouSignDelivery'
+          sftp: '#/components/schemas/SftpDelivery'
+          azure_blob_storage: '#/components/schemas/AzureBlobStorageDelivery'
+          box_drive: '#/components/schemas/BoxDriveDelivery'
+    SftpDelivery:
+      type: object
+      description: ''
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        failure_email_recipients:
+          type: string
+          nullable: true
+          maxLength: 255
+        account:
+          type: integer
+        name:
+          type: string
+          maxLength: 255
+        type:
+          enum:
+          - webhook
+          - azure_blob_storage
+          - box_drive
+          - signature
+          - docu_sign
+          - sign_now
+          - zoho_crm
+          - dropbox
+          - google_drive
+          - podio
+          - one_drive
+          - sharepoint
+          - eversign
+          - hellosign
+          - aws_s3
+          - signable
+          - yousign
+          - email
+          - sftp
+          type: string
+        success_callback_url:
+          type: string
+          nullable: true
+          maxLength: 255
+        success_callback_payload:
+          type: object
+          additionalProperties: {}
+          nullable: true
+        success_callback_headers:
+          type: object
+          additionalProperties: {}
+          nullable: true
+        last_used_on:
+          type: string
+          format: date-time
+          nullable: true
+        path:
+          type: string
+          nullable: true
+          maxLength: 255
+      required:
+      - account
+      - id
+      - name
+    OneDriveDelivery:
+      type: object
+      description: ''
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        failure_email_recipients:
+          type: string
+          nullable: true
+          maxLength: 255
+        account:
+          type: integer
+        name:
+          type: string
+          maxLength: 255
+        type:
+          enum:
+          - webhook
+          - azure_blob_storage
+          - box_drive
+          - signature
+          - docu_sign
+          - sign_now
+          - zoho_crm
+          - dropbox
+          - google_drive
+          - podio
+          - one_drive
+          - sharepoint
+          - eversign
+          - hellosign
+          - aws_s3
+          - signable
+          - yousign
+          - email
+          - sftp
+          type: string
+        success_callback_url:
+          type: string
+          nullable: true
+          maxLength: 255
+        success_callback_payload:
+          type: object
+          additionalProperties: {}
+          nullable: true
+        success_callback_headers:
+          type: object
+          additionalProperties: {}
+          nullable: true
+        last_used_on:
+          type: string
+          format: date-time
+          nullable: true
+        folder:
+          type: string
+      required:
+      - account
+      - id
+      - name
+    ValidationError:
+      type: object
+      properties:
+        errors:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+        non_field_errors:
+          type: array
+          items:
+            type: string
+      required:
+      - errors
+      - non_field_errors
+      description: ''
+    EversignDelivery:
+      type: object
+      description: ''
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        failure_email_recipients:
+          type: string
+          nullable: true
+          maxLength: 255
+        account:
+          type: integer
+        signers:
+          type: array
+          minItems: 1
+          items:
+            type: object
+            properties:
+              pin:
+                type: string
+              name:
+                type: string
+                minLength: 1
+              email:
+                type: string
+                format: email
+              order:
+                type: string
+            required:
+            - name
+            - email
+        recipients:
+          type: array
+          minItems: 0
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                minLength: 1
+              email:
+                type: string
+                format: email
+            required:
+            - name
+            - email
+          nullable: true
+        name:
+          type: string
+          maxLength: 255
+        type:
+          enum:
+          - webhook
+          - azure_blob_storage
+          - box_drive
+          - signature
+          - docu_sign
+          - sign_now
+          - zoho_crm
+          - dropbox
+          - google_drive
+          - podio
+          - one_drive
+          - sharepoint
+          - eversign
+          - hellosign
+          - aws_s3
+          - signable
+          - yousign
+          - email
+          - sftp
+          type: string
+        success_callback_url:
+          type: string
+          nullable: true
+          maxLength: 255
+        success_callback_payload:
+          type: object
+          additionalProperties: {}
+          nullable: true
+        success_callback_headers:
+          type: object
+          additionalProperties: {}
+          nullable: true
+        last_used_on:
+          type: string
+          format: date-time
+          nullable: true
+        title:
+          type: string
+          nullable: true
+        message:
+          type: string
+          nullable: true
+        use_signer_order:
+          type: boolean
+        reminders:
+          type: boolean
+        require_all_signers:
+          type: boolean
+        expires_in:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        enable_optional_signers:
+          type: boolean
+      required:
+      - account
+      - id
+      - name
+      - signers
+    SignableDelivery:
+      type: object
+      description: ''
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        failure_email_recipients:
+          type: string
+          nullable: true
+          maxLength: 255
+        account:
+          type: integer
+        parties:
+          type: array
+          minItems: 1
+          items:
+            type: object
+            properties:
+              party_name:
+                type: string
+                minLength: 1
+              party_email:
+                type: string
+                format: email
+              party_role:
+                type: string
+                enum:
+                - signer
+                - copy
+            required:
+            - party_name
+            - party_email
+            - party_role
+        name:
+          type: string
+          maxLength: 255
+        type:
+          enum:
+          - webhook
+          - azure_blob_storage
+          - box_drive
+          - signature
+          - docu_sign
+          - sign_now
+          - zoho_crm
+          - dropbox
+          - google_drive
+          - podio
+          - one_drive
+          - sharepoint
+          - eversign
+          - hellosign
+          - aws_s3
+          - signable
+          - yousign
+          - email
+          - sftp
+          type: string
+        success_callback_url:
+          type: string
+          nullable: true
+          maxLength: 255
+        success_callback_payload:
+          type: object
+          additionalProperties: {}
+          nullable: true
+        success_callback_headers:
+          type: object
+          additionalProperties: {}
+          nullable: true
+        last_used_on:
+          type: string
+          format: date-time
+          nullable: true
+        title:
+          type: string
+          nullable: true
+        expire_after:
+          type: integer
+          maximum: 2147483647
+          minimum: 1
+          nullable: true
+        remind_after:
+          type: integer
+          maximum: 2147483647
+          minimum: 1
+          nullable: true
+      required:
+      - account
+      - id
+      - name
+      - parties
+    SignNowDelivery:
+      type: object
+      description: ''
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        failure_email_recipients:
+          type: string
+          nullable: true
+          maxLength: 255
+        account:
+          type: integer
+        signers:
+          type: array
+          minItems: 1
+          items:
+            type: object
+            properties:
+              order:
+                type: string
+              role:
+                type: string
+                minLength: 1
+              email:
+                type: string
+                format: email
+            required:
+            - role
+            - email
+        name:
+          type: string
+          maxLength: 255
+        type:
+          enum:
+          - webhook
+          - azure_blob_storage
+          - box_drive
+          - signature
+          - docu_sign
+          - sign_now
+          - zoho_crm
+          - dropbox
+          - google_drive
+          - podio
+          - one_drive
+          - sharepoint
+          - eversign
+          - hellosign
+          - aws_s3
+          - signable
+          - yousign
+          - email
+          - sftp
+          type: string
+        success_callback_url:
+          type: string
+          nullable: true
+          maxLength: 255
+        success_callback_payload:
+          type: object
+          additionalProperties: {}
+          nullable: true
+        success_callback_headers:
+          type: object
+          additionalProperties: {}
+          nullable: true
+        last_used_on:
+          type: string
+          format: date-time
+          nullable: true
+        subject:
+          type: string
+          nullable: true
+        message:
+          type: string
+          nullable: true
+        cc:
+          type: array
+          items:
+            type: string
+            maxLength: 1000
+        sequenced_signing:
+          type: boolean
+        enable_optional_signers:
+          type: boolean
+      required:
+      - account
+      - id
+      - name
+      - signers
+    NotFoundError:
+      type: object
+      properties:
+        detail:
+          type: string
+      required:
+      - detail
+      description: ''
+    EmailDelivery:
+      type: object
+      description: ''
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        failure_email_recipients:
+          type: string
+          nullable: true
+          maxLength: 255
+        account:
+          type: integer
+          nullable: true
+        attachments:
+          type: array
+          items:
+            $ref: '#/components/schemas/File'
+          readOnly: true
+        name:
+          type: string
+          maxLength: 255
+        type:
+          enum:
+          - webhook
+          - azure_blob_storage
+          - box_drive
+          - signature
+          - docu_sign
+          - sign_now
+          - zoho_crm
+          - dropbox
+          - google_drive
+          - podio
+          - one_drive
+          - sharepoint
+          - eversign
+          - hellosign
+          - aws_s3
+          - signable
+          - yousign
+          - email
+          - sftp
+          type: string
+        success_callback_url:
+          type: string
+          nullable: true
+          maxLength: 255
+        success_callback_payload:
+          type: object
+          additionalProperties: {}
+          nullable: true
+        success_callback_headers:
+          type: object
+          additionalProperties: {}
+          nullable: true
+        last_used_on:
+          type: string
+          format: date-time
+          nullable: true
+        from_email:
+          type: string
+          nullable: true
+          maxLength: 255
+        to_email:
+          type: array
+          items:
+            type: string
+            maxLength: 200
+        cc:
+          type: array
+          items:
+            type: string
+            maxLength: 200
+        bcc:
+          type: array
+          items:
+            type: string
+            maxLength: 200
+        headers:
+          type: object
+          additionalProperties: {}
+          nullable: true
+        subject:
+          type: string
+          maxLength: 255
+        body:
+          type: string
+        enable_optional_recipients:
+          type: boolean
+      required:
+      - account
+      - attachments
+      - id
+      - name
+      - to_email
+    TemplateDelivery:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 255
+        type:
+          enum:
+          - webhook
+          - azure_blob_storage
+          - box_drive
+          - signature
+          - docu_sign
+          - sign_now
+          - zoho_crm
+          - dropbox
+          - google_drive
+          - podio
+          - one_drive
+          - sharepoint
+          - eversign
+          - hellosign
+          - aws_s3
+          - signable
+          - yousign
+          - email
+          - sftp
+          type: string
+          readOnly: true
+      required:
+      - id
+      - name
+      - type
+      description: ''
+  securitySchemes:
+    OAuthAuthentication:
+      type: http
+      scheme: bearer
+      description: OAuth2 Bearer Token Authentication
+    SessionAuthentication:
+      type: apiKey
+      in: cookie
+      name: sessionid
+      description: browser based login takes care of this
+externalDocs:
+  description: Help docs on how to use API
+  url: https://help.docupilot.app/developers/api-overview

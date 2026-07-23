@@ -1,0 +1,310 @@
+openapi: 3.0.3
+info:
+  title: Docupilot accounts APIs ai user_satisfaction_survey API
+  version: '1.0'
+  description: Docupilot accounts APIs
+  termsOfService: https://docupilot.app/terms-and-conditions/
+  contact:
+    name: Team Docupilot
+    email: support@docupilot.app
+tags:
+- name: user_satisfaction_survey
+paths:
+  /dashboard/accounts/v2/user_satisfaction_survey/g2_review/:
+    get:
+      operationId: g2_review
+      summary: Redirect to G2 Review Page
+      tags:
+      - user_satisfaction_survey
+      security:
+      - SessionAuthentication: []
+      responses:
+        '302':
+          description: No response body
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
+          description: ''
+  /dashboard/accounts/v2/user_satisfaction_survey/nps_next_reminder/:
+    post:
+      operationId: nps_next_reminder
+      summary: Update the next NPS reminder time
+      tags:
+      - user_satisfaction_survey
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NpsNextReminder'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/NpsNextReminder'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/NpsNextReminder'
+        required: true
+      security:
+      - SessionAuthentication: []
+      responses:
+        '204':
+          description: No response body
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
+          description: ''
+  /dashboard/accounts/v2/user_satisfaction_survey/nps_rating/:
+    post:
+      operationId: nps_rating
+      summary: Update NPS rating
+      tags:
+      - user_satisfaction_survey
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NpsRating'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/NpsRating'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/NpsRating'
+      security:
+      - SessionAuthentication: []
+      responses:
+        '204':
+          description: No response body
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
+          description: ''
+  /dashboard/accounts/v2/user_satisfaction_survey/save_user_feedback/:
+    post:
+      operationId: save_customer_feedback
+      summary: Save customer feedback
+      tags:
+      - user_satisfaction_survey
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SaveCustomerFeedback'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/SaveCustomerFeedback'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/SaveCustomerFeedback'
+        required: true
+      security:
+      - SessionAuthentication: []
+      responses:
+        '204':
+          description: No response body
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
+          description: ''
+  /dashboard/accounts/v2/user_satisfaction_survey/show_survey_prompt/:
+    get:
+      operationId: show_survey_prompt
+      summary: Show survey prompt
+      parameters:
+      - in: header
+        name: X-Workspace
+        schema:
+          type: string
+        description: Workspace unique_key
+        required: true
+      tags:
+      - user_satisfaction_survey
+      security:
+      - SessionAuthentication: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SurveyPrompt'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
+          description: ''
+  /dashboard/accounts/v2/user_satisfaction_survey/update_g2_review_updated_on/:
+    post:
+      operationId: update_g2_review_updated_on
+      summary: Update g2_review_updated_on
+      tags:
+      - user_satisfaction_survey
+      security:
+      - SessionAuthentication: []
+      responses:
+        '204':
+          description: No response body
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
+          description: ''
+components:
+  schemas:
+    UnauthenticatedError:
+      type: object
+      properties:
+        detail:
+          type: string
+      required:
+      - detail
+      description: ''
+    ValidationError:
+      type: object
+      properties:
+        errors:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+        non_field_errors:
+          type: array
+          items:
+            type: string
+      required:
+      - errors
+      - non_field_errors
+      description: ''
+    ForbiddenError:
+      type: object
+      properties:
+        detail:
+          type: string
+      required:
+      - detail
+      description: ''
+    SurveyPrompt:
+      type: object
+      properties:
+        show_survey_prompt:
+          type: boolean
+          readOnly: true
+      required:
+      - show_survey_prompt
+      description: ''
+    NpsNextReminder:
+      type: object
+      properties:
+        days:
+          type: integer
+      required:
+      - days
+      description: ''
+    SaveCustomerFeedback:
+      type: object
+      properties:
+        feedback:
+          type: object
+          nullable: false
+          properties:
+            challenges_faced:
+              type: array
+            feature_improvement:
+              type: string
+          required:
+          - challenges_faced
+      required:
+      - feedback
+      description: ''
+    NpsRating:
+      type: object
+      properties:
+        nps_rating:
+          type: integer
+          maximum: 10
+          minimum: 0
+          nullable: true
+      description: ''
+  securitySchemes:
+    OAuthAuthentication:
+      type: http
+      scheme: bearer
+      description: OAuth2 Bearer Token Authentication
+    SessionAuthentication:
+      type: apiKey
+      in: cookie
+      name: sessionid
+      description: browser based login takes care of this
+externalDocs:
+  description: Help docs on how to use API
+  url: https://help.docupilot.app/developers/api-overview

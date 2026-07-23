@@ -1,0 +1,2265 @@
+openapi: 3.0.3
+info:
+  title: Docupilot accounts APIs ai templates API
+  version: '1.0'
+  description: Docupilot accounts APIs
+  termsOfService: https://docupilot.app/terms-and-conditions/
+  contact:
+    name: Team Docupilot
+    email: support@docupilot.app
+tags:
+- name: templates
+paths:
+  /dashboard/api/v2/templates/:
+    get:
+      operationId: list_templates
+      summary: Get list of templates
+      parameters:
+      - in: header
+        name: X-Workspace
+        schema:
+          type: string
+        description: Workspace unique_key
+        required: true
+      - in: query
+        name: delivery_type
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - aws_s3
+            - azure_blob_storage
+            - box_drive
+            - docu_sign
+            - dropbox
+            - email
+            - eversign
+            - google_drive
+            - hellosign
+            - one_drive
+            - podio
+            - sftp
+            - sharepoint
+            - sign_now
+            - signable
+            - signature
+            - webhook
+            - yousign
+            - zoho_crm
+        description: Filter templates by configured delivery type (supports multiple values)
+        explode: false
+        style: form
+      - in: query
+        name: folder
+        schema:
+          type: integer
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      - in: query
+        name: output_type
+        schema:
+          type: string
+          enum:
+          - docx
+          - html
+          - jpeg
+          - pdf
+          - png
+          - pptx
+          - xlsx
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      - in: query
+        name: search
+        schema:
+          type: string
+        description: Search templates by title
+      - in: query
+        name: status
+        schema:
+          type: string
+          enum:
+          - active
+          - test
+        description: Filter templates by status. Active maps to published templates and test maps to unpublished templates.
+      - in: query
+        name: type
+        schema:
+          type: string
+          enum:
+          - docx
+          - dpt_pdf
+          - fillable_pdf
+          - g_document
+          - g_presentation
+          - g_spreadsheet
+          - html
+          - pptx
+          - xlsx
+      tags:
+      - templates
+      security:
+      - OAuthAuthentication: []
+      - SessionAuthentication: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedTemplateList'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
+          description: ''
+    post:
+      operationId: create_template
+      summary: Create template
+      parameters:
+      - in: header
+        name: X-Workspace
+        schema:
+          type: string
+        description: Workspace unique_key
+        required: true
+      tags:
+      - templates
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/NewTemplate'
+        required: true
+      security:
+      - OAuthAuthentication: []
+      - SessionAuthentication: []
+      - tokenAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Template'
+          description: ''
+        '413':
+          content:
+            text/html:
+              schema:
+                description: Uploaded File Is Too Large.
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
+          description: ''
+  /dashboard/api/v2/templates/{id}/:
+    get:
+      operationId: get_template
+      summary: Get one template
+      parameters:
+      - in: header
+        name: X-Workspace
+        schema:
+          type: string
+        description: Workspace unique_key
+        required: true
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this document.
+        required: true
+      tags:
+      - templates
+      security:
+      - OAuthAuthentication: []
+      - SessionAuthentication: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Template'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
+          description: ''
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: ''
+    put:
+      operationId: update_template
+      summary: Update template
+      parameters:
+      - in: header
+        name: X-Workspace
+        schema:
+          type: string
+        description: Workspace unique_key
+        required: true
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this document.
+        required: true
+      tags:
+      - templates
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Template'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Template'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Template'
+        required: true
+      security:
+      - OAuthAuthentication: []
+      - SessionAuthentication: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Template'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
+          description: ''
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: ''
+    patch:
+      operationId: update_template_content
+      summary: Update template content
+      parameters:
+      - in: header
+        name: X-Workspace
+        schema:
+          type: string
+        description: Workspace unique_key
+        required: true
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this document.
+        required: true
+      tags:
+      - templates
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedUpdateNewTemplate'
+      security:
+      - OAuthAuthentication: []
+      - SessionAuthentication: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Template'
+          description: ''
+        '413':
+          content:
+            text/html:
+              schema:
+                description: Uploaded File Is Too Large.
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
+          description: ''
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: ''
+    delete:
+      operationId: trash_template
+      summary: Move template to trash
+      parameters:
+      - in: header
+        name: X-Workspace
+        schema:
+          type: string
+        description: Workspace unique_key
+        required: true
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this document.
+        required: true
+      tags:
+      - templates
+      security:
+      - OAuthAuthentication: []
+      - SessionAuthentication: []
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
+          description: ''
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: ''
+  /dashboard/api/v2/templates/{id}/copy/:
+    post:
+      operationId: copy_template
+      summary: Copy template including preferences, deliveries
+      parameters:
+      - in: header
+        name: X-Workspace
+        schema:
+          type: string
+        description: Workspace unique_key
+        required: true
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this document.
+        required: true
+      tags:
+      - templates
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CopyTemplate'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CopyTemplate'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CopyTemplate'
+        required: true
+      security:
+      - OAuthAuthentication: []
+      - SessionAuthentication: []
+      - tokenAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Template'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
+          description: ''
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: ''
+  /dashboard/api/v2/templates/{id}/delivery_count/:
+    get:
+      operationId: get_template_delivery_count
+      summary: Get the count of deliveries linked to a template
+      parameters:
+      - in: header
+        name: X-Workspace
+        schema:
+          type: string
+        description: Workspace unique_key
+        required: true
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this document.
+        required: true
+      tags:
+      - templates
+      security:
+      - SessionAuthentication: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeliveryCount'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
+          description: ''
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: ''
+  /dashboard/api/v2/templates/{id}/download/:
+    get:
+      operationId: download_template_file
+      summary: Download template file
+      parameters:
+      - in: header
+        name: X-Workspace
+        schema:
+          type: string
+        description: Workspace unique_key
+        required: true
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this document.
+        required: true
+      - in: query
+        name: version_id
+        schema:
+          type: string
+        description: Template version selector. Supports a numeric version id, `latest`, or `live`.
+      tags:
+      - templates
+      security:
+      - OAuthAuthentication: []
+      - SessionAuthentication: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
+          description: ''
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: ''
+  /dashboard/api/v2/templates/{id}/editor_version/:
+    patch:
+      operationId: update_template_editor_version
+      summary: Update the template editor version between v1 and v2
+      parameters:
+      - in: header
+        name: X-Workspace
+        schema:
+          type: string
+        description: Workspace unique_key
+        required: true
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this document.
+        required: true
+      tags:
+      - templates
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedEditorVersion'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedEditorVersion'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedEditorVersion'
+      security:
+      - OAuthAuthentication: []
+      - SessionAuthentication: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EditorVersion'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
+          description: ''
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: ''
+  /dashboard/api/v2/templates/{id}/inline_image/:
+    post:
+      operationId: upload_inline_image_of_template
+      summary: Upload inline image of template
+      parameters:
+      - in: header
+        name: X-Workspace
+        schema:
+          type: string
+        description: Workspace unique_key
+        required: true
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this document.
+        required: true
+      tags:
+      - templates
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/UploadTemplateImage'
+        required: true
+      security:
+      - SessionAuthentication: []
+      responses:
+        '200':
+          description: No response body
+        '413':
+          content:
+            text/html:
+              schema:
+                description: Uploaded File Is Too Large.
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
+          description: ''
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: ''
+  /dashboard/api/v2/templates/{id}/migrate_to_native_syntax/:
+    post:
+      operationId: migrate_to_native_syntax
+      summary: Migrate DocuSign template to native signature delivery
+      parameters:
+      - in: header
+        name: X-Workspace
+        schema:
+          type: string
+        description: Workspace unique_key
+        required: true
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this document.
+        required: true
+      tags:
+      - templates
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MigrateToNativeSyntaxRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/MigrateToNativeSyntaxRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/MigrateToNativeSyntaxRequest'
+      security:
+      - OAuthAuthentication: []
+      - SessionAuthentication: []
+      - tokenAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Template'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MigrateToNativeSyntaxError'
+          description: ''
+  /dashboard/api/v2/templates/{id}/permanent_delete/:
+    delete:
+      operationId: delete_template_permanently
+      summary: Delete a template permanently from trash
+      parameters:
+      - in: header
+        name: X-Workspace
+        schema:
+          type: string
+        description: Workspace unique_key
+        required: true
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this document.
+        required: true
+      tags:
+      - templates
+      security:
+      - OAuthAuthentication: []
+      - SessionAuthentication: []
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
+          description: ''
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: ''
+  /dashboard/api/v2/templates/{id}/preview/:
+    get:
+      operationId: preview_template
+      summary: Preview template
+      parameters:
+      - in: header
+        name: X-Workspace
+        schema:
+          type: string
+        description: Workspace unique_key
+        required: true
+      - in: query
+        name: format
+        schema:
+          type: string
+          enum:
+          - json
+          - octet-stream
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this document.
+        required: true
+      - in: query
+        name: version_id
+        schema:
+          type: string
+        description: Template version selector. Supports a numeric version id, `latest`, or `live`.
+      tags:
+      - templates
+      security:
+      - SessionAuthentication: []
+      responses:
+        '200':
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
+          description: ''
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: ''
+  /dashboard/api/v2/templates/{id}/publish/:
+    post:
+      operationId: publish_latest_template_version
+      summary: Publish latest template version
+      parameters:
+      - in: header
+        name: X-Workspace
+        schema:
+          type: string
+        description: Workspace unique_key
+        required: true
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this document.
+        required: true
+      tags:
+      - templates
+      security:
+      - OAuthAuthentication: []
+      - SessionAuthentication: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TemplateVersion'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
+          description: ''
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: ''
+  /dashboard/api/v2/templates/{id}/restore/:
+    put:
+      operationId: restore_template_from_trash
+      summary: Restore a template from trash
+      parameters:
+      - in: header
+        name: X-Workspace
+        schema:
+          type: string
+        description: Workspace unique_key
+        required: true
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this document.
+        required: true
+      tags:
+      - templates
+      security:
+      - OAuthAuthentication: []
+      - SessionAuthentication: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestoreTemplateResponse'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
+          description: ''
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: ''
+  /dashboard/api/v2/templates/{id}/schema/:
+    get:
+      operationId: get_template_schema
+      summary: Get template schema
+      parameters:
+      - in: header
+        name: X-Workspace
+        schema:
+          type: string
+        description: Workspace unique_key
+        required: true
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this document.
+        required: true
+      - in: query
+        name: version_id
+        schema:
+          type: string
+        description: Template version selector. Supports a numeric version id, `latest`, or `live`.
+      tags:
+      - templates
+      security:
+      - OAuthAuthentication: []
+      - SessionAuthentication: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TemplateSchema'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
+          description: ''
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: ''
+  /dashboard/api/v2/templates/{id}/schema/detail/:
+    get:
+      operationId: get_detailed_template_schema
+      summary: Get template split schema
+      parameters:
+      - in: header
+        name: X-Workspace
+        schema:
+          type: string
+        description: Workspace unique_key
+        required: true
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this document.
+        required: true
+      - in: query
+        name: version_id
+        schema:
+          type: string
+        description: Template version selector. Supports a numeric version id, `latest`, or `live`.
+      tags:
+      - templates
+      security:
+      - SessionAuthentication: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TemplateSchemaDetail'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
+          description: ''
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: ''
+  /dashboard/api/v2/templates/{template_id}/permissions/:
+    get:
+      operationId: list_template_sharing
+      summary: Get all shared permissions for specific template
+      parameters:
+      - in: header
+        name: X-Workspace
+        schema:
+          type: string
+        description: Workspace unique_key
+        required: true
+      - in: path
+        name: template_id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - templates
+      security:
+      - SessionAuthentication: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TemplateSharing'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
+          description: ''
+    post:
+      operationId: create_template_sharing_permission
+      summary: Create template sharing permission
+      parameters:
+      - in: header
+        name: X-Workspace
+        schema:
+          type: string
+        description: Workspace unique_key
+        required: true
+      - in: path
+        name: template_id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - templates
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/TemplateSharing'
+          application/x-www-form-urlencoded:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/TemplateSharing'
+          multipart/form-data:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/TemplateSharing'
+        required: true
+      security:
+      - SessionAuthentication: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TemplateSharing'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
+          description: ''
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: ''
+  /dashboard/api/v2/templates/{template_id}/permissions/{id}/:
+    get:
+      operationId: get_template_sharing
+      summary: Get specific permission details for given template
+      parameters:
+      - in: header
+        name: X-Workspace
+        schema:
+          type: string
+        description: Workspace unique_key
+        required: true
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this template sharing setting.
+        required: true
+      - in: path
+        name: template_id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - templates
+      security:
+      - SessionAuthentication: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TemplateSharing'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
+          description: ''
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: ''
+    patch:
+      operationId: update_template_sharing_permission_content
+      summary: Update template content partially
+      parameters:
+      - in: header
+        name: X-Workspace
+        schema:
+          type: string
+        description: Workspace unique_key
+        required: true
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this template sharing setting.
+        required: true
+      - in: path
+        name: template_id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - templates
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedUpdateTemplateSharing'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedUpdateTemplateSharing'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedUpdateTemplateSharing'
+      security:
+      - SessionAuthentication: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TemplateSharing'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
+          description: ''
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: ''
+    delete:
+      operationId: revoke_template_sharing_permission
+      summary: Revoke template sharing permission
+      parameters:
+      - in: header
+        name: X-Workspace
+        schema:
+          type: string
+        description: Workspace unique_key
+        required: true
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this template sharing setting.
+        required: true
+      - in: path
+        name: template_id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - templates
+      security:
+      - SessionAuthentication: []
+      responses:
+        '204':
+          description: No response body
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
+          description: ''
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: ''
+  /dashboard/api/v2/templates/all/:
+    get:
+      operationId: list_all_templates
+      description: Will return all templates without pagination, excluding templates in trashed
+      summary: List all templates
+      parameters:
+      - in: header
+        name: X-Workspace
+        schema:
+          type: string
+        description: Workspace unique_key
+        required: true
+      - in: query
+        name: delivery_type
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - aws_s3
+            - azure_blob_storage
+            - box_drive
+            - docu_sign
+            - dropbox
+            - email
+            - eversign
+            - google_drive
+            - hellosign
+            - one_drive
+            - podio
+            - sftp
+            - sharepoint
+            - sign_now
+            - signable
+            - signature
+            - webhook
+            - yousign
+            - zoho_crm
+        description: 'Filter templates by delivery type
+
+
+          '
+        explode: false
+        style: form
+      - in: query
+        name: folder
+        schema:
+          type: integer
+      - in: query
+        name: output_type
+        schema:
+          type: string
+          enum:
+          - docx
+          - html
+          - jpeg
+          - pdf
+          - png
+          - pptx
+          - xlsx
+      - in: query
+        name: status
+        schema:
+          type: string
+          enum:
+          - active
+          - test
+      - in: query
+        name: type
+        schema:
+          type: string
+      tags:
+      - templates
+      security:
+      - OAuthAuthentication: []
+      - SessionAuthentication: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Template'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
+          description: ''
+  /dashboard/api/v2/templates/count/:
+    get:
+      operationId: get_user_created_templates_count
+      summary: Get the count of templates created by the user.
+      parameters:
+      - in: header
+        name: X-Workspace
+        schema:
+          type: string
+        description: Workspace unique_key
+        required: true
+      - in: query
+        name: owner_id
+        schema:
+          type: string
+        description: Owner Id of resource
+        required: true
+      tags:
+      - templates
+      security:
+      - SessionAuthentication: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TemplateCount'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
+          description: ''
+  /dashboard/api/v2/templates/move/:
+    post:
+      operationId: move_templates_to_another_folder
+      description: Move templates to another folder
+      parameters:
+      - in: header
+        name: X-Workspace
+        schema:
+          type: string
+        description: Workspace unique_key
+        required: true
+      tags:
+      - templates
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MoveTemplate'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/MoveTemplate'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/MoveTemplate'
+        required: true
+      security:
+      - OAuthAuthentication: []
+      - SessionAuthentication: []
+      - tokenAuth: []
+      responses:
+        '207':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MoveTemplateResponse'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
+          description: ''
+  /dashboard/api/v2/templates/sharing_status/:
+    get:
+      operationId: templates_sharing_status_retrieve
+      parameters:
+      - in: header
+        name: X-Workspace
+        schema:
+          type: string
+        description: Workspace unique_key
+        required: true
+      tags:
+      - templates
+      security:
+      - SessionAuthentication: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SharingInfoTemplate'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
+          description: ''
+  /dashboard/api/v2/templates/trash/:
+    get:
+      operationId: list_trashed_templates
+      summary: List all templates in trash.
+      parameters:
+      - in: header
+        name: X-Workspace
+        schema:
+          type: string
+        description: Workspace unique_key
+        required: true
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      tags:
+      - templates
+      security:
+      - OAuthAuthentication: []
+      - SessionAuthentication: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedTemplateList'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
+          description: ''
+components:
+  schemas:
+    MigrateToNativeSyntaxRequest:
+      type: object
+      properties:
+        provider:
+          enum:
+          - docusign
+          type: string
+          default: docusign
+        title:
+          type: string
+      description: ''
+    DynamicImage:
+      type: object
+      properties:
+        token:
+          type: string
+          minLength: 1
+        page:
+          type: integer
+          default: 1
+        left:
+          type: number
+          format: double
+        top:
+          type: number
+          format: double
+        width:
+          type: number
+          format: double
+        height:
+          type: number
+          format: double
+      required:
+      - height
+      - left
+      - token
+      - top
+      - width
+      description: ''
+    TemplateSchemaDetail:
+      type: object
+      properties:
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/TemplateSchema'
+        content_blocks_schema:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/TemplateSchema'
+          description: A mapping of content block keys to their respective schema.
+        other:
+          type: array
+          items:
+            $ref: '#/components/schemas/TemplateSchema'
+      required:
+      - content
+      - content_blocks_schema
+      - other
+      description: ''
+    UnauthenticatedError:
+      type: object
+      properties:
+        detail:
+          type: string
+      required:
+      - detail
+      description: ''
+    SharingInfoTemplate:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        is_shared:
+          type: boolean
+          readOnly: true
+      required:
+      - id
+      - is_shared
+      description: ''
+    ForbiddenError:
+      type: object
+      properties:
+        detail:
+          type: string
+      required:
+      - detail
+      description: ''
+    PatchedUpdateTemplateSharing:
+      type: object
+      description: ''
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        permission:
+          enum:
+          - read
+          - write
+          - manage
+          type: string
+        user:
+          type: integer
+          readOnly: true
+    MoveTemplateResponse:
+      type: object
+      properties:
+        success:
+          type: array
+          items:
+            type: integer
+          description: List of successfully moved template IDs
+        failures:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/TemplateMoveFailureDetail'
+          description: Mapping of failed template IDs to error messages
+      required:
+      - failures
+      - success
+      description: ''
+    MoveTemplate:
+      type: object
+      properties:
+        template_ids:
+          type: array
+          items:
+            type: integer
+        new_folder_id:
+          type: integer
+          nullable: true
+      required:
+      - new_folder_id
+      - template_ids
+      description: ''
+    FillablePdfSettings:
+      type: object
+      properties:
+        width:
+          type: number
+          format: double
+        height:
+          type: number
+          format: double
+        no_of_pages:
+          type: integer
+          maximum: 2147483647
+          minimum: 0
+        dynamic_images:
+          type: object
+          additionalProperties: {}
+          writeOnly: true
+          nullable: true
+      required:
+      - height
+      - no_of_pages
+      - width
+      description: ''
+    DeliveryCount:
+      type: object
+      properties:
+        delivery_count:
+          type: integer
+          description: Number of deliveries linked to the template
+      required:
+      - delivery_count
+      description: ''
+    TemplateCount:
+      type: object
+      properties:
+        templates_count:
+          type: integer
+      required:
+      - templates_count
+      description: ''
+    Folder:
+      type: object
+      description: ''
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 50
+        created_time:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+        updated_time:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+        created_by:
+          type: integer
+          readOnly: true
+        updated_by:
+          type: integer
+          readOnly: true
+          nullable: true
+      required:
+      - created_by
+      - created_time
+      - id
+      - name
+      - updated_by
+      - updated_time
+    Template:
+      type: object
+      description: ''
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        preferences:
+          $ref: '#/components/schemas/TemplateSettings'
+        folder:
+          allOf:
+          - $ref: '#/components/schemas/Folder'
+          nullable: true
+        has_docusign_delivery:
+          type: boolean
+          readOnly: true
+        published:
+          type: boolean
+          readOnly: true
+        title:
+          type: string
+          maxLength: 255
+        description:
+          type: string
+          nullable: true
+          maxLength: 255
+        type:
+          enum:
+          - docx
+          - html
+          - dpt_pdf
+          - fillable_pdf
+          - pptx
+          - xlsx
+          - g_document
+          - g_presentation
+          - g_spreadsheet
+          type: string
+          readOnly: true
+        created_time:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_time:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+        document_status:
+          enum:
+          - active
+          - test
+          type: string
+        deleted_time:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+        use_v2_editor:
+          type: boolean
+          readOnly: true
+        created_by:
+          type: integer
+          readOnly: true
+        updated_by:
+          type: integer
+          readOnly: true
+          nullable: true
+      required:
+      - created_by
+      - created_time
+      - deleted_time
+      - has_docusign_delivery
+      - id
+      - published
+      - title
+      - type
+      - updated_by
+      - updated_time
+      - use_v2_editor
+    TemplateSettings:
+      type: object
+      properties:
+        margin:
+          type: object
+          additionalProperties: false
+          properties:
+            top:
+              type: number
+              format: float
+              minimum: 0
+              maximum: 11
+            left:
+              type: number
+              format: float
+              minimum: 0
+              maximum: 8
+            right:
+              type: number
+              format: float
+              minimum: 0
+              maximum: 8
+            bottom:
+              type: number
+              format: float
+              minimum: 0
+              maximum: 11
+          nullable: true
+        timezone:
+          type: string
+        info:
+          allOf:
+          - $ref: '#/components/schemas/FillablePdfSettings'
+          readOnly: true
+        dynamic_images:
+          type: array
+          items:
+            $ref: '#/components/schemas/DynamicImage'
+          nullable: true
+        output_file_name:
+          type: string
+          maxLength: 255
+        output_type:
+          enum:
+          - html
+          - pdf
+          - jpeg
+          - png
+          - docx
+          - pptx
+          - xlsx
+          type: string
+        password:
+          type: string
+          nullable: true
+          maxLength: 255
+        format:
+          enum:
+          - A3
+          - A4
+          - A5
+          - Legal
+          - Letter
+          - Tabloid
+          - Custom
+          type: string
+        orientation:
+          enum:
+          - portrait
+          - landscape
+          type: string
+        header:
+          type: string
+          nullable: true
+        footer:
+          type: string
+          nullable: true
+        width:
+          type: number
+          format: double
+          maximum: 180
+          minimum: 0.4
+          nullable: true
+        height:
+          type: number
+          format: double
+          maximum: 250
+          minimum: 0.5
+          nullable: true
+        auto_number:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: 1
+          format: int64
+          nullable: true
+        flatten_pdf:
+          type: boolean
+        emulate_mode:
+          enum:
+          - print
+          - screen
+          - null
+          type: string
+          nullable: true
+      required:
+      - info
+      description: ''
+    PatchedEditorVersion:
+      type: object
+      properties:
+        use_v2_editor:
+          type: boolean
+      description: ''
+    PatchedUpdateNewTemplate:
+      type: object
+      description: ''
+      properties:
+        file:
+          type: string
+          format: binary
+    EditorVersion:
+      type: object
+      properties:
+        use_v2_editor:
+          type: boolean
+      description: ''
+    NewTemplate:
+      type: object
+      description: ''
+      properties:
+        file:
+          type: string
+          format: binary
+        folder:
+          type: integer
+          nullable: true
+        title:
+          type: string
+          maxLength: 255
+        output_type:
+          enum:
+          - html
+          - pdf
+          - jpeg
+          - png
+          - docx
+          - pptx
+          - xlsx
+          type: string
+        description:
+          type: string
+          nullable: true
+          maxLength: 255
+        template_gallery_id:
+          type: integer
+      required:
+      - output_type
+      - title
+    RestoreTemplateResponse:
+      type: object
+      properties:
+        status:
+          type: string
+      required:
+      - status
+      description: ''
+    TemplateSharing:
+      type: object
+      description: ''
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        permission:
+          enum:
+          - read
+          - write
+          - manage
+          type: string
+        user:
+          type: integer
+      required:
+      - id
+      - user
+    TemplateSchema:
+      type: object
+      properties:
+        name:
+          type: string
+        type:
+          enum:
+          - string
+          - array
+          - object
+          - generic
+          type: string
+        rType:
+          enum:
+          - content_block
+          type: string
+        generics:
+          enum:
+          - string
+          - array
+          - object
+          - generic
+          type: string
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/TemplateSchema'
+      required:
+      - fields
+      - generics
+      - name
+      - type
+      description: ''
+    ValidationError:
+      type: object
+      properties:
+        errors:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+        non_field_errors:
+          type: array
+          items:
+            type: string
+      required:
+      - errors
+      - non_field_errors
+      description: ''
+    UploadTemplateImage:
+      type: object
+      properties:
+        upload:
+          type: string
+          format: binary
+      required:
+      - upload
+      description: ''
+    TemplateMoveFailureDetail:
+      type: object
+      properties:
+        detail:
+          type: string
+      required:
+      - detail
+      description: ''
+    PaginatedTemplateList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Template'
+        has_docusign_templates:
+          type: boolean
+    NotFoundError:
+      type: object
+      properties:
+        detail:
+          type: string
+      required:
+      - detail
+      description: ''
+    CopyTemplate:
+      type: object
+      properties:
+        title:
+          type: string
+          maxLength: 255
+        folder:
+          type: integer
+          nullable: true
+      required:
+      - folder
+      - title
+      description: ''
+    TemplateVersion:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          nullable: true
+          maxLength: 255
+        version_type:
+          enum:
+          - major
+          - minor
+          - null
+          type: string
+          nullable: true
+        starred:
+          type: boolean
+        live:
+          type: boolean
+        created_time:
+          type: string
+          format: date-time
+          readOnly: true
+        created_by_user_name:
+          type: string
+          readOnly: true
+      required:
+      - created_by_user_name
+      - created_time
+      - id
+      description: ''
+    MigrateToNativeSyntaxError:
+      type: object
+      properties:
+        detail:
+          type: string
+      required:
+      - detail
+      description: ''
+  securitySchemes:
+    OAuthAuthentication:
+      type: http
+      scheme: bearer
+      description: OAuth2 Bearer Token Authentication
+    SessionAuthentication:
+      type: apiKey
+      in: cookie
+      name: sessionid
+      description: browser based login takes care of this
+externalDocs:
+  description: Help docs on how to use API
+  url: https://help.docupilot.app/developers/api-overview

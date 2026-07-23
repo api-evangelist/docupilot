@@ -1,0 +1,384 @@
+openapi: 3.0.3
+info:
+  title: Docupilot accounts APIs ai mfa API
+  version: '1.0'
+  description: Docupilot accounts APIs
+  termsOfService: https://docupilot.app/terms-and-conditions/
+  contact:
+    name: Team Docupilot
+    email: support@docupilot.app
+tags:
+- name: mfa
+paths:
+  /accounts/mfa/:
+    get:
+      operationId: mfa_list
+      parameters:
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      tags:
+      - mfa
+      security:
+      - OAuthAuthentication: []
+      - SessionAuthentication: []
+      responses:
+        '200':
+          description: No response body
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
+          description: ''
+  /accounts/mfa/delete-totp-device/:
+    delete:
+      operationId: mfa_delete_totp_device_destroy
+      tags:
+      - mfa
+      security:
+      - OAuthAuthentication: []
+      - SessionAuthentication: []
+      responses:
+        '204':
+          description: No response body
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
+          description: ''
+  /accounts/mfa/disable-mfa/:
+    post:
+      operationId: mfa_disable
+      tags:
+      - mfa
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MFADisable'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/MFADisable'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/MFADisable'
+        required: true
+      security:
+      - OAuthAuthentication: []
+      - SessionAuthentication: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MFADisable'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
+          description: ''
+  /accounts/mfa/enable-mfa/:
+    post:
+      operationId: mfa_enable
+      tags:
+      - mfa
+      security:
+      - OAuthAuthentication: []
+      - SessionAuthentication: []
+      responses:
+        '200':
+          description: No response body
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
+          description: ''
+  /accounts/mfa/generate-backup-tokens/:
+    post:
+      operationId: mfa_generate_backup_tokens_create
+      tags:
+      - mfa
+      security:
+      - OAuthAuthentication: []
+      - SessionAuthentication: []
+      responses:
+        '200':
+          description: No response body
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
+          description: ''
+  /accounts/mfa/mark-device-primary/:
+    put:
+      operationId: mfa_mark_device_primary_update
+      tags:
+      - mfa
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MarkDevicePrimary'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/MarkDevicePrimary'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/MarkDevicePrimary'
+        required: true
+      security:
+      - OAuthAuthentication: []
+      - SessionAuthentication: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MarkDevicePrimary'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
+          description: ''
+  /accounts/mfa/setup-totp-device/:
+    get:
+      operationId: mfa_setup_totp_device_retrieve
+      tags:
+      - mfa
+      security:
+      - OAuthAuthentication: []
+      - SessionAuthentication: []
+      responses:
+        '200':
+          description: No response body
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
+          description: ''
+  /accounts/mfa/verify-totp-device/:
+    post:
+      operationId: mfa_verify_totp_device_create
+      summary: Verify Totp device
+      tags:
+      - mfa
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TotpDeviceVerify'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TotpDeviceVerify'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/TotpDeviceVerify'
+        required: true
+      security:
+      - OAuthAuthentication: []
+      - SessionAuthentication: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TOTPDevice'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
+          description: ''
+components:
+  schemas:
+    UnauthenticatedError:
+      type: object
+      properties:
+        detail:
+          type: string
+      required:
+      - detail
+    TotpDeviceVerify:
+      type: object
+      properties:
+        t_otp:
+          type: integer
+      required:
+      - t_otp
+    ValidationError:
+      type: object
+      properties:
+        errors:
+          type: object
+          additionalProperties: {}
+        non_field_errors:
+          type: array
+          items:
+            type: string
+      required:
+      - errors
+      - non_field_errors
+    MFADisable:
+      type: object
+      properties:
+        otp:
+          type: integer
+      required:
+      - otp
+    TOTPDevice:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          description: The date and time when this device was initially created in the system.
+        last_used_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          description: The most recent date and time this device was used.
+        name:
+          type: string
+          readOnly: true
+          description: The human-readable name of this device.
+      required:
+      - created_at
+      - id
+      - last_used_at
+      - name
+    ForbiddenError:
+      type: object
+      properties:
+        detail:
+          type: string
+      required:
+      - detail
+    MarkDevicePrimary:
+      type: object
+      properties:
+        id:
+          type: integer
+        type:
+          enum:
+          - email
+          - totp
+          type: string
+      required:
+      - id
+      - type
+  securitySchemes:
+    OAuthAuthentication:
+      type: http
+      scheme: bearer
+      description: OAuth2 Bearer Token Authentication
+    SessionAuthentication:
+      type: apiKey
+      in: cookie
+      name: sessionid
+      description: browser based login takes care of this
+externalDocs:
+  description: Help docs on how to use API
+  url: https://help.docupilot.app/developers/api-overview
