@@ -1,7 +1,20 @@
 aid: docupilot
 name: Docupilot
 description: Docupilot is a document generation and automation platform with a REST API for creating PDFs, Word documents, PowerPoint presentations, and Excel files from templates using dynamic data merge and workflow automation. The API follows the OpenAPI Specification and supports integration with CRMs, HR systems, form tools, and third-party services via Zapier, Make, and native webhooks.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: paid
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Paid · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/docupilot.png
 url: https://raw.githubusercontent.com/api-evangelist/docupilot/refs/heads/main/apis.yml
 created: '2026-06-13'
 modified: '2026-06-13'
@@ -15,41 +28,968 @@ tags:
   - eSignature
   - Workflow Automation
 apis:
-  - aid: docupilot:docupilot-api
-    name: Docupilot API
-    description: REST API for generating PDF, Word, PowerPoint, and Excel documents from templates with dynamic data merge. Supports authenticated requests for workspace management and unauthenticated endpoints for template-based document creation via unique template URLs.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://help.docupilot.app/developers/api-overview
-    baseURL: https://api-us1.docupilot.app
-    tags:
-      - Document Generation
-      - PDF
-      - Word
-      - Templates
-      - REST API
-    properties:
-      - type: Documentation
-        url: https://help.docupilot.app/developers/api-overview
-      - type: SwaggerUI
-        url: https://{subdomain}.docupilot.app/~/dashboard/api-docs/swagger-ui/
-      - type: Webhooks
-        url: https://help.docupilot.app/create-document/api-and-webhook-integration
-      - type: OpenAPI
-        url: openapi/openapi-accounts.yaml
-      - type: OpenAPI
-        url: openapi/openapi-app.yaml
-      - type: JSONSchema
-        url: json-schema/
-      - type: JSONExamples
-        url: examples/
-      - type: Vocabulary
-        url: vocabulary/docupilot-vocabulary.json
-      - type: JSONLD
-        url: json-ld/docupilot.jsonld
-    contact:
-      - FN: Docupilot Support
-        url: https://help.docupilot.app/
-        email: support@docupilot.com
+- aid: docupilot:docupilot-ai-api
+  name: Docupilot ai API
+  description: The ai API from Docupilot — 5 operation(s) for ai.
+  humanURL: https://help.docupilot.app/developers/api-overview
+  baseURL: https://api-us1.docupilot.app
+  tags:
+  - ai
+  properties:
+  - type: OpenAPI
+    url: openapi/docupilot-ai-api-openapi.yml
+  - type: Documentation
+    url: https://help.docupilot.app/developers/api-overview
+  - type: SwaggerUI
+    url: https://{subdomain}.docupilot.app/~/dashboard/api-docs/swagger-ui/
+  - type: Webhooks
+    url: https://help.docupilot.app/create-document/api-and-webhook-integration
+  - type: JSONSchema
+    url: json-schema/
+  - type: JSONExamples
+    url: examples/
+  - type: Vocabulary
+    url: vocabulary/docupilot-vocabulary.json
+  - type: JSONLD
+    url: json-ld/docupilot.jsonld
+- aid: docupilot:docupilot-append-api
+  name: Docupilot append API
+  description: The append API from Docupilot — 1 operation(s) for append.
+  humanURL: https://help.docupilot.app/developers/api-overview
+  baseURL: https://api-us1.docupilot.app
+  tags:
+  - append
+  properties:
+  - type: OpenAPI
+    url: openapi/docupilot-append-api-openapi.yml
+  - type: Documentation
+    url: https://help.docupilot.app/developers/api-overview
+  - type: SwaggerUI
+    url: https://{subdomain}.docupilot.app/~/dashboard/api-docs/swagger-ui/
+  - type: Webhooks
+    url: https://help.docupilot.app/create-document/api-and-webhook-integration
+  - type: JSONSchema
+    url: json-schema/
+  - type: JSONExamples
+    url: examples/
+  - type: Vocabulary
+    url: vocabulary/docupilot-vocabulary.json
+  - type: JSONLD
+    url: json-ld/docupilot.jsonld
+- aid: docupilot:docupilot-application-api
+  name: Docupilot application API
+  description: The application API from Docupilot — 1 operation(s) for application.
+  humanURL: https://help.docupilot.app/developers/api-overview
+  baseURL: https://api-us1.docupilot.app
+  tags:
+  - application
+  properties:
+  - type: OpenAPI
+    url: openapi/docupilot-application-api-openapi.yml
+  - type: Documentation
+    url: https://help.docupilot.app/developers/api-overview
+  - type: SwaggerUI
+    url: https://{subdomain}.docupilot.app/~/dashboard/api-docs/swagger-ui/
+  - type: Webhooks
+    url: https://help.docupilot.app/create-document/api-and-webhook-integration
+  - type: JSONSchema
+    url: json-schema/
+  - type: JSONExamples
+    url: examples/
+  - type: Vocabulary
+    url: vocabulary/docupilot-vocabulary.json
+  - type: JSONLD
+    url: json-ld/docupilot.jsonld
+- aid: docupilot:docupilot-auth-tokens-api
+  name: Docupilot auth_tokens API
+  description: The auth_tokens API from Docupilot — 2 operation(s) for auth_tokens.
+  humanURL: https://help.docupilot.app/developers/api-overview
+  baseURL: https://api-us1.docupilot.app
+  tags:
+  - auth_tokens
+  properties:
+  - type: OpenAPI
+    url: openapi/docupilot-auth-tokens-api-openapi.yml
+  - type: Documentation
+    url: https://help.docupilot.app/developers/api-overview
+  - type: SwaggerUI
+    url: https://{subdomain}.docupilot.app/~/dashboard/api-docs/swagger-ui/
+  - type: Webhooks
+    url: https://help.docupilot.app/create-document/api-and-webhook-integration
+  - type: JSONSchema
+    url: json-schema/
+  - type: JSONExamples
+    url: examples/
+  - type: Vocabulary
+    url: vocabulary/docupilot-vocabulary.json
+  - type: JSONLD
+    url: json-ld/docupilot.jsonld
+- aid: docupilot:docupilot-community-api
+  name: Docupilot community API
+  description: The community API from Docupilot — 1 operation(s) for community.
+  humanURL: https://help.docupilot.app/developers/api-overview
+  baseURL: https://api-us1.docupilot.app
+  tags:
+  - community
+  properties:
+  - type: OpenAPI
+    url: openapi/docupilot-community-api-openapi.yml
+  - type: Documentation
+    url: https://help.docupilot.app/developers/api-overview
+  - type: SwaggerUI
+    url: https://{subdomain}.docupilot.app/~/dashboard/api-docs/swagger-ui/
+  - type: Webhooks
+    url: https://help.docupilot.app/create-document/api-and-webhook-integration
+  - type: JSONSchema
+    url: json-schema/
+  - type: JSONExamples
+    url: examples/
+  - type: Vocabulary
+    url: vocabulary/docupilot-vocabulary.json
+  - type: JSONLD
+    url: json-ld/docupilot.jsonld
+- aid: docupilot:docupilot-content-blocks-api
+  name: Docupilot content_blocks API
+  description: The content_blocks API from Docupilot — 14 operation(s) for content_blocks.
+  humanURL: https://help.docupilot.app/developers/api-overview
+  baseURL: https://api-us1.docupilot.app
+  tags:
+  - content_blocks
+  properties:
+  - type: OpenAPI
+    url: openapi/docupilot-content-blocks-api-openapi.yml
+  - type: Documentation
+    url: https://help.docupilot.app/developers/api-overview
+  - type: SwaggerUI
+    url: https://{subdomain}.docupilot.app/~/dashboard/api-docs/swagger-ui/
+  - type: Webhooks
+    url: https://help.docupilot.app/create-document/api-and-webhook-integration
+  - type: JSONSchema
+    url: json-schema/
+  - type: JSONExamples
+    url: examples/
+  - type: Vocabulary
+    url: vocabulary/docupilot-vocabulary.json
+  - type: JSONLD
+    url: json-ld/docupilot.jsonld
+- aid: docupilot:docupilot-convert-api
+  name: Docupilot convert API
+  description: The convert API from Docupilot — 1 operation(s) for convert.
+  humanURL: https://help.docupilot.app/developers/api-overview
+  baseURL: https://api-us1.docupilot.app
+  tags:
+  - convert
+  properties:
+  - type: OpenAPI
+    url: openapi/docupilot-convert-api-openapi.yml
+  - type: Documentation
+    url: https://help.docupilot.app/developers/api-overview
+  - type: SwaggerUI
+    url: https://{subdomain}.docupilot.app/~/dashboard/api-docs/swagger-ui/
+  - type: Webhooks
+    url: https://help.docupilot.app/create-document/api-and-webhook-integration
+  - type: JSONSchema
+    url: json-schema/
+  - type: JSONExamples
+    url: examples/
+  - type: Vocabulary
+    url: vocabulary/docupilot-vocabulary.json
+  - type: JSONLD
+    url: json-ld/docupilot.jsonld
+- aid: docupilot:docupilot-demographic-api
+  name: Docupilot demographic API
+  description: The demographic API from Docupilot — 3 operation(s) for demographic.
+  humanURL: https://help.docupilot.app/developers/api-overview
+  baseURL: https://api-us1.docupilot.app
+  tags:
+  - demographic
+  properties:
+  - type: OpenAPI
+    url: openapi/docupilot-demographic-api-openapi.yml
+  - type: Documentation
+    url: https://help.docupilot.app/developers/api-overview
+  - type: SwaggerUI
+    url: https://{subdomain}.docupilot.app/~/dashboard/api-docs/swagger-ui/
+  - type: Webhooks
+    url: https://help.docupilot.app/create-document/api-and-webhook-integration
+  - type: JSONSchema
+    url: json-schema/
+  - type: JSONExamples
+    url: examples/
+  - type: Vocabulary
+    url: vocabulary/docupilot-vocabulary.json
+  - type: JSONLD
+    url: json-ld/docupilot.jsonld
+- aid: docupilot:docupilot-domain-api
+  name: Docupilot domain API
+  description: The domain API from Docupilot — 6 operation(s) for domain.
+  humanURL: https://help.docupilot.app/developers/api-overview
+  baseURL: https://api-us1.docupilot.app
+  tags:
+  - domain
+  properties:
+  - type: OpenAPI
+    url: openapi/docupilot-domain-api-openapi.yml
+  - type: Documentation
+    url: https://help.docupilot.app/developers/api-overview
+  - type: SwaggerUI
+    url: https://{subdomain}.docupilot.app/~/dashboard/api-docs/swagger-ui/
+  - type: Webhooks
+    url: https://help.docupilot.app/create-document/api-and-webhook-integration
+  - type: JSONSchema
+    url: json-schema/
+  - type: JSONExamples
+    url: examples/
+  - type: Vocabulary
+    url: vocabulary/docupilot-vocabulary.json
+  - type: JSONLD
+    url: json-ld/docupilot.jsonld
+- aid: docupilot:docupilot-esign-api
+  name: Docupilot esign API
+  description: The esign API from Docupilot — 29 operation(s) for esign.
+  humanURL: https://help.docupilot.app/developers/api-overview
+  baseURL: https://api-us1.docupilot.app
+  tags:
+  - esign
+  properties:
+  - type: OpenAPI
+    url: openapi/docupilot-esign-api-openapi.yml
+  - type: Documentation
+    url: https://help.docupilot.app/developers/api-overview
+  - type: SwaggerUI
+    url: https://{subdomain}.docupilot.app/~/dashboard/api-docs/swagger-ui/
+  - type: Webhooks
+    url: https://help.docupilot.app/create-document/api-and-webhook-integration
+  - type: JSONSchema
+    url: json-schema/
+  - type: JSONExamples
+    url: examples/
+  - type: Vocabulary
+    url: vocabulary/docupilot-vocabulary.json
+  - type: JSONLD
+    url: json-ld/docupilot.jsonld
+- aid: docupilot:docupilot-esign-folders-api
+  name: Docupilot esign-folders API
+  description: The esign-folders API from Docupilot — 2 operation(s) for esign-folders.
+  humanURL: https://help.docupilot.app/developers/api-overview
+  baseURL: https://api-us1.docupilot.app
+  tags:
+  - esign-folders
+  properties:
+  - type: OpenAPI
+    url: openapi/docupilot-esign-folders-api-openapi.yml
+  - type: Documentation
+    url: https://help.docupilot.app/developers/api-overview
+  - type: SwaggerUI
+    url: https://{subdomain}.docupilot.app/~/dashboard/api-docs/swagger-ui/
+  - type: Webhooks
+    url: https://help.docupilot.app/create-document/api-and-webhook-integration
+  - type: JSONSchema
+    url: json-schema/
+  - type: JSONExamples
+    url: examples/
+  - type: Vocabulary
+    url: vocabulary/docupilot-vocabulary.json
+  - type: JSONLD
+    url: json-ld/docupilot.jsonld
+- aid: docupilot:docupilot-esign-settings-api
+  name: Docupilot esign-settings API
+  description: The esign-settings API from Docupilot — 10 operation(s) for esign-settings.
+  humanURL: https://help.docupilot.app/developers/api-overview
+  baseURL: https://api-us1.docupilot.app
+  tags:
+  - esign-settings
+  properties:
+  - type: OpenAPI
+    url: openapi/docupilot-esign-settings-api-openapi.yml
+  - type: Documentation
+    url: https://help.docupilot.app/developers/api-overview
+  - type: SwaggerUI
+    url: https://{subdomain}.docupilot.app/~/dashboard/api-docs/swagger-ui/
+  - type: Webhooks
+    url: https://help.docupilot.app/create-document/api-and-webhook-integration
+  - type: JSONSchema
+    url: json-schema/
+  - type: JSONExamples
+    url: examples/
+  - type: Vocabulary
+    url: vocabulary/docupilot-vocabulary.json
+  - type: JSONLD
+    url: json-ld/docupilot.jsonld
+- aid: docupilot:docupilot-extensions-api
+  name: Docupilot extensions API
+  description: The extensions API from Docupilot — 10 operation(s) for extensions.
+  humanURL: https://help.docupilot.app/developers/api-overview
+  baseURL: https://api-us1.docupilot.app
+  tags:
+  - extensions
+  properties:
+  - type: OpenAPI
+    url: openapi/docupilot-extensions-api-openapi.yml
+  - type: Documentation
+    url: https://help.docupilot.app/developers/api-overview
+  - type: SwaggerUI
+    url: https://{subdomain}.docupilot.app/~/dashboard/api-docs/swagger-ui/
+  - type: Webhooks
+    url: https://help.docupilot.app/create-document/api-and-webhook-integration
+  - type: JSONSchema
+    url: json-schema/
+  - type: JSONExamples
+    url: examples/
+  - type: Vocabulary
+    url: vocabulary/docupilot-vocabulary.json
+  - type: JSONLD
+    url: json-ld/docupilot.jsonld
+- aid: docupilot:docupilot-folders-api
+  name: Docupilot folders API
+  description: The folders API from Docupilot — 6 operation(s) for folders.
+  humanURL: https://help.docupilot.app/developers/api-overview
+  baseURL: https://api-us1.docupilot.app
+  tags:
+  - folders
+  properties:
+  - type: OpenAPI
+    url: openapi/docupilot-folders-api-openapi.yml
+  - type: Documentation
+    url: https://help.docupilot.app/developers/api-overview
+  - type: SwaggerUI
+    url: https://{subdomain}.docupilot.app/~/dashboard/api-docs/swagger-ui/
+  - type: Webhooks
+    url: https://help.docupilot.app/create-document/api-and-webhook-integration
+  - type: JSONSchema
+    url: json-schema/
+  - type: JSONExamples
+    url: examples/
+  - type: Vocabulary
+    url: vocabulary/docupilot-vocabulary.json
+  - type: JSONLD
+    url: json-ld/docupilot.jsonld
+- aid: docupilot:docupilot-gallery-templates-api
+  name: Docupilot Gallery templates API
+  description: The Gallery templates API from Docupilot — 2 operation(s) for gallery templates.
+  humanURL: https://help.docupilot.app/developers/api-overview
+  baseURL: https://api-us1.docupilot.app
+  tags:
+  - Gallery templates
+  properties:
+  - type: OpenAPI
+    url: openapi/docupilot-gallery-templates-api-openapi.yml
+  - type: Documentation
+    url: https://help.docupilot.app/developers/api-overview
+  - type: SwaggerUI
+    url: https://{subdomain}.docupilot.app/~/dashboard/api-docs/swagger-ui/
+  - type: Webhooks
+    url: https://help.docupilot.app/create-document/api-and-webhook-integration
+  - type: JSONSchema
+    url: json-schema/
+  - type: JSONExamples
+    url: examples/
+  - type: Vocabulary
+    url: vocabulary/docupilot-vocabulary.json
+  - type: JSONLD
+    url: json-ld/docupilot.jsonld
+- aid: docupilot:docupilot-general-api
+  name: Docupilot general API
+  description: The general API from Docupilot — 5 operation(s) for general.
+  humanURL: https://help.docupilot.app/developers/api-overview
+  baseURL: https://api-us1.docupilot.app
+  tags:
+  - general
+  properties:
+  - type: OpenAPI
+    url: openapi/docupilot-general-api-openapi.yml
+  - type: Documentation
+    url: https://help.docupilot.app/developers/api-overview
+  - type: SwaggerUI
+    url: https://{subdomain}.docupilot.app/~/dashboard/api-docs/swagger-ui/
+  - type: Webhooks
+    url: https://help.docupilot.app/create-document/api-and-webhook-integration
+  - type: JSONSchema
+    url: json-schema/
+  - type: JSONExamples
+    url: examples/
+  - type: Vocabulary
+    url: vocabulary/docupilot-vocabulary.json
+  - type: JSONLD
+    url: json-ld/docupilot.jsonld
+- aid: docupilot:docupilot-generate-api
+  name: Docupilot generate API
+  description: The generate API from Docupilot — 7 operation(s) for generate.
+  humanURL: https://help.docupilot.app/developers/api-overview
+  baseURL: https://api-us1.docupilot.app
+  tags:
+  - generate
+  properties:
+  - type: OpenAPI
+    url: openapi/docupilot-generate-api-openapi.yml
+  - type: Documentation
+    url: https://help.docupilot.app/developers/api-overview
+  - type: SwaggerUI
+    url: https://{subdomain}.docupilot.app/~/dashboard/api-docs/swagger-ui/
+  - type: Webhooks
+    url: https://help.docupilot.app/create-document/api-and-webhook-integration
+  - type: JSONSchema
+    url: json-schema/
+  - type: JSONExamples
+    url: examples/
+  - type: Vocabulary
+    url: vocabulary/docupilot-vocabulary.json
+  - type: JSONLD
+    url: json-ld/docupilot.jsonld
+- aid: docupilot:docupilot-generate-bulk-api
+  name: Docupilot generate_bulk API
+  description: The generate_bulk API from Docupilot — 7 operation(s) for generate_bulk.
+  humanURL: https://help.docupilot.app/developers/api-overview
+  baseURL: https://api-us1.docupilot.app
+  tags:
+  - generate_bulk
+  properties:
+  - type: OpenAPI
+    url: openapi/docupilot-generate-bulk-api-openapi.yml
+  - type: Documentation
+    url: https://help.docupilot.app/developers/api-overview
+  - type: SwaggerUI
+    url: https://{subdomain}.docupilot.app/~/dashboard/api-docs/swagger-ui/
+  - type: Webhooks
+    url: https://help.docupilot.app/create-document/api-and-webhook-integration
+  - type: JSONSchema
+    url: json-schema/
+  - type: JSONExamples
+    url: examples/
+  - type: Vocabulary
+    url: vocabulary/docupilot-vocabulary.json
+  - type: JSONLD
+    url: json-ld/docupilot.jsonld
+- aid: docupilot:docupilot-history-api
+  name: Docupilot history API
+  description: The history API from Docupilot — 5 operation(s) for history.
+  humanURL: https://help.docupilot.app/developers/api-overview
+  baseURL: https://api-us1.docupilot.app
+  tags:
+  - history
+  properties:
+  - type: OpenAPI
+    url: openapi/docupilot-history-api-openapi.yml
+  - type: Documentation
+    url: https://help.docupilot.app/developers/api-overview
+  - type: SwaggerUI
+    url: https://{subdomain}.docupilot.app/~/dashboard/api-docs/swagger-ui/
+  - type: Webhooks
+    url: https://help.docupilot.app/create-document/api-and-webhook-integration
+  - type: JSONSchema
+    url: json-schema/
+  - type: JSONExamples
+    url: examples/
+  - type: Vocabulary
+    url: vocabulary/docupilot-vocabulary.json
+  - type: JSONLD
+    url: json-ld/docupilot.jsonld
+- aid: docupilot:docupilot-invitation-api
+  name: Docupilot invitation API
+  description: The invitation API from Docupilot — 6 operation(s) for invitation.
+  humanURL: https://help.docupilot.app/developers/api-overview
+  baseURL: https://api-us1.docupilot.app
+  tags:
+  - invitation
+  properties:
+  - type: OpenAPI
+    url: openapi/docupilot-invitation-api-openapi.yml
+  - type: Documentation
+    url: https://help.docupilot.app/developers/api-overview
+  - type: SwaggerUI
+    url: https://{subdomain}.docupilot.app/~/dashboard/api-docs/swagger-ui/
+  - type: Webhooks
+    url: https://help.docupilot.app/create-document/api-and-webhook-integration
+  - type: JSONSchema
+    url: json-schema/
+  - type: JSONExamples
+    url: examples/
+  - type: Vocabulary
+    url: vocabulary/docupilot-vocabulary.json
+  - type: JSONLD
+    url: json-ld/docupilot.jsonld
+- aid: docupilot:docupilot-invitations-api
+  name: Docupilot invitations API
+  description: The invitations API from Docupilot — 3 operation(s) for invitations.
+  humanURL: https://help.docupilot.app/developers/api-overview
+  baseURL: https://api-us1.docupilot.app
+  tags:
+  - invitations
+  properties:
+  - type: OpenAPI
+    url: openapi/docupilot-invitations-api-openapi.yml
+  - type: Documentation
+    url: https://help.docupilot.app/developers/api-overview
+  - type: SwaggerUI
+    url: https://{subdomain}.docupilot.app/~/dashboard/api-docs/swagger-ui/
+  - type: Webhooks
+    url: https://help.docupilot.app/create-document/api-and-webhook-integration
+  - type: JSONSchema
+    url: json-schema/
+  - type: JSONExamples
+    url: examples/
+  - type: Vocabulary
+    url: vocabulary/docupilot-vocabulary.json
+  - type: JSONLD
+    url: json-ld/docupilot.jsonld
+- aid: docupilot:docupilot-linked-accounts-api
+  name: Docupilot linked_accounts API
+  description: The linked_accounts API from Docupilot — 14 operation(s) for linked_accounts.
+  humanURL: https://help.docupilot.app/developers/api-overview
+  baseURL: https://api-us1.docupilot.app
+  tags:
+  - linked_accounts
+  properties:
+  - type: OpenAPI
+    url: openapi/docupilot-linked-accounts-api-openapi.yml
+  - type: Documentation
+    url: https://help.docupilot.app/developers/api-overview
+  - type: SwaggerUI
+    url: https://{subdomain}.docupilot.app/~/dashboard/api-docs/swagger-ui/
+  - type: Webhooks
+    url: https://help.docupilot.app/create-document/api-and-webhook-integration
+  - type: JSONSchema
+    url: json-schema/
+  - type: JSONExamples
+    url: examples/
+  - type: Vocabulary
+    url: vocabulary/docupilot-vocabulary.json
+  - type: JSONLD
+    url: json-ld/docupilot.jsonld
+- aid: docupilot:docupilot-merge-history-api
+  name: Docupilot merge_history API
+  description: The merge_history API from Docupilot — 2 operation(s) for merge_history.
+  humanURL: https://help.docupilot.app/developers/api-overview
+  baseURL: https://api-us1.docupilot.app
+  tags:
+  - merge_history
+  properties:
+  - type: OpenAPI
+    url: openapi/docupilot-merge-history-api-openapi.yml
+  - type: Documentation
+    url: https://help.docupilot.app/developers/api-overview
+  - type: SwaggerUI
+    url: https://{subdomain}.docupilot.app/~/dashboard/api-docs/swagger-ui/
+  - type: Webhooks
+    url: https://help.docupilot.app/create-document/api-and-webhook-integration
+  - type: JSONSchema
+    url: json-schema/
+  - type: JSONExamples
+    url: examples/
+  - type: Vocabulary
+    url: vocabulary/docupilot-vocabulary.json
+  - type: JSONLD
+    url: json-ld/docupilot.jsonld
+- aid: docupilot:docupilot-mfa-api
+  name: Docupilot mfa API
+  description: The mfa API from Docupilot — 8 operation(s) for mfa.
+  humanURL: https://help.docupilot.app/developers/api-overview
+  baseURL: https://api-us1.docupilot.app
+  tags:
+  - mfa
+  properties:
+  - type: OpenAPI
+    url: openapi/docupilot-mfa-api-openapi.yml
+  - type: Documentation
+    url: https://help.docupilot.app/developers/api-overview
+  - type: SwaggerUI
+    url: https://{subdomain}.docupilot.app/~/dashboard/api-docs/swagger-ui/
+  - type: Webhooks
+    url: https://help.docupilot.app/create-document/api-and-webhook-integration
+  - type: JSONSchema
+    url: json-schema/
+  - type: JSONExamples
+    url: examples/
+  - type: Vocabulary
+    url: vocabulary/docupilot-vocabulary.json
+  - type: JSONLD
+    url: json-ld/docupilot.jsonld
+- aid: docupilot:docupilot-organization-api
+  name: Docupilot organization API
+  description: The organization API from Docupilot — 9 operation(s) for organization.
+  humanURL: https://help.docupilot.app/developers/api-overview
+  baseURL: https://api-us1.docupilot.app
+  tags:
+  - organization
+  properties:
+  - type: OpenAPI
+    url: openapi/docupilot-organization-api-openapi.yml
+  - type: Documentation
+    url: https://help.docupilot.app/developers/api-overview
+  - type: SwaggerUI
+    url: https://{subdomain}.docupilot.app/~/dashboard/api-docs/swagger-ui/
+  - type: Webhooks
+    url: https://help.docupilot.app/create-document/api-and-webhook-integration
+  - type: JSONSchema
+    url: json-schema/
+  - type: JSONExamples
+    url: examples/
+  - type: Vocabulary
+    url: vocabulary/docupilot-vocabulary.json
+  - type: JSONLD
+    url: json-ld/docupilot.jsonld
+- aid: docupilot:docupilot-organization-onboarding-api
+  name: Docupilot organization_onboarding API
+  description: >-
+    The organization_onboarding API from Docupilot — 1 operation(s) for organization_onboarding.
+  humanURL: https://help.docupilot.app/developers/api-overview
+  baseURL: https://api-us1.docupilot.app
+  tags:
+  - organization_onboarding
+  properties:
+  - type: OpenAPI
+    url: openapi/docupilot-organization-onboarding-api-openapi.yml
+  - type: Documentation
+    url: https://help.docupilot.app/developers/api-overview
+  - type: SwaggerUI
+    url: https://{subdomain}.docupilot.app/~/dashboard/api-docs/swagger-ui/
+  - type: Webhooks
+    url: https://help.docupilot.app/create-document/api-and-webhook-integration
+  - type: JSONSchema
+    url: json-schema/
+  - type: JSONExamples
+    url: examples/
+  - type: Vocabulary
+    url: vocabulary/docupilot-vocabulary.json
+  - type: JSONLD
+    url: json-ld/docupilot.jsonld
+- aid: docupilot:docupilot-pdf-api
+  name: Docupilot pdf API
+  description: The pdf API from Docupilot — 1 operation(s) for pdf.
+  humanURL: https://help.docupilot.app/developers/api-overview
+  baseURL: https://api-us1.docupilot.app
+  tags:
+  - pdf
+  properties:
+  - type: OpenAPI
+    url: openapi/docupilot-pdf-api-openapi.yml
+  - type: Documentation
+    url: https://help.docupilot.app/developers/api-overview
+  - type: SwaggerUI
+    url: https://{subdomain}.docupilot.app/~/dashboard/api-docs/swagger-ui/
+  - type: Webhooks
+    url: https://help.docupilot.app/create-document/api-and-webhook-integration
+  - type: JSONSchema
+    url: json-schema/
+  - type: JSONExamples
+    url: examples/
+  - type: Vocabulary
+    url: vocabulary/docupilot-vocabulary.json
+  - type: JSONLD
+    url: json-ld/docupilot.jsonld
+- aid: docupilot:docupilot-permissions-api
+  name: Docupilot permissions API
+  description: The permissions API from Docupilot — 4 operation(s) for permissions.
+  humanURL: https://help.docupilot.app/developers/api-overview
+  baseURL: https://api-us1.docupilot.app
+  tags:
+  - permissions
+  properties:
+  - type: OpenAPI
+    url: openapi/docupilot-permissions-api-openapi.yml
+  - type: Documentation
+    url: https://help.docupilot.app/developers/api-overview
+  - type: SwaggerUI
+    url: https://{subdomain}.docupilot.app/~/dashboard/api-docs/swagger-ui/
+  - type: Webhooks
+    url: https://help.docupilot.app/create-document/api-and-webhook-integration
+  - type: JSONSchema
+    url: json-schema/
+  - type: JSONExamples
+    url: examples/
+  - type: Vocabulary
+    url: vocabulary/docupilot-vocabulary.json
+  - type: JSONLD
+    url: json-ld/docupilot.jsonld
+- aid: docupilot:docupilot-personalization-api
+  name: Docupilot personalization API
+  description: The personalization API from Docupilot — 1 operation(s) for personalization.
+  humanURL: https://help.docupilot.app/developers/api-overview
+  baseURL: https://api-us1.docupilot.app
+  tags:
+  - personalization
+  properties:
+  - type: OpenAPI
+    url: openapi/docupilot-personalization-api-openapi.yml
+  - type: Documentation
+    url: https://help.docupilot.app/developers/api-overview
+  - type: SwaggerUI
+    url: https://{subdomain}.docupilot.app/~/dashboard/api-docs/swagger-ui/
+  - type: Webhooks
+    url: https://help.docupilot.app/create-document/api-and-webhook-integration
+  - type: JSONSchema
+    url: json-schema/
+  - type: JSONExamples
+    url: examples/
+  - type: Vocabulary
+    url: vocabulary/docupilot-vocabulary.json
+  - type: JSONLD
+    url: json-ld/docupilot.jsonld
+- aid: docupilot:docupilot-saml-api
+  name: Docupilot saml API
+  description: The saml API from Docupilot — 3 operation(s) for saml.
+  humanURL: https://help.docupilot.app/developers/api-overview
+  baseURL: https://api-us1.docupilot.app
+  tags:
+  - saml
+  properties:
+  - type: OpenAPI
+    url: openapi/docupilot-saml-api-openapi.yml
+  - type: Documentation
+    url: https://help.docupilot.app/developers/api-overview
+  - type: SwaggerUI
+    url: https://{subdomain}.docupilot.app/~/dashboard/api-docs/swagger-ui/
+  - type: Webhooks
+    url: https://help.docupilot.app/create-document/api-and-webhook-integration
+  - type: JSONSchema
+    url: json-schema/
+  - type: JSONExamples
+    url: examples/
+  - type: Vocabulary
+    url: vocabulary/docupilot-vocabulary.json
+  - type: JSONLD
+    url: json-ld/docupilot.jsonld
+- aid: docupilot:docupilot-scim-api
+  name: Docupilot scim API
+  description: The scim API from Docupilot — 4 operation(s) for scim.
+  humanURL: https://help.docupilot.app/developers/api-overview
+  baseURL: https://api-us1.docupilot.app
+  tags:
+  - scim
+  properties:
+  - type: OpenAPI
+    url: openapi/docupilot-scim-api-openapi.yml
+  - type: Documentation
+    url: https://help.docupilot.app/developers/api-overview
+  - type: SwaggerUI
+    url: https://{subdomain}.docupilot.app/~/dashboard/api-docs/swagger-ui/
+  - type: Webhooks
+    url: https://help.docupilot.app/create-document/api-and-webhook-integration
+  - type: JSONSchema
+    url: json-schema/
+  - type: JSONExamples
+    url: examples/
+  - type: Vocabulary
+    url: vocabulary/docupilot-vocabulary.json
+  - type: JSONLD
+    url: json-ld/docupilot.jsonld
+- aid: docupilot:docupilot-subscription-api
+  name: Docupilot subscription API
+  description: The subscription API from Docupilot — 10 operation(s) for subscription.
+  humanURL: https://help.docupilot.app/developers/api-overview
+  baseURL: https://api-us1.docupilot.app
+  tags:
+  - subscription
+  properties:
+  - type: OpenAPI
+    url: openapi/docupilot-subscription-api-openapi.yml
+  - type: Documentation
+    url: https://help.docupilot.app/developers/api-overview
+  - type: SwaggerUI
+    url: https://{subdomain}.docupilot.app/~/dashboard/api-docs/swagger-ui/
+  - type: Webhooks
+    url: https://help.docupilot.app/create-document/api-and-webhook-integration
+  - type: JSONSchema
+    url: json-schema/
+  - type: JSONExamples
+    url: examples/
+  - type: Vocabulary
+    url: vocabulary/docupilot-vocabulary.json
+  - type: JSONLD
+    url: json-ld/docupilot.jsonld
+- aid: docupilot:docupilot-team-api
+  name: Docupilot team API
+  description: The team API from Docupilot — 7 operation(s) for team.
+  humanURL: https://help.docupilot.app/developers/api-overview
+  baseURL: https://api-us1.docupilot.app
+  tags:
+  - team
+  properties:
+  - type: OpenAPI
+    url: openapi/docupilot-team-api-openapi.yml
+  - type: Documentation
+    url: https://help.docupilot.app/developers/api-overview
+  - type: SwaggerUI
+    url: https://{subdomain}.docupilot.app/~/dashboard/api-docs/swagger-ui/
+  - type: Webhooks
+    url: https://help.docupilot.app/create-document/api-and-webhook-integration
+  - type: JSONSchema
+    url: json-schema/
+  - type: JSONExamples
+    url: examples/
+  - type: Vocabulary
+    url: vocabulary/docupilot-vocabulary.json
+  - type: JSONLD
+    url: json-ld/docupilot.jsonld
+- aid: docupilot:docupilot-template-delivery-api
+  name: Docupilot template_delivery API
+  description: The template_delivery API from Docupilot — 5 operation(s) for template_delivery.
+  humanURL: https://help.docupilot.app/developers/api-overview
+  baseURL: https://api-us1.docupilot.app
+  tags:
+  - template_delivery
+  properties:
+  - type: OpenAPI
+    url: openapi/docupilot-template-delivery-api-openapi.yml
+  - type: Documentation
+    url: https://help.docupilot.app/developers/api-overview
+  - type: SwaggerUI
+    url: https://{subdomain}.docupilot.app/~/dashboard/api-docs/swagger-ui/
+  - type: Webhooks
+    url: https://help.docupilot.app/create-document/api-and-webhook-integration
+  - type: JSONSchema
+    url: json-schema/
+  - type: JSONExamples
+    url: examples/
+  - type: Vocabulary
+    url: vocabulary/docupilot-vocabulary.json
+  - type: JSONLD
+    url: json-ld/docupilot.jsonld
+- aid: docupilot:docupilot-template-versioning-api
+  name: Docupilot Template versioning API
+  description: The Template versioning API from Docupilot — 9 operation(s) for template versioning.
+  humanURL: https://help.docupilot.app/developers/api-overview
+  baseURL: https://api-us1.docupilot.app
+  tags:
+  - Template versioning
+  properties:
+  - type: OpenAPI
+    url: openapi/docupilot-template-versioning-api-openapi.yml
+  - type: Documentation
+    url: https://help.docupilot.app/developers/api-overview
+  - type: SwaggerUI
+    url: https://{subdomain}.docupilot.app/~/dashboard/api-docs/swagger-ui/
+  - type: Webhooks
+    url: https://help.docupilot.app/create-document/api-and-webhook-integration
+  - type: JSONSchema
+    url: json-schema/
+  - type: JSONExamples
+    url: examples/
+  - type: Vocabulary
+    url: vocabulary/docupilot-vocabulary.json
+  - type: JSONLD
+    url: json-ld/docupilot.jsonld
+- aid: docupilot:docupilot-templates-api
+  name: Docupilot templates API
+  description: The templates API from Docupilot — 21 operation(s) for templates.
+  humanURL: https://help.docupilot.app/developers/api-overview
+  baseURL: https://api-us1.docupilot.app
+  tags:
+  - templates
+  properties:
+  - type: OpenAPI
+    url: openapi/docupilot-templates-api-openapi.yml
+  - type: Documentation
+    url: https://help.docupilot.app/developers/api-overview
+  - type: SwaggerUI
+    url: https://{subdomain}.docupilot.app/~/dashboard/api-docs/swagger-ui/
+  - type: Webhooks
+    url: https://help.docupilot.app/create-document/api-and-webhook-integration
+  - type: JSONSchema
+    url: json-schema/
+  - type: JSONExamples
+    url: examples/
+  - type: Vocabulary
+    url: vocabulary/docupilot-vocabulary.json
+  - type: JSONLD
+    url: json-ld/docupilot.jsonld
+- aid: docupilot:docupilot-user-api
+  name: Docupilot user API
+  description: The user API from Docupilot — 8 operation(s) for user.
+  humanURL: https://help.docupilot.app/developers/api-overview
+  baseURL: https://api-us1.docupilot.app
+  tags:
+  - user
+  properties:
+  - type: OpenAPI
+    url: openapi/docupilot-user-api-openapi.yml
+  - type: Documentation
+    url: https://help.docupilot.app/developers/api-overview
+  - type: SwaggerUI
+    url: https://{subdomain}.docupilot.app/~/dashboard/api-docs/swagger-ui/
+  - type: Webhooks
+    url: https://help.docupilot.app/create-document/api-and-webhook-integration
+  - type: JSONSchema
+    url: json-schema/
+  - type: JSONExamples
+    url: examples/
+  - type: Vocabulary
+    url: vocabulary/docupilot-vocabulary.json
+  - type: JSONLD
+    url: json-ld/docupilot.jsonld
+- aid: docupilot:docupilot-user-satisfaction-survey-api
+  name: Docupilot user_satisfaction_survey API
+  description: >-
+    The user_satisfaction_survey API from Docupilot — 6 operation(s) for user_satisfaction_survey.
+  humanURL: https://help.docupilot.app/developers/api-overview
+  baseURL: https://api-us1.docupilot.app
+  tags:
+  - user_satisfaction_survey
+  properties:
+  - type: OpenAPI
+    url: openapi/docupilot-user-satisfaction-survey-api-openapi.yml
+  - type: Documentation
+    url: https://help.docupilot.app/developers/api-overview
+  - type: SwaggerUI
+    url: https://{subdomain}.docupilot.app/~/dashboard/api-docs/swagger-ui/
+  - type: Webhooks
+    url: https://help.docupilot.app/create-document/api-and-webhook-integration
+  - type: JSONSchema
+    url: json-schema/
+  - type: JSONExamples
+    url: examples/
+  - type: Vocabulary
+    url: vocabulary/docupilot-vocabulary.json
+  - type: JSONLD
+    url: json-ld/docupilot.jsonld
+- aid: docupilot:docupilot-users-api
+  name: Docupilot users API
+  description: The users API from Docupilot — 5 operation(s) for users.
+  humanURL: https://help.docupilot.app/developers/api-overview
+  baseURL: https://api-us1.docupilot.app
+  tags:
+  - users
+  properties:
+  - type: OpenAPI
+    url: openapi/docupilot-users-api-openapi.yml
+  - type: Documentation
+    url: https://help.docupilot.app/developers/api-overview
+  - type: SwaggerUI
+    url: https://{subdomain}.docupilot.app/~/dashboard/api-docs/swagger-ui/
+  - type: Webhooks
+    url: https://help.docupilot.app/create-document/api-and-webhook-integration
+  - type: JSONSchema
+    url: json-schema/
+  - type: JSONExamples
+    url: examples/
+  - type: Vocabulary
+    url: vocabulary/docupilot-vocabulary.json
+  - type: JSONLD
+    url: json-ld/docupilot.jsonld
+- aid: docupilot:docupilot-workspaces-api
+  name: Docupilot workspaces API
+  description: The workspaces API from Docupilot — 4 operation(s) for workspaces.
+  humanURL: https://help.docupilot.app/developers/api-overview
+  baseURL: https://api-us1.docupilot.app
+  tags:
+  - workspaces
+  properties:
+  - type: OpenAPI
+    url: openapi/docupilot-workspaces-api-openapi.yml
+  - type: Documentation
+    url: https://help.docupilot.app/developers/api-overview
+  - type: SwaggerUI
+    url: https://{subdomain}.docupilot.app/~/dashboard/api-docs/swagger-ui/
+  - type: Webhooks
+    url: https://help.docupilot.app/create-document/api-and-webhook-integration
+  - type: JSONSchema
+    url: json-schema/
+  - type: JSONExamples
+    url: examples/
+  - type: Vocabulary
+    url: vocabulary/docupilot-vocabulary.json
+  - type: JSONLD
+    url: json-ld/docupilot.jsonld
 common:
   - type: AgenticAccess
     url: agentic-access/docupilot-agentic-access.yml
