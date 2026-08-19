@@ -1,0 +1,479 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Docupilot accounts APIs ai extensions API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "extensions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get extensions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/dashboard/extensions/",
+            "headers": [
+              {
+                "name": "X-Workspace",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "ordering",
+                "value": "",
+                "type": "query",
+                "description": "Which field to use when ordering the results."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "A page number within the paginated result set."
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "A search term."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Get extensions"
+        },
+        {
+          "info": {
+            "name": "Create extension",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/dashboard/extensions/",
+            "headers": [
+              {
+                "name": "X-Workspace",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Create extension"
+        },
+        {
+          "info": {
+            "name": "Get extension run responses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/dashboard/extensions/:extension_id/responses/",
+            "headers": [
+              {
+                "name": "X-Workspace",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "extension_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "ordering",
+                "value": "",
+                "type": "query",
+                "description": "Which field to use when ordering the results."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "A page number within the paginated result set."
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "A search term."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Get extension run responses"
+        },
+        {
+          "info": {
+            "name": "Export extension run metadata and responses as Excel",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/dashboard/extensions/:extension_id/responses/export/",
+            "headers": [
+              {
+                "name": "X-Workspace",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "extension_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Export extension run metadata and responses as Excel"
+        },
+        {
+          "info": {
+            "name": "Get extension",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/dashboard/extensions/:id/",
+            "headers": [
+              {
+                "name": "X-Workspace",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Get extension"
+        },
+        {
+          "info": {
+            "name": "Edit extension",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/dashboard/extensions/:id/",
+            "headers": [
+              {
+                "name": "X-Workspace",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Edit extension"
+        },
+        {
+          "info": {
+            "name": "extensions_partial_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/dashboard/extensions/:id/",
+            "headers": [
+              {
+                "name": "X-Workspace",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "Delete extension",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/dashboard/extensions/:id/",
+            "headers": [
+              {
+                "name": "X-Workspace",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Delete extension"
+        },
+        {
+          "info": {
+            "name": "Archive extension",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/dashboard/extensions/:id/archive/",
+            "headers": [
+              {
+                "name": "X-Workspace",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Archive extension"
+        },
+        {
+          "info": {
+            "name": "Clone extension",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/dashboard/extensions/:id/clone/",
+            "headers": [
+              {
+                "name": "X-Workspace",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Clone extension"
+        },
+        {
+          "info": {
+            "name": "Permanently delete archived extension",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/dashboard/extensions/:id/permanent_delete/",
+            "headers": [
+              {
+                "name": "X-Workspace",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Permanently delete archived extension"
+        },
+        {
+          "info": {
+            "name": "Unarchive extension",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/dashboard/extensions/:id/unarchive/",
+            "headers": [
+              {
+                "name": "X-Workspace",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Unarchive extension"
+        },
+        {
+          "info": {
+            "name": "Get extension config by unique id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/dashboard/extensions/:workspace_unique/:extension_unique/config/",
+            "params": [
+              {
+                "name": "extension_unique",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_unique",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Get extension config by unique id"
+        },
+        {
+          "info": {
+            "name": "Execute extension by unique id",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/dashboard/extensions/:workspace_unique/:extension_unique/execute/",
+            "params": [
+              {
+                "name": "extension_unique",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workspace_unique",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Execute extension by unique id"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

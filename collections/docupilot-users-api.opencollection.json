@@ -1,0 +1,117 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Docupilot accounts APIs ai users API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "users",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Exchange session for a migration code",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/dashboard/accounts/v2/users/exchange_session/",
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Generates a short-lived UUID code linked to the current session key for cross-domain migration."
+        },
+        {
+          "info": {
+            "name": "Initiate a re-authorization sequence that would verify authenticity of logged-in userin order to allow performing high security operations like delete workspace",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/dashboard/accounts/v2/users/initiate_authorization_sequence/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Initiate a re-authorization sequence that would verify authenticity of logged-in userin order to allow performing high security operations like delete workspace"
+        },
+        {
+          "info": {
+            "name": "get logged in user details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/dashboard/accounts/v2/users/me/",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "get logged in user details"
+        },
+        {
+          "info": {
+            "name": "Migrate session to API domain",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/dashboard/accounts/v2/users/migrate_session/",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "query",
+                "description": "The organization subdomain (e.g., 'rush')"
+              },
+              {
+                "name": "session_exchange_code",
+                "value": "",
+                "type": "query",
+                "description": "The one-time UUID exchange code obtained from /exchange_session/"
+              }
+            ]
+          },
+          "docs": "Endpoint called on the API domain to exchange a short-lived code for a session cookie."
+        },
+        {
+          "info": {
+            "name": "Update User Profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/dashboard/accounts/v2/users/update_user_profile/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Update User Profile"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

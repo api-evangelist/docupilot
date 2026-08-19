@@ -1,0 +1,138 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Docupilot accounts APIs ai user_satisfaction_survey API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "user_satisfaction_survey",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Redirect to G2 Review Page",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/dashboard/accounts/v2/user_satisfaction_survey/g2_review/",
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Redirect to G2 Review Page"
+        },
+        {
+          "info": {
+            "name": "Update the next NPS reminder time",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/dashboard/accounts/v2/user_satisfaction_survey/nps_next_reminder/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Update the next NPS reminder time"
+        },
+        {
+          "info": {
+            "name": "Update NPS rating",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/dashboard/accounts/v2/user_satisfaction_survey/nps_rating/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Update NPS rating"
+        },
+        {
+          "info": {
+            "name": "Save customer feedback",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/dashboard/accounts/v2/user_satisfaction_survey/save_user_feedback/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Save customer feedback"
+        },
+        {
+          "info": {
+            "name": "Show survey prompt",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/dashboard/accounts/v2/user_satisfaction_survey/show_survey_prompt/",
+            "headers": [
+              {
+                "name": "X-Workspace",
+                "value": ""
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Show survey prompt"
+        },
+        {
+          "info": {
+            "name": "Update g2_review_updated_on",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/dashboard/accounts/v2/user_satisfaction_survey/update_g2_review_updated_on/",
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Update g2_review_updated_on"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

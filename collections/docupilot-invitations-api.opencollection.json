@@ -1,0 +1,149 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Docupilot accounts APIs ai invitations API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "invitations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get list of Invitation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/dashboard/accounts/v2/invitations/",
+            "headers": [
+              {
+                "name": "X-Workspace",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "is_accepted",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "ordering",
+                "value": "",
+                "type": "query",
+                "description": "Which field to use when ordering the results."
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "A search term."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Get list of Invitation"
+        },
+        {
+          "info": {
+            "name": "Create Invitation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/dashboard/accounts/v2/invitations/",
+            "headers": [
+              {
+                "name": "X-Workspace",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Create Invitation"
+        },
+        {
+          "info": {
+            "name": "Delete Invitation",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/dashboard/accounts/v2/invitations/:id/",
+            "headers": [
+              {
+                "name": "X-Workspace",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this invitation."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Delete Invitation"
+        },
+        {
+          "info": {
+            "name": "Resend invitation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/dashboard/accounts/v2/invitations/:id/resend_invitation/",
+            "headers": [
+              {
+                "name": "X-Workspace",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this invitation."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Resend invitation"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,60 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Docupilot accounts APIs ai pdf API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "pdf",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "pdf_transform",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/dashboard/api/v2/pdf/transform/",
+            "headers": [
+              {
+                "name": "X-Client",
+                "value": ""
+              },
+              {
+                "name": "X-Workspace",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "response_type",
+                "value": "",
+                "type": "query",
+                "description": "If stream, returns the transformed file as a downloadable PDF. If url, returns JSON with file_url and file_name."
+              },
+              {
+                "name": "test",
+                "value": "",
+                "type": "query",
+                "description": "If true, the document will be generated in test mode (with watermark and without deducting merge credits)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

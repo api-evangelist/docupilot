@@ -1,0 +1,54 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Docupilot accounts APIs ai organization_onboarding API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "organization_onboarding",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "organization_onboarding_retrieve",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/accounts/organization_onboarding/",
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "organization_onboarding_partial_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/accounts/organization_onboarding/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

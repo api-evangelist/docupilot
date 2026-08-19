@@ -1,0 +1,324 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Docupilot accounts APIs ai generate_bulk API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "generate_bulk",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List bulk generation tasks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/dashboard/api/v2/templates/:template_id/generate/bulk/",
+            "headers": [
+              {
+                "name": "X-Workspace",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "ordering",
+                "value": "",
+                "type": "query",
+                "description": "Which field to use when ordering the results."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "A page number within the paginated result set."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "template_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List bulk generation tasks"
+        },
+        {
+          "info": {
+            "name": "Get bulk generation task",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/dashboard/api/v2/templates/:template_id/generate/bulk/:id/",
+            "headers": [
+              {
+                "name": "X-Workspace",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Task id"
+              },
+              {
+                "name": "template_id",
+                "value": "",
+                "type": "path",
+                "description": "Template id"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get bulk generation task"
+        },
+        {
+          "info": {
+            "name": "Cancel a bulk generation task",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/dashboard/api/v2/templates/:template_id/generate/bulk/:id/cancel/",
+            "headers": [
+              {
+                "name": "X-Workspace",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Task id"
+              },
+              {
+                "name": "template_id",
+                "value": "",
+                "type": "path",
+                "description": "Template id"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Cancel a bulk generation task"
+        },
+        {
+          "info": {
+            "name": "Get a task saved as draft",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/dashboard/api/v2/templates/:template_id/generate/bulk/:id/draft/",
+            "headers": [
+              {
+                "name": "X-Workspace",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Task id"
+              },
+              {
+                "name": "template_id",
+                "value": "",
+                "type": "path",
+                "description": "Template id"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get a task saved as draft"
+        },
+        {
+          "info": {
+            "name": "update a template mapping",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/dashboard/api/v2/templates/:template_id/generate/bulk/:id/draft/",
+            "headers": [
+              {
+                "name": "X-Workspace",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Task id"
+              },
+              {
+                "name": "template_id",
+                "value": "",
+                "type": "path",
+                "description": "Template id"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "update a template mapping"
+        },
+        {
+          "info": {
+            "name": "Get Mapping Data based on Delimiter",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/dashboard/api/v2/templates/:template_id/generate/bulk/:id/get_mapping/",
+            "headers": [
+              {
+                "name": "X-Workspace",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "delimiter",
+                "value": "",
+                "type": "query",
+                "description": "A single character used to delimit columns in the batch process file."
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Task id"
+              },
+              {
+                "name": "template_id",
+                "value": "",
+                "type": "path",
+                "description": "Template id"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get Mapping Data based on Delimiter"
+        },
+        {
+          "info": {
+            "name": "Trigger a bulk generation task",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/dashboard/api/v2/templates/:template_id/generate/bulk/:id/trigger/",
+            "headers": [
+              {
+                "name": "X-Workspace",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Task id"
+              },
+              {
+                "name": "template_id",
+                "value": "",
+                "type": "path",
+                "description": "Template id"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Trigger a bulk generation task"
+        },
+        {
+          "info": {
+            "name": "Upload a new csv for bulk generate.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/dashboard/api/v2/templates/:template_id/generate/bulk/upload/",
+            "headers": [
+              {
+                "name": "X-Workspace",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "template_id",
+                "value": "",
+                "type": "path",
+                "description": "Template id"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This will create a task in DRAFT mode."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

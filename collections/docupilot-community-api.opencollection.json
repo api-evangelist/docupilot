@@ -1,0 +1,32 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Docupilot accounts APIs ai community API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "community",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "community_docupilot_topics_retrieve",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/community/docupilot/topics/",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

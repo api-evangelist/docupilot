@@ -1,0 +1,46 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Docupilot accounts APIs ai append API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "append",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "append_files",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/dashboard/api/v2/append/",
+            "headers": [
+              {
+                "name": "X-Client",
+                "value": ""
+              },
+              {
+                "name": "X-Workspace",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

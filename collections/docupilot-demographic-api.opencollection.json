@@ -1,0 +1,77 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Docupilot accounts APIs ai demographic API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "demographic",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Demographic",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/accounts/demographic/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Create Demographic"
+        },
+        {
+          "info": {
+            "name": "Show demographic prompt for organization users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/accounts/demographic/show_prompt/",
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Show demographic prompt for organization users"
+        },
+        {
+          "info": {
+            "name": "Verify domain",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/accounts/demographic/validate_domain/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Verify domain"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

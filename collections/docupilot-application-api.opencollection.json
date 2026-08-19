@@ -1,0 +1,41 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Docupilot accounts APIs ai application API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "application",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all applications",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/accounts/application/",
+            "params": [
+              {
+                "name": "ordering",
+                "value": "",
+                "type": "query",
+                "description": "Which field to use when ordering the results."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List all applications"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
