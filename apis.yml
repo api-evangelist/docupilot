@@ -25,6 +25,13 @@ tags:
   - PDF Generation
   - Document Automation
   - Template Engine
+  - E-Signature
+  - Workflow-Automation
+tags_raw:
+  - Document Generation
+  - PDF Generation
+  - Document Automation
+  - Template Engine
   - eSignature
   - Workflow Automation
 apis:
@@ -34,6 +41,8 @@ apis:
   humanURL: https://help.docupilot.app/developers/api-overview
   baseURL: https://api-us1.docupilot.app
   tags:
+  - Artificial Intelligence
+  tags_raw:
   - ai
   properties:
   - type: OpenAPI
@@ -58,6 +67,8 @@ apis:
   humanURL: https://help.docupilot.app/developers/api-overview
   baseURL: https://api-us1.docupilot.app
   tags:
+  - Append
+  tags_raw:
   - append
   properties:
   - type: OpenAPI
@@ -82,6 +93,8 @@ apis:
   humanURL: https://help.docupilot.app/developers/api-overview
   baseURL: https://api-us1.docupilot.app
   tags:
+  - Application
+  tags_raw:
   - application
   properties:
   - type: OpenAPI
@@ -106,6 +119,8 @@ apis:
   humanURL: https://help.docupilot.app/developers/api-overview
   baseURL: https://api-us1.docupilot.app
   tags:
+  - Auth Tokens
+  tags_raw:
   - auth_tokens
   properties:
   - type: OpenAPI
@@ -130,6 +145,8 @@ apis:
   humanURL: https://help.docupilot.app/developers/api-overview
   baseURL: https://api-us1.docupilot.app
   tags:
+  - Community
+  tags_raw:
   - community
   properties:
   - type: OpenAPI
@@ -154,6 +171,8 @@ apis:
   humanURL: https://help.docupilot.app/developers/api-overview
   baseURL: https://api-us1.docupilot.app
   tags:
+  - Content Blocks
+  tags_raw:
   - content_blocks
   properties:
   - type: OpenAPI
@@ -178,6 +197,8 @@ apis:
   humanURL: https://help.docupilot.app/developers/api-overview
   baseURL: https://api-us1.docupilot.app
   tags:
+  - Convert
+  tags_raw:
   - convert
   properties:
   - type: OpenAPI
@@ -202,6 +223,8 @@ apis:
   humanURL: https://help.docupilot.app/developers/api-overview
   baseURL: https://api-us1.docupilot.app
   tags:
+  - Demographic
+  tags_raw:
   - demographic
   properties:
   - type: OpenAPI
@@ -226,6 +249,8 @@ apis:
   humanURL: https://help.docupilot.app/developers/api-overview
   baseURL: https://api-us1.docupilot.app
   tags:
+  - Domain
+  tags_raw:
   - domain
   properties:
   - type: OpenAPI
@@ -250,6 +275,8 @@ apis:
   humanURL: https://help.docupilot.app/developers/api-overview
   baseURL: https://api-us1.docupilot.app
   tags:
+  - eSign
+  tags_raw:
   - esign
   properties:
   - type: OpenAPI
@@ -322,6 +349,8 @@ apis:
   humanURL: https://help.docupilot.app/developers/api-overview
   baseURL: https://api-us1.docupilot.app
   tags:
+  - Extensions
+  tags_raw:
   - extensions
   properties:
   - type: OpenAPI
@@ -346,6 +375,8 @@ apis:
   humanURL: https://help.docupilot.app/developers/api-overview
   baseURL: https://api-us1.docupilot.app
   tags:
+  - Folders
+  tags_raw:
   - folders
   properties:
   - type: OpenAPI
@@ -393,7 +424,8 @@ apis:
   description: The general API from Docupilot — 5 operation(s) for general.
   humanURL: https://help.docupilot.app/developers/api-overview
   baseURL: https://api-us1.docupilot.app
-  tags:
+  tags: []
+  tags_raw:
   - general
   properties:
   - type: OpenAPI
@@ -418,6 +450,8 @@ apis:
   humanURL: https://help.docupilot.app/developers/api-overview
   baseURL: https://api-us1.docupilot.app
   tags:
+  - Generate
+  tags_raw:
   - generate
   properties:
   - type: OpenAPI
@@ -441,7 +475,8 @@ apis:
   description: The generate_bulk API from Docupilot — 7 operation(s) for generate_bulk.
   humanURL: https://help.docupilot.app/developers/api-overview
   baseURL: https://api-us1.docupilot.app
-  tags:
+  tags: []
+  tags_raw:
   - generate_bulk
   properties:
   - type: OpenAPI
@@ -466,6 +501,8 @@ apis:
   humanURL: https://help.docupilot.app/developers/api-overview
   baseURL: https://api-us1.docupilot.app
   tags:
+  - History
+  tags_raw:
   - history
   properties:
   - type: OpenAPI
@@ -490,6 +527,8 @@ apis:
   humanURL: https://help.docupilot.app/developers/api-overview
   baseURL: https://api-us1.docupilot.app
   tags:
+  - Invitation
+  tags_raw:
   - invitation
   properties:
   - type: OpenAPI
@@ -514,6 +553,8 @@ apis:
   humanURL: https://help.docupilot.app/developers/api-overview
   baseURL: https://api-us1.docupilot.app
   tags:
+  - Invitations
+  tags_raw:
   - invitations
   properties:
   - type: OpenAPI
@@ -538,6 +579,8 @@ apis:
   humanURL: https://help.docupilot.app/developers/api-overview
   baseURL: https://api-us1.docupilot.app
   tags:
+  - Linked Accounts
+  tags_raw:
   - linked_accounts
   properties:
   - type: OpenAPI
@@ -561,7 +604,8 @@ apis:
   description: The merge_history API from Docupilot — 2 operation(s) for merge_history.
   humanURL: https://help.docupilot.app/developers/api-overview
   baseURL: https://api-us1.docupilot.app
-  tags:
+  tags: []
+  tags_raw:
   - merge_history
   properties:
   - type: OpenAPI
@@ -586,6 +630,8 @@ apis:
   humanURL: https://help.docupilot.app/developers/api-overview
   baseURL: https://api-us1.docupilot.app
   tags:
+  - MFA
+  tags_raw:
   - mfa
   properties:
   - type: OpenAPI
@@ -610,6 +656,8 @@ apis:
   humanURL: https://help.docupilot.app/developers/api-overview
   baseURL: https://api-us1.docupilot.app
   tags:
+  - Organization
+  tags_raw:
   - organization
   properties:
   - type: OpenAPI
@@ -634,7 +682,8 @@ apis:
     The organization_onboarding API from Docupilot — 1 operation(s) for organization_onboarding.
   humanURL: https://help.docupilot.app/developers/api-overview
   baseURL: https://api-us1.docupilot.app
-  tags:
+  tags: []
+  tags_raw:
   - organization_onboarding
   properties:
   - type: OpenAPI
@@ -659,6 +708,8 @@ apis:
   humanURL: https://help.docupilot.app/developers/api-overview
   baseURL: https://api-us1.docupilot.app
   tags:
+  - PDF
+  tags_raw:
   - pdf
   properties:
   - type: OpenAPI
@@ -683,6 +734,8 @@ apis:
   humanURL: https://help.docupilot.app/developers/api-overview
   baseURL: https://api-us1.docupilot.app
   tags:
+  - Permissions
+  tags_raw:
   - permissions
   properties:
   - type: OpenAPI
@@ -707,6 +760,8 @@ apis:
   humanURL: https://help.docupilot.app/developers/api-overview
   baseURL: https://api-us1.docupilot.app
   tags:
+  - Personalization
+  tags_raw:
   - personalization
   properties:
   - type: OpenAPI
@@ -731,6 +786,8 @@ apis:
   humanURL: https://help.docupilot.app/developers/api-overview
   baseURL: https://api-us1.docupilot.app
   tags:
+  - SAML
+  tags_raw:
   - saml
   properties:
   - type: OpenAPI
@@ -755,6 +812,8 @@ apis:
   humanURL: https://help.docupilot.app/developers/api-overview
   baseURL: https://api-us1.docupilot.app
   tags:
+  - SCIM
+  tags_raw:
   - scim
   properties:
   - type: OpenAPI
@@ -779,6 +838,8 @@ apis:
   humanURL: https://help.docupilot.app/developers/api-overview
   baseURL: https://api-us1.docupilot.app
   tags:
+  - Subscription
+  tags_raw:
   - subscription
   properties:
   - type: OpenAPI
@@ -803,6 +864,8 @@ apis:
   humanURL: https://help.docupilot.app/developers/api-overview
   baseURL: https://api-us1.docupilot.app
   tags:
+  - Team
+  tags_raw:
   - team
   properties:
   - type: OpenAPI
@@ -826,7 +889,8 @@ apis:
   description: The template_delivery API from Docupilot — 5 operation(s) for template_delivery.
   humanURL: https://help.docupilot.app/developers/api-overview
   baseURL: https://api-us1.docupilot.app
-  tags:
+  tags: []
+  tags_raw:
   - template_delivery
   properties:
   - type: OpenAPI
@@ -875,6 +939,8 @@ apis:
   humanURL: https://help.docupilot.app/developers/api-overview
   baseURL: https://api-us1.docupilot.app
   tags:
+  - Templates
+  tags_raw:
   - templates
   properties:
   - type: OpenAPI
@@ -899,6 +965,8 @@ apis:
   humanURL: https://help.docupilot.app/developers/api-overview
   baseURL: https://api-us1.docupilot.app
   tags:
+  - User
+  tags_raw:
   - user
   properties:
   - type: OpenAPI
@@ -923,7 +991,8 @@ apis:
     The user_satisfaction_survey API from Docupilot — 6 operation(s) for user_satisfaction_survey.
   humanURL: https://help.docupilot.app/developers/api-overview
   baseURL: https://api-us1.docupilot.app
-  tags:
+  tags: []
+  tags_raw:
   - user_satisfaction_survey
   properties:
   - type: OpenAPI
@@ -948,6 +1017,8 @@ apis:
   humanURL: https://help.docupilot.app/developers/api-overview
   baseURL: https://api-us1.docupilot.app
   tags:
+  - User
+  tags_raw:
   - users
   properties:
   - type: OpenAPI
@@ -972,6 +1043,8 @@ apis:
   humanURL: https://help.docupilot.app/developers/api-overview
   baseURL: https://api-us1.docupilot.app
   tags:
+  - Workspaces
+  tags_raw:
   - workspaces
   properties:
   - type: OpenAPI
