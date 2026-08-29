@@ -1,6 +1,18 @@
 aid: docupilot
 name: Docupilot
 description: Docupilot is a document generation and automation platform with a REST API for creating PDFs, Word documents, PowerPoint presentations, and Excel files from templates using dynamic data merge and workflow automation. The API follows the OpenAPI Specification and supports integration with CRMs, HR systems, form tools, and third-party services via Zapier, Make, and native webhooks.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: paid
   onboarding: self-serve
