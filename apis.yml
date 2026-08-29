@@ -1076,6 +1076,9 @@ apis:
   - type: JSONLD
     url: json-ld/docupilot.jsonld
 common:
+  - type: CapabilityMap
+    url: capabilities/docupilot-capability-edges.yml
+    name: Docupilot Business Capability Map
   - type: AgenticAccess
     url: agentic-access/docupilot-agentic-access.yml
   - type: TrustCenter

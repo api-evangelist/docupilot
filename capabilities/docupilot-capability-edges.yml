@@ -1,0 +1,71 @@
+slug: docupilot
+provider: Docupilot
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 5
+edges:
+- tag: saml
+  spec_file: docupilot-saml-api-openapi.yml
+  capability_id: BC-4230.50
+  capability_id_l1: BC-4230
+  capability_name: Tenant Identity Federation
+  confidence: 0.85
+  evidence: POST /accounts/saml/ 'Create SAML provider'; POST /accounts/saml/{id}/toggle_active/ 'Toggle
+    SAML provider active status'; schemas SAMLProviderCreate, SAMLProviderList
+  reason: Full lifecycle of SAML identity providers registered under an organization/tenant — exactly
+    tenant identity federation for single sign-on in a multi-tenant SaaS.
+- tag: scim
+  spec_file: docupilot-scim-api-openapi.yml
+  capability_id: BC-4230.50
+  capability_id_l1: BC-4230
+  capability_name: Tenant Identity Federation
+  confidence: 0.85
+  evidence: POST /accounts/scim/toggle_provisioning/ toggle_scim_provisioning; POST /accounts/scim/keys/
+    create_scim_key; schemas ScimConfig, ScimApiKey
+  reason: Configures SCIM provisioning and issues SCIM API keys for the tenant, which is the SCIM half
+    of tenant identity federation and automated tenant user account lifecycle.
+- tag: subscription
+  spec_file: docupilot-subscription-api-openapi.yml
+  capability_id: BC-4240
+  capability_id_l1: BC-4240
+  capability_name: Subscription Lifecycle Management
+  confidence: 0.85
+  evidence: POST /dashboard/accounts/v2/subscription/buy_addon/ purchase_addon; POST .../extend_trial/
+    'Extend trial'; POST .../renew_request/; POST .../resume/ resume_subscription; GET .../unpaid_invoices/
+    get_chargebee_unpaid_invoices
+  reason: 'Manages the SaaS commercial subscription for the account: trial extension, add-on purchase
+    (modification), renewal request, resume, plus Chargebee billing portal/invoice views. Spans modification,
+    renewal and some billing, so the L1 subscription lifecycle capability is the honest level.'
+- tag: user_satisfaction_survey
+  spec_file: docupilot-user-satisfaction-survey-api-openapi.yml
+  capability_id: BC-430.50
+  capability_id_l1: BC-430
+  capability_name: Customer Feedback Management
+  confidence: 0.8
+  evidence: POST /user_satisfaction_survey/nps_rating/ 'Update NPS rating'; 'Save customer feedback';
+    'Show survey prompt'
+  reason: Operations capture NPS ratings, in-product survey prompts, G2 review redirection and free-text
+    customer feedback — a voice-of-customer / NPS survey surface, matching Customer Feedback Management.
+    Not the document-generation core of the vendor, but the operations are unambiguous.
+- tag: organization
+  spec_file: docupilot-organization-api-openapi.yml
+  capability_id: BC-4230
+  capability_id_l1: BC-4230
+  capability_name: SaaS Tenant Management
+  confidence: 0.75
+  evidence: POST /accounts/organization/delete_organization/ 'Delete a Organization and other related
+    data permanently'; PATCH .../toggle_mfa_status/ 'Activate or Deactivate Organization MFA'; PATCH .../update_subdomain/
+    'Update organization subdomain'
+  reason: The 'organization' is Docupilot's tenant/account object; operations create-read-update-delete
+    the tenant record and set tenant-level settings (subdomain, MFA, password login). That is SaaS tenant
+    management. Evidence spans both lifecycle (delete) and configuration (subdomain/MFA), so no single
+    L2 is clearly named.
