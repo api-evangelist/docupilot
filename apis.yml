@@ -37,7 +37,7 @@ tags:
   - PDF Generation
   - Document Automation
   - Template Engine
-  - eSignature
+  - E-Signature
   - Workflow-Automation
 tags_raw:
   - Document Generation
@@ -79,7 +79,7 @@ apis:
   humanURL: https://help.docupilot.app/developers/api-overview
   baseURL: https://api-us1.docupilot.app
   tags:
-  - append
+  - Append
   tags_raw:
   - append
   properties:
@@ -130,7 +130,8 @@ apis:
   description: The auth_tokens API from Docupilot — 2 operation(s) for auth_tokens.
   humanURL: https://help.docupilot.app/developers/api-overview
   baseURL: https://api-us1.docupilot.app
-  tags: []
+  tags:
+  - Auth Tokens
   tags_raw:
   - auth_tokens
   properties:
@@ -181,7 +182,8 @@ apis:
   description: The content_blocks API from Docupilot — 14 operation(s) for content_blocks.
   humanURL: https://help.docupilot.app/developers/api-overview
   baseURL: https://api-us1.docupilot.app
-  tags: []
+  tags:
+  - Content Blocks
   tags_raw:
   - content_blocks
   properties:
@@ -207,7 +209,7 @@ apis:
   humanURL: https://help.docupilot.app/developers/api-overview
   baseURL: https://api-us1.docupilot.app
   tags:
-  - convert
+  - Convert
   tags_raw:
   - convert
   properties:
@@ -233,7 +235,7 @@ apis:
   humanURL: https://help.docupilot.app/developers/api-overview
   baseURL: https://api-us1.docupilot.app
   tags:
-  - demographic
+  - Demographic
   tags_raw:
   - demographic
   properties:
@@ -285,7 +287,7 @@ apis:
   humanURL: https://help.docupilot.app/developers/api-overview
   baseURL: https://api-us1.docupilot.app
   tags:
-  - esign
+  - eSign
   tags_raw:
   - esign
   properties:
@@ -385,7 +387,7 @@ apis:
   humanURL: https://help.docupilot.app/developers/api-overview
   baseURL: https://api-us1.docupilot.app
   tags:
-  - folders
+  - Folders
   tags_raw:
   - folders
   properties:
@@ -460,7 +462,7 @@ apis:
   humanURL: https://help.docupilot.app/developers/api-overview
   baseURL: https://api-us1.docupilot.app
   tags:
-  - generate
+  - Generate
   tags_raw:
   - generate
   properties:
@@ -537,7 +539,7 @@ apis:
   humanURL: https://help.docupilot.app/developers/api-overview
   baseURL: https://api-us1.docupilot.app
   tags:
-  - invitation
+  - Invitation
   tags_raw:
   - invitation
   properties:
@@ -588,7 +590,8 @@ apis:
   description: The linked_accounts API from Docupilot — 14 operation(s) for linked_accounts.
   humanURL: https://help.docupilot.app/developers/api-overview
   baseURL: https://api-us1.docupilot.app
-  tags: []
+  tags:
+  - Linked Accounts
   tags_raw:
   - linked_accounts
   properties:
@@ -639,7 +642,7 @@ apis:
   humanURL: https://help.docupilot.app/developers/api-overview
   baseURL: https://api-us1.docupilot.app
   tags:
-  - mfa
+  - MFA
   tags_raw:
   - mfa
   properties:
@@ -717,7 +720,7 @@ apis:
   humanURL: https://help.docupilot.app/developers/api-overview
   baseURL: https://api-us1.docupilot.app
   tags:
-  - pdf
+  - PDF
   tags_raw:
   - pdf
   properties:
@@ -769,7 +772,7 @@ apis:
   humanURL: https://help.docupilot.app/developers/api-overview
   baseURL: https://api-us1.docupilot.app
   tags:
-  - personalization
+  - Personalization
   tags_raw:
   - personalization
   properties:
