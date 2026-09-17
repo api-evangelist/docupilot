@@ -282,32 +282,6 @@ apis:
     url: vocabulary/docupilot-vocabulary.json
   - type: JSONLD
     url: json-ld/docupilot.jsonld
-- aid: docupilot:docupilot-esign-api
-  name: Docupilot esign API
-  description: The esign API from Docupilot — 29 operation(s) for esign.
-  humanURL: https://help.docupilot.app/developers/api-overview
-  baseURL: https://api-us1.docupilot.app
-  tags:
-  - eSign
-  tags_raw:
-  - esign
-  properties:
-  - type: OpenAPI
-    url: openapi/docupilot-esign-api-openapi.yml
-  - type: Documentation
-    url: https://help.docupilot.app/developers/api-overview
-  - type: SwaggerUI
-    url: https://{subdomain}.docupilot.app/~/dashboard/api-docs/swagger-ui/
-  - type: Webhooks
-    url: https://help.docupilot.app/create-document/api-and-webhook-integration
-  - type: JSONSchema
-    url: json-schema/
-  - type: JSONExamples
-    url: examples/
-  - type: Vocabulary
-    url: vocabulary/docupilot-vocabulary.json
-  - type: JSONLD
-    url: json-ld/docupilot.jsonld
 - aid: docupilot:docupilot-esign-folders-api
   name: Docupilot esign-folders API
   description: The esign-folders API from Docupilot — 2 operation(s) for esign-folders.
@@ -1062,6 +1036,30 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/docupilot-workspaces-api-openapi.yml
+  - type: Documentation
+    url: https://help.docupilot.app/developers/api-overview
+  - type: SwaggerUI
+    url: https://{subdomain}.docupilot.app/~/dashboard/api-docs/swagger-ui/
+  - type: Webhooks
+    url: https://help.docupilot.app/create-document/api-and-webhook-integration
+  - type: JSONSchema
+    url: json-schema/
+  - type: JSONExamples
+    url: examples/
+  - type: Vocabulary
+    url: vocabulary/docupilot-vocabulary.json
+  - type: JSONLD
+    url: json-ld/docupilot.jsonld
+- aid: docupilot:docupilot-e-sign-api
+  name: Docupilot e Sign API
+  description: The e Sign API from Docupilot — 29 operation(s) for e sign.
+  humanURL: https://help.docupilot.app/developers/api-overview
+  baseURL: https://api-us1.docupilot.app
+  tags:
+  - e Sign
+  properties:
+  - type: OpenAPI
+    url: openapi/docupilot-e-sign-api-openapi.yml
   - type: Documentation
     url: https://help.docupilot.app/developers/api-overview
   - type: SwaggerUI
