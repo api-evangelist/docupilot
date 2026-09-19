@@ -1030,7 +1030,7 @@ apis:
   humanURL: https://help.docupilot.app/developers/api-overview
   baseURL: https://api-us1.docupilot.app
   tags:
-  - Workspaces
+  - Workspace
   tags_raw:
   - workspaces
   properties:
@@ -1056,6 +1056,8 @@ apis:
   humanURL: https://help.docupilot.app/developers/api-overview
   baseURL: https://api-us1.docupilot.app
   tags:
+  - eSign
+  tags_raw:
   - e Sign
   properties:
   - type: OpenAPI
