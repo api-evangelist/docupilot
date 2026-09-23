@@ -1,14 +1,14 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Docupilot accounts APIs ai personalization API
-  version: '1.0'
-  description: Docupilot accounts APIs
+  title: Docupilot V2 Personalization API
+  version: '3.0'
+  description: Docupilot V2 APIs
   termsOfService: https://docupilot.app/terms-and-conditions/
   contact:
     name: Team Docupilot
     email: support@docupilot.app
 tags:
-- name: personalization
+- name: Personalization
 paths:
   /dashboard/api/v2/personalization/:
     get:
@@ -21,7 +21,7 @@ paths:
         description: Workspace unique_key
         required: true
       tags:
-      - personalization
+      - Personalization
       security:
       - SessionAuthentication: []
       responses:
@@ -45,6 +45,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/ForbiddenError'
           description: ''
+      summary: Get user personalization
+      x-summary-source: derived
     post:
       operationId: update_user_personalization
       parameters:
@@ -55,7 +57,7 @@ paths:
         description: Workspace unique_key
         required: true
       tags:
-      - personalization
+      - Personalization
       requestBody:
         content:
           application/json:
@@ -89,6 +91,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/UnauthenticatedError'
           description: ''
+      summary: Update user personalization
+      x-summary-source: derived
 components:
   schemas:
     UnauthenticatedError:
@@ -98,6 +102,25 @@ components:
           type: string
       required:
       - detail
+      description: ''
+    ForbiddenError:
+      type: object
+      properties:
+        detail:
+          type: string
+      required:
+      - detail
+      description: ''
+    UserPersonalizationListViewTemplate:
+      type: object
+      properties:
+        type:
+          enum:
+          - card
+          - template
+          type: string
+      required:
+      - type
       description: ''
     ValidationError:
       type: object
@@ -116,14 +139,6 @@ components:
       - errors
       - non_field_errors
       description: ''
-    ForbiddenError:
-      type: object
-      properties:
-        detail:
-          type: string
-      required:
-      - detail
-      description: ''
     UserPersonalization:
       type: object
       properties:
@@ -138,17 +153,6 @@ components:
           type: string
           format: uuid
       description: ''
-    UserPersonalizationListViewTemplate:
-      type: object
-      properties:
-        type:
-          enum:
-          - card
-          - template
-          type: string
-      required:
-      - type
-      description: ''
   securitySchemes:
     OAuthAuthentication:
       type: http
@@ -159,6 +163,11 @@ components:
       in: cookie
       name: sessionid
       description: browser based login takes care of this
+    tokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Token-based authentication with required prefix "Basic"
 externalDocs:
   description: Help docs on how to use API
   url: https://help.docupilot.app/developers/api-overview

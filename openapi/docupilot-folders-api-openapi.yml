@@ -1,14 +1,14 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Docupilot accounts APIs ai folders API
-  version: '1.0'
-  description: Docupilot accounts APIs
+  title: Docupilot V2 Folders API
+  version: '3.0'
+  description: Docupilot V2 APIs
   termsOfService: https://docupilot.app/terms-and-conditions/
   contact:
     name: Team Docupilot
     email: support@docupilot.app
 tags:
-- name: folders
+- name: Folders
 paths:
   /dashboard/api/v2/folders/:
     get:
@@ -36,7 +36,7 @@ paths:
           - read
           - write
       tags:
-      - folders
+      - Folders
       security:
       - OAuthAuthentication: []
       - SessionAuthentication: []
@@ -73,7 +73,7 @@ paths:
         description: Workspace unique_key
         required: true
       tags:
-      - folders
+      - Folders
       requestBody:
         content:
           application/json:
@@ -132,7 +132,7 @@ paths:
           type: integer
         required: true
       tags:
-      - folders
+      - Folders
       security:
       - SessionAuthentication: []
       responses:
@@ -172,7 +172,7 @@ paths:
           type: integer
         required: true
       tags:
-      - folders
+      - Folders
       requestBody:
         content:
           application/json:
@@ -249,7 +249,7 @@ paths:
         description: A unique integer value identifying this folder sharing setting.
         required: true
       tags:
-      - folders
+      - Folders
       security:
       - SessionAuthentication: []
       responses:
@@ -299,7 +299,7 @@ paths:
         description: A unique integer value identifying this folder sharing setting.
         required: true
       tags:
-      - folders
+      - Folders
       requestBody:
         content:
           application/json:
@@ -366,7 +366,7 @@ paths:
         description: A unique integer value identifying this folder sharing setting.
         required: true
       tags:
-      - folders
+      - Folders
       security:
       - SessionAuthentication: []
       responses:
@@ -414,7 +414,7 @@ paths:
         description: A unique integer value identifying this folder.
         required: true
       tags:
-      - folders
+      - Folders
       requestBody:
         content:
           application/json:
@@ -465,7 +465,7 @@ paths:
     delete:
       operationId: delete_folder
       description: This operation moves all templates under this folder to home directory.
-      summary: Delete a folder.
+      summary: Delete a folder
       parameters:
       - in: header
         name: X-Workspace
@@ -480,7 +480,7 @@ paths:
         description: A unique integer value identifying this folder.
         required: true
       tags:
-      - folders
+      - Folders
       security:
       - OAuthAuthentication: []
       - SessionAuthentication: []
@@ -515,7 +515,7 @@ paths:
   /dashboard/api/v2/folders/count/:
     get:
       operationId: get_user_created_folder_count
-      summary: Get the count of folders created by the user.
+      summary: Get the count of folders created by the user
       parameters:
       - in: header
         name: X-Workspace
@@ -530,7 +530,7 @@ paths:
         description: Owner Id of resource
         required: true
       tags:
-      - folders
+      - Folders
       security:
       - SessionAuthentication: []
       responses:
@@ -563,7 +563,7 @@ paths:
         description: Workspace unique_key
         required: true
       tags:
-      - folders
+      - Folders
       security:
       - SessionAuthentication: []
       responses:
@@ -585,8 +585,34 @@ paths:
               schema:
                 $ref: '#/components/schemas/ForbiddenError'
           description: ''
+      summary: Folders sharing status retrieve
+      x-summary-source: derived
 components:
   schemas:
+    FolderCount:
+      type: object
+      properties:
+        folders_count:
+          type: integer
+      required:
+      - folders_count
+      description: ''
+    PatchedUpdateFolderSharing:
+      type: object
+      description: ''
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        permission:
+          enum:
+          - read
+          - write
+          - manage
+          type: string
+        user:
+          type: integer
+          readOnly: true
     UnauthenticatedError:
       type: object
       properties:
@@ -595,13 +621,13 @@ components:
       required:
       - detail
       description: ''
-    FolderCount:
+    ForbiddenError:
       type: object
       properties:
-        folders_count:
-          type: integer
+        detail:
+          type: string
       required:
-      - folders_count
+      - detail
       description: ''
     Folder:
       type: object
@@ -614,22 +640,25 @@ components:
           type: string
           maxLength: 50
         created_time:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
           readOnly: true
-          nullable: true
         updated_time:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
           readOnly: true
-          nullable: true
         created_by:
           type: integer
           readOnly: true
         updated_by:
-          type: integer
+          type:
+          - integer
+          - 'null'
           readOnly: true
-          nullable: true
       required:
       - created_by
       - created_time
@@ -667,14 +696,6 @@ components:
       - id
       - is_shared
       description: ''
-    ForbiddenError:
-      type: object
-      properties:
-        detail:
-          type: string
-      required:
-      - detail
-      description: ''
     NotFoundError:
       type: object
       properties:
@@ -701,22 +722,6 @@ components:
       required:
       - id
       - user
-    PatchedUpdateFolderSharing:
-      type: object
-      description: ''
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        permission:
-          enum:
-          - read
-          - write
-          - manage
-          type: string
-        user:
-          type: integer
-          readOnly: true
   securitySchemes:
     OAuthAuthentication:
       type: http
@@ -727,6 +732,11 @@ components:
       in: cookie
       name: sessionid
       description: browser based login takes care of this
+    tokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Token-based authentication with required prefix "Basic"
 externalDocs:
   description: Help docs on how to use API
   url: https://help.docupilot.app/developers/api-overview

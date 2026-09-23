@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Docupilot accounts APIs ai organization_onboarding API
+  title: Docupilot accounts Organization Onboarding API
   version: '1.0'
   description: Docupilot accounts APIs
   termsOfService: https://docupilot.app/terms-and-conditions/
@@ -36,6 +36,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/ForbiddenError'
           description: ''
+      summary: Organization onboarding retrieve
+      x-summary-source: derived
     patch:
       operationId: organization_onboarding_partial_update
       tags:
@@ -78,6 +80,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/ForbiddenError'
           description: ''
+      summary: Organization onboarding partial update
+      x-summary-source: derived
 components:
   schemas:
     UnauthenticatedError:
@@ -87,6 +91,20 @@ components:
           type: string
       required:
       - detail
+    ForbiddenError:
+      type: object
+      properties:
+        detail:
+          type: string
+      required:
+      - detail
+    PatchedOnboardingStatus:
+      type: object
+      properties:
+        personalize_experience:
+          type: boolean
+        secure_account:
+          type: boolean
     ValidationError:
       type: object
       properties:
@@ -100,21 +118,7 @@ components:
       required:
       - errors
       - non_field_errors
-    ForbiddenError:
-      type: object
-      properties:
-        detail:
-          type: string
-      required:
-      - detail
     OnboardingStatus:
-      type: object
-      properties:
-        personalize_experience:
-          type: boolean
-        secure_account:
-          type: boolean
-    PatchedOnboardingStatus:
       type: object
       properties:
         personalize_experience:

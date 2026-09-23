@@ -1,14 +1,14 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Docupilot accounts APIs ai domain API
-  version: '1.0'
-  description: Docupilot accounts APIs
-  termsOfService: https://docupilot.app/terms-and-conditions/
+  title: Docupilot Domain API
   contact:
     name: Team Docupilot
     email: support@docupilot.app
+  termsOfService: https://docupilot.app/terms-and-conditions/
+  version: '1.0'
+  description: 'Operations tagged domain across 2 of this provider''s published API definitions: openapi-accounts.yaml, openapi-app.yaml. Each path carries the servers of the definition it was published in.'
 tags:
-- name: domain
+- name: Domain
 paths:
   /accounts/domain/:
     get:
@@ -22,7 +22,7 @@ paths:
         schema:
           type: string
       tags:
-      - domain
+      - Domain
       security:
       - OAuthAuthentication: []
       - SessionAuthentication: []
@@ -51,7 +51,7 @@ paths:
       operationId: create_domain
       summary: Create domain
       tags:
-      - domain
+      - Domain
       requestBody:
         content:
           application/json:
@@ -104,7 +104,7 @@ paths:
         description: A unique integer value identifying this domain.
         required: true
       tags:
-      - domain
+      - Domain
       security:
       - OAuthAuthentication: []
       - SessionAuthentication: []
@@ -147,7 +147,7 @@ paths:
         description: A unique integer value identifying this domain.
         required: true
       tags:
-      - domain
+      - Domain
       security:
       - OAuthAuthentication: []
       - SessionAuthentication: []
@@ -194,7 +194,7 @@ paths:
         description: A unique integer value identifying this domain.
         required: true
       tags:
-      - domain
+      - Domain
       security:
       - OAuthAuthentication: []
       - SessionAuthentication: []
@@ -247,7 +247,7 @@ paths:
         description: A unique integer value identifying this domain.
         required: true
       tags:
-      - domain
+      - Domain
       security:
       - OAuthAuthentication: []
       - SessionAuthentication: []
@@ -295,7 +295,7 @@ paths:
         description: A unique integer value identifying this domain.
         required: true
       tags:
-      - domain
+      - Domain
       requestBody:
         content:
           application/json:
@@ -351,35 +351,6 @@ components:
           type: string
       required:
       - detail
-    DomainVerify:
-      type: object
-      properties:
-        success:
-          type: array
-          items:
-            enum:
-            - txt_record
-            - spf_record
-            type: string
-        failures:
-          $ref: '#/components/schemas/DomainFailure'
-      required:
-      - failures
-      - success
-      description: ''
-    ValidationError:
-      type: object
-      properties:
-        errors:
-          type: object
-          additionalProperties: {}
-        non_field_errors:
-          type: array
-          items:
-            type: string
-      required:
-      - errors
-      - non_field_errors
     Domain:
       type: object
       properties:
@@ -399,10 +370,11 @@ components:
           type: boolean
           readOnly: true
         verification_expired_at:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
           readOnly: true
-          nullable: true
       required:
       - domain_name
       - id
@@ -417,16 +389,82 @@ components:
           type: string
       required:
       - detail
-    DomainFailure:
+    ValidationError:
       type: object
       properties:
-        spf_record:
-          type: string
-        txt_record:
+        errors:
+          type: object
+          additionalProperties: {}
+        non_field_errors:
+          type: array
+          items:
+            type: string
+      required:
+      - errors
+      - non_field_errors
+    NotFoundError:
+      type: object
+      properties:
+        detail:
           type: string
       required:
+      - detail
+    UnauthenticatedError_2:
+      type: object
+      properties:
+        detail:
+          type: string
+      required:
+      - detail
+      description: ''
+    Domain_2:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        domain_name:
+          type: string
+          maxLength: 255
+        txt_record:
+          type: string
+          maxLength: 60
+        is_txt_verified:
+          type: boolean
+        is_spf_verified:
+          type: boolean
+        spf_record:
+          type: string
+          readOnly: true
+      required:
+      - domain_name
+      - id
       - spf_record
       - txt_record
+      description: ''
+    ForbiddenError_2:
+      type: object
+      properties:
+        detail:
+          type: string
+      required:
+      - detail
+      description: ''
+    DomainVerify:
+      type: object
+      properties:
+        success:
+          type: array
+          items:
+            enum:
+            - txt_record
+            - spf_record
+            type: string
+        failures:
+          $ref: '#/components/schemas/DomainFailure'
+      required:
+      - failures
+      - success
       description: ''
     ValidationError_2:
       type: object
@@ -473,53 +511,16 @@ components:
           type: string
           readOnly: true
       description: ''
-    ForbiddenError_2:
+    DomainFailure:
       type: object
       properties:
-        detail:
-          type: string
-      required:
-      - detail
-      description: ''
-    NotFoundError:
-      type: object
-      properties:
-        detail:
-          type: string
-      required:
-      - detail
-    Domain_2:
-      type: object
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        domain_name:
-          type: string
-          maxLength: 255
-        txt_record:
-          type: string
-          maxLength: 60
-        is_txt_verified:
-          type: boolean
-        is_spf_verified:
-          type: boolean
         spf_record:
           type: string
-          readOnly: true
-      required:
-      - domain_name
-      - id
-      - spf_record
-      - txt_record
-      description: ''
-    UnauthenticatedError_2:
-      type: object
-      properties:
-        detail:
+        txt_record:
           type: string
       required:
-      - detail
+      - spf_record
+      - txt_record
       description: ''
   securitySchemes:
     OAuthAuthentication:
@@ -531,6 +532,14 @@ components:
       in: cookie
       name: sessionid
       description: browser based login takes care of this
+    tokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Token-based authentication with required prefix "Basic"
 externalDocs:
   description: Help docs on how to use API
   url: https://help.docupilot.app/developers/api-overview
+x-refined-from:
+- openapi-accounts.yaml
+- openapi-app.yaml

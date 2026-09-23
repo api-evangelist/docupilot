@@ -1,8 +1,8 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Docupilot accounts APIs ai esign-settings API
-  version: '1.0'
-  description: Docupilot accounts APIs
+  title: Docupilot V2 Esign Settings API
+  version: '3.0'
+  description: Docupilot V2 APIs
   termsOfService: https://docupilot.app/terms-and-conditions/
   contact:
     name: Team Docupilot
@@ -614,6 +614,173 @@ paths:
           description: ''
 components:
   schemas:
+    PaginatedESignWebhookList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ESignWebhook'
+    PatchedESignEmailAccount:
+      type: object
+      properties:
+        email_account:
+          type:
+          - integer
+          - 'null'
+      description: ''
+    PatchedESignSettings:
+      type: object
+      description: ''
+      properties:
+        email_account:
+          allOf:
+          - $ref: '#/components/schemas/FromEmailAccount'
+          readOnly: true
+        expiry:
+          type: integer
+          maximum: 32767
+          minimum: 0
+          description: Number of days until envelope expires
+        first_reminder:
+          type:
+          - integer
+          - 'null'
+          maximum: 32767
+          minimum: 0
+          description: Number of days before first reminder is sent
+        reminder_frequency:
+          type:
+          - integer
+          - 'null'
+          maximum: 32767
+          minimum: 0
+          description: Number of days between reminders
+        warn_before:
+          type: integer
+          maximum: 32767
+          minimum: 0
+          description: Number of days before expiry to send warning
+    VerifiedEmailDNSAccounts:
+      type: object
+      properties:
+        accounts:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeliveryEmailAccount'
+          description: List of verified email DNS accounts
+      required:
+      - accounts
+      description: ''
+    PaginatedESignWebhookEventLogList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ESignWebhookEventLog'
+    GenerateHMACSecretResponse:
+      type: object
+      properties:
+        hmac_secret:
+          type: string
+          description: Generated HMAC secret
+      required:
+      - hmac_secret
+      description: ''
+    ForbiddenError:
+      type: object
+      properties:
+        detail:
+          type: string
+      required:
+      - detail
+      description: ''
+    ESignSettings:
+      type: object
+      description: ''
+      properties:
+        email_account:
+          allOf:
+          - $ref: '#/components/schemas/FromEmailAccount'
+          readOnly: true
+        expiry:
+          type: integer
+          maximum: 32767
+          minimum: 0
+          description: Number of days until envelope expires
+        first_reminder:
+          type:
+          - integer
+          - 'null'
+          maximum: 32767
+          minimum: 0
+          description: Number of days before first reminder is sent
+        reminder_frequency:
+          type:
+          - integer
+          - 'null'
+          maximum: 32767
+          minimum: 0
+          description: Number of days between reminders
+        warn_before:
+          type: integer
+          maximum: 32767
+          minimum: 0
+          description: Number of days before expiry to send warning
+      required:
+      - email_account
+    DeliveryEmailAccount:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+      required:
+      - id
+      - name
+      description: ''
     UnauthenticatedError:
       type: object
       properties:
@@ -622,19 +789,59 @@ components:
       required:
       - detail
       description: ''
-    DeliveryEmailAccount:
+    ESignWebhookEventLog:
       type: object
       properties:
         id:
           type: integer
           readOnly: true
-        name:
-          type: string
+        is_retryable:
+          type: boolean
           readOnly: true
-          nullable: true
+        event:
+          enum:
+          - recipient_viewed
+          - recipient_signed
+          - recipient_declined
+          - envelope_completed
+          - envelope_expired
+          - envelope_voided
+          type: string
+        status_code:
+          type:
+          - integer
+          - 'null'
+          maximum: 32767
+          minimum: 0
+          description: HTTP status code returned by the webhook
+        last_triggered_at:
+          type: string
+          format: date-time
+          readOnly: true
+        attempts:
+          type: integer
+          maximum: 32767
+          minimum: 0
+        webhook:
+          type: integer
+        envelope:
+          type: string
       required:
+      - envelope
+      - event
       - id
-      - name
+      - is_retryable
+      - last_triggered_at
+      - webhook
+      description: ''
+    TestWebhookEventResponse:
+      type: object
+      properties:
+        status_code:
+          type: integer
+          description: HTTP status code returned by the webhook endpoint
+      required:
+      - status_code
       description: ''
     ValidationError:
       type: object
@@ -653,38 +860,6 @@ components:
       - errors
       - non_field_errors
       description: ''
-    GenerateHMACSecretResponse:
-      type: object
-      properties:
-        hmac_secret:
-          type: string
-          description: Generated HMAC secret
-      required:
-      - hmac_secret
-      description: ''
-    PaginatedESignWebhookEventLogList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?page=4
-        previous:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?page=2
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/ESignWebhookEventLog'
     TestWebhookPayload:
       type: object
       properties:
@@ -698,45 +873,6 @@ components:
       required:
       - url
       description: ''
-    PatchedESignEmailAccount:
-      type: object
-      properties:
-        email_account:
-          type: integer
-          nullable: true
-      description: ''
-    ESignSettings:
-      type: object
-      description: ''
-      properties:
-        email_account:
-          allOf:
-          - $ref: '#/components/schemas/FromEmailAccount'
-          readOnly: true
-        expiry:
-          type: integer
-          maximum: 32767
-          minimum: 0
-          description: Number of days until envelope expires
-        first_reminder:
-          type: integer
-          maximum: 32767
-          minimum: 0
-          nullable: true
-          description: Number of days before first reminder is sent
-        reminder_frequency:
-          type: integer
-          maximum: 32767
-          minimum: 0
-          nullable: true
-          description: Number of days between reminders
-        warn_before:
-          type: integer
-          maximum: 32767
-          minimum: 0
-          description: Number of days before expiry to send warning
-      required:
-      - email_account
     PatchedESignWebhook:
       type: object
       properties:
@@ -764,8 +900,9 @@ components:
             - envelope_voided
             type: string
         hmac_secret:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
           maxLength: 255
         created_at:
           type: string
@@ -779,88 +916,10 @@ components:
           type: integer
           readOnly: true
         updated_by:
-          type: integer
+          type:
+          - integer
+          - 'null'
           readOnly: true
-          nullable: true
-      description: ''
-    TestWebhookEventResponse:
-      type: object
-      properties:
-        status_code:
-          type: integer
-          description: HTTP status code returned by the webhook endpoint
-      required:
-      - status_code
-      description: ''
-    ForbiddenError:
-      type: object
-      properties:
-        detail:
-          type: string
-      required:
-      - detail
-      description: ''
-    VerifiedEmailDNSAccounts:
-      type: object
-      properties:
-        accounts:
-          type: array
-          items:
-            $ref: '#/components/schemas/DeliveryEmailAccount'
-          description: List of verified email DNS accounts
-      required:
-      - accounts
-      description: ''
-    PatchedESignSettings:
-      type: object
-      description: ''
-      properties:
-        email_account:
-          allOf:
-          - $ref: '#/components/schemas/FromEmailAccount'
-          readOnly: true
-        expiry:
-          type: integer
-          maximum: 32767
-          minimum: 0
-          description: Number of days until envelope expires
-        first_reminder:
-          type: integer
-          maximum: 32767
-          minimum: 0
-          nullable: true
-          description: Number of days before first reminder is sent
-        reminder_frequency:
-          type: integer
-          maximum: 32767
-          minimum: 0
-          nullable: true
-          description: Number of days between reminders
-        warn_before:
-          type: integer
-          maximum: 32767
-          minimum: 0
-          description: Number of days before expiry to send warning
-    FromEmailAccount:
-      type: object
-      properties:
-        id:
-          type: integer
-          nullable: true
-        email:
-          type: string
-          format: email
-      required:
-      - email
-      - id
-      description: ''
-    NotFoundError:
-      type: object
-      properties:
-        detail:
-          type: string
-      required:
-      - detail
       description: ''
     ESignWebhook:
       type: object
@@ -889,8 +948,9 @@ components:
             - envelope_voided
             type: string
         hmac_secret:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
           maxLength: 255
         created_at:
           type: string
@@ -904,9 +964,10 @@ components:
           type: integer
           readOnly: true
         updated_by:
-          type: integer
+          type:
+          - integer
+          - 'null'
           readOnly: true
-          nullable: true
       required:
       - created_at
       - created_by
@@ -916,73 +977,28 @@ components:
       - updated_by
       - url
       description: ''
-    ESignWebhookEventLog:
+    NotFoundError:
+      type: object
+      properties:
+        detail:
+          type: string
+      required:
+      - detail
+      description: ''
+    FromEmailAccount:
       type: object
       properties:
         id:
-          type: integer
-          readOnly: true
-        is_retryable:
-          type: boolean
-          readOnly: true
-        event:
-          enum:
-          - recipient_viewed
-          - recipient_signed
-          - recipient_declined
-          - envelope_completed
-          - envelope_expired
-          - envelope_voided
+          type:
+          - integer
+          - 'null'
+        email:
           type: string
-        status_code:
-          type: integer
-          maximum: 32767
-          minimum: 0
-          nullable: true
-          description: HTTP status code returned by the webhook
-        last_triggered_at:
-          type: string
-          format: date-time
-          readOnly: true
-        attempts:
-          type: integer
-          maximum: 32767
-          minimum: 0
-        webhook:
-          type: integer
-        envelope:
-          type: string
+          format: email
       required:
-      - envelope
-      - event
+      - email
       - id
-      - is_retryable
-      - last_triggered_at
-      - webhook
       description: ''
-    PaginatedESignWebhookList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?page=4
-        previous:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?page=2
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/ESignWebhook'
   securitySchemes:
     OAuthAuthentication:
       type: http
@@ -993,6 +1009,11 @@ components:
       in: cookie
       name: sessionid
       description: browser based login takes care of this
+    tokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Token-based authentication with required prefix "Basic"
 externalDocs:
   description: Help docs on how to use API
   url: https://help.docupilot.app/developers/api-overview

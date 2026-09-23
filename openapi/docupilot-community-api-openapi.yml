@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Docupilot accounts APIs ai community API
+  title: Docupilot accounts Community API
   version: '1.0'
   description: Docupilot accounts APIs
   termsOfService: https://docupilot.app/terms-and-conditions/
@@ -8,13 +8,13 @@ info:
     name: Team Docupilot
     email: support@docupilot.app
 tags:
-- name: community
+- name: Community
 paths:
   /community/docupilot/topics/:
     get:
       operationId: community_docupilot_topics_retrieve
       tags:
-      - community
+      - Community
       security:
       - OAuthAuthentication: []
       - SessionAuthentication: []
@@ -33,6 +33,8 @@ paths:
                 type: object
                 additionalProperties: {}
           description: ''
+      summary: Community docupilot topics retrieve
+      x-summary-source: derived
 components:
   securitySchemes:
     OAuthAuthentication:

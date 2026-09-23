@@ -1,8 +1,8 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Docupilot accounts APIs ai generate_bulk API
-  version: '1.0'
-  description: Docupilot accounts APIs
+  title: Docupilot V2 Generate Bulk API
+  version: '3.0'
+  description: Docupilot V2 APIs
   termsOfService: https://docupilot.app/terms-and-conditions/
   contact:
     name: Team Docupilot
@@ -474,7 +474,7 @@ paths:
     post:
       operationId: upload_for_bulk_generation
       description: This will create a task in DRAFT mode.
-      summary: Upload a new csv for bulk generate.
+      summary: Upload a new csv for bulk generate
       parameters:
       - in: header
         name: X-Workspace
@@ -544,34 +544,10 @@ components:
       type: object
       properties:
         status_message:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
           maxLength: 255
-      description: ''
-    UnauthenticatedError:
-      type: object
-      properties:
-        detail:
-          type: string
-      required:
-      - detail
-      description: ''
-    ValidationError:
-      type: object
-      properties:
-        errors:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              type: string
-        non_field_errors:
-          type: array
-          items:
-            type: string
-      required:
-      - errors
-      - non_field_errors
       description: ''
     BulkGen:
       type: object
@@ -600,39 +576,46 @@ components:
           minimum: 0
           maximum: 32767
         start_time:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
-          nullable: true
         end_time:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
-          nullable: true
         total:
-          type: integer
+          type:
+          - integer
+          - 'null'
           maximum: 2147483647
           minimum: -2147483648
-          nullable: true
         success:
-          type: integer
+          type:
+          - integer
+          - 'null'
           maximum: 2147483647
           minimum: -2147483648
-          nullable: true
         updated_time:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
           readOnly: true
-          nullable: true
         delimiter:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
           maxLength: 1
         created_by:
           type: integer
           readOnly: true
         updated_by:
-          type: integer
+          type:
+          - integer
+          - 'null'
           readOnly: true
-          nullable: true
       required:
       - created_by
       - errors
@@ -640,6 +623,14 @@ components:
       - id
       - updated_by
       - updated_time
+    UnauthenticatedError:
+      type: object
+      properties:
+        detail:
+          type: string
+      required:
+      - detail
+      description: ''
     BulkGenUpload:
       type: object
       properties:
@@ -652,37 +643,6 @@ components:
       required:
       - file
       description: ''
-    ForbiddenError:
-      type: object
-      properties:
-        detail:
-          type: string
-      required:
-      - detail
-      description: ''
-    PaginatedBulkGenList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?page=4
-        previous:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?page=2
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/BulkGen'
     BulkGenEdit:
       type: object
       properties:
@@ -696,7 +656,7 @@ components:
       - delimiter
       - mapping
       description: ''
-    NotFoundError:
+    ForbiddenError:
       type: object
       properties:
         detail:
@@ -704,6 +664,48 @@ components:
       required:
       - detail
       description: ''
+    ValidationError:
+      type: object
+      properties:
+        errors:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+        non_field_errors:
+          type: array
+          items:
+            type: string
+      required:
+      - errors
+      - non_field_errors
+      description: ''
+    PaginatedBulkGenList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/BulkGen'
     BulkGenData:
       type: object
       properties:
@@ -732,6 +734,14 @@ components:
       - suggested_mapping
       - updated_by
       description: ''
+    NotFoundError:
+      type: object
+      properties:
+        detail:
+          type: string
+      required:
+      - detail
+      description: ''
   securitySchemes:
     OAuthAuthentication:
       type: http
@@ -742,6 +752,11 @@ components:
       in: cookie
       name: sessionid
       description: browser based login takes care of this
+    tokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Token-based authentication with required prefix "Basic"
 externalDocs:
   description: Help docs on how to use API
   url: https://help.docupilot.app/developers/api-overview

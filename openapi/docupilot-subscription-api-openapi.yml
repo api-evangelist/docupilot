@@ -1,14 +1,14 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Docupilot accounts APIs ai subscription API
-  version: '1.0'
-  description: Docupilot accounts APIs
+  title: Docupilot V2 Subscription API
+  version: '3.0'
+  description: Docupilot V2 APIs
   termsOfService: https://docupilot.app/terms-and-conditions/
   contact:
     name: Team Docupilot
     email: support@docupilot.app
 tags:
-- name: subscription
+- name: Subscription
 paths:
   /dashboard/accounts/v2/subscription/addon_pricing_info/:
     get:
@@ -33,7 +33,7 @@ paths:
         schema:
           type: string
       tags:
-      - subscription
+      - Subscription
       security:
       - SessionAuthentication: []
       responses:
@@ -57,6 +57,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/ForbiddenError'
           description: ''
+      summary: Addon pricing info
+      x-summary-source: derived
   /dashboard/accounts/v2/subscription/buy_addon/:
     post:
       operationId: purchase_addon
@@ -68,7 +70,7 @@ paths:
         description: Workspace unique_key
         required: true
       tags:
-      - subscription
+      - Subscription
       requestBody:
         content:
           application/json:
@@ -108,6 +110,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/ForbiddenError'
           description: ''
+      summary: Purchase addon
+      x-summary-source: derived
   /dashboard/accounts/v2/subscription/details/:
     get:
       operationId: get_subscription_details
@@ -119,7 +123,7 @@ paths:
         description: Workspace unique_key
         required: true
       tags:
-      - subscription
+      - Subscription
       security:
       - SessionAuthentication: []
       responses:
@@ -141,6 +145,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/ForbiddenError'
           description: ''
+      summary: Get subscription details
+      x-summary-source: derived
   /dashboard/accounts/v2/subscription/extend_trial/:
     post:
       operationId: extend_trial
@@ -153,7 +159,7 @@ paths:
         description: Workspace unique_key
         required: true
       tags:
-      - subscription
+      - Subscription
       security:
       - SessionAuthentication: []
       responses:
@@ -192,7 +198,7 @@ paths:
         schema:
           type: string
       tags:
-      - subscription
+      - Subscription
       security:
       - SessionAuthentication: []
       responses:
@@ -215,6 +221,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/ForbiddenError'
           description: ''
+      summary: Get chargebee hosted page
+      x-summary-source: derived
   /dashboard/accounts/v2/subscription/portal_session/:
     get:
       operationId: get_chargebee_portal_session
@@ -226,7 +234,7 @@ paths:
         description: Workspace unique_key
         required: true
       tags:
-      - subscription
+      - Subscription
       security:
       - SessionAuthentication: []
       responses:
@@ -248,6 +256,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/ForbiddenError'
           description: ''
+      summary: Get chargebee portal session
+      x-summary-source: derived
   /dashboard/accounts/v2/subscription/remaining_months/:
     get:
       operationId: get_subscription_remaining_months
@@ -259,7 +269,7 @@ paths:
         description: Workspace unique_key
         required: true
       tags:
-      - subscription
+      - Subscription
       security:
       - SessionAuthentication: []
       responses:
@@ -282,6 +292,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/ForbiddenError'
           description: ''
+      summary: Get subscription remaining months
+      x-summary-source: derived
   /dashboard/accounts/v2/subscription/renew_request/:
     post:
       operationId: subscription_renew_request_create
@@ -293,7 +305,7 @@ paths:
         description: Workspace unique_key
         required: true
       tags:
-      - subscription
+      - Subscription
       requestBody:
         content:
           application/json:
@@ -328,6 +340,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/ForbiddenError'
           description: ''
+      summary: Subscription renew request create
+      x-summary-source: derived
   /dashboard/accounts/v2/subscription/resume/:
     post:
       operationId: resume_subscription
@@ -339,7 +353,7 @@ paths:
         description: Workspace unique_key
         required: true
       tags:
-      - subscription
+      - Subscription
       security:
       - SessionAuthentication: []
       responses:
@@ -368,6 +382,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/ForbiddenError'
           description: ''
+      summary: Resume subscription
+      x-summary-source: derived
   /dashboard/accounts/v2/subscription/unpaid_invoices/:
     get:
       operationId: get_chargebee_unpaid_invoices
@@ -379,7 +395,7 @@ paths:
         description: Workspace unique_key
         required: true
       tags:
-      - subscription
+      - Subscription
       security:
       - SessionAuthentication: []
       responses:
@@ -401,32 +417,18 @@ paths:
               schema:
                 $ref: '#/components/schemas/ForbiddenError'
           description: ''
+      summary: Get chargebee unpaid invoices
+      x-summary-source: derived
 components:
   schemas:
-    UnauthenticatedError:
+    HostedPage:
       type: object
       properties:
-        detail:
+        url:
           type: string
+          format: uri
       required:
-      - detail
-      description: ''
-    ValidationError:
-      type: object
-      properties:
-        errors:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              type: string
-        non_field_errors:
-          type: array
-          items:
-            type: string
-      required:
-      - errors
-      - non_field_errors
+      - url
       description: ''
     RenewSubscription:
       type: object
@@ -435,21 +437,14 @@ components:
           type: string
           maxLength: 200
       description: ''
-    ForbiddenError:
-      type: object
-      properties:
-        detail:
-          type: string
-      required:
-      - detail
-      description: ''
     ChargebeeSubscription:
       type: object
       properties:
         plan_id:
-          type: string
+          type:
+          - string
+          - 'null'
           readOnly: true
-          nullable: true
         status:
           enum:
           - a
@@ -464,9 +459,10 @@ components:
           format: date-time
           readOnly: true
         billing_period_unit:
-          type: string
+          type:
+          - string
+          - 'null'
           readOnly: true
-          nullable: true
         current_term_start:
           type: string
           readOnly: true
@@ -532,26 +528,38 @@ components:
       - trial_signatures_used
       - unpaid_invoices
       description: ''
-    HostedPage:
+    UnauthenticatedError:
       type: object
       properties:
-        url:
+        detail:
           type: string
-          format: uri
       required:
-      - url
+      - detail
       description: ''
-    AddonTier:
+    ForbiddenError:
       type: object
       properties:
-        upto:
+        detail:
           type: string
-        price:
-          type: number
-          format: double
       required:
-      - price
-      - upto
+      - detail
+      description: ''
+    ValidationError:
+      type: object
+      properties:
+        errors:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+        non_field_errors:
+          type: array
+          items:
+            type: string
+      required:
+      - errors
+      - non_field_errors
       description: ''
     AddonPricingInfo:
       type: object
@@ -577,6 +585,18 @@ components:
       - tiers
       - type
       description: ''
+    AddonTier:
+      type: object
+      properties:
+        upto:
+          type: string
+        price:
+          type: number
+          format: double
+      required:
+      - price
+      - upto
+      description: ''
     AddonPurchase:
       type: object
       properties:
@@ -601,6 +621,11 @@ components:
       in: cookie
       name: sessionid
       description: browser based login takes care of this
+    tokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Token-based authentication with required prefix "Basic"
 externalDocs:
   description: Help docs on how to use API
   url: https://help.docupilot.app/developers/api-overview

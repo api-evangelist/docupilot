@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Docupilot accounts APIs ai scim API
+  title: Docupilot accounts SCIM API
   version: '1.0'
   description: Docupilot accounts APIs
   termsOfService: https://docupilot.app/terms-and-conditions/
@@ -8,13 +8,13 @@ info:
     name: Team Docupilot
     email: support@docupilot.app
 tags:
-- name: scim
+- name: SCIM
 paths:
   /accounts/scim/config/:
     get:
       operationId: get_scim_config
       tags:
-      - scim
+      - SCIM
       security:
       - SessionAuthentication: []
       responses:
@@ -36,11 +36,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/ForbiddenError'
           description: ''
+      summary: Get scim config
+      x-summary-source: derived
   /accounts/scim/keys/:
     post:
       operationId: create_scim_key
       tags:
-      - scim
+      - SCIM
       security:
       - SessionAuthentication: []
       responses:
@@ -68,6 +70,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/ForbiddenError'
           description: ''
+      summary: Create scim key
+      x-summary-source: derived
   /accounts/scim/keys/{key_id}/:
     delete:
       operationId: delete_scim_key
@@ -78,7 +82,7 @@ paths:
           type: integer
         required: true
       tags:
-      - scim
+      - SCIM
       security:
       - SessionAuthentication: []
       responses:
@@ -108,11 +112,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/NotFoundError'
           description: ''
+      summary: Delete scim key
+      x-summary-source: derived
   /accounts/scim/toggle_provisioning/:
     post:
       operationId: toggle_scim_provisioning
       tags:
-      - scim
+      - SCIM
       security:
       - SessionAuthentication: []
       responses:
@@ -140,9 +146,56 @@ paths:
               schema:
                 $ref: '#/components/schemas/ForbiddenError'
           description: ''
+      summary: Toggle scim provisioning
+      x-summary-source: derived
 components:
   schemas:
+    ScimToggleResponse:
+      type: object
+      properties:
+        provisioning_mode:
+          type: string
+        scim_config:
+          $ref: '#/components/schemas/ScimConfig'
+      required:
+      - provisioning_mode
+      - scim_config
     UnauthenticatedError:
+      type: object
+      properties:
+        detail:
+          type: string
+      required:
+      - detail
+    ScimApiKeyCreateResponse:
+      type: object
+      properties:
+        token:
+          type: string
+        key:
+          $ref: '#/components/schemas/ScimApiKey'
+      required:
+      - key
+      - token
+    ScimConfig:
+      type: object
+      properties:
+        provisioning_mode:
+          type: string
+          readOnly: true
+        keys:
+          type: array
+          items:
+            $ref: '#/components/schemas/ScimApiKey'
+          readOnly: true
+        scim_base_url:
+          type: string
+          readOnly: true
+      required:
+      - keys
+      - provisioning_mode
+      - scim_base_url
+    ForbiddenError:
       type: object
       properties:
         detail:
@@ -162,6 +215,13 @@ components:
       required:
       - errors
       - non_field_errors
+    NotFoundError:
+      type: object
+      properties:
+        detail:
+          type: string
+      required:
+      - detail
     ScimApiKey:
       type: object
       properties:
@@ -176,67 +236,16 @@ components:
           format: date-time
           readOnly: true
         last_used_at:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
           readOnly: true
-          nullable: true
       required:
       - created_at
       - id
       - is_active
       - last_used_at
-    ForbiddenError:
-      type: object
-      properties:
-        detail:
-          type: string
-      required:
-      - detail
-    ScimToggleResponse:
-      type: object
-      properties:
-        provisioning_mode:
-          type: string
-        scim_config:
-          $ref: '#/components/schemas/ScimConfig'
-      required:
-      - provisioning_mode
-      - scim_config
-    ScimConfig:
-      type: object
-      properties:
-        provisioning_mode:
-          type: string
-          readOnly: true
-        keys:
-          type: array
-          items:
-            $ref: '#/components/schemas/ScimApiKey'
-          readOnly: true
-        scim_base_url:
-          type: string
-          readOnly: true
-      required:
-      - keys
-      - provisioning_mode
-      - scim_base_url
-    NotFoundError:
-      type: object
-      properties:
-        detail:
-          type: string
-      required:
-      - detail
-    ScimApiKeyCreateResponse:
-      type: object
-      properties:
-        token:
-          type: string
-        key:
-          $ref: '#/components/schemas/ScimApiKey'
-      required:
-      - key
-      - token
   securitySchemes:
     OAuthAuthentication:
       type: http

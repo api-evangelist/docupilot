@@ -1,14 +1,14 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Docupilot accounts APIs ai content_blocks API
-  version: '1.0'
-  description: Docupilot accounts APIs
+  title: Docupilot V2 Content Blocks API
+  version: '3.0'
+  description: Docupilot V2 APIs
   termsOfService: https://docupilot.app/terms-and-conditions/
   contact:
     name: Team Docupilot
     email: support@docupilot.app
 tags:
-- name: content_blocks
+- name: Content Blocks
 paths:
   /dashboard/api/v2/content_blocks/:
     get:
@@ -40,7 +40,7 @@ paths:
         schema:
           type: string
       tags:
-      - content_blocks
+      - Content Blocks
       security:
       - OAuthAuthentication: []
       - SessionAuthentication: []
@@ -75,7 +75,7 @@ paths:
         description: Workspace unique_key
         required: true
       tags:
-      - content_blocks
+      - Content Blocks
       requestBody:
         content:
           multipart/form-data:
@@ -134,7 +134,7 @@ paths:
           type: integer
         required: true
       tags:
-      - content_blocks
+      - Content Blocks
       security:
       - SessionAuthentication: []
       responses:
@@ -174,7 +174,7 @@ paths:
           type: integer
         required: true
       tags:
-      - content_blocks
+      - Content Blocks
       requestBody:
         content:
           application/json:
@@ -251,7 +251,7 @@ paths:
         description: A unique integer value identifying this content block sharing setting.
         required: true
       tags:
-      - content_blocks
+      - Content Blocks
       security:
       - SessionAuthentication: []
       responses:
@@ -301,7 +301,7 @@ paths:
         description: A unique integer value identifying this content block sharing setting.
         required: true
       tags:
-      - content_blocks
+      - Content Blocks
       requestBody:
         content:
           application/json:
@@ -368,7 +368,7 @@ paths:
         description: A unique integer value identifying this content block sharing setting.
         required: true
       tags:
-      - content_blocks
+      - Content Blocks
       security:
       - SessionAuthentication: []
       responses:
@@ -416,7 +416,7 @@ paths:
         description: A unique integer value identifying this content block.
         required: true
       tags:
-      - content_blocks
+      - Content Blocks
       security:
       - OAuthAuthentication: []
       - SessionAuthentication: []
@@ -463,7 +463,7 @@ paths:
         description: A unique integer value identifying this content block.
         required: true
       tags:
-      - content_blocks
+      - Content Blocks
       requestBody:
         content:
           application/json:
@@ -528,7 +528,7 @@ paths:
         description: A unique integer value identifying this content block.
         required: true
       tags:
-      - content_blocks
+      - Content Blocks
       requestBody:
         content:
           multipart/form-data:
@@ -592,7 +592,7 @@ paths:
         description: A unique integer value identifying this content block.
         required: true
       tags:
-      - content_blocks
+      - Content Blocks
       security:
       - OAuthAuthentication: []
       - SessionAuthentication: []
@@ -642,7 +642,7 @@ paths:
         description: A unique integer value identifying this content block.
         required: true
       tags:
-      - content_blocks
+      - Content Blocks
       requestBody:
         content:
           application/json:
@@ -708,7 +708,7 @@ paths:
         description: A unique integer value identifying this content block.
         required: true
       tags:
-      - content_blocks
+      - Content Blocks
       security:
       - OAuthAuthentication: []
       - SessionAuthentication: []
@@ -777,7 +777,7 @@ paths:
         description: A unique integer value identifying this content block.
         required: true
       tags:
-      - content_blocks
+      - Content Blocks
       requestBody:
         content:
           application/json:
@@ -842,7 +842,7 @@ paths:
         description: A unique integer value identifying this content block.
         required: true
       tags:
-      - content_blocks
+      - Content Blocks
       requestBody:
         content:
           multipart/form-data:
@@ -909,7 +909,7 @@ paths:
         description: A unique integer value identifying this content block.
         required: true
       tags:
-      - content_blocks
+      - Content Blocks
       security:
       - SessionAuthentication: []
       responses:
@@ -968,7 +968,7 @@ paths:
         schema:
           type: string
       tags:
-      - content_blocks
+      - Content Blocks
       security:
       - OAuthAuthentication: []
       - SessionAuthentication: []
@@ -1030,7 +1030,7 @@ paths:
         schema:
           type: string
       tags:
-      - content_blocks
+      - Content Blocks
       security:
       - OAuthAuthentication: []
       - SessionAuthentication: []
@@ -1072,7 +1072,7 @@ paths:
         description: A unique integer value identifying this content block.
         required: true
       tags:
-      - content_blocks
+      - Content Blocks
       requestBody:
         content:
           application/json:
@@ -1132,7 +1132,7 @@ paths:
         description: A unique integer value identifying this content block.
         required: true
       tags:
-      - content_blocks
+      - Content Blocks
       security:
       - OAuthAuthentication: []
       - SessionAuthentication: []
@@ -1180,7 +1180,7 @@ paths:
         description: API name (key) of the content block
         required: true
       tags:
-      - content_blocks
+      - Content Blocks
       security:
       - OAuthAuthentication: []
       - SessionAuthentication: []
@@ -1200,28 +1200,93 @@ paths:
           description: ''
 components:
   schemas:
-    NewContentBlock:
+    PatchedUpdateContentBlockSharing:
+      type: object
+      description: ''
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        permission:
+          enum:
+          - read
+          - write
+          - manage
+          type: string
+        user:
+          type: integer
+          readOnly: true
+    UploadContentBlockImage:
+      type: object
+      properties:
+        upload:
+          type: string
+          format: binary
+      required:
+      - upload
+      description: ''
+    PaginatedTemplateInfoList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/TemplateInfo'
+    PatchedUpdateNewContentBlock:
       type: object
       description: ''
       properties:
         name:
           type: string
           maxLength: 255
-        key:
-          type: string
-          maxLength: 255
         file:
           type: string
           format: binary
-        description:
+    NotFoundError:
+      type: object
+      properties:
+        detail:
           type: string
-          nullable: true
-          maxLength: 255
       required:
-      - file
-      - key
-      - name
-    UnauthenticatedError:
+      - detail
+      description: ''
+    ContentBlockSharing:
+      type: object
+      description: ''
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        permission:
+          enum:
+          - read
+          - write
+          - manage
+          type: string
+        user:
+          type: integer
+      required:
+      - id
+      - user
+    ForbiddenError:
       type: object
       properties:
         detail:
@@ -1248,41 +1313,12 @@ components:
       - schema
       - type
       description: ''
-    ForbiddenError:
+    PatchedContentBlockEditorVersion:
       type: object
       properties:
-        detail:
-          type: string
-      required:
-      - detail
+        use_v2_editor:
+          type: boolean
       description: ''
-    UploadContentBlockImage:
-      type: object
-      properties:
-        upload:
-          type: string
-          format: binary
-      required:
-      - upload
-      description: ''
-    ContentBlockSharing:
-      type: object
-      description: ''
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        permission:
-          enum:
-          - read
-          - write
-          - manage
-          type: string
-        user:
-          type: integer
-      required:
-      - id
-      - user
     TestContentBlock:
       type: object
       properties:
@@ -1294,12 +1330,6 @@ components:
       required:
       - file_name
       - file_url
-      description: ''
-    PatchedContentBlockEditorVersion:
-      type: object
-      properties:
-        use_v2_editor:
-          type: boolean
       description: ''
     TemplateInfo:
       type: object
@@ -1322,24 +1352,7 @@ components:
       - status
       - type
       description: ''
-    CopyContentBlock:
-      type: object
-      properties:
-        name:
-          type: string
-          maxLength: 255
-        description:
-          type: string
-          nullable: true
-          maxLength: 255
-        key:
-          type: string
-          maxLength: 255
-      required:
-      - key
-      - name
-      description: ''
-    PaginatedTemplateInfoList:
+    PaginatedContentBlockList:
       type: object
       required:
       - count
@@ -1349,19 +1362,147 @@ components:
           type: integer
           example: 123
         next:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
           format: uri
           example: http://api.example.org/accounts/?page=4
         previous:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
           format: uri
           example: http://api.example.org/accounts/?page=2
         results:
           type: array
           items:
-            $ref: '#/components/schemas/TemplateInfo'
+            $ref: '#/components/schemas/ContentBlock'
+    ContentBlock:
+      type: object
+      description: ''
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 255
+        description:
+          type:
+          - string
+          - 'null'
+          maxLength: 255
+        key:
+          type: string
+          readOnly: true
+        type:
+          enum:
+          - docx
+          - html
+          type: string
+          readOnly: true
+        created_by:
+          type: integer
+          readOnly: true
+        updated_by:
+          type:
+          - integer
+          - 'null'
+          readOnly: true
+        created_time:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_time:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+        use_v2_editor:
+          type: boolean
+          readOnly: true
+      required:
+      - created_by
+      - created_time
+      - id
+      - key
+      - name
+      - type
+      - updated_by
+      - updated_time
+      - use_v2_editor
+    UnauthenticatedError:
+      type: object
+      properties:
+        detail:
+          type: string
+      required:
+      - detail
+      description: ''
+    ContentBlockEditorVersion:
+      type: object
+      properties:
+        use_v2_editor:
+          type: boolean
+      description: ''
+    ValidationError:
+      type: object
+      properties:
+        errors:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+        non_field_errors:
+          type: array
+          items:
+            type: string
+      required:
+      - errors
+      - non_field_errors
+      description: ''
+    NewContentBlock:
+      type: object
+      description: ''
+      properties:
+        name:
+          type: string
+          maxLength: 255
+        key:
+          type: string
+          maxLength: 255
+        file:
+          type: string
+          format: binary
+        description:
+          type:
+          - string
+          - 'null'
+          maxLength: 255
+      required:
+      - file
+      - key
+      - name
+    CopyContentBlock:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 255
+        description:
+          type:
+          - string
+          - 'null'
+          maxLength: 255
+        key:
+          type: string
+          maxLength: 255
+      required:
+      - key
+      - name
+      description: ''
     TemplateSchema:
       type: object
       properties:
@@ -1395,138 +1536,6 @@ components:
       - name
       - type
       description: ''
-    ValidationError:
-      type: object
-      properties:
-        errors:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              type: string
-        non_field_errors:
-          type: array
-          items:
-            type: string
-      required:
-      - errors
-      - non_field_errors
-      description: ''
-    PaginatedContentBlockList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?page=4
-        previous:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?page=2
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/ContentBlock'
-    ContentBlockEditorVersion:
-      type: object
-      properties:
-        use_v2_editor:
-          type: boolean
-      description: ''
-    PatchedUpdateContentBlockSharing:
-      type: object
-      description: ''
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        permission:
-          enum:
-          - read
-          - write
-          - manage
-          type: string
-        user:
-          type: integer
-          readOnly: true
-    ContentBlock:
-      type: object
-      description: ''
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        name:
-          type: string
-          maxLength: 255
-        description:
-          type: string
-          nullable: true
-          maxLength: 255
-        key:
-          type: string
-          readOnly: true
-        type:
-          enum:
-          - docx
-          - html
-          type: string
-          readOnly: true
-        created_by:
-          type: integer
-          readOnly: true
-        updated_by:
-          type: integer
-          readOnly: true
-          nullable: true
-        created_time:
-          type: string
-          format: date-time
-          readOnly: true
-        updated_time:
-          type: string
-          format: date-time
-          readOnly: true
-          nullable: true
-        use_v2_editor:
-          type: boolean
-          readOnly: true
-      required:
-      - created_by
-      - created_time
-      - id
-      - key
-      - name
-      - type
-      - updated_by
-      - updated_time
-      - use_v2_editor
-    PatchedUpdateNewContentBlock:
-      type: object
-      description: ''
-      properties:
-        name:
-          type: string
-          maxLength: 255
-        file:
-          type: string
-          format: binary
-    NotFoundError:
-      type: object
-      properties:
-        detail:
-          type: string
-      required:
-      - detail
-      description: ''
   securitySchemes:
     OAuthAuthentication:
       type: http
@@ -1537,6 +1546,11 @@ components:
       in: cookie
       name: sessionid
       description: browser based login takes care of this
+    tokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Token-based authentication with required prefix "Basic"
 externalDocs:
   description: Help docs on how to use API
   url: https://help.docupilot.app/developers/api-overview

@@ -1,8 +1,8 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Docupilot accounts APIs ai merge_history API
-  version: '1.0'
-  description: Docupilot accounts APIs
+  title: Docupilot V2 Merge History API
+  version: '3.0'
+  description: Docupilot V2 APIs
   termsOfService: https://docupilot.app/terms-and-conditions/
   contact:
     name: Team Docupilot
@@ -154,85 +154,6 @@ paths:
           description: ''
 components:
   schemas:
-    UnauthenticatedError:
-      type: object
-      properties:
-        detail:
-          type: string
-      required:
-      - detail
-      description: ''
-    ChildTemplate:
-      type: object
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        title:
-          type: string
-          readOnly: true
-        description:
-          type: string
-          nullable: true
-          maxLength: 255
-        type:
-          enum:
-          - docx
-          - html
-          - dpt_pdf
-          - fillable_pdf
-          - pptx
-          - xlsx
-          - g_document
-          - g_presentation
-          - g_spreadsheet
-          type: string
-        created_time:
-          type: string
-          format: date-time
-          readOnly: true
-        updated_time:
-          type: string
-          format: date-time
-          readOnly: true
-          nullable: true
-        document_status:
-          enum:
-          - active
-          - test
-          type: string
-        deleted_time:
-          type: string
-          format: date-time
-          nullable: true
-        use_v2_editor:
-          type: boolean
-        created_by:
-          type: integer
-          readOnly: true
-        updated_by:
-          type: integer
-          readOnly: true
-          nullable: true
-        folder:
-          type: integer
-          nullable: true
-      required:
-      - created_by
-      - created_time
-      - id
-      - title
-      - updated_by
-      - updated_time
-      description: ''
-    ForbiddenError:
-      type: object
-      properties:
-        detail:
-          type: string
-      required:
-      - detail
-      description: ''
     DocumentMergeHistory:
       type: object
       properties:
@@ -240,14 +161,14 @@ components:
           type: integer
           readOnly: true
         data:
-          type: object
+          type:
+          - object
+          - 'null'
           additionalProperties: {}
-          nullable: true
         template:
           allOf:
           - $ref: '#/components/schemas/ChildTemplate'
           readOnly: true
-          nullable: true
         executed_deliveries:
           type: array
           items:
@@ -283,6 +204,22 @@ components:
       - is_document_expired
       - template
       description: ''
+    UnauthenticatedError:
+      type: object
+      properties:
+        detail:
+          type: string
+      required:
+      - detail
+      description: ''
+    ForbiddenError:
+      type: object
+      properties:
+        detail:
+          type: string
+      required:
+      - detail
+      description: ''
     PaginatedDocumentMergeHistoryList:
       type: object
       required:
@@ -293,19 +230,89 @@ components:
           type: integer
           example: 123
         next:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
           format: uri
           example: http://api.example.org/accounts/?page=4
         previous:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
           format: uri
           example: http://api.example.org/accounts/?page=2
         results:
           type: array
           items:
             $ref: '#/components/schemas/DocumentMergeHistory'
+    ChildTemplate:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        title:
+          type: string
+          readOnly: true
+        description:
+          type:
+          - string
+          - 'null'
+          maxLength: 255
+        type:
+          enum:
+          - docx
+          - html
+          - dpt_pdf
+          - fillable_pdf
+          - pptx
+          - xlsx
+          - g_document
+          - g_presentation
+          - g_spreadsheet
+          type: string
+        created_time:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_time:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+        document_status:
+          enum:
+          - active
+          - test
+          type: string
+        deleted_time:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        use_v2_editor:
+          type: boolean
+        created_by:
+          type: integer
+          readOnly: true
+        updated_by:
+          type:
+          - integer
+          - 'null'
+          readOnly: true
+        folder:
+          type:
+          - integer
+          - 'null'
+      required:
+      - created_by
+      - created_time
+      - id
+      - title
+      - updated_by
+      - updated_time
+      description: ''
     NotFoundError:
       type: object
       properties:
@@ -349,12 +356,14 @@ components:
           - error
           type: string
         message:
-          type: object
+          type:
+          - object
+          - 'null'
           additionalProperties: {}
-          nullable: true
         delivery:
-          type: integer
-          nullable: true
+          type:
+          - integer
+          - 'null'
       required:
       - delivery_type
       - id
@@ -370,6 +379,11 @@ components:
       in: cookie
       name: sessionid
       description: browser based login takes care of this
+    tokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Token-based authentication with required prefix "Basic"
 externalDocs:
   description: Help docs on how to use API
   url: https://help.docupilot.app/developers/api-overview

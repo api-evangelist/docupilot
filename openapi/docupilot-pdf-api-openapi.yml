@@ -1,14 +1,14 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Docupilot accounts APIs ai pdf API
-  version: '1.0'
-  description: Docupilot accounts APIs
+  title: Docupilot V2 PDF API
+  version: '3.0'
+  description: Docupilot V2 APIs
   termsOfService: https://docupilot.app/terms-and-conditions/
   contact:
     name: Team Docupilot
     email: support@docupilot.app
 tags:
-- name: pdf
+- name: PDF
 paths:
   /dashboard/api/v2/pdf/transform/:
     post:
@@ -39,7 +39,7 @@ paths:
           type: boolean
         description: If true, the document will be generated in test mode (with watermark and without deducting merge credits).
       tags:
-      - pdf
+      - PDF
       requestBody:
         content:
           application/json:
@@ -116,16 +116,10 @@ paths:
               schema:
                 $ref: '#/components/schemas/ForbiddenError'
           description: ''
+      summary: Pdf transform
+      x-summary-source: derived
 components:
   schemas:
-    UnauthenticatedError:
-      type: object
-      properties:
-        detail:
-          type: string
-      required:
-      - detail
-      description: ''
     PDFTransformInput:
       type: object
       properties:
@@ -138,22 +132,21 @@ components:
       - file_url
       - id
       description: ''
-    ValidationError:
+    UnauthenticatedError:
       type: object
       properties:
-        errors:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              type: string
-        non_field_errors:
-          type: array
-          items:
-            type: string
+        detail:
+          type: string
       required:
-      - errors
-      - non_field_errors
+      - detail
+      description: ''
+    ForbiddenError:
+      type: object
+      properties:
+        detail:
+          type: string
+      required:
+      - detail
       description: ''
     PDFTransformJsonRequest:
       type: object
@@ -174,13 +167,22 @@ components:
       - operations
       - output_file_name
       description: ''
-    ForbiddenError:
+    ValidationError:
       type: object
       properties:
-        detail:
-          type: string
+        errors:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+        non_field_errors:
+          type: array
+          items:
+            type: string
       required:
-      - detail
+      - errors
+      - non_field_errors
       description: ''
     PDFTransformMultipartRequest:
       type: object
@@ -217,6 +219,11 @@ components:
       in: cookie
       name: sessionid
       description: browser based login takes care of this
+    tokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Token-based authentication with required prefix "Basic"
 externalDocs:
   description: Help docs on how to use API
   url: https://help.docupilot.app/developers/api-overview

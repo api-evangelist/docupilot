@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Docupilot accounts APIs ai application API
+  title: Docupilot accounts Application API
   version: '1.0'
   description: Docupilot accounts APIs
   termsOfService: https://docupilot.app/terms-and-conditions/
@@ -8,7 +8,7 @@ info:
     name: Team Docupilot
     email: support@docupilot.app
 tags:
-- name: application
+- name: Application
 paths:
   /accounts/application/:
     get:
@@ -22,7 +22,7 @@ paths:
         schema:
           type: string
       tags:
-      - application
+      - Application
       security:
       - OAuthAuthentication: []
       - SessionAuthentication: []
@@ -49,13 +49,6 @@ paths:
           description: ''
 components:
   schemas:
-    UnauthenticatedError:
-      type: object
-      properties:
-        detail:
-          type: string
-      required:
-      - detail
     ForbiddenError:
       type: object
       properties:
@@ -78,6 +71,13 @@ components:
       required:
       - hosted_url
       - id
+    UnauthenticatedError:
+      type: object
+      properties:
+        detail:
+          type: string
+      required:
+      - detail
   securitySchemes:
     OAuthAuthentication:
       type: http

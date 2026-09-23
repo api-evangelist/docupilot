@@ -1,14 +1,14 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Docupilot accounts APIs ai history API
-  version: '1.0'
-  description: Docupilot accounts APIs
+  title: Docupilot V2 History API
+  version: '3.0'
+  description: Docupilot V2 APIs
   termsOfService: https://docupilot.app/terms-and-conditions/
   contact:
     name: Team Docupilot
     email: support@docupilot.app
 tags:
-- name: history
+- name: History
 paths:
   /dashboard/api/v2/history/:
     get:
@@ -58,7 +58,7 @@ paths:
         schema:
           type: integer
       tags:
-      - history
+      - History
       security:
       - OAuthAuthentication: []
       - SessionAuthentication: []
@@ -100,7 +100,7 @@ paths:
         description: A unique integer value identifying this merge history.
         required: true
       tags:
-      - history
+      - History
       security:
       - SessionAuthentication: []
       responses:
@@ -167,7 +167,7 @@ paths:
         description: A unique integer value identifying this merge history.
         required: true
       tags:
-      - history
+      - History
       requestBody:
         content:
           application/json:
@@ -233,7 +233,7 @@ paths:
         schema:
           type: string
       tags:
-      - history
+      - History
       security:
       - OAuthAuthentication: []
       - SessionAuthentication: []
@@ -270,7 +270,7 @@ paths:
         description: Workspace unique_key
         required: true
       tags:
-      - history
+      - History
       requestBody:
         content:
           application/json:
@@ -330,7 +330,7 @@ paths:
         description: A unique integer value identifying this export merge history task.
         required: true
       tags:
-      - history
+      - History
       security:
       - SessionAuthentication: []
       responses:
@@ -389,181 +389,6 @@ components:
       required:
       - detail
       description: ''
-    PaginatedMergeHistoryList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?page=4
-        previous:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?page=2
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/MergeHistory'
-    ValidationError:
-      type: object
-      properties:
-        errors:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              type: string
-        non_field_errors:
-          type: array
-          items:
-            type: string
-      required:
-      - errors
-      - non_field_errors
-      description: ''
-    ChildTemplate:
-      type: object
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        title:
-          type: string
-          readOnly: true
-        description:
-          type: string
-          nullable: true
-          maxLength: 255
-        type:
-          enum:
-          - docx
-          - html
-          - dpt_pdf
-          - fillable_pdf
-          - pptx
-          - xlsx
-          - g_document
-          - g_presentation
-          - g_spreadsheet
-          type: string
-        created_time:
-          type: string
-          format: date-time
-          readOnly: true
-        updated_time:
-          type: string
-          format: date-time
-          readOnly: true
-          nullable: true
-        document_status:
-          enum:
-          - active
-          - test
-          type: string
-        deleted_time:
-          type: string
-          format: date-time
-          nullable: true
-        use_v2_editor:
-          type: boolean
-        created_by:
-          type: integer
-          readOnly: true
-        updated_by:
-          type: integer
-          readOnly: true
-          nullable: true
-        folder:
-          type: integer
-          nullable: true
-      required:
-      - created_by
-      - created_time
-      - id
-      - title
-      - updated_by
-      - updated_time
-      description: ''
-    MergeHistory:
-      type: object
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        template:
-          allOf:
-          - $ref: '#/components/schemas/ChildTemplate'
-          readOnly: true
-          nullable: true
-        data:
-          type: object
-          additionalProperties: {}
-        data_expired:
-          type: boolean
-        document_expired:
-          type: boolean
-        mode:
-          type: string
-        created_file_name:
-          type: string
-        delivery_type:
-          type: string
-          maxLength: 255
-        status:
-          enum:
-          - pending
-          - success
-          - error
-          type: string
-        created_time:
-          type: string
-          format: date-time
-          readOnly: true
-        message:
-          type: object
-          additionalProperties: {}
-          nullable: true
-        callback_status:
-          enum:
-          - success
-          - fail
-          - null
-          type: string
-          nullable: true
-        callback_failure_message:
-          type: string
-          nullable: true
-        delivery:
-          type: integer
-          nullable: true
-      required:
-      - created_file_name
-      - created_time
-      - data
-      - data_expired
-      - delivery_type
-      - document_expired
-      - id
-      - mode
-      - status
-      - template
-      description: ''
-    ForbiddenError:
-      type: object
-      properties:
-        detail:
-          type: string
-      required:
-      - detail
-      description: ''
     ExportMergeHistory:
       type: object
       description: ''
@@ -591,6 +416,191 @@ components:
       - id
       - name
       - to_date
+    ForbiddenError:
+      type: object
+      properties:
+        detail:
+          type: string
+      required:
+      - detail
+      description: ''
+    MergeHistory:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        template:
+          allOf:
+          - $ref: '#/components/schemas/ChildTemplate'
+          readOnly: true
+        data:
+          type: object
+          additionalProperties: {}
+        data_expired:
+          type: boolean
+        document_expired:
+          type: boolean
+        mode:
+          type: string
+        created_file_name:
+          type: string
+        delivery_type:
+          type: string
+          maxLength: 255
+        status:
+          enum:
+          - pending
+          - success
+          - error
+          type: string
+        created_time:
+          type: string
+          format: date-time
+          readOnly: true
+        message:
+          type:
+          - object
+          - 'null'
+          additionalProperties: {}
+        callback_status:
+          enum:
+          - success
+          - fail
+          - null
+          type:
+          - string
+          - 'null'
+        callback_failure_message:
+          type:
+          - string
+          - 'null'
+        delivery:
+          type:
+          - integer
+          - 'null'
+      required:
+      - created_file_name
+      - created_time
+      - data
+      - data_expired
+      - delivery_type
+      - document_expired
+      - id
+      - mode
+      - status
+      - template
+      description: ''
+    ValidationError:
+      type: object
+      properties:
+        errors:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+        non_field_errors:
+          type: array
+          items:
+            type: string
+      required:
+      - errors
+      - non_field_errors
+      description: ''
+    PaginatedMergeHistoryList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/MergeHistory'
+    ChildTemplate:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        title:
+          type: string
+          readOnly: true
+        description:
+          type:
+          - string
+          - 'null'
+          maxLength: 255
+        type:
+          enum:
+          - docx
+          - html
+          - dpt_pdf
+          - fillable_pdf
+          - pptx
+          - xlsx
+          - g_document
+          - g_presentation
+          - g_spreadsheet
+          type: string
+        created_time:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_time:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+        document_status:
+          enum:
+          - active
+          - test
+          type: string
+        deleted_time:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        use_v2_editor:
+          type: boolean
+        created_by:
+          type: integer
+          readOnly: true
+        updated_by:
+          type:
+          - integer
+          - 'null'
+          readOnly: true
+        folder:
+          type:
+          - integer
+          - 'null'
+      required:
+      - created_by
+      - created_time
+      - id
+      - title
+      - updated_by
+      - updated_time
+      description: ''
     NotFoundError:
       type: object
       properties:
@@ -609,6 +619,11 @@ components:
       in: cookie
       name: sessionid
       description: browser based login takes care of this
+    tokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Token-based authentication with required prefix "Basic"
 externalDocs:
   description: Help docs on how to use API
   url: https://help.docupilot.app/developers/api-overview

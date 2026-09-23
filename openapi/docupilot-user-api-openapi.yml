@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Docupilot accounts APIs ai user API
+  title: Docupilot accounts User API
   version: '1.0'
   description: Docupilot accounts APIs
   termsOfService: https://docupilot.app/terms-and-conditions/
@@ -8,13 +8,13 @@ info:
     name: Team Docupilot
     email: support@docupilot.app
 tags:
-- name: user
+- name: User
 paths:
   /accounts/user/change_email/:
     put:
       operationId: change_email
       tags:
-      - user
+      - User
       requestBody:
         content:
           application/json:
@@ -45,11 +45,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/UnauthenticatedError'
           description: ''
+      summary: Change email
+      x-summary-source: derived
   /accounts/user/change_password/:
     put:
       operationId: change_password
       tags:
-      - user
+      - User
       requestBody:
         content:
           application/json:
@@ -80,12 +82,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/UnauthenticatedError'
           description: ''
+      summary: Change password
+      x-summary-source: derived
   /accounts/user/config_meta/:
     get:
       operationId: user_config_meta
       summary: User config meta
       tags:
-      - user
+      - User
       security:
       - OAuthAuthentication: []
       - SessionAuthentication: []
@@ -120,7 +124,7 @@ paths:
           pattern: ^[0-9a-f-]+$
         required: true
       tags:
-      - user
+      - User
       security:
       - OAuthAuthentication: []
       - SessionAuthentication: []
@@ -141,7 +145,7 @@ paths:
     post:
       operationId: initiate_authorization_sequence
       tags:
-      - user
+      - User
       requestBody:
         content:
           application/json:
@@ -178,12 +182,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/ForbiddenError'
           description: ''
+      summary: Initiate authorization sequence
+      x-summary-source: derived
   /accounts/user/me/:
     get:
       operationId: get_me
       summary: get logged in user details
       tags:
-      - user
+      - User
       security:
       - OAuthAuthentication: []
       - SessionAuthentication: []
@@ -204,7 +210,7 @@ paths:
       operationId: update_me
       summary: update logged in user details
       tags:
-      - user
+      - User
       requestBody:
         content:
           application/json:
@@ -242,7 +248,7 @@ paths:
       operationId: partial_update_user_details
       summary: partial update user details
       tags:
-      - user
+      - User
       requestBody:
         content:
           application/json:
@@ -288,7 +294,7 @@ paths:
         schema:
           type: string
       tags:
-      - user
+      - User
       security:
       - OAuthAuthentication: []
       - SessionAuthentication: []
@@ -317,7 +323,7 @@ paths:
     post:
       operationId: verify_authorization
       tags:
-      - user
+      - User
       requestBody:
         content:
           application/json:
@@ -354,6 +360,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/ForbiddenError'
           description: ''
+      summary: Verify authorization
+      x-summary-source: derived
 components:
   schemas:
     UnauthenticatedError:
@@ -363,6 +371,55 @@ components:
           type: string
       required:
       - detail
+    Organization:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 50
+        subdomain:
+          type: string
+          readOnly: true
+        created_time:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_time:
+          type: string
+          format: date-time
+          readOnly: true
+        enforce_mfa:
+          type: boolean
+          readOnly: true
+        logo:
+          type:
+          - string
+          - 'null'
+          format: uri
+        password_based_login:
+          type: boolean
+          readOnly: true
+          description: Whether password-based login is allowed for this organization
+        region:
+          enum:
+          - us1
+          type: string
+          readOnly: true
+        provisioning_mode:
+          enum:
+          - manual
+          - scim
+          type: string
+          readOnly: true
+      required:
+      - created_time
+      - enforce_mfa
+      - name
+      - password_based_login
+      - provisioning_mode
+      - region
+      - subdomain
+      - updated_time
     PatchedUser:
       type: object
       properties:
@@ -521,8 +578,9 @@ components:
           - ar
           - he
           - null
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         is_active:
           type: boolean
           readOnly: true
@@ -556,6 +614,63 @@ components:
           items:
             $ref: '#/components/schemas/Workspace'
           readOnly: true
+    ForbiddenError:
+      type: object
+      properties:
+        detail:
+          type: string
+      required:
+      - detail
+    VerifyAuthorizationOTP:
+      type: object
+      properties:
+        otp:
+          type: string
+      required:
+      - otp
+    ChangeEmail:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+          maxLength: 255
+        password:
+          type: string
+          maxLength: 128
+      required:
+      - email
+      - password
+    Workspace:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        role:
+          enum:
+          - owner
+          - admin
+          - manager
+          - member
+          - billing_manager
+          type: string
+        unique_key:
+          type: string
+        plan:
+          type: string
+        users:
+          type: integer
+        plan_status:
+          type: string
+      required:
+      - id
+      - name
+      - plan
+      - plan_status
+      - unique_key
+      - users
     ValidationError:
       type: object
       properties:
@@ -569,27 +684,21 @@ components:
       required:
       - errors
       - non_field_errors
-    ForbiddenError:
+    ChangePassword:
       type: object
       properties:
-        detail:
+        current_password:
           type: string
+          writeOnly: true
+        new_password:
+          type: string
+          writeOnly: true
+        clear_other_sessions:
+          type: boolean
+          default: false
       required:
-      - detail
-    UserMeta:
-      type: object
-      properties:
-        timezone:
-          type: array
-          items:
-            $ref: '#/components/schemas/TimeZone'
-        locale:
-          type: array
-          items:
-            $ref: '#/components/schemas/Locale'
-      required:
-      - locale
-      - timezone
+      - current_password
+      - new_password
     UserOrganization:
       type: object
       properties:
@@ -614,54 +723,43 @@ components:
       - id
       - name
       - subdomain
-    Organization:
+    TimeZone:
       type: object
       properties:
         name:
           type: string
-          maxLength: 50
-        subdomain:
+        tz:
           type: string
-          readOnly: true
-        created_time:
+        offset:
           type: string
-          format: date-time
-          readOnly: true
-        updated_time:
-          type: string
-          format: date-time
-          readOnly: true
-        enforce_mfa:
-          type: boolean
-          readOnly: true
-        logo:
-          type: string
-          format: uri
-          nullable: true
-        password_based_login:
-          type: boolean
-          readOnly: true
-          description: Whether password-based login is allowed for this organization
-        region:
-          enum:
-          - us1
-          type: string
-          readOnly: true
-        provisioning_mode:
-          enum:
-          - manual
-          - scim
-          type: string
-          readOnly: true
       required:
-      - created_time
-      - enforce_mfa
       - name
-      - password_based_login
-      - provisioning_mode
-      - region
-      - subdomain
-      - updated_time
+      - offset
+      - tz
+    Locale:
+      type: object
+      properties:
+        code:
+          type: string
+        display:
+          type: string
+      required:
+      - code
+      - display
+    UserMeta:
+      type: object
+      properties:
+        timezone:
+          type: array
+          items:
+            $ref: '#/components/schemas/TimeZone'
+        locale:
+          type: array
+          items:
+            $ref: '#/components/schemas/Locale'
+      required:
+      - locale
+      - timezone
     User:
       type: object
       properties:
@@ -820,8 +918,9 @@ components:
           - ar
           - he
           - null
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         is_active:
           type: boolean
           readOnly: true
@@ -865,94 +964,6 @@ components:
       - organization
       - role
       - workspaces
-    ChangePassword:
-      type: object
-      properties:
-        current_password:
-          type: string
-          writeOnly: true
-        new_password:
-          type: string
-          writeOnly: true
-        clear_other_sessions:
-          type: boolean
-          default: false
-      required:
-      - current_password
-      - new_password
-    Workspace:
-      type: object
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-        role:
-          enum:
-          - owner
-          - admin
-          - manager
-          - member
-          - billing_manager
-          type: string
-        unique_key:
-          type: string
-        plan:
-          type: string
-        users:
-          type: integer
-        plan_status:
-          type: string
-      required:
-      - id
-      - name
-      - plan
-      - plan_status
-      - unique_key
-      - users
-    VerifyAuthorizationOTP:
-      type: object
-      properties:
-        otp:
-          type: string
-      required:
-      - otp
-    Locale:
-      type: object
-      properties:
-        code:
-          type: string
-        display:
-          type: string
-      required:
-      - code
-      - display
-    TimeZone:
-      type: object
-      properties:
-        name:
-          type: string
-        tz:
-          type: string
-        offset:
-          type: string
-      required:
-      - name
-      - offset
-      - tz
-    ChangeEmail:
-      type: object
-      properties:
-        email:
-          type: string
-          format: email
-          maxLength: 255
-        password:
-          type: string
-          maxLength: 128
-      required:
-      - email
-      - password
     SendAuthorizationOTP:
       type: object
       properties:

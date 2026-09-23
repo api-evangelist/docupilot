@@ -1,14 +1,14 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Docupilot accounts APIs ai invitations API
-  version: '1.0'
-  description: Docupilot accounts APIs
+  title: Docupilot V2 Invitations API
+  version: '3.0'
+  description: Docupilot V2 APIs
   termsOfService: https://docupilot.app/terms-and-conditions/
   contact:
     name: Team Docupilot
     email: support@docupilot.app
 tags:
-- name: invitations
+- name: Invitations
 paths:
   /dashboard/accounts/v2/invitations/:
     get:
@@ -38,7 +38,7 @@ paths:
         schema:
           type: string
       tags:
-      - invitations
+      - Invitations
       security:
       - SessionAuthentication: []
       responses:
@@ -73,7 +73,7 @@ paths:
         description: Workspace unique_key
         required: true
       tags:
-      - invitations
+      - Invitations
       requestBody:
         content:
           application/json:
@@ -131,7 +131,7 @@ paths:
         description: A unique integer value identifying this invitation.
         required: true
       tags:
-      - invitations
+      - Invitations
       security:
       - SessionAuthentication: []
       responses:
@@ -179,7 +179,7 @@ paths:
         description: A unique integer value identifying this invitation.
         required: true
       tags:
-      - invitations
+      - Invitations
       security:
       - SessionAuthentication: []
       responses:
@@ -215,39 +215,6 @@ paths:
           description: ''
 components:
   schemas:
-    UnauthenticatedError:
-      type: object
-      properties:
-        detail:
-          type: string
-      required:
-      - detail
-      description: ''
-    ValidationError:
-      type: object
-      properties:
-        errors:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              type: string
-        non_field_errors:
-          type: array
-          items:
-            type: string
-      required:
-      - errors
-      - non_field_errors
-      description: ''
-    ForbiddenError:
-      type: object
-      properties:
-        detail:
-          type: string
-      required:
-      - detail
-      description: ''
     Invitation:
       type: object
       properties:
@@ -277,9 +244,10 @@ components:
           type: string
           readOnly: true
         is_accepted:
-          type: boolean
+          type:
+          - boolean
+          - 'null'
           readOnly: true
-          nullable: true
         invite_key:
           type: string
           readOnly: true
@@ -301,6 +269,39 @@ components:
       - sender
       - workspace
       description: ''
+    UnauthenticatedError:
+      type: object
+      properties:
+        detail:
+          type: string
+      required:
+      - detail
+      description: ''
+    ForbiddenError:
+      type: object
+      properties:
+        detail:
+          type: string
+      required:
+      - detail
+      description: ''
+    ValidationError:
+      type: object
+      properties:
+        errors:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+        non_field_errors:
+          type: array
+          items:
+            type: string
+      required:
+      - errors
+      - non_field_errors
+      description: ''
     NotFoundError:
       type: object
       properties:
@@ -319,6 +320,11 @@ components:
       in: cookie
       name: sessionid
       description: browser based login takes care of this
+    tokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Token-based authentication with required prefix "Basic"
 externalDocs:
   description: Help docs on how to use API
   url: https://help.docupilot.app/developers/api-overview

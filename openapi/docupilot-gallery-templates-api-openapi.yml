@@ -1,8 +1,8 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Docupilot accounts APIs ai Gallery templates API
-  version: '1.0'
-  description: Docupilot accounts APIs
+  title: Docupilot V2 Gallery templates API
+  version: '3.0'
+  description: Docupilot V2 APIs
   termsOfService: https://docupilot.app/terms-and-conditions/
   contact:
     name: Team Docupilot
@@ -118,6 +118,19 @@ components:
       required:
       - detail
       description: ''
+    GalleryCategory:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+      required:
+      - id
+      - name
+      description: ''
     TemplateGallery:
       type: object
       properties:
@@ -136,14 +149,16 @@ components:
           type: string
           maxLength: 50
         description:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
           maxLength: 255
         images_count:
-          type: integer
+          type:
+          - integer
+          - 'null'
           maximum: 32767
           minimum: 0
-          nullable: true
       required:
       - category
       - file_type
@@ -159,19 +174,6 @@ components:
       required:
       - detail
       description: ''
-    GalleryCategory:
-      type: object
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        name:
-          type: string
-          maxLength: 100
-      required:
-      - id
-      - name
-      description: ''
   securitySchemes:
     OAuthAuthentication:
       type: http
@@ -182,6 +184,11 @@ components:
       in: cookie
       name: sessionid
       description: browser based login takes care of this
+    tokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Token-based authentication with required prefix "Basic"
 externalDocs:
   description: Help docs on how to use API
   url: https://help.docupilot.app/developers/api-overview

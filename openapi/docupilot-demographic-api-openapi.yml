@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Docupilot accounts APIs ai demographic API
+  title: Docupilot accounts Demographic API
   version: '1.0'
   description: Docupilot accounts APIs
   termsOfService: https://docupilot.app/terms-and-conditions/
@@ -8,14 +8,14 @@ info:
     name: Team Docupilot
     email: support@docupilot.app
 tags:
-- name: demographic
+- name: Demographic
 paths:
   /accounts/demographic/:
     post:
       operationId: create_demographic
       summary: Create Demographic
       tags:
-      - demographic
+      - Demographic
       requestBody:
         content:
           application/json:
@@ -55,7 +55,7 @@ paths:
       operationId: show_demographic_prompt_for_organization_users
       summary: Show demographic prompt for organization users
       tags:
-      - demographic
+      - Demographic
       security:
       - SessionAuthentication: []
       responses:
@@ -82,7 +82,7 @@ paths:
       operationId: validate_domain
       summary: Verify domain
       tags:
-      - demographic
+      - Demographic
       requestBody:
         content:
           application/json:
@@ -131,50 +131,6 @@ components:
           type: string
       required:
       - detail
-    VerifyDomain:
-      type: object
-      properties:
-        domain_name:
-          type: string
-          maxLength: 255
-      required:
-      - domain_name
-    ValidationError:
-      type: object
-      properties:
-        errors:
-          type: object
-          additionalProperties: {}
-        non_field_errors:
-          type: array
-          items:
-            type: string
-      required:
-      - errors
-      - non_field_errors
-    UserDemographic:
-      type: object
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        product_referral_source:
-          type: string
-          nullable: true
-          maxLength: 52
-        role:
-          type: string
-          maxLength: 52
-      required:
-      - id
-      - role
-    ForbiddenError:
-      type: object
-      properties:
-        detail:
-          type: string
-      required:
-      - detail
     OrganizationDemographic:
       type: object
       properties:
@@ -182,8 +138,9 @@ components:
           type: integer
           readOnly: true
         domain_name:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
           maxLength: 255
         employee_count:
           enum:
@@ -208,6 +165,60 @@ components:
       - id
       - industry
       - primary_region
+    DemoGraphic:
+      type: object
+      properties:
+        user_demographic:
+          allOf:
+          - $ref: '#/components/schemas/UserDemographic'
+        organization_demographic:
+          allOf:
+          - $ref: '#/components/schemas/OrganizationDemographic'
+    VerifyDomain:
+      type: object
+      properties:
+        domain_name:
+          type: string
+          maxLength: 255
+      required:
+      - domain_name
+    ForbiddenError:
+      type: object
+      properties:
+        detail:
+          type: string
+      required:
+      - detail
+    ValidationError:
+      type: object
+      properties:
+        errors:
+          type: object
+          additionalProperties: {}
+        non_field_errors:
+          type: array
+          items:
+            type: string
+      required:
+      - errors
+      - non_field_errors
+    UserDemographic:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        product_referral_source:
+          type:
+          - string
+          - 'null'
+          maxLength: 52
+        role:
+          type: string
+          maxLength: 52
+      required:
+      - id
+      - role
     ShowDemographicPrompt:
       type: object
       properties:
@@ -218,17 +229,6 @@ components:
       required:
       - organization_demographic
       - user_demographic
-    DemoGraphic:
-      type: object
-      properties:
-        user_demographic:
-          allOf:
-          - $ref: '#/components/schemas/UserDemographic'
-          nullable: true
-        organization_demographic:
-          allOf:
-          - $ref: '#/components/schemas/OrganizationDemographic'
-          nullable: true
   securitySchemes:
     OAuthAuthentication:
       type: http

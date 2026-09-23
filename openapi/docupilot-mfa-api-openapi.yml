@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Docupilot accounts APIs ai mfa API
+  title: Docupilot accounts Mfa API
   version: '1.0'
   description: Docupilot accounts APIs
   termsOfService: https://docupilot.app/terms-and-conditions/
@@ -8,7 +8,7 @@ info:
     name: Team Docupilot
     email: support@docupilot.app
 tags:
-- name: mfa
+- name: MFA
 paths:
   /accounts/mfa/:
     get:
@@ -21,7 +21,7 @@ paths:
         schema:
           type: string
       tags:
-      - mfa
+      - MFA
       security:
       - OAuthAuthentication: []
       - SessionAuthentication: []
@@ -40,11 +40,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/ForbiddenError'
           description: ''
+      summary: Mfa list
+      x-summary-source: derived
   /accounts/mfa/delete-totp-device/:
     delete:
       operationId: mfa_delete_totp_device_destroy
       tags:
-      - mfa
+      - MFA
       security:
       - OAuthAuthentication: []
       - SessionAuthentication: []
@@ -69,11 +71,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/ForbiddenError'
           description: ''
+      summary: Mfa delete totp device destroy
+      x-summary-source: derived
   /accounts/mfa/disable-mfa/:
     post:
       operationId: mfa_disable
       tags:
-      - mfa
+      - MFA
       requestBody:
         content:
           application/json:
@@ -114,11 +118,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/ForbiddenError'
           description: ''
+      summary: Mfa disable
+      x-summary-source: derived
   /accounts/mfa/enable-mfa/:
     post:
       operationId: mfa_enable
       tags:
-      - mfa
+      - MFA
       security:
       - OAuthAuthentication: []
       - SessionAuthentication: []
@@ -143,11 +149,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/ForbiddenError'
           description: ''
+      summary: Mfa enable
+      x-summary-source: derived
   /accounts/mfa/generate-backup-tokens/:
     post:
       operationId: mfa_generate_backup_tokens_create
       tags:
-      - mfa
+      - MFA
       security:
       - OAuthAuthentication: []
       - SessionAuthentication: []
@@ -172,11 +180,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/ForbiddenError'
           description: ''
+      summary: Mfa generate backup tokens create
+      x-summary-source: derived
   /accounts/mfa/mark-device-primary/:
     put:
       operationId: mfa_mark_device_primary_update
       tags:
-      - mfa
+      - MFA
       requestBody:
         content:
           application/json:
@@ -217,11 +227,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/ForbiddenError'
           description: ''
+      summary: Mfa mark device primary update
+      x-summary-source: derived
   /accounts/mfa/setup-totp-device/:
     get:
       operationId: mfa_setup_totp_device_retrieve
       tags:
-      - mfa
+      - MFA
       security:
       - OAuthAuthentication: []
       - SessionAuthentication: []
@@ -240,12 +252,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/ForbiddenError'
           description: ''
+      summary: Mfa setup totp device retrieve
+      x-summary-source: derived
   /accounts/mfa/verify-totp-device/:
     post:
       operationId: mfa_verify_totp_device_create
       summary: Verify Totp device
       tags:
-      - mfa
+      - MFA
       requestBody:
         content:
           application/json:
@@ -288,40 +302,6 @@ paths:
           description: ''
 components:
   schemas:
-    UnauthenticatedError:
-      type: object
-      properties:
-        detail:
-          type: string
-      required:
-      - detail
-    TotpDeviceVerify:
-      type: object
-      properties:
-        t_otp:
-          type: integer
-      required:
-      - t_otp
-    ValidationError:
-      type: object
-      properties:
-        errors:
-          type: object
-          additionalProperties: {}
-        non_field_errors:
-          type: array
-          items:
-            type: string
-      required:
-      - errors
-      - non_field_errors
-    MFADisable:
-      type: object
-      properties:
-        otp:
-          type: integer
-      required:
-      - otp
     TOTPDevice:
       type: object
       properties:
@@ -329,16 +309,18 @@ components:
           type: integer
           readOnly: true
         created_at:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
           readOnly: true
-          nullable: true
           description: The date and time when this device was initially created in the system.
         last_used_at:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
           readOnly: true
-          nullable: true
           description: The most recent date and time this device was used.
         name:
           type: string
@@ -349,6 +331,13 @@ components:
       - id
       - last_used_at
       - name
+    UnauthenticatedError:
+      type: object
+      properties:
+        detail:
+          type: string
+      required:
+      - detail
     ForbiddenError:
       type: object
       properties:
@@ -356,6 +345,13 @@ components:
           type: string
       required:
       - detail
+    MFADisable:
+      type: object
+      properties:
+        otp:
+          type: integer
+      required:
+      - otp
     MarkDevicePrimary:
       type: object
       properties:
@@ -369,6 +365,26 @@ components:
       required:
       - id
       - type
+    ValidationError:
+      type: object
+      properties:
+        errors:
+          type: object
+          additionalProperties: {}
+        non_field_errors:
+          type: array
+          items:
+            type: string
+      required:
+      - errors
+      - non_field_errors
+    TotpDeviceVerify:
+      type: object
+      properties:
+        t_otp:
+          type: integer
+      required:
+      - t_otp
   securitySchemes:
     OAuthAuthentication:
       type: http

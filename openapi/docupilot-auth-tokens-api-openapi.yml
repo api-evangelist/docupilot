@@ -1,14 +1,14 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Docupilot accounts APIs ai auth_tokens API
-  version: '1.0'
-  description: Docupilot accounts APIs
+  title: Docupilot V2 Auth Tokens API
+  version: '3.0'
+  description: Docupilot V2 APIs
   termsOfService: https://docupilot.app/terms-and-conditions/
   contact:
     name: Team Docupilot
     email: support@docupilot.app
 tags:
-- name: auth_tokens
+- name: Auth Tokens
 paths:
   /dashboard/accounts/v2/auth_tokens/:
     get:
@@ -33,7 +33,7 @@ paths:
         schema:
           type: string
       tags:
-      - auth_tokens
+      - Auth Tokens
       security:
       - SessionAuthentication: []
       responses:
@@ -57,6 +57,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/ForbiddenError'
           description: ''
+      summary: List auth tokens
+      x-summary-source: derived
     post:
       operationId: create_auth_token
       parameters:
@@ -67,7 +69,7 @@ paths:
         description: Workspace unique_key
         required: true
       tags:
-      - auth_tokens
+      - Auth Tokens
       requestBody:
         content:
           application/json:
@@ -107,6 +109,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/ForbiddenError'
           description: ''
+      summary: Create auth token
+      x-summary-source: derived
   /dashboard/accounts/v2/auth_tokens/{id}/:
     put:
       operationId: update_auth_token
@@ -124,7 +128,7 @@ paths:
         description: A unique integer value identifying this auth token.
         required: true
       tags:
-      - auth_tokens
+      - Auth Tokens
       requestBody:
         content:
           application/json:
@@ -170,6 +174,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/NotFoundError'
           description: ''
+      summary: Update auth token
+      x-summary-source: derived
     delete:
       operationId: delete_auth_token
       parameters:
@@ -186,7 +192,7 @@ paths:
         description: A unique integer value identifying this auth token.
         required: true
       tags:
-      - auth_tokens
+      - Auth Tokens
       security:
       - SessionAuthentication: []
       responses:
@@ -216,9 +222,19 @@ paths:
               schema:
                 $ref: '#/components/schemas/NotFoundError'
           description: ''
+      summary: Delete auth token
+      x-summary-source: derived
 components:
   schemas:
     UnauthenticatedError:
+      type: object
+      properties:
+        detail:
+          type: string
+      required:
+      - detail
+      description: ''
+    ForbiddenError:
       type: object
       properties:
         detail:
@@ -239,20 +255,23 @@ components:
           type: string
           maxLength: 255
         created_time:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
           readOnly: true
-          nullable: true
         last_used_time:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
-          nullable: true
         active:
           type: boolean
         secret:
-          type: string
+          type:
+          - string
+          - 'null'
           readOnly: true
-          nullable: true
       required:
       - created_time
       - id
@@ -277,6 +296,14 @@ components:
       - errors
       - non_field_errors
       description: ''
+    NotFoundError:
+      type: object
+      properties:
+        detail:
+          type: string
+      required:
+      - detail
+      description: ''
     AuthToken:
       type: object
       properties:
@@ -290,15 +317,17 @@ components:
           type: string
           maxLength: 255
         created_time:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
           readOnly: true
-          nullable: true
         last_used_time:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
           readOnly: true
-          nullable: true
         active:
           type: boolean
           default: true
@@ -308,22 +337,6 @@ components:
       - last_used_time
       - name
       - token
-      description: ''
-    ForbiddenError:
-      type: object
-      properties:
-        detail:
-          type: string
-      required:
-      - detail
-      description: ''
-    NotFoundError:
-      type: object
-      properties:
-        detail:
-          type: string
-      required:
-      - detail
       description: ''
   securitySchemes:
     OAuthAuthentication:
@@ -335,6 +348,11 @@ components:
       in: cookie
       name: sessionid
       description: browser based login takes care of this
+    tokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Token-based authentication with required prefix "Basic"
 externalDocs:
   description: Help docs on how to use API
   url: https://help.docupilot.app/developers/api-overview

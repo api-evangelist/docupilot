@@ -1,14 +1,14 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Docupilot accounts APIs ai generate API
-  version: '1.0'
-  description: Docupilot accounts APIs
+  title: Docupilot V2 Generate API
+  version: '3.0'
+  description: Docupilot V2 APIs
   termsOfService: https://docupilot.app/terms-and-conditions/
   contact:
     name: Team Docupilot
     email: support@docupilot.app
 tags:
-- name: generate
+- name: Generate
 paths:
   /dashboard/api/v2/templates/{id}/generate/:
     post:
@@ -61,7 +61,7 @@ paths:
           type: string
         description: Template version selector. Supports a numeric version id, `latest`, or `live`.
       tags:
-      - generate
+      - Generate
       requestBody:
         content:
           application/json:
@@ -121,7 +121,7 @@ paths:
         description: A unique integer value identifying this document.
         required: true
       tags:
-      - generate
+      - Generate
       security:
       - SessionAuthentication: []
       responses:
@@ -184,7 +184,7 @@ paths:
           type: string
         description: Template version selector. Supports a numeric version id, `latest`, or `live`.
       tags:
-      - generate
+      - Generate
       requestBody:
         content:
           application/json:
@@ -242,7 +242,7 @@ paths:
         description: A unique integer value identifying this document.
         required: true
       tags:
-      - generate
+      - Generate
       security:
       - OAuthAuthentication: []
       - SessionAuthentication: []
@@ -276,7 +276,7 @@ paths:
   /dashboard/api/v2/templates/{template_id}/generate/bulk/sample_csv/:
     post:
       operationId: sample_csv
-      summary: Generates a sample csv for the template using ai.
+      summary: Generates a sample csv for the template using ai
       parameters:
       - in: header
         name: X-Workspace
@@ -299,7 +299,7 @@ paths:
         description: Template id
         required: true
       tags:
-      - generate
+      - Generate
       security:
       - SessionAuthentication: []
       responses:
@@ -365,7 +365,7 @@ paths:
           format: int32
         required: true
       tags:
-      - generate
+      - Generate
       security:
       - OAuthAuthentication: []
       - SessionAuthentication: []
@@ -393,7 +393,7 @@ paths:
           description: ''
     post:
       operationId: create_template_merge_link
-      summary: Create template merge link.
+      summary: Create template merge link
       parameters:
       - in: header
         name: X-Workspace
@@ -407,7 +407,7 @@ paths:
           type: string
         required: true
       tags:
-      - generate
+      - Generate
       security:
       - OAuthAuthentication: []
       - SessionAuthentication: []
@@ -466,7 +466,7 @@ paths:
           type: string
         required: true
       tags:
-      - generate
+      - Generate
       security:
       - OAuthAuthentication: []
       - SessionAuthentication: []
@@ -498,9 +498,32 @@ paths:
               schema:
                 $ref: '#/components/schemas/NotFoundError'
           description: ''
+      summary: Delete template merge link
+      x-summary-source: derived
 components:
   schemas:
+    DocumentMergeLink:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        path:
+          type: string
+          readOnly: true
+      required:
+      - id
+      - path
+      description: ''
     UnauthenticatedError:
+      type: object
+      properties:
+        detail:
+          type: string
+      required:
+      - detail
+      description: ''
+    ForbiddenError:
       type: object
       properties:
         detail:
@@ -525,6 +548,14 @@ components:
       - errors
       - non_field_errors
       description: ''
+    NotFoundError:
+      type: object
+      properties:
+        detail:
+          type: string
+      required:
+      - detail
+      description: ''
     TemplateTestResponse:
       type: object
       properties:
@@ -536,22 +567,6 @@ components:
       required:
       - file_name
       - file_url
-      description: ''
-    ForbiddenError:
-      type: object
-      properties:
-        detail:
-          type: string
-      required:
-      - detail
-      description: ''
-    NotFoundError:
-      type: object
-      properties:
-        detail:
-          type: string
-      required:
-      - detail
       description: ''
     TemplateGenerateResponse:
       type: object
@@ -565,19 +580,6 @@ components:
       - file_name
       - file_url
       description: ''
-    DocumentMergeLink:
-      type: object
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        path:
-          type: string
-          readOnly: true
-      required:
-      - id
-      - path
-      description: ''
   securitySchemes:
     OAuthAuthentication:
       type: http
@@ -588,6 +590,11 @@ components:
       in: cookie
       name: sessionid
       description: browser based login takes care of this
+    tokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Token-based authentication with required prefix "Basic"
 externalDocs:
   description: Help docs on how to use API
   url: https://help.docupilot.app/developers/api-overview

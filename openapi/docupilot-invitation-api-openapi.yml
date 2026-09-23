@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Docupilot accounts APIs ai invitation API
+  title: Docupilot accounts Invitation API
   version: '1.0'
   description: Docupilot accounts APIs
   termsOfService: https://docupilot.app/terms-and-conditions/
@@ -8,7 +8,7 @@ info:
     name: Team Docupilot
     email: support@docupilot.app
 tags:
-- name: invitation
+- name: Invitation
 paths:
   /accounts/invitation/:
     get:
@@ -22,7 +22,7 @@ paths:
         schema:
           type: string
       tags:
-      - invitation
+      - Invitation
       security:
       - SessionAuthentication: []
       responses:
@@ -50,7 +50,7 @@ paths:
       operationId: create_invitation
       summary: Create Invitation
       tags:
-      - invitation
+      - Invitation
       requestBody:
         content:
           application/json:
@@ -102,7 +102,7 @@ paths:
         description: A unique integer value identifying this invitation.
         required: true
       tags:
-      - invitation
+      - Invitation
       security:
       - SessionAuthentication: []
       responses:
@@ -144,7 +144,7 @@ paths:
         description: A unique integer value identifying this invitation.
         required: true
       tags:
-      - invitation
+      - Invitation
       security:
       - SessionAuthentication: []
       responses:
@@ -190,7 +190,7 @@ paths:
         description: A unique integer value identifying this invitation.
         required: true
       tags:
-      - invitation
+      - Invitation
       security:
       - SessionAuthentication: []
       responses:
@@ -232,7 +232,7 @@ paths:
         description: A unique integer value identifying this invitation.
         required: true
       tags:
-      - invitation
+      - Invitation
       security:
       - SessionAuthentication: []
       responses:
@@ -278,7 +278,7 @@ paths:
         schema:
           type: string
       tags:
-      - invitation
+      - Invitation
       security:
       - SessionAuthentication: []
       responses:
@@ -311,51 +311,6 @@ components:
           type: string
       required:
       - workspace_unique_key
-    UnauthenticatedError:
-      type: object
-      properties:
-        detail:
-          type: string
-      required:
-      - detail
-    ValidationError:
-      type: object
-      properties:
-        errors:
-          type: object
-          additionalProperties: {}
-        non_field_errors:
-          type: array
-          items:
-            type: string
-      required:
-      - errors
-      - non_field_errors
-    CreateInvitation:
-      type: object
-      properties:
-        email:
-          type: string
-        role:
-          enum:
-          - admin
-          - manager
-          - member
-          - billing_manager
-          type: string
-        workspace:
-          type: integer
-      required:
-      - email
-      - role
-      - workspace
-    ForbiddenError:
-      type: object
-      properties:
-        detail:
-          type: string
-      required:
-      - detail
     Invitation:
       type: object
       properties:
@@ -389,9 +344,10 @@ components:
           format: date-time
           readOnly: true
         is_accepted:
-          type: boolean
+          type:
+          - boolean
+          - 'null'
           readOnly: true
-          nullable: true
         invite_key:
           type: string
           readOnly: true
@@ -412,6 +368,33 @@ components:
       - role
       - sender
       - workspace
+    UnauthenticatedError:
+      type: object
+      properties:
+        detail:
+          type: string
+      required:
+      - detail
+    ForbiddenError:
+      type: object
+      properties:
+        detail:
+          type: string
+      required:
+      - detail
+    ValidationError:
+      type: object
+      properties:
+        errors:
+          type: object
+          additionalProperties: {}
+        non_field_errors:
+          type: array
+          items:
+            type: string
+      required:
+      - errors
+      - non_field_errors
     NotFoundError:
       type: object
       properties:
@@ -419,6 +402,24 @@ components:
           type: string
       required:
       - detail
+    CreateInvitation:
+      type: object
+      properties:
+        email:
+          type: string
+        role:
+          enum:
+          - admin
+          - manager
+          - member
+          - billing_manager
+          type: string
+        workspace:
+          type: integer
+      required:
+      - email
+      - role
+      - workspace
   securitySchemes:
     OAuthAuthentication:
       type: http

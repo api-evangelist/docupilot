@@ -1,8 +1,8 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Docupilot accounts APIs ai user_satisfaction_survey API
-  version: '1.0'
-  description: Docupilot accounts APIs
+  title: Docupilot V2 User Satisfaction Survey API
+  version: '3.0'
+  description: Docupilot V2 APIs
   termsOfService: https://docupilot.app/terms-and-conditions/
   contact:
     name: Team Docupilot
@@ -220,6 +220,30 @@ paths:
           description: ''
 components:
   schemas:
+    SaveCustomerFeedback:
+      type: object
+      properties:
+        feedback:
+          type: object
+          properties:
+            challenges_faced:
+              type: array
+            feature_improvement:
+              type: string
+          required:
+          - challenges_faced
+      required:
+      - feedback
+      description: ''
+    SurveyPrompt:
+      type: object
+      properties:
+        show_survey_prompt:
+          type: boolean
+          readOnly: true
+      required:
+      - show_survey_prompt
+      description: ''
     UnauthenticatedError:
       type: object
       properties:
@@ -227,6 +251,32 @@ components:
           type: string
       required:
       - detail
+      description: ''
+    ForbiddenError:
+      type: object
+      properties:
+        detail:
+          type: string
+      required:
+      - detail
+      description: ''
+    NpsRating:
+      type: object
+      properties:
+        nps_rating:
+          type:
+          - integer
+          - 'null'
+          maximum: 10
+          minimum: 0
+      description: ''
+    NpsNextReminder:
+      type: object
+      properties:
+        days:
+          type: integer
+      required:
+      - days
       description: ''
     ValidationError:
       type: object
@@ -245,56 +295,6 @@ components:
       - errors
       - non_field_errors
       description: ''
-    ForbiddenError:
-      type: object
-      properties:
-        detail:
-          type: string
-      required:
-      - detail
-      description: ''
-    SurveyPrompt:
-      type: object
-      properties:
-        show_survey_prompt:
-          type: boolean
-          readOnly: true
-      required:
-      - show_survey_prompt
-      description: ''
-    NpsNextReminder:
-      type: object
-      properties:
-        days:
-          type: integer
-      required:
-      - days
-      description: ''
-    SaveCustomerFeedback:
-      type: object
-      properties:
-        feedback:
-          type: object
-          nullable: false
-          properties:
-            challenges_faced:
-              type: array
-            feature_improvement:
-              type: string
-          required:
-          - challenges_faced
-      required:
-      - feedback
-      description: ''
-    NpsRating:
-      type: object
-      properties:
-        nps_rating:
-          type: integer
-          maximum: 10
-          minimum: 0
-          nullable: true
-      description: ''
   securitySchemes:
     OAuthAuthentication:
       type: http
@@ -305,6 +305,11 @@ components:
       in: cookie
       name: sessionid
       description: browser based login takes care of this
+    tokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Token-based authentication with required prefix "Basic"
 externalDocs:
   description: Help docs on how to use API
   url: https://help.docupilot.app/developers/api-overview

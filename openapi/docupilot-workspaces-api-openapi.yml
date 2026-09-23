@@ -1,14 +1,14 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Docupilot accounts APIs ai workspaces API
-  version: '1.0'
-  description: Docupilot accounts APIs
+  title: Docupilot V2 Workspaces API
+  version: '3.0'
+  description: Docupilot V2 APIs
   termsOfService: https://docupilot.app/terms-and-conditions/
   contact:
     name: Team Docupilot
     email: support@docupilot.app
 tags:
-- name: workspaces
+- name: Workspaces
 paths:
   /dashboard/accounts/v2/workspaces/:
     get:
@@ -32,7 +32,7 @@ paths:
         schema:
           type: string
       tags:
-      - workspaces
+      - Workspaces
       security:
       - OAuthAuthentication: []
       - SessionAuthentication: []
@@ -62,7 +62,7 @@ paths:
       operationId: create_workspace
       summary: Create Workspace
       tags:
-      - workspaces
+      - Workspaces
       requestBody:
         content:
           application/json:
@@ -114,7 +114,7 @@ paths:
         description: Workspace unique_key
         required: true
       tags:
-      - workspaces
+      - Workspaces
       security:
       - OAuthAuthentication: []
       - SessionAuthentication: []
@@ -149,7 +149,7 @@ paths:
         description: Workspace unique_key
         required: true
       tags:
-      - workspaces
+      - Workspaces
       requestBody:
         content:
           application/json:
@@ -200,7 +200,7 @@ paths:
         description: Workspace unique_key
         required: true
       tags:
-      - workspaces
+      - Workspaces
       requestBody:
         content:
           application/json:
@@ -248,7 +248,7 @@ paths:
         description: Workspace unique_key
         required: true
       tags:
-      - workspaces
+      - Workspaces
       security:
       - SessionAuthentication: []
       responses:
@@ -281,7 +281,7 @@ paths:
         description: Workspace unique_key
         required: true
       tags:
-      - workspaces
+      - Workspaces
       requestBody:
         content:
           application/json:
@@ -344,47 +344,6 @@ paths:
           description: ''
 components:
   schemas:
-    UnauthenticatedError:
-      type: object
-      properties:
-        detail:
-          type: string
-      required:
-      - detail
-      description: ''
-    ValidationError:
-      type: object
-      properties:
-        errors:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              type: string
-        non_field_errors:
-          type: array
-          items:
-            type: string
-      required:
-      - errors
-      - non_field_errors
-      description: ''
-    ForbiddenError:
-      type: object
-      properties:
-        detail:
-          type: string
-      required:
-      - detail
-      description: ''
-    RetentionPreference:
-      type: object
-      properties:
-        merge_data:
-          type: string
-        generated_document:
-          type: string
-      description: ''
     PatchedWorkspace:
       type: object
       properties:
@@ -529,8 +488,9 @@ components:
           type: string
           readOnly: true
         plan_id:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
           readOnly: true
         plan_status:
           type: string
@@ -545,6 +505,30 @@ components:
           type: string
           format: date-time
           readOnly: true
+      description: ''
+    UnauthenticatedError:
+      type: object
+      properties:
+        detail:
+          type: string
+      required:
+      - detail
+      description: ''
+    ForbiddenError:
+      type: object
+      properties:
+        detail:
+          type: string
+      required:
+      - detail
+      description: ''
+    RetentionPreference:
+      type: object
+      properties:
+        merge_data:
+          type: string
+        generated_document:
+          type: string
       description: ''
     Workspace:
       type: object
@@ -690,8 +674,9 @@ components:
           type: string
           readOnly: true
         plan_id:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
           readOnly: true
         plan_status:
           type: string
@@ -718,6 +703,23 @@ components:
       - timezone
       - unique_key
       description: ''
+    ValidationError:
+      type: object
+      properties:
+        errors:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+        non_field_errors:
+          type: array
+          items:
+            type: string
+      required:
+      - errors
+      - non_field_errors
+      description: ''
     DeleteCurrentWorkspace:
       type: object
       properties:
@@ -737,6 +739,11 @@ components:
       in: cookie
       name: sessionid
       description: browser based login takes care of this
+    tokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Token-based authentication with required prefix "Basic"
 externalDocs:
   description: Help docs on how to use API
   url: https://help.docupilot.app/developers/api-overview

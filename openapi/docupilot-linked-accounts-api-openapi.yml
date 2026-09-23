@@ -1,14 +1,14 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Docupilot accounts APIs ai linked_accounts API
-  version: '1.0'
-  description: Docupilot accounts APIs
+  title: Docupilot V2 Linked Accounts API
+  version: '3.0'
+  description: Docupilot V2 APIs
   termsOfService: https://docupilot.app/terms-and-conditions/
   contact:
     name: Team Docupilot
     email: support@docupilot.app
 tags:
-- name: linked_accounts
+- name: Linked Accounts
 paths:
   /dashboard/api/v2/linked_accounts/:
     get:
@@ -57,7 +57,7 @@ paths:
           - zoho
           - zoho_crm
       tags:
-      - linked_accounts
+      - Linked Accounts
       security:
       - SessionAuthentication: []
       responses:
@@ -92,7 +92,7 @@ paths:
         description: Workspace unique_key
         required: true
       tags:
-      - linked_accounts
+      - Linked Accounts
       requestBody:
         content:
           application/json:
@@ -166,7 +166,7 @@ paths:
         description: Type of integrator
         required: true
       tags:
-      - linked_accounts
+      - Linked Accounts
       security:
       - SessionAuthentication: []
       responses:
@@ -190,6 +190,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/NotFoundError'
           description: ''
+      summary: Invoke integrator
+      x-summary-source: derived
   /dashboard/api/v2/linked_accounts/{id}/:
     put:
       operationId: update_delivery_account
@@ -208,7 +210,7 @@ paths:
         description: A unique integer value identifying this delivery account.
         required: true
       tags:
-      - linked_accounts
+      - Linked Accounts
       requestBody:
         content:
           application/json:
@@ -271,7 +273,7 @@ paths:
         description: A unique integer value identifying this delivery account.
         required: true
       tags:
-      - linked_accounts
+      - Linked Accounts
       security:
       - SessionAuthentication: []
       responses:
@@ -304,7 +306,6 @@ paths:
   /dashboard/api/v2/linked_accounts/{id}/box_drive_picker_payload/:
     get:
       operationId: get_box_drive_picker_payload
-      description: Get box drive picker payload
       parameters:
       - in: header
         name: X-Workspace
@@ -319,7 +320,7 @@ paths:
         description: A unique integer value identifying this delivery account.
         required: true
       tags:
-      - linked_accounts
+      - Linked Accounts
       security:
       - SessionAuthentication: []
       responses:
@@ -353,10 +354,11 @@ paths:
               schema:
                 $ref: '#/components/schemas/NotFoundError'
           description: ''
+      summary: Get box drive picker payload
+      x-summary-source: derived
   /dashboard/api/v2/linked_accounts/{id}/deliveries/:
     get:
       operationId: list_account_deliveries
-      description: List account deliveries
       parameters:
       - in: header
         name: X-Workspace
@@ -400,7 +402,7 @@ paths:
           - zoho
           - zoho_crm
       tags:
-      - linked_accounts
+      - Linked Accounts
       security:
       - SessionAuthentication: []
       responses:
@@ -422,10 +424,11 @@ paths:
               schema:
                 $ref: '#/components/schemas/ForbiddenError'
           description: ''
+      summary: List account deliveries
+      x-summary-source: derived
   /dashboard/api/v2/linked_accounts/{id}/delivery_emails/:
     get:
       operationId: list_delivery_emails_for_email_account
-      description: List delivery emails for email account
       parameters:
       - in: header
         name: X-Workspace
@@ -440,7 +443,7 @@ paths:
         description: A unique integer value identifying this delivery account.
         required: true
       tags:
-      - linked_accounts
+      - Linked Accounts
       security:
       - SessionAuthentication: []
       responses:
@@ -476,10 +479,11 @@ paths:
               schema:
                 $ref: '#/components/schemas/NotFoundError'
           description: ''
+      summary: List delivery emails for email account
+      x-summary-source: derived
   /dashboard/api/v2/linked_accounts/{id}/docusign_folders/:
     get:
       operationId: get_docusign_folders
-      description: Get docusign folders
       parameters:
       - in: header
         name: X-Workspace
@@ -494,7 +498,7 @@ paths:
         description: A unique integer value identifying this delivery account.
         required: true
       tags:
-      - linked_accounts
+      - Linked Accounts
       security:
       - SessionAuthentication: []
       responses:
@@ -524,10 +528,11 @@ paths:
               schema:
                 $ref: '#/components/schemas/NotFoundError'
           description: ''
+      summary: Get docusign folders
+      x-summary-source: derived
   /dashboard/api/v2/linked_accounts/{id}/google_picker_payload/:
     get:
       operationId: get_google_picker_payload
-      description: Get google picker payload
       parameters:
       - in: header
         name: X-Workspace
@@ -542,7 +547,7 @@ paths:
         description: A unique integer value identifying this delivery account.
         required: true
       tags:
-      - linked_accounts
+      - Linked Accounts
       security:
       - SessionAuthentication: []
       responses:
@@ -576,10 +581,11 @@ paths:
               schema:
                 $ref: '#/components/schemas/NotFoundError'
           description: ''
+      summary: Get google picker payload
+      x-summary-source: derived
   /dashboard/api/v2/linked_accounts/{id}/initiate_authorization/:
     post:
       operationId: initiate_email_authorization
-      description: Initiate email authorization
       parameters:
       - in: header
         name: X-Workspace
@@ -594,7 +600,7 @@ paths:
         description: A unique integer value identifying this delivery account.
         required: true
       tags:
-      - linked_accounts
+      - Linked Accounts
       requestBody:
         content:
           application/json:
@@ -636,6 +642,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/NotFoundError'
           description: ''
+      summary: Initiate email authorization
+      x-summary-source: derived
   /dashboard/api/v2/linked_accounts/{id}/reconnect/:
     get:
       operationId: reconnect_account
@@ -654,7 +662,7 @@ paths:
         description: A unique integer value identifying this delivery account.
         required: true
       tags:
-      - linked_accounts
+      - Linked Accounts
       security:
       - SessionAuthentication: []
       responses:
@@ -678,10 +686,11 @@ paths:
               schema:
                 $ref: '#/components/schemas/NotFoundError'
           description: ''
+      summary: Reconnect account
+      x-summary-source: derived
   /dashboard/api/v2/linked_accounts/{id}/sharepoint_picker_payload/:
     get:
       operationId: get_sharepoint_picker_payload
-      description: Get sharepoint picker payload
       parameters:
       - in: header
         name: X-Workspace
@@ -696,7 +705,7 @@ paths:
         description: A unique integer value identifying this delivery account.
         required: true
       tags:
-      - linked_accounts
+      - Linked Accounts
       security:
       - SessionAuthentication: []
       responses:
@@ -730,10 +739,11 @@ paths:
               schema:
                 $ref: '#/components/schemas/NotFoundError'
           description: ''
+      summary: Get sharepoint picker payload
+      x-summary-source: derived
   /dashboard/api/v2/linked_accounts/{id}/toggle_use_for_images/:
     post:
       operationId: update_delivery_accounts_use_for_images_flag
-      description: Update delivery accounts use for images flag
       parameters:
       - in: header
         name: X-Workspace
@@ -748,7 +758,7 @@ paths:
         description: A unique integer value identifying this delivery account.
         required: true
       tags:
-      - linked_accounts
+      - Linked Accounts
       security:
       - SessionAuthentication: []
       responses:
@@ -782,10 +792,11 @@ paths:
               schema:
                 $ref: '#/components/schemas/NotFoundError'
           description: ''
+      summary: Update delivery accounts use for images flag
+      x-summary-source: derived
   /dashboard/api/v2/linked_accounts/{id}/verify_otp/:
     put:
       operationId: verify_email_otp
-      description: Verify email otp
       parameters:
       - in: header
         name: X-Workspace
@@ -800,7 +811,7 @@ paths:
         description: A unique integer value identifying this delivery account.
         required: true
       tags:
-      - linked_accounts
+      - Linked Accounts
       requestBody:
         content:
           application/json:
@@ -842,6 +853,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/NotFoundError'
           description: ''
+      summary: Verify email otp
+      x-summary-source: derived
   /dashboard/api/v2/linked_accounts/send_test_mail/:
     post:
       operationId: Send test mail
@@ -854,7 +867,7 @@ paths:
         description: Workspace unique_key
         required: true
       tags:
-      - linked_accounts
+      - Linked Accounts
       requestBody:
         content:
           application/json:
@@ -890,17 +903,11 @@ paths:
               schema:
                 $ref: '#/components/schemas/ForbiddenError'
           description: ''
+      summary: Send test mail
+      x-summary-source: derived
 components:
   schemas:
-    UnauthenticatedError:
-      type: object
-      properties:
-        detail:
-          type: string
-      required:
-      - detail
-      description: ''
-    AccountDelivery:
+    TemplateInfo:
       type: object
       properties:
         id:
@@ -908,34 +915,28 @@ components:
           readOnly: true
         name:
           type: string
-          maxLength: 255
-        last_used_on:
+          readOnly: true
+        status:
           type: string
-          format: date-time
-          nullable: true
-        template_info:
-          $ref: '#/components/schemas/TemplateInfo'
+          readOnly: true
+        type:
+          type: string
+          readOnly: true
       required:
       - id
       - name
-      - template_info
+      - status
+      - type
       description: ''
-    DocuSignFolderOwner:
+    SharepointPickerPayload:
       type: object
       properties:
-        userName:
+        payload:
           type: string
-        userId:
-          type: string
-        email:
-          type: string
-          format: email
       required:
-      - email
-      - userId
-      - userName
+      - payload
       description: ''
-    UpdateDeliveryAccount:
+    DeliveryAccount:
       type: object
       description: ''
       properties:
@@ -949,9 +950,10 @@ components:
           type: integer
           readOnly: true
         name:
-          type: string
+          type:
+          - string
+          - 'null'
           readOnly: true
-          nullable: true
         type:
           enum:
           - docu_sign
@@ -973,7 +975,6 @@ components:
           - sftp
           - azure_storage
           type: string
-          readOnly: true
         credentials:
           type: object
           additionalProperties: {}
@@ -982,10 +983,11 @@ components:
           type: boolean
           readOnly: true
         updated_at:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
           readOnly: true
-          nullable: true
         use_for_images:
           type: boolean
       required:
@@ -997,24 +999,7 @@ components:
       - type
       - updated_at
       - used_by
-    ValidationError:
-      type: object
-      properties:
-        errors:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              type: string
-        non_field_errors:
-          type: array
-          items:
-            type: string
-      required:
-      - errors
-      - non_field_errors
-      description: ''
-    ForbiddenError:
+    UnauthenticatedError:
       type: object
       properties:
         detail:
@@ -1022,34 +1007,31 @@ components:
       required:
       - detail
       description: ''
-    BoxDrivePickerPayload:
+    DocuSignFolder:
       type: object
       properties:
-        payload:
-          type: string
-      required:
-      - payload
-      description: ''
-    TemplateInfo:
-      type: object
-      properties:
-        id:
-          type: integer
-          readOnly: true
         name:
           type: string
-          readOnly: true
-        status:
-          type: string
-          readOnly: true
         type:
           type: string
-          readOnly: true
+        owner:
+          $ref: '#/components/schemas/DocuSignFolderOwner'
+        folderId:
+          type: string
+        uri:
+          type: string
+        itemCount:
+          type: string
+        hasSubFolders:
+          type: string
       required:
-      - id
+      - folderId
+      - hasSubFolders
+      - itemCount
       - name
-      - status
+      - owner
       - type
+      - uri
       description: ''
     SendTestSmtpMail:
       type: object
@@ -1081,78 +1063,7 @@ components:
       - smtp_server_password
       - smtp_server_username
       description: ''
-    SharepointPickerPayload:
-      type: object
-      properties:
-        payload:
-          type: string
-      required:
-      - payload
-      description: ''
-    DocuSignFolder:
-      type: object
-      properties:
-        name:
-          type: string
-        type:
-          type: string
-        owner:
-          $ref: '#/components/schemas/DocuSignFolderOwner'
-        folderId:
-          type: string
-        uri:
-          type: string
-        itemCount:
-          type: string
-        hasSubFolders:
-          type: string
-      required:
-      - folderId
-      - hasSubFolders
-      - itemCount
-      - name
-      - owner
-      - type
-      - uri
-      description: ''
-    NotFoundError:
-      type: object
-      properties:
-        detail:
-          type: string
-      required:
-      - detail
-      description: ''
-    GoogleDrivePickerPayload:
-      type: object
-      properties:
-        payload:
-          type: string
-      required:
-      - payload
-      description: ''
-    VerifyEmailAccountOTP:
-      type: object
-      properties:
-        action_name:
-          enum:
-          - verify
-          - update
-          type: string
-        email:
-          type: string
-          format: email
-          nullable: true
-        otp:
-          type: string
-          maxLength: 6
-        display_name:
-          type: string
-      required:
-      - action_name
-      - otp
-      description: ''
-    DeliveryAccount:
+    UpdateDeliveryAccount:
       type: object
       description: ''
       properties:
@@ -1166,9 +1077,10 @@ components:
           type: integer
           readOnly: true
         name:
-          type: string
+          type:
+          - string
+          - 'null'
           readOnly: true
-          nullable: true
         type:
           enum:
           - docu_sign
@@ -1190,6 +1102,7 @@ components:
           - sftp
           - azure_storage
           type: string
+          readOnly: true
         credentials:
           type: object
           additionalProperties: {}
@@ -1198,10 +1111,11 @@ components:
           type: boolean
           readOnly: true
         updated_at:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
           readOnly: true
-          nullable: true
         use_for_images:
           type: boolean
       required:
@@ -1213,6 +1127,36 @@ components:
       - type
       - updated_at
       - used_by
+    VerifyEmailAccountOTP:
+      type: object
+      properties:
+        action_name:
+          enum:
+          - verify
+          - update
+          type: string
+        email:
+          type:
+          - string
+          - 'null'
+          format: email
+        otp:
+          type: string
+          maxLength: 6
+        display_name:
+          type: string
+      required:
+      - action_name
+      - otp
+      description: ''
+    ForbiddenError:
+      type: object
+      properties:
+        detail:
+          type: string
+      required:
+      - detail
+      description: ''
     SendEmailAccountAuthorizationOTP:
       type: object
       properties:
@@ -1222,11 +1166,58 @@ components:
           - update
           type: string
         email:
-          type: string
+          type:
+          - string
+          - 'null'
           format: email
-          nullable: true
       required:
       - action_name
+      description: ''
+    ValidationError:
+      type: object
+      properties:
+        errors:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+        non_field_errors:
+          type: array
+          items:
+            type: string
+      required:
+      - errors
+      - non_field_errors
+      description: ''
+    AccountDelivery:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 255
+        last_used_on:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        template_info:
+          $ref: '#/components/schemas/TemplateInfo'
+      required:
+      - id
+      - name
+      - template_info
+      description: ''
+    GoogleDrivePickerPayload:
+      type: object
+      properties:
+        payload:
+          type: string
+      required:
+      - payload
       description: ''
     PaginatedAccountDeliveryList:
       type: object
@@ -1238,19 +1229,52 @@ components:
           type: integer
           example: 123
         next:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
           format: uri
           example: http://api.example.org/accounts/?page=4
         previous:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
           format: uri
           example: http://api.example.org/accounts/?page=2
         results:
           type: array
           items:
             $ref: '#/components/schemas/AccountDelivery'
+    NotFoundError:
+      type: object
+      properties:
+        detail:
+          type: string
+      required:
+      - detail
+      description: ''
+    DocuSignFolderOwner:
+      type: object
+      properties:
+        userName:
+          type: string
+        userId:
+          type: string
+        email:
+          type: string
+          format: email
+      required:
+      - email
+      - userId
+      - userName
+      description: ''
+    BoxDrivePickerPayload:
+      type: object
+      properties:
+        payload:
+          type: string
+      required:
+      - payload
+      description: ''
   securitySchemes:
     OAuthAuthentication:
       type: http
@@ -1261,6 +1285,11 @@ components:
       in: cookie
       name: sessionid
       description: browser based login takes care of this
+    tokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Token-based authentication with required prefix "Basic"
 externalDocs:
   description: Help docs on how to use API
   url: https://help.docupilot.app/developers/api-overview
